@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <utility>
 
 #include "component_manager.h"
 #include "entity_manager.h"
@@ -32,7 +33,8 @@ class Coordinator {
   std::shared_ptr<SystemType> RegisterSystem(Args&& ... args);
 
   template<typename SystemType>
-  void SetSystemSignature(std::initializer_list<ComponentID> included_components);
+  void SetSystemSignature(
+      std::initializer_list<ComponentID> included_components);
 
   template<typename ComponentType>
   void UpdateSignature(Entity entity, bool has_component);
@@ -75,7 +77,8 @@ ComponentID Coordinator::GetComponentID() const {
 
 template<typename SystemType, typename... Args>
 std::shared_ptr<SystemType> Coordinator::RegisterSystem(Args&& ... args) {
-  return system_manager_->RegisterSystem<SystemType>(std::forward<Args>(args)...);
+  return system_manager_->RegisterSystem<SystemType>(
+      std::forward<Args>(args)...);
 }
 
 template<typename SystemType>
@@ -91,7 +94,8 @@ void Coordinator::SetSystemSignature
 template<typename ComponentType>
 void Coordinator::UpdateSignature(Entity entity, bool has_component) {
   auto signature = entity_manager_->GetComponentSignature(entity);
-  signature.set(component_manager_->GetComponentID<ComponentType>(), has_component);
+  signature.set(component_manager_->GetComponentID<ComponentType>(),
+                has_component);
 
   entity_manager_->SetComponentSignature(entity, signature);
   system_manager_->EntitySignatureChanged(entity, signature);

@@ -31,7 +31,8 @@ class ComponentManager {
 
  private:
   std::unordered_map<std::type_index, ComponentID> component_id_by_index_;
-  std::unordered_map<std::type_index, std::shared_ptr<IComponentArray>> component_array_by_index_;
+  std::unordered_map<std::type_index, std::shared_ptr<IComponentArray>>
+      component_array_by_index_;
   ComponentID first_unregistered_id_;
 
  private:
@@ -43,11 +44,14 @@ template<typename ComponentType>
 void ComponentManager::RegisterComponent() {
   auto component_index = std::type_index(typeid(ComponentType));
 
-  assert(component_id_by_index_.find(component_index) == component_id_by_index_.end()
+  assert(component_id_by_index_.find(component_index)
+             == component_id_by_index_.end()
              && "Try to register component that was already registered");
 
   component_id_by_index_.emplace(component_index, first_unregistered_id_);
-  component_array_by_index_.emplace(component_index, std::make_shared<ComponentArray<ComponentType>>());
+  component_array_by_index_.emplace(component_index,
+                                    std::make_shared<ComponentArray<
+                                        ComponentType>>());
   first_unregistered_id_++;
 }
 
@@ -55,14 +59,16 @@ template<typename ComponentType>
 ComponentID ComponentManager::GetComponentID() {
   auto component_index = std::type_index(typeid(ComponentType));
 
-  assert(component_id_by_index_.find(component_index) != component_id_by_index_.end()
-      && "Try to get component by invalid component type");
+  assert(component_id_by_index_.find(component_index)
+             != component_id_by_index_.end()
+             && "Try to get component by invalid component type");
 
   return component_id_by_index_[component_index];
 }
 
 template<typename ComponentType>
-void ComponentManager::AddComponent(Entity entity, const ComponentType& component) {
+void ComponentManager::AddComponent(Entity entity,
+                                    const ComponentType& component) {
   GetComponentArray<ComponentType>()->InsertComponent(entity, component);
 }
 
@@ -77,11 +83,14 @@ ComponentType& ComponentManager::GetComponent(Entity entity) {
 }
 
 template<typename ComponentType>
-std::shared_ptr<ComponentArray<ComponentType>> ComponentManager::GetComponentArray()  {
+std::shared_ptr<ComponentArray<ComponentType>>
+ComponentManager::GetComponentArray() {
   auto component_index = std::type_index(typeid(ComponentType));
 
-  assert(component_array_by_index_.find(component_index) != component_array_by_index_.end()
-      && "Try to get component array by invalid component type");
+  assert(component_array_by_index_.find(component_index)
+             != component_array_by_index_.end()
+             && "Try to get component array by invalid component type");
 
-  return component_array_by_index_[component_index];
+  return std::dynamic_pointer_cast<ComponentArray<ComponentType>>(
+      component_array_by_index_[component_index]);
 }

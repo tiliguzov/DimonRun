@@ -1,11 +1,14 @@
 #include <iostream>
 
-#include "engine/entity_manager.h"
-#include "engine/types_and_constants.h"
-#include "engine/component_manager.h"
-#include "engine/component_array.h"
+#include <QApplication>
+#include <QPushButton>
 
-int main() {
-  std::cout << "Hello, World!" << std::endl;
-  return 0;
+#include "core/connector.h"
+#include "core/scene.h"
+
+int main(int argc, char* argv[]) {
+  QApplication a(argc, argv);
+  Connector connector;
+  Scene scene(nullptr, &connector);
+  return QApplication::exec();
 }

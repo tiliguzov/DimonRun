@@ -10,7 +10,7 @@ class IComponentArray {
   virtual void EntityDestroyed(Entity entity) = 0;
 };
 
-template <typename ComponentType>
+template<typename ComponentType>
 class ComponentArray : public IComponentArray {
  public:
   ComponentArray();
@@ -35,8 +35,8 @@ template<typename ComponentType>
 void ComponentArray<ComponentType>::InsertComponent(
     Entity entity,
     const ComponentType& new_component) {
-  assert(entity < kMaxEntities
-      && "Try to insert component by entity not in range [0, kMaxEntities)");
+  assert(entity < kMaxEntities &&
+      "Try to insert component by entity not in range [0, kMaxEntities)");
 
   components_[size_] = new_component;
   index_by_entity_.emplace(entity, size_);
@@ -46,20 +46,20 @@ void ComponentArray<ComponentType>::InsertComponent(
 
 template<typename ComponentType>
 ComponentType& ComponentArray<ComponentType>::GetComponent(Entity entity) {
-  assert(entity < kMaxEntities
-      && "Try to get component by entity not in range [0, kMaxEntities)");
-  assert(index_by_entity_.find(entity) != index_by_entity_.end()
-      && "Try to get not existing component by entity");
+  assert(entity < kMaxEntities &&
+      "Try to get component by entity not in range [0, kMaxEntities)");
+  assert(index_by_entity_.find(entity) != index_by_entity_.end() &&
+      "Try to get not existing component by entity");
 
   return components_[index_by_entity_[entity]];
 }
 
 template<typename ComponentType>
 void ComponentArray<ComponentType>::DeleteComponent(Entity entity_of_deleted) {
-  assert(entity_of_deleted < kMaxEntities
-      && "Try to delete component by entity not in range [0, kMaxEntities)");
+  assert(entity_of_deleted < kMaxEntities &&
+      "Try to delete component by entity not in range [0, kMaxEntities)");
   assert(index_by_entity_.find(entity_of_deleted) != index_by_entity_.end()
-      && "Try to delete not existing component by entity");
+             && "Try to delete not existing component by entity");
 
   id_type index_of_deleted = index_by_entity_[entity_of_deleted];
 

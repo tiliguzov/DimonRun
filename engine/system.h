@@ -7,6 +7,6 @@
 class System {
  public:
   System();
-
+  virtual void Update() = 0;
   std::unordered_set<Entity> entities_;
 };
