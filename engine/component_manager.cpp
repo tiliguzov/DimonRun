@@ -1,5 +1,7 @@
 #include "component_manager.h"
 
+namespace engine {
+
 ComponentManager::ComponentManager() : first_unregistered_id_(0) {}
 
 void ComponentManager::EntityDestroyed(Entity entity) {
@@ -7,3 +9,5 @@ void ComponentManager::EntityDestroyed(Entity entity) {
     component_array->EntityDestroyed(entity);
   }
 }
+
+}  // namespace engine

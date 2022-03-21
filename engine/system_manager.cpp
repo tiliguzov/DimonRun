@@ -1,7 +1,9 @@
 #include "system_manager.h"
 
+namespace engine {
+
 void SystemManager::EntityDestroyed(Entity entity) {
-  for (auto const &[index, system] : system_by_index_) {
+  for (auto const& [index, system] : system_by_index_) {
     system->entities_.erase(entity);
   }
 }
@@ -9,7 +11,7 @@ void SystemManager::EntityDestroyed(Entity entity) {
 void SystemManager::EntitySignatureChanged(
     Entity entity,
     ComponentSignature new_signature) {
-  for (auto const &[index, system] : system_by_index_) {
+  for (auto const& [index, system] : system_by_index_) {
     auto const& system_signature = signature_by_index_[index];
 
     if ((new_signature & system_signature) == system_signature) {
@@ -19,3 +21,5 @@ void SystemManager::EntitySignatureChanged(
     }
   }
 }
+
+}  // namespace engine

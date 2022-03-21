@@ -6,7 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_PREFIX_PATH "/home/marmotikon/Proga_second_sem/Qt/6.2.3/gcc_64/lib/cmake")
+set(CMAKE_PREFIX_PATH "~/Qt/6.2.3/gcc_64/lib/cmake")
 
 find_package(Qt6 COMPONENTS
         Core
@@ -15,15 +15,21 @@ find_package(Qt6 COMPONENTS
         REQUIRED)
 
 add_executable(DimonRun
-        main.cpp
-        engine/entity_manager.cpp
+        core/connector.cpp
+        core/constants.h
+        core/scene.cpp
+
         engine/component_manager.cpp
+        engine/coordinator.cpp
+        engine/entity_manager.cpp
         engine/system.cpp
         engine/system_manager.cpp
-        engine/coordinator.cpp core/connector.cpp core/connector.h core/scene.cpp core/scene.h core/components.h systems/movement_system.cpp systems/movement_system.h)
+
+        main.cpp
+
+        systems/movement_system.cpp)
 
 target_link_libraries(DimonRun
         Qt::Core
         Qt::Gui
-        Qt::Widgets
-        )
+        Qt::Widgets)

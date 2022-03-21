@@ -1,5 +1,9 @@
 #include "coordinator.h"
 
+#include <memory>
+
+namespace engine {
+
 Coordinator::Coordinator() :
     entity_manager_(std::make_unique<EntityManager>()),
     component_manager_(std::make_unique<ComponentManager>()),
@@ -14,3 +18,5 @@ void Coordinator::DestroyEntity(Entity entity) {
   component_manager_->EntityDestroyed(entity);
   system_manager_->EntityDestroyed(entity);
 }
+
+}  // namespace engine

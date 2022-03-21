@@ -7,6 +7,8 @@
 #include "entity_manager.h"
 #include "system_manager.h"
 
+namespace engine {
+
 class Coordinator {
  public:
   Coordinator();
@@ -27,7 +29,7 @@ class Coordinator {
   ComponentType& GetComponent(Entity entity) const;
 
   template<typename ComponentType>
-  [[nodiscard]] ComponentID GetComponentID() const;
+  ComponentID GetComponentID() const;
 
   template<typename SystemType, typename... Args>
   std::shared_ptr<SystemType> RegisterSystem(Args&& ... args);
@@ -40,7 +42,7 @@ class Coordinator {
   void UpdateSignature(Entity entity, bool has_component);
 
   template<typename ComponentType>
-  [[nodiscard]] bool HasComponent(Entity entity) const;
+  bool HasComponent(Entity entity) const;
 
  private:
   std::unique_ptr<ComponentManager> component_manager_;
@@ -107,3 +109,5 @@ bool Coordinator::HasComponent(Entity entity) const {
   ComponentID pos = component_manager_->GetComponentID<ComponentType>();
   return signature[pos];
 }
+
+}  // namespace engine

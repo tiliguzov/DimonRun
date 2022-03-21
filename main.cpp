@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include <QApplication>
 #include <QPushButton>
 
@@ -8,7 +6,7 @@
 
 int main(int argc, char* argv[]) {
   QApplication a(argc, argv);
-  Connector connector;
-  Scene scene(nullptr, &connector);
+  core::Connector connector;
+  core::Scene scene(nullptr, &connector);
   return QApplication::exec();
 }

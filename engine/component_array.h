@@ -4,6 +4,8 @@
 
 #include "types_and_constants.h"
 
+namespace engine {
+
 class IComponentArray {
  public:
   virtual ~IComponentArray() = default;
@@ -58,8 +60,8 @@ template<typename ComponentType>
 void ComponentArray<ComponentType>::DeleteComponent(Entity entity_of_deleted) {
   assert(entity_of_deleted < kMaxEntities &&
       "Try to delete component by entity not in range [0, kMaxEntities)");
-  assert(index_by_entity_.find(entity_of_deleted) != index_by_entity_.end()
-             && "Try to delete not existing component by entity");
+  assert(index_by_entity_.find(entity_of_deleted) != index_by_entity_.end() &&
+      "Try to delete not existing component by entity");
 
   id_type index_of_deleted = index_by_entity_[entity_of_deleted];
 
@@ -81,3 +83,5 @@ void ComponentArray<ComponentType>::EntityDestroyed(Entity entity) {
     DeleteComponent(entity);
   }
 }
+
+}  // namespace engine

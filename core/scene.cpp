@@ -2,17 +2,18 @@
 
 #include <QKeyEvent>
 #include <QPainter>
-
-#include <algorithm>
-#include <vector>
-#include <iostream>
+#include <QTimerEvent>
+#include <QWidget>
 
 #include "connector.h"
+#include "constants.h"
+
+namespace core {
 
 Scene::Scene(QWidget* parent, Connector* connector)
     : QWidget(parent),
       connector_(connector),
-      timer_id_(startTimer(5)) {  // constants
+      timer_id_(startTimer(kTickTime)) {
   show();
   setFocus();
 }
@@ -21,10 +22,11 @@ void Scene::timerEvent(QTimerEvent* event) {
   if (event->timerId() != timer_id_) {
     return;
   }
-  // std::cout << "TimerEvent)" << std::endl;
   connector_->OnTick();
 }
 
 void Scene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
 }
+
+}  // namespace core

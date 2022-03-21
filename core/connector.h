@@ -1,10 +1,11 @@
 #pragma once
 
-#include <unordered_set>
 #include <memory>
 #include <vector>
 
 #include "engine/coordinator.h"
+
+namespace core {
 
 class Connector {
  public:
@@ -16,6 +17,8 @@ class Connector {
   void RegisterSystems();
   void RegisterComponents();
 
-  std::unique_ptr<Coordinator> coordinator_;
-  std::vector<std::shared_ptr<System>> systems_;
+  std::unique_ptr<engine::Coordinator> coordinator_;
+  std::vector<std::shared_ptr<engine::System>> systems_;
 };
+
+}  // namespace core

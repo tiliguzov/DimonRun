@@ -2,10 +2,12 @@
 
 #include <memory>
 
-#include <QWidget>
 #include <QTimerEvent>
+#include <QWidget>
 
 #include "engine/coordinator.h"
+
+namespace core {
 
 class Connector;
 
@@ -22,5 +24,7 @@ class Scene : public QWidget {
 
   int32_t timer_id_;
   Connector* connector_;
-  Entity* player_;
+  engine::Entity* player_;
 };
+
+}  // namespace core

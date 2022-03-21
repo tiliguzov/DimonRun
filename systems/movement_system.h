@@ -2,11 +2,15 @@
 
 #include "engine/coordinator.h"
 
-class MovementSystem : public System {
+namespace systems {
+
+class MovementSystem : public engine::System {
  public:
-  explicit MovementSystem(Coordinator* coordinator);
+  explicit MovementSystem(engine::Coordinator* coordinator);
   void Update() override;
 
  private:
-  Coordinator* coordinator_;
+  engine::Coordinator* coordinator_;
 };
+
+}  // namespace systems
