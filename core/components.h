@@ -4,9 +4,14 @@
 
 namespace core {
 
-// example of component
 struct MovementComponent {
   QVector2D position;
+};
+
+struct TransformationComponent {
+  double default_speed = 1;
+  QVector2D direction;
+  double current_speed = 1;
 };
 
 }  // namespace core

@@ -29,4 +29,12 @@ void Scene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
 }
 
+void Scene::keyPressEvent(QKeyEvent *event) {
+    connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));
+}
+
+void Scene::keyReleaseEvent(QKeyEvent *event) {
+    connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
+}
+
 }  // namespace core
