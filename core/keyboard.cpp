@@ -1,6 +1,5 @@
 #include "keyboard.h"
 
-
 bool core::Keyboard::IsKeyPressed(KeyAction bind) const {
   if (is_key_pressed_.find(bindings_.at(bind)) == is_key_pressed_.end()) {
     return false;
@@ -9,7 +8,11 @@ bool core::Keyboard::IsKeyPressed(KeyAction bind) const {
 }
 
 void core::Keyboard::OnPress(Qt::Key key) {
-  if (key == Qt::Key_D || key == Qt::Key_A || key == Qt::Key_W || key == Qt::Key_S) {
+  if (
+          key == Qt::Key_D ||
+          key == Qt::Key_A ||
+          key == Qt::Key_W ||
+          key == Qt::Key_S) {
     OnRelease(Qt::Key_D);
     OnRelease(Qt::Key_A);
     OnRelease(Qt::Key_W);

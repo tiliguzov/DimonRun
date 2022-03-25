@@ -22,7 +22,6 @@ void MovementSystem::Update() {
 
     std::cout << "pos of entity " << entity << " is " << comp.position.x()
               << " " << comp.position.y() << " now" << std::endl;
-
   }
 }
 

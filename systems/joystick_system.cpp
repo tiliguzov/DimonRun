@@ -4,14 +4,16 @@ namespace systems {
 
 JoystickSystem::JoystickSystem(
         engine::Coordinator *coordinator,
-        core::Keyboard *keyboard) : coordinator_(coordinator), keyboard_(keyboard) {}
+        core::Keyboard *keyboard)
+    : coordinator_(coordinator), keyboard_(keyboard) {}
 
 void JoystickSystem::Update() {
   if (keyboard_->IsBlocked()) {
     return;
   }
   for (const auto& entity : entities_) {
-    auto& motion = coordinator_->GetComponent<core::TransformationComponent>(entity);
+    auto& motion =
+            coordinator_->GetComponent<core::TransformationComponent>(entity);
     QVector2D direction;
     if (keyboard_->IsKeyPressed(core::KeyAction::kMoveDown)) {
       direction += {0.0, -1.0};
@@ -27,7 +29,6 @@ void JoystickSystem::Update() {
     }
     motion.direction = direction.normalized();
     motion.current_speed = motion.default_speed;
-
   }
 }
 
