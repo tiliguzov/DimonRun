@@ -37,7 +37,6 @@ void Connector::OnKeyRelease(Qt::Key key) {
 
 void Connector::RegisterSystems() {
     {
-
         auto joystick_system_ = coordinator_
             ->RegisterSystem<systems::JoystickSystem>(
                     coordinator_.get(), keyboard_.get());
@@ -47,7 +46,6 @@ void Connector::RegisterSystems() {
 
         systems_.push_back(joystick_system_);
     }
-
     {
         auto movement_system = coordinator_
             ->RegisterSystem<systems::MovementSystem>(coordinator_.get());
