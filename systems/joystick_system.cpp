@@ -1,7 +1,5 @@
 #include "joystick_system.h"
 
-#include <iostream>
-
 namespace systems {
 
 JoystickSystem::JoystickSystem(
@@ -27,7 +25,6 @@ void JoystickSystem::Update() {
     if (keyboard_->IsKeyPressed(core::KeyAction::kMoveRight)) {
       direction += {1.0, 0.0};
     }
-    std::cout << direction.x() << " " << direction.y() << "\n";
     motion.direction = direction.normalized();
     motion.current_speed = motion.default_speed;
 

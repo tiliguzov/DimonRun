@@ -1,9 +1,7 @@
 #include "keyboard.h"
 
-#include <iostream>
 
 bool core::Keyboard::IsKeyPressed(KeyAction bind) const {
-  std::cout << "check key " << (bind == KeyAction::kMoveRight) << "\n";
   if (is_key_pressed_.find(bindings_.at(bind)) == is_key_pressed_.end()) {
     return false;
   }
