@@ -14,9 +14,15 @@ void MovementSystem::Update() {
   std::cout << "Movement system is updated)" << " ";
   for (engine::Entity entity : entities_) {
     auto& comp = coordinator_->GetComponent<core::MovementComponent>(entity);
-    comp.position += {1, 1};
+
+    auto& transform =
+      coordinator_->GetComponent<core::TransformationComponent>(entity);
+
+    comp.position += transform.direction.normalized() * transform.current_speed;
+
     std::cout << "pos of entity " << entity << " is " << comp.position.x()
               << " " << comp.position.y() << " now" << std::endl;
+
   }
 }
 
