@@ -31,7 +31,6 @@ class Scene : public QWidget {
   int32_t timer_id_;
   Connector* connector_;
   engine::Entity* player_;
-  std::vector<engine::Entity> background_;
   QGraphicsScene* scene_;
   QGraphicsView* scene_view_;
 };
