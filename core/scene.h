@@ -4,6 +4,8 @@
 
 #include <QTimerEvent>
 #include <QWidget>
+#include <QGraphicsScene>
+#include <QGraphicsView>
 
 #include "engine/coordinator.h"
 
@@ -18,6 +20,10 @@ class Scene : public QWidget {
   Scene(QWidget* parent,
         Connector* connector);
 
+  QGraphicsScene* GetScene();
+  QGraphicsView* GetSceneView();
+  engine::Entity* GetPlayer();
+
  private:
   void paintEvent(QPaintEvent*) override;
   void timerEvent(QTimerEvent*) override;
@@ -25,6 +31,9 @@ class Scene : public QWidget {
   int32_t timer_id_;
   Connector* connector_;
   engine::Entity* player_;
+  std::vector<engine::Entity> background_;
+  QGraphicsScene* scene_;
+  QGraphicsView* scene_view_;
 };
 
 }  // namespace core

@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <vector>
+#include "core/scene.h"
 
 #include "engine/coordinator.h"
 
@@ -12,6 +13,7 @@ class Connector {
   Connector();
 
   void OnTick();
+  void Example(Scene* scene);
 
  private:
   void RegisterSystems();

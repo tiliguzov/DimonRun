@@ -31,8 +31,10 @@ add_executable(DimonRun
         engine/system_manager.cpp
 
         main.cpp
+        resources.qrc
 
-        systems/movement_system.cpp)
+        systems/movement_system.cpp
+        systems/painting_system.cpp)
 
 target_link_libraries(DimonRun
         Qt::Core
