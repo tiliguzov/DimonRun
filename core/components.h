@@ -9,6 +9,7 @@ namespace core {
 // example of component
 struct MovementComponent {
   QVector2D position;
+  bool can_move;
 };
 
 struct GraphicsItemComponent {

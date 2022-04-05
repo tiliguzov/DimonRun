@@ -18,9 +18,11 @@ Scene::Scene(QWidget* parent, Connector* connector)
       scene_(new QGraphicsScene(this)),
       scene_view_(new QGraphicsView(this)) {
   scene_view_->setScene(scene_);
-  scene_view_->setGeometry(0, 0, 1000, 600);
+  scene_view_->setGeometry(0, 0, kDefaultWindowWidth, kDefaultWindowHeight);
   scene_view_->setAutoFillBackground(true);
   scene_view_->setBackgroundBrush(Qt::darkGreen);
+  scene_view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  scene_view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   show();
   setFocus();
   // // example of interacting with engine

@@ -51,15 +51,16 @@ void Connector::Example(Scene* scene) {
       engine::Entity entity = coordinator_->CreateEntity();
       float x = i * core::kTextureSize;
       float y = j * core::kTextureSize;
-      coordinator_->AddComponent(entity, MovementComponent{{x, y}});
+      coordinator_->AddComponent(entity, MovementComponent{{x, y}, true});
       auto* item = scene->GetScene()->addPixmap(QPixmap(":ground.jpg"));
       coordinator_->AddComponent(entity, GraphicsItemComponent{item});
     }
   }
-  engine::Entity player = *scene->GetPlayer();
-  player = coordinator_->CreateEntity();
-  auto* item = scene->GetScene()->addPixmap(QPixmap(":fox.png"));
-  coordinator_->AddComponent(player, GraphicsItemComponent{item});
+  engine::Entity player = coordinator_->CreateEntity();
+  coordinator_->AddComponent(player, MovementComponent{{0, 150}, false});
+  coordinator_->AddComponent(player, GraphicsItemComponent
+       {scene->GetScene()->addPixmap(QPixmap(":fox.png"))});
+  coordinator_->GetComponent<GraphicsItemComponent>(player).item->setPos(0, 150);
 }
 
 }  // namespace core

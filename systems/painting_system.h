@@ -1,7 +1,7 @@
 #pragma once
 
-#include "engine/system.h"
 #include "engine/coordinator.h"
+#include "engine/system.h"
 
 namespace systems {
 
