@@ -60,7 +60,8 @@ void Connector::Example(Scene* scene) {
   coordinator_->AddComponent(player, MovementComponent{{0, 150}, false});
   coordinator_->AddComponent(player, GraphicsItemComponent
        {scene->GetScene()->addPixmap(QPixmap(":fox.png"))});
-  coordinator_->GetComponent<GraphicsItemComponent>(player).item->setPos(0, 150);
+  coordinator_->GetComponent<GraphicsItemComponent>(player).item
+        ->setPos(0, 150);
 }
 
 }  // namespace core
