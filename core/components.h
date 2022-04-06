@@ -14,10 +14,6 @@ struct MovementComponent {
 
 struct GraphicsItemComponent {
   QGraphicsPixmapItem* item;
-
-  // explicit GraphicsItemComponent(QPixmap image) {
-  //   item = new QGraphicsPixmapItem(image, nullptr);
-  // }
 };
 
 }  // namespace core

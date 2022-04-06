@@ -12,8 +12,8 @@ MovementSystem::MovementSystem(engine::Coordinator* coordinator)
 void MovementSystem::Update() {
   // example of interaction with engine
   for (engine::Entity entity : entities_) {
-    if (coordinator_->
-          GetComponent<core::MovementComponent>(entity).can_move == false) {
+    if (!coordinator_->
+          GetComponent<core::MovementComponent>(entity).can_move) {
       continue;
     }
     std::cout << "Movement system is updated)" << " ";
