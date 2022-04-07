@@ -9,7 +9,6 @@ struct MovementComponent {
 };
 
 struct TransformationComponent {
-  double default_speed = 1;
   QVector2D direction;
   double current_speed = 1;
 };
