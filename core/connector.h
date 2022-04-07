@@ -2,9 +2,11 @@
 
 #include <memory>
 #include <vector>
+
 #include <QKeyEvent>
 
 #include "core/keyboard.h"
+#include "core/scene.h"
 #include "engine/coordinator.h"
 
 namespace core {
@@ -14,6 +16,7 @@ class Connector {
   Connector();
 
   void OnTick();
+  void Example(Scene* scene);
 
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);
