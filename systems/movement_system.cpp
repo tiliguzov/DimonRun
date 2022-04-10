@@ -16,16 +16,17 @@ void MovementSystem::Update() {
           GetComponent<core::MovementComponent>(entity).can_move) {
       continue;
     }
-    std::cout << "Movement system is updated)" << " ";
     auto& comp = coordinator_->GetComponent<core::MovementComponent>(entity);
 
     auto& transform =
       coordinator_->GetComponent<core::TransformationComponent>(entity);
 
-    comp.position += transform.direction.normalized() * transform.current_speed;
-
-    std::cout << "pos of entity " << entity << " is " << comp.position.x()
-              << " " << comp.position.y() << " now" << std::endl;
+    comp.position += transform.direction * transform.current_speed;
+    if (entity == 440) {
+        std::cout << "Movement system is updated)" << " ";
+        std::cout << "pos of entity " << entity << " is " << comp.position.x()
+                  << " " << comp.position.y() << " now" << std::endl;
+    }
   }
 }
 

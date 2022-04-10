@@ -1,6 +1,7 @@
 #pragma once
 
 #include <unordered_map>
+#include <vector>
 #include <QObject>
 
 namespace core {
@@ -27,7 +28,9 @@ class Keyboard : public QObject {
 
  private:
   bool is_blocked_;
+  Qt::Key last_pressed_movement_key_;
 
+  std::vector<Qt::Key> movement_keys_history_;
   std::unordered_map<Qt::Key, bool> is_key_pressed_;
   std::unordered_map<KeyAction, Qt::Key> bindings_;
 };

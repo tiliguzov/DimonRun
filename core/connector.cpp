@@ -1,6 +1,7 @@
 #include "connector.h"
 
 #include <memory>
+#include <iostream>
 
 #include "constants.h"
 #include "components.h"
@@ -84,16 +85,18 @@ void Connector::Example(Scene* scene) {
       float x = i * core::kTextureSize;
       float y = j * core::kTextureSize;
       coordinator_->AddComponent(entity, MovementComponent{{x, y}, true});
+      coordinator_->AddComponent(entity, TransformationComponent{{0, 0}, 1});
       auto* item = scene->GetScene()->addPixmap(QPixmap(":ground.jpg"));
       coordinator_->AddComponent(entity, GraphicsItemComponent{item});
     }
   }
   engine::Entity player = coordinator_->CreateEntity();
-  coordinator_->AddComponent(player, MovementComponent{{0, 150}, false});
+  coordinator_->AddComponent(player, MovementComponent{{0, 0}, false});
+  coordinator_->AddComponent(player, TransformationComponent{{0, 0}, 0});
   coordinator_->AddComponent(player, GraphicsItemComponent
        {scene->GetScene()->addPixmap(QPixmap(":fox.png"))});
-  coordinator_->GetComponent<GraphicsItemComponent>(player).item
-        ->setPos(0, 150);
+  /*coordinator_->GetComponent<GraphicsItemComponent>(player).item
+        ->setPos(0, 150);*/
 }
 
 }  // namespace core

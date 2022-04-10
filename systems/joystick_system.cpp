@@ -14,18 +14,18 @@ void JoystickSystem::Update() {
     auto& motion = coordinator_->GetComponent<core::TransformationComponent>(entity);
     QVector2D direction;
     if (keyboard_->IsKeyPressed(core::KeyAction::kMoveDown)) {
-      direction += {0.0, -1.0};
+      direction = {0.0, -1.0};
     }
     if (keyboard_->IsKeyPressed(core::KeyAction::kMoveUp)) {
-      direction += {0.0, 1.0};
+      direction = {0.0, 1.0};
     }
     if (keyboard_->IsKeyPressed(core::KeyAction::kMoveLeft)) {
-      direction += {-1.0, 0.0};
+      direction = {1.0, 0.0};
     }
     if (keyboard_->IsKeyPressed(core::KeyAction::kMoveRight)) {
-      direction += {1.0, 0.0};
+      direction = {-1.0, 0.0};
     }
-    motion.direction = direction.normalized();
+    motion.direction = direction;
   }
 }
 

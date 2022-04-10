@@ -18,11 +18,13 @@ void PaintingSystem::Update() {
     if (graphics_item_comp.item == nullptr) {
       continue;
     }
-    std::cout << "Painting system is updated) ";
     graphics_item_comp.item
         ->setPos(pos_comp.position.x(), pos_comp.position.y());
-    std::cout << "pos of entity " << entity << " is " << pos_comp.position.x()
-              << " " << pos_comp.position.y() << " now" << std::endl;
+    if (entity == 440) {
+        std::cout << "Painting system is updated) ";
+        std::cout << "pos of entity " << entity << " is " << pos_comp.position.x()
+                  << " " << pos_comp.position.y() << " now" << std::endl;
+    }
   }
 }
 

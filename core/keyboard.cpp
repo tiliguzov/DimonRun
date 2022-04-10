@@ -14,16 +14,29 @@ void Keyboard::OnPress(Qt::Key key) {
           || key == Qt::Key_A
           || key == Qt::Key_W
           || key == Qt::Key_S) {
-    OnRelease(Qt::Key_D);
-    OnRelease(Qt::Key_A);
-    OnRelease(Qt::Key_W);
-    OnRelease(Qt::Key_S);
+    is_key_pressed_[Qt::Key_D] = is_key_pressed_[Qt::Key_A] = 0;
+    is_key_pressed_[Qt::Key_W] = is_key_pressed_[Qt::Key_S] = 0;
+    movement_keys_history_.push_back(key);
   }
   is_key_pressed_[key] = true;
 }
 
 void Keyboard::OnRelease(Qt::Key key) {
-  is_key_pressed_[key] = false;
+    if (key == Qt::Key_D
+            || key == Qt::Key_A
+            || key == Qt::Key_W
+            || key == Qt::Key_S) {
+        if (movement_keys_history_.back() == key
+                && movement_keys_history_.size() >= 2) {
+            is_key_pressed_[movement_keys_history_[
+                    movement_keys_history_.size() - 2]] = true;
+        }
+        movement_keys_history_.erase(
+                  std::find(movement_keys_history_.begin(),
+                            movement_keys_history_.end(),
+                            key));
+    }
+    is_key_pressed_[key] = false;
 }
 
 Keyboard::Keyboard() : is_blocked_(false) {
