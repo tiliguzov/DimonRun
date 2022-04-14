@@ -26,8 +26,8 @@ class Scene : public QWidget {
  private:
   void paintEvent(QPaintEvent*) override;
   void timerEvent(QTimerEvent*) override;
-  void keyPressEvent(QKeyEvent* event);
-  void keyReleaseEvent(QKeyEvent* event);
+  void keyPressEvent(QKeyEvent* event) override;
+  void keyReleaseEvent(QKeyEvent* event) override;
 
 
   int32_t timer_id_;

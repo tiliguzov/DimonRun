@@ -1,7 +1,6 @@
 #include "connector.h"
 
 #include <memory>
-#include <iostream>
 
 #include "constants.h"
 #include "components.h"
@@ -17,12 +16,6 @@ Connector::Connector() : coordinator_(
                              keyboard_(std::make_unique<core::Keyboard>()) {
   RegisterComponents();
   RegisterSystems();
-                               
-  // example of interaction with engine
-  // engine::Entity entity = coordinator_->CreateEntity();
-  // coordinator_->AddComponent(entity, MovementComponent{{0, 0}});
-  // coordinator_->AddComponent(entity, TransformationComponent{1, {0, 0}, 1});
-
 }
 
 void Connector::OnTick() {
@@ -46,7 +39,7 @@ void Connector::RegisterSystems() {
                     coordinator_.get(), keyboard_.get());
 
         coordinator_->SetSystemSignature<systems::JoystickSystem>
-          ({coordinator_->GetComponentID<TransformationComponent>()});
+          ({coordinator_->GetComponentID<MovementComponent>()});
 
         systems_.push_back(joystick_system_);
     }
@@ -55,7 +48,8 @@ void Connector::RegisterSystems() {
             ->RegisterSystem<systems::MovementSystem>(coordinator_.get());
             
         coordinator_->SetSystemSignature<systems::MovementSystem>
-          ({coordinator_->GetComponentID<MovementComponent>()});
+          ({coordinator_->GetComponentID<PositionComponent>(),
+           coordinator_->GetComponentID<MovementComponent>()});
 
         systems_.push_back(movement_system);
     }
@@ -64,7 +58,7 @@ void Connector::RegisterSystems() {
             ->RegisterSystem<systems::PaintingSystem>(coordinator_.get());
       
         coordinator_->SetSystemSignature<systems::PaintingSystem>
-            ({coordinator_->GetComponentID<MovementComponent>(),
+            ({coordinator_->GetComponentID<PositionComponent>(),
                   coordinator_->GetComponentID<GraphicsItemComponent>()});
         
         systems_.push_back(painting_system);
@@ -72,31 +66,31 @@ void Connector::RegisterSystems() {
 }
 
 void Connector::RegisterComponents() {
+  coordinator_->RegisterComponent<PositionComponent>();
   coordinator_->RegisterComponent<MovementComponent>();
-  coordinator_->RegisterComponent<TransformationComponent>();
   coordinator_->RegisterComponent<GraphicsItemComponent>();
 }
 
 // example of interacting with engine
 void Connector::Example(Scene* scene) {
-  for (int i = -10; i <= 10; ++i) {
-    for (int j = -10; j <= 10; ++j) {
+  for (int i = -2; i <= 2; ++i) {
+    for (int j = -2; j <= 2; ++j) {
       engine::Entity entity = coordinator_->CreateEntity();
       float x = i * core::kTextureSize;
       float y = j * core::kTextureSize;
-      coordinator_->AddComponent(entity, MovementComponent{{x, y}, true});
-      coordinator_->AddComponent(entity, TransformationComponent{{0, 0}, 1});
+      coordinator_->AddComponent(entity, PositionComponent{{x, y}});
       auto* item = scene->GetScene()->addPixmap(QPixmap(":ground.jpg"));
-      coordinator_->AddComponent(entity, GraphicsItemComponent{item});
+      coordinator_->AddComponent(entity, GraphicsItemComponent{item
+               , scene->GetSceneView(), false});
     }
   }
   engine::Entity player = coordinator_->CreateEntity();
-  coordinator_->AddComponent(player, MovementComponent{{0, 0}, false});
-  coordinator_->AddComponent(player, TransformationComponent{{0, 0}, 0});
+  coordinator_->AddComponent(player, PositionComponent{{0, 0}});
+  coordinator_->AddComponent(player, MovementComponent{{0, 0}, 1});
+  auto* item = scene->GetScene()->addPixmap(QPixmap(":fox.png"));
   coordinator_->AddComponent(player, GraphicsItemComponent
-       {scene->GetScene()->addPixmap(QPixmap(":fox.png"))});
-  /*coordinator_->GetComponent<GraphicsItemComponent>(player).item
-        ->setPos(0, 150);*/
+       {item, scene->GetSceneView(), true});
+  scene->GetSceneView()->centerOn(item);
 }
 
 }  // namespace core

@@ -23,9 +23,11 @@ Scene::Scene(QWidget* parent, Connector* connector)
   scene_view_->setBackgroundBrush(Qt::darkGreen);
   scene_view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   scene_view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  scene_view_->setSceneRect(-10000, -10000, 20000, 20000);
+
   show();
   setFocus();
-  // // example of interacting with engine
+  // example of interacting with engine
   connector->Example(this);
 }
 

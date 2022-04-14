@@ -7,11 +7,13 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-if (APPLE)
-    set(CMAKE_PREFIX_PATH "/Qt/6.2.3/clang_64")
-else (APPLE)
-    set(CMAKE_PREFIX_PATH "/Qt/6.2.3/gcc_64/lib/cmake")
-endif (APPLE)
+set(CMAKE_PREFIX_PATH /home/tiliguzov/Qt/6.2.4/gcc_64/lib/cmake)
+
+#if (APPLE)
+#    set(CMAKE_PREFIX_PATH "/Qt/6.2.3/clang_64")
+#else (APPLE)
+#    set(CMAKE_PREFIX_PATH "/Qt/6.2.3/gcc_64/lib/cmake")
+#endif (APPLE)
 
 find_package(Qt6 COMPONENTS
         Core
