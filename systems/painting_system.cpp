@@ -1,7 +1,5 @@
 #include "painting_system.h"
 
-#include <iostream>
-
 #include "core/components.h"
 
 namespace  systems {
@@ -15,6 +13,10 @@ void PaintingSystem::Update() {
         = coordinator_->GetComponent<core::PositionComponent>(entity);
     auto& graphics_item_comp
         = coordinator_->GetComponent<core::GraphicsItemComponent>(entity);
+    // check, if current position is right
+    if (graphics_item_comp.item->pos() == pos_comp.position.toPointF()) {
+      continue;
+    }
     graphics_item_comp.item
         ->setPos(pos_comp.position.x(), pos_comp.position.y());
   }
