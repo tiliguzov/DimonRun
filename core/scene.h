@@ -5,6 +5,7 @@
 #include <QTimerEvent>
 #include <QWidget>
 #include <QGraphicsScene>
+#include <QGraphicsItem>
 #include <QGraphicsView>
 
 #include "engine/coordinator.h"
@@ -21,7 +22,6 @@ class Scene : public QWidget {
 
   QGraphicsScene* GetScene();
   QGraphicsView* GetSceneView();
-  engine::Entity* GetPlayer();
 
  private:
   void paintEvent(QPaintEvent*) override;
@@ -32,7 +32,7 @@ class Scene : public QWidget {
 
   int32_t timer_id_;
   Connector* connector_;
-  engine::Entity* player_;
+  QGraphicsItem* hero_item_;
   QGraphicsScene* scene_;
   QGraphicsView* scene_view_;
 };

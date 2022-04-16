@@ -3,7 +3,6 @@
 #include <QKeyEvent>
 #include <QPainter>
 #include <QTimerEvent>
-#include <QGraphicsPixmapItem>
 #include <QWidget>
 
 #include "connector.h"
@@ -25,6 +24,8 @@ Scene::Scene(QWidget* parent, Connector* connector)
   scene_view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   scene_view_->setSceneRect(-10000, -10000, 20000, 20000);
 
+  hero_item_ = connector_->CreateHero(this);
+
   show();
   setFocus();
   // example of interacting with engine
@@ -36,6 +37,7 @@ void Scene::timerEvent(QTimerEvent* event) {
     return;
   }
   connector_->OnTick();
+  scene_view_->centerOn(hero_item_);
 }
 
 void Scene::paintEvent(QPaintEvent*) {
@@ -56,10 +58,6 @@ QGraphicsScene* Scene::GetScene() {
 
 QGraphicsView* Scene::GetSceneView() {
   return scene_view_;
-}
-
-engine::Entity* Scene::GetPlayer() {
-  return player_;
 }
 
 }  // namespace core

@@ -9,9 +9,6 @@ MovementSystem::MovementSystem(engine::Coordinator* coordinator)
 
 void MovementSystem::Update() {
   for (engine::Entity entity : entities_) {
-    if (!coordinator_->HasComponent<core::MovementComponent>(entity)) {
-      continue;
-    }
     auto& comp = coordinator_->GetComponent<core::PositionComponent>(entity);
 
     auto& movement =

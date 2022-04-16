@@ -71,6 +71,17 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<GraphicsItemComponent>();
 }
 
+QGraphicsItem* Connector::CreateHero(Scene* scene) {
+  engine::Entity hero = coordinator_->CreateEntity();
+  coordinator_->AddComponent(hero, PositionComponent{{0, 0}});
+  coordinator_->AddComponent(hero, MovementComponent{{0, 0}, 1});
+  auto* item = scene->GetScene()->addPixmap(QPixmap(":fox.png"));
+  // z value for hero
+  item->setZValue(1);
+  coordinator_->AddComponent(hero, GraphicsItemComponent{item});
+  return item;
+}
+
 // example of interacting with engine
 void Connector::Example(Scene* scene) {
   for (int i = -2; i <= 2; ++i) {
@@ -80,17 +91,11 @@ void Connector::Example(Scene* scene) {
       float y = j * core::kTextureSize;
       coordinator_->AddComponent(entity, PositionComponent{{x, y}});
       auto* item = scene->GetScene()->addPixmap(QPixmap(":ground.jpg"));
-      coordinator_->AddComponent(entity, GraphicsItemComponent{item
-               , scene->GetSceneView(), false});
+      // z value for background
+      item->setZValue(0);
+      coordinator_->AddComponent(entity, GraphicsItemComponent{item});
     }
   }
-  engine::Entity player = coordinator_->CreateEntity();
-  coordinator_->AddComponent(player, PositionComponent{{0, 0}});
-  coordinator_->AddComponent(player, MovementComponent{{0, 0}, 1});
-  auto* item = scene->GetScene()->addPixmap(QPixmap(":fox.png"));
-  coordinator_->AddComponent(player, GraphicsItemComponent
-       {item, scene->GetSceneView(), true});
-  scene->GetSceneView()->centerOn(item);
 }
 
 }  // namespace core

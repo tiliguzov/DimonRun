@@ -13,13 +13,11 @@ struct PositionComponent {
 
 struct GraphicsItemComponent {
   QGraphicsPixmapItem* item;
-  QGraphicsView* camera;
-  bool need_camera_following;
 };
 
 struct MovementComponent {
   QVector2D direction;
-  double current_speed = 1;
+  float current_speed = 1;
 };
 
 }  // namespace core
