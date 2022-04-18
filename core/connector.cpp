@@ -2,19 +2,20 @@
 
 #include <memory>
 
+#include "constants.h"
 #include "components.h"
 #include "engine/coordinator.h"
+#include "systems/joystick_system.h"
 #include "systems/movement_system.h"
+#include "systems/painting_system.h"
 
 namespace core {
 
-Connector::Connector() : coordinator_(std::make_unique<engine::Coordinator>()) {
+Connector::Connector() : coordinator_(
+                             std::make_unique<engine::Coordinator>()),
+                             keyboard_(std::make_unique<core::Keyboard>()) {
   RegisterComponents();
   RegisterSystems();
-
-  // example of interaction with engine
-  engine::Entity entity = coordinator_->CreateEntity();
-  coordinator_->AddComponent(entity, MovementComponent{{0, 0}});
 }
 
 void Connector::OnTick() {
@@ -23,18 +24,78 @@ void Connector::OnTick() {
   }
 }
 
+void Connector::OnKeyPress(Qt::Key key) {
+    keyboard_->OnPress(key);
+}
+
+void Connector::OnKeyRelease(Qt::Key key) {
+    keyboard_->OnRelease(key);
+}
+
 void Connector::RegisterSystems() {
-  auto movement_system = coordinator_
-      ->RegisterSystem<systems::MovementSystem>(coordinator_.get());
+    {
+        auto joystick_system_ = coordinator_
+            ->RegisterSystem<systems::JoystickSystem>(
+                    coordinator_.get(), keyboard_.get());
 
-  coordinator_->SetSystemSignature<systems::MovementSystem>
-      ({coordinator_->GetComponentID<MovementComponent>()});
+        coordinator_->SetSystemSignature<systems::JoystickSystem>
+          ({coordinator_->GetComponentID<MovementComponent>()});
 
-  systems_.push_back(movement_system);
+        systems_.push_back(joystick_system_);
+    }
+    {
+        auto movement_system = coordinator_
+            ->RegisterSystem<systems::MovementSystem>(coordinator_.get());
+            
+        coordinator_->SetSystemSignature<systems::MovementSystem>
+          ({coordinator_->GetComponentID<PositionComponent>(),
+           coordinator_->GetComponentID<MovementComponent>()});
+
+        systems_.push_back(movement_system);
+    }
+    {
+        auto painting_system = coordinator_
+            ->RegisterSystem<systems::PaintingSystem>(coordinator_.get());
+      
+        coordinator_->SetSystemSignature<systems::PaintingSystem>
+            ({coordinator_->GetComponentID<PositionComponent>(),
+                  coordinator_->GetComponentID<GraphicsItemComponent>()});
+        
+        systems_.push_back(painting_system);
+    }
 }
 
 void Connector::RegisterComponents() {
+  coordinator_->RegisterComponent<PositionComponent>();
   coordinator_->RegisterComponent<MovementComponent>();
+  coordinator_->RegisterComponent<GraphicsItemComponent>();
+}
+
+QGraphicsItem* Connector::CreateHero(Scene* scene) {
+  engine::Entity hero = coordinator_->CreateEntity();
+  coordinator_->AddComponent(hero, PositionComponent{{0, 0}});
+  coordinator_->AddComponent(hero, MovementComponent{{0, 0}, 1});
+  auto* item = scene->GetScene()->addPixmap(QPixmap(":fox.png"));
+  // z value for hero
+  item->setZValue(1);
+  coordinator_->AddComponent(hero, GraphicsItemComponent{item});
+  return item;
+}
+
+// example of interacting with engine
+void Connector::Example(Scene* scene) {
+  for (int i = -2; i <= 2; ++i) {
+    for (int j = -2; j <= 2; ++j) {
+      engine::Entity entity = coordinator_->CreateEntity();
+      float x = i * core::kTextureSize;
+      float y = j * core::kTextureSize;
+      coordinator_->AddComponent(entity, PositionComponent{{x, y}});
+      auto* item = scene->GetScene()->addPixmap(QPixmap(":ground.jpg"));
+      // z value for background
+      item->setZValue(0);
+      coordinator_->AddComponent(entity, GraphicsItemComponent{item});
+    }
+  }
 }
 
 }  // namespace core

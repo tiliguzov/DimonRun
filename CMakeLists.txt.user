@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 6.0.2, 2022-04-19T00:43:21. -->
+<!-- Written by QtCreator 6.0.2, 2022-04-09T02:42:40. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -159,7 +159,10 @@
        <value type="QString">all</value>
       </valuelist>
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
+<<<<<<< HEAD
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Сборка</value>
+=======
+>>>>>>> 552d99e644afadfb7c1388a8153a20a0dba036a1
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
      </valuemap>
      <value type="qlonglong" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
@@ -173,7 +176,10 @@
        <value type="QString">clean</value>
       </valuelist>
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
+<<<<<<< HEAD
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Сборка</value>
+=======
+>>>>>>> 552d99e644afadfb7c1388a8153a20a0dba036a1
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
      </valuemap>
      <value type="qlonglong" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
@@ -205,7 +211,10 @@
        <value type="QString">all</value>
       </valuelist>
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
+<<<<<<< HEAD
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Сборка</value>
+=======
+>>>>>>> 552d99e644afadfb7c1388a8153a20a0dba036a1
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
      </valuemap>
      <value type="qlonglong" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
@@ -219,7 +228,10 @@
        <value type="QString">clean</value>
       </valuelist>
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
+<<<<<<< HEAD
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Сборка</value>
+=======
+>>>>>>> 552d99e644afadfb7c1388a8153a20a0dba036a1
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.MakeStep</value>
      </valuemap>
      <value type="qlonglong" key="ProjectExplorer.BuildStepList.StepsCount">1</value>
