@@ -74,7 +74,7 @@ void Connector::RegisterComponents() {
 QGraphicsItem* Connector::CreateHero(Scene* scene) {
   engine::Entity hero = coordinator_->CreateEntity();
   coordinator_->AddComponent(hero, PositionComponent{{0, 0}});
-  coordinator_->AddComponent(hero, MovementComponent{{0, 0}, 1});
+  coordinator_->AddComponent(hero, MovementComponent{{0, 0}, {0, 0}, 1});
   auto* item = scene->GetScene()->addPixmap(QPixmap(":fox.png"));
   // z value for hero
   item->setZValue(1);

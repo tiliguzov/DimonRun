@@ -17,6 +17,7 @@ struct GraphicsItemComponent {
 
 struct MovementComponent {
   QVector2D direction;
+  QVector2D last_nonzero_direction;
   float current_speed = 1;
 };
 

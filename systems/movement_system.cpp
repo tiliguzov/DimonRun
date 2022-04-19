@@ -1,4 +1,5 @@
 #include "movement_system.h"
+#include <iostream>
 
 #include "core/components.h"
 
@@ -15,6 +16,7 @@ void MovementSystem::Update() {
       coordinator_->GetComponent<core::MovementComponent>(entity);
 
     comp.position += movement.direction * movement.current_speed;
+    std::cout << "pos of entity # " << entity << " is " << comp.position.x() << " " << comp.position.y() << std::endl;
   }
 }
 
