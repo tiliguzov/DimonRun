@@ -23,10 +23,8 @@ find_package(Qt6 COMPONENTS
 
 add_executable(DimonRun
         core/connector.cpp
-        core/constants.h
         core/scene.cpp
         core/keyboard.cpp
-        core/keyboard.h
 
         engine/component_manager.cpp
         engine/coordinator.cpp
@@ -38,8 +36,6 @@ add_executable(DimonRun
         resources.qrc
 
         systems/movement_system.cpp
-        systems/movement_system.h
-        systems/joystick_system.h
         systems/joystick_system.cpp
         systems/painting_system.cpp
         )

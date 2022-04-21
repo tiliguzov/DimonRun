@@ -15,8 +15,8 @@ void PaintingSystem::Update() {
         = coordinator_->GetComponent<core::PositionComponent>(entity);
     auto& graphics_item_comp
         = coordinator_->GetComponent<core::GraphicsItemComponent>(entity);
-    graphics_item_comp.item
-        ->setPos(pos_comp.position.x(), pos_comp.position.y());
+    graphics_item_comp.item->setPos(
+                pos_comp.position.x(), pos_comp.position.y());
   }
 }
 
