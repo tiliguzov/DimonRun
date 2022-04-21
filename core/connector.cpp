@@ -45,7 +45,6 @@ void Connector::RegisterSystems() {
     {
         auto movement_system = coordinator_
             ->RegisterSystem<systems::MovementSystem>(coordinator_.get());
-            
         coordinator_->SetSystemSignature<systems::MovementSystem>
             ({coordinator_->GetComponentID<PositionComponent>(),
               coordinator_->GetComponentID<MovementComponent>()});
@@ -55,11 +54,9 @@ void Connector::RegisterSystems() {
     {
         auto painting_system = coordinator_
             ->RegisterSystem<systems::PaintingSystem>(coordinator_.get());
-      
         coordinator_->SetSystemSignature<systems::PaintingSystem>
             ({coordinator_->GetComponentID<PositionComponent>(),
               coordinator_->GetComponentID<GraphicsItemComponent>()});
-        
         systems_.push_back(painting_system);
     }
 }

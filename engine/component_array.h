@@ -50,7 +50,7 @@ template<typename ComponentType>
 ComponentType& ComponentArray<ComponentType>::GetComponent(Entity entity) {
   assert(entity < kMaxEntities &&
       "Try to get component by entity not in range [0, kMaxEntities)");
-   assert(index_by_entity_.find(entity) != index_by_entity_.end() &&
+  assert(index_by_entity_.find(entity) != index_by_entity_.end() &&
        "Try to get not existing component by entity");
 
   return components_[index_by_entity_[entity]];

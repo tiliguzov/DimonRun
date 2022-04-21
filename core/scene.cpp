@@ -51,7 +51,7 @@ void Scene::keyPressEvent(QKeyEvent *event) {
 void Scene::keyReleaseEvent(QKeyEvent *event) {
     connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
 }
-  
+
 QGraphicsScene* Scene::GetScene() {
   return scene_;
 }

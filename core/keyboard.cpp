@@ -38,4 +38,4 @@ bool Keyboard::IsBlocked() const {
   return is_blocked_;
 }
 
-} // namespace core
+}  // namespace core
