@@ -59,7 +59,8 @@ void Scene::SetDefaultSceneSettings() {
     const int kLeftUpYCoordiante = -10000;
     const int kWidth = 20000;
     const int kHeight = 20000;
-    scene_view_->setSceneRect(kLeftUpXCoordiante, kLeftUpYCoordiante, kWidth, kHeight);
+    scene_view_->setSceneRect(kLeftUpXCoordiante, kLeftUpYCoordiante,
+                              kWidth, kHeight);
 }
 
 QGraphicsScene* Scene::GetScene() {
