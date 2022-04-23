@@ -54,11 +54,8 @@ void Scene::SetDefaultSceneSettings() {
     scene_view_->setBackgroundBrush(Qt::darkGreen);
     scene_view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scene_view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scene_view_->viewport()->installEventFilter(this);
-    const int kLeftUpXCoordiante = -10000;
-    const int kLeftUpYCoordiante = -10000;
-    const int kWidth = 20000;
-    const int kHeight = 20000;
+    scene_view_->viewport()->installEventFilter(this);  // wheel
+    // scrolling disabled
     scene_view_->setSceneRect(kLeftUpXCoordiante, kLeftUpYCoordiante,
                               kWidth, kHeight);
 }

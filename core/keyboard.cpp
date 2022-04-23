@@ -26,16 +26,4 @@ Keyboard::Keyboard() : is_blocked_(false) {
   };
 }
 
-void Keyboard::Block() {
-  is_blocked_ = true;
-}
-
-void Keyboard::Unblock() {
-  is_blocked_ = false;
-}
-
-bool Keyboard::IsBlocked() const {
-  return is_blocked_;
-}
-
 }  // namespace core

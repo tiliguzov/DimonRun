@@ -23,10 +23,6 @@ class Keyboard : public QObject {
 
   bool IsKeyPressed(KeyAction bind) const;
 
-  void Block();
-  void Unblock();
-  bool IsBlocked() const;
-
  private:
   bool is_blocked_;
 
