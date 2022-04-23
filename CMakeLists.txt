@@ -17,6 +17,7 @@ add_executable(DimonRun
         core/connector.cpp
         core/scene.cpp
         core/keyboard.cpp
+        core/animation_pack.cpp
 
         engine/component_manager.cpp
         engine/coordinator.cpp
@@ -25,7 +26,9 @@ add_executable(DimonRun
         engine/system_manager.cpp
 
         main.cpp
-        resources.qrc
+
+        resources/hero.qrc
+        resources/background.qrc
 
         systems/movement_system.cpp
         systems/joystick_system.cpp

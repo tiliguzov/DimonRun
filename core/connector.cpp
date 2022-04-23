@@ -71,7 +71,7 @@ QGraphicsItem* Connector::CreateHero(Scene* scene) {
   engine::Entity hero = coordinator_->CreateEntity();
   coordinator_->AddComponent(hero, PositionComponent{{0, 0}});
   coordinator_->AddComponent(hero, MovementComponent{{0, 0}, 1});
-  auto item = scene->GetScene()->addPixmap(QPixmap(":fox.png"));
+  auto item = scene->GetScene()->addPixmap(QPixmap(":textures/hero/Hero_static_in_air_00.png"));
   // z value for hero
   item->setZValue(kPlayerZIndex);
   coordinator_->AddComponent(hero, GraphicsItemComponent{item});
@@ -87,11 +87,12 @@ void Connector::StartGame(Scene* scene) {
       float x = i * core::kTextureSize;
       float y = j * core::kTextureSize;
       coordinator_->AddComponent(entity, PositionComponent{{x, y}});
-      auto item = scene->GetScene()->addPixmap(QPixmap(":ground.jpg"));
+      auto item = scene->GetScene()->addPixmap(QPixmap(":textures/background/ground.jpg"));
       item->setZValue(kBackgroundZIndex);  // z value for background
       coordinator_->AddComponent(entity, GraphicsItemComponent{item});
     }
   }
+  scene->GetSceneView()->scale(2.5, 2.5);
 }
 
 }  // namespace core
