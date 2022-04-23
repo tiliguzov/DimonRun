@@ -1,6 +1,8 @@
 #include <QFile>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QJsonArray>
+#include <iostream>
 
 #include "animation_pack.h"
 
@@ -15,10 +17,19 @@ core::AnimationPack::AnimationPack(const std::string& path_to_json) {
   for (const auto &key : animation_types.keys()) {
     size_t type = size_t(str_to_type.at(key.toStdString()));
 
-    for (const auto &frame_path : animation_types[key].toObject()) {
+    for (const auto &frame_path : animation_types[key].toArray()) {
       animations_[type].push_back(new QPixmap(frame_path.toString()));
     }
   }
 
   frame_duration_ = input_object["frame_duration"].toInt();
 }
+
+QPixmap* core::AnimationPack::GetFrame(core::MovementType type,
+                                       int32_t current_time) const {
+  int32_t count_of_frames = current_time /
+      frame_duration_;
+  count_of_frames %= animations_[size_t(type)].size();
+  return animations_[size_t(type)][count_of_frames];
+}
+

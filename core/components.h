@@ -23,16 +23,15 @@ struct MovementComponent {
 };
 
 //  the direction hero face to, left or right
-enum class LookingSide {
+enum class HorizontalDirection {
   kLeft,
   kRight
 };
 
 struct AnimationComponent {
-  LookingSide direction = LookingSide::kRight;
-  MovementType movement_type = MovementType::kStaticInAir;
-
   const AnimationPack* animations{nullptr};
+  HorizontalDirection direction{HorizontalDirection::kRight};
+  MovementType movement_type{MovementType::kStaticInAir};
 };
 
 }  // namespace core

@@ -22,6 +22,8 @@ class AnimationPack {
  public:
   explicit AnimationPack(const std::string& path_to_json);
 
+  QPixmap* GetFrame(MovementType type, int32_t current_time) const;
+
  private:
   std::array<std::vector<QPixmap*>, (size_t)(MovementType::kEnumSize)>
       animations_;
