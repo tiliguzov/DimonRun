@@ -16,20 +16,15 @@ Scene::Scene(QWidget* parent, Connector* connector)
       timer_id_(startTimer(kTickTime)),
       scene_(new QGraphicsScene(this)),
       scene_view_(new QGraphicsView(this)) {
-  scene_view_->setScene(scene_);
-  scene_view_->setGeometry(0, 0, kDefaultWindowWidth, kDefaultWindowHeight);
-  scene_view_->setAutoFillBackground(true);
-  scene_view_->setBackgroundBrush(Qt::darkGreen);
-  scene_view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-  scene_view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-  scene_view_->setSceneRect(-10000, -10000, 20000, 20000);
+
+  SetDefaultSceneSettings();
 
   hero_item_ = connector_->CreateHero(this);
 
   show();
   setFocus();
   // example of interacting with engine
-  connector->Example(this);
+  connector->StartGame(this);
 }
 
 void Scene::timerEvent(QTimerEvent* event) {
@@ -50,6 +45,20 @@ void Scene::keyPressEvent(QKeyEvent *event) {
 
 void Scene::keyReleaseEvent(QKeyEvent *event) {
     connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
+}
+
+void Scene::SetDefaultSceneSettings() {
+    scene_view_->setScene(scene_);
+    scene_view_->setGeometry(0, 0, kDefaultWindowWidth, kDefaultWindowHeight);
+    scene_view_->setAutoFillBackground(true);
+    scene_view_->setBackgroundBrush(Qt::darkGreen);
+    scene_view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scene_view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    const int kLeftUpXCoordiante = -10000;
+    const int kLeftUpYCoordiante = -10000;
+    const int kWidth = 20000;
+    const int kHeight = 20000;
+    scene_view_->setSceneRect(kLeftUpXCoordiante, kLeftUpYCoordiante, kWidth, kHeight);
 }
 
 QGraphicsScene* Scene::GetScene() {

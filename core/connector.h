@@ -16,7 +16,7 @@ class Connector {
   Connector();
 
   void OnTick();
-  void Example(Scene* scene);
+  void StartGame(Scene* scene);
 
   QGraphicsItem* CreateHero(Scene* scene);
 

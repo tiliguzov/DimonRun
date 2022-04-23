@@ -14,6 +14,11 @@ namespace core {
 
 class Connector;
 
+enum ZValues {
+    kBackgroundZIndex,
+    kPlayerZIndex
+};
+
 class Scene : public QWidget {
   Q_OBJECT
 
@@ -28,6 +33,8 @@ class Scene : public QWidget {
   void timerEvent(QTimerEvent*) override;
   void keyPressEvent(QKeyEvent* event) override;
   void keyReleaseEvent(QKeyEvent* event) override;
+
+  void SetDefaultSceneSettings();
 
 
   int32_t timer_id_;
