@@ -36,6 +36,8 @@ class Scene : public QWidget {
 
   void SetDefaultSceneSettings();
 
+  bool eventFilter(QObject *object, QEvent *event) override;
+
 
   int32_t timer_id_;
   Connector* connector_;

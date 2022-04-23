@@ -54,6 +54,7 @@ void Scene::SetDefaultSceneSettings() {
     scene_view_->setBackgroundBrush(Qt::darkGreen);
     scene_view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scene_view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scene_view_->viewport()->installEventFilter(this);
     const int kLeftUpXCoordiante = -10000;
     const int kLeftUpYCoordiante = -10000;
     const int kWidth = 20000;
@@ -67,6 +68,13 @@ QGraphicsScene* Scene::GetScene() {
 
 QGraphicsView* Scene::GetSceneView() {
   return scene_view_;
+}
+
+bool Scene::eventFilter(QObject *object, QEvent *event) {
+  if (object == scene_view_->viewport() && event->type() == QEvent::Wheel) {
+    return true;
+  }
+  return false;
 }
 
 }  // namespace core
