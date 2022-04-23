@@ -12,17 +12,11 @@ PaintingSystem::PaintingSystem(engine::Coordinator* coordinator)
 void PaintingSystem::Update() {
   for (engine::Entity entity : entities_) {
     auto& pos_comp
-        = coordinator_->GetComponent<core::MovementComponent>(entity);
+        = coordinator_->GetComponent<core::PositionComponent>(entity);
     auto& graphics_item_comp
         = coordinator_->GetComponent<core::GraphicsItemComponent>(entity);
-    if (graphics_item_comp.item == nullptr) {
-      continue;
-    }
-    std::cout << "Painting system is updated) ";
-    graphics_item_comp.item
-        ->setPos(pos_comp.position.x(), pos_comp.position.y());
-    std::cout << "pos of entity " << entity << " is " << pos_comp.position.x()
-              << " " << pos_comp.position.y() << " now" << std::endl;
+    graphics_item_comp.item->setPos(
+                pos_comp.position.x(), pos_comp.position.y());
   }
 }
 
