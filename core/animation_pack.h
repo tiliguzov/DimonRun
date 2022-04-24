@@ -4,8 +4,8 @@
 
 #include <array>
 #include <vector>
-#include <memory>
 #include <string>
+#include <unordered_map>
 
 namespace core {
 
@@ -23,6 +23,7 @@ class AnimationPack {
   explicit AnimationPack(const std::string& path_to_json);
 
   QPixmap* GetFrame(MovementType type, int32_t current_time) const;
+  int32_t GetFrameDuration() const;
 
  private:
   std::array<std::vector<QPixmap*>, (size_t)(MovementType::kEnumSize)>

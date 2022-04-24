@@ -18,6 +18,9 @@ void JoystickSystem::Update() {
     auto& animation_comp = coordinator_->
             GetComponent<core::AnimationComponent>(entity);
 
+    core::MovementType last_type = animation_comp.movement_type;
+    core::HorizontalDirection last_direction = animation_comp.direction;
+
     QVector2D direction;
     if (keyboard_->IsKeyPressed(core::KeyAction::kMoveDown)) {
       direction = {0.0, 1.0};
@@ -47,7 +50,14 @@ void JoystickSystem::Update() {
             core::kTextureSize == 0) {
         motion_comp.direction = direction;
 
-        animation_comp.movement_type = core::MovementType::kStaticInAir;
+        if (direction.isNull()) {
+          animation_comp.movement_type = core::MovementType::kStaticInAir;
+        }
+    }
+
+    if (animation_comp.movement_type != last_type ||
+          animation_comp.direction != last_direction) {
+      animation_comp.type_changed_last_tick = true;
     }
   }
 }
