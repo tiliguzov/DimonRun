@@ -1,0 +1,22 @@
+{
+  "animations": {
+    "torch_burning": [
+      ":textures/background/back_wall_and_torch_00.png",
+      ":textures/background/back_wall_and_torch_01.png",
+      ":textures/background/back_wall_and_torch_02.png",
+      ":textures/background/back_wall_and_torch_03.png"
+    ]
+  },
+  "frame_duration": 100,
+  "positions": [
+      [-3, -3],
+      [3, -3],
+      [-2, -1],
+      [0, -1],
+      [2, -1],
+      [0, 3],
+      [-1, 3],
+      [-2, 3],
+      [-3, 3]
+  ]
+}

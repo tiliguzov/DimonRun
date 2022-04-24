@@ -1,5 +1,26 @@
 <RCC>
     <qresource>
         <file>textures/background/ground.jpg</file>
+        <file>textures/background/ceil.png</file>
+        <file>textures/background/ceil_and_wall_1.png</file>
+        <file>textures/background/ceil_and_wall_2.png</file>
+        <file>textures/background/inside.png</file>
+        <file>textures/background/back_wall.png</file>
+        <file>textures/background/back_column.png</file>
+        <file>textures/background/back_column_up.png</file>
+        <file>textures/background/back_column_down.png</file>
+        <file>textures/background/wall.png</file>
+        <file>textures/background/floor_line.png</file>
+        <file>textures/background/wall_line.png</file>
+
+        <file>animations/back_wall_torch.json</file>
+        <file>level0.json</file>
+    </qresource>
+
+    <qresource>
+        <file>textures/background/back_wall_and_torch_00.png</file>
+        <file>textures/background/back_wall_and_torch_01.png</file>
+        <file>textures/background/back_wall_and_torch_02.png</file>
+        <file>textures/background/back_wall_and_torch_03.png</file>
     </qresource>
 </RCC>

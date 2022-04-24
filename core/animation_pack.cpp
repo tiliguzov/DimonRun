@@ -36,4 +36,3 @@ QPixmap* core::AnimationPack::GetFrame(core::MovementType type,
 int32_t core::AnimationPack::GetFrameDuration() const {
   return frame_duration_;
 }
-

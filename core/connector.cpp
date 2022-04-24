@@ -1,6 +1,10 @@
 #include "connector.h"
 
+#include <QFile>
 #include <memory>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QJsonArray>
 
 #include "constants.h"
 #include "components.h"
@@ -95,20 +99,59 @@ QGraphicsItem* Connector::CreateHero(Scene* scene) {
 
 // example of interacting with engine
 void Connector::StartGame(Scene* scene) {
-  const int test_scene_size_ = 2;
-  for (int i = -test_scene_size_; i <= test_scene_size_; ++i) {
-    for (int j = -test_scene_size_; j <= test_scene_size_; ++j) {
+  scene->GetSceneView()->scale(2.5, 2.5);
+
+  QFile file(QString::fromStdString(":level0.json"));
+  file.open(QIODevice::ReadOnly);
+  QJsonObject input_object = QJsonDocument::fromJson(file.readAll()).object();
+  file.close();
+
+  auto textures_types = input_object["textures"].toObject();
+
+  for (const auto &key : textures_types.keys()) {
+    auto texture_path = textures_types[key].toArray()[0].toString();
+    auto z_value = textures_types[key].toArray()[1].toInt();
+    QPixmap image(texture_path);
+    for (int i = 2; i < textures_types[key].toArray().size(); ++i) {
+      int x = textures_types[key].toArray()[i].toArray()[0].toInt();
+      int y = textures_types[key].toArray()[i].toArray()[1].toInt();
+      int scale_x = textures_types[key].toArray()[i].toArray()[2].toInt();
+      int scale_y = textures_types[key].toArray()[i].toArray()[3].toInt();
+      x *= core::kTextureSize;
+      y *= core::kTextureSize;
       engine::Entity entity = coordinator_->CreateEntity();
-      float x = i * core::kTextureSize;
-      float y = j * core::kTextureSize;
-      coordinator_->AddComponent(entity, PositionComponent{{x, y}});
-      auto item = scene->GetScene()->addPixmap(
-          QPixmap(":textures/background/ground.jpg"));
-      item->setZValue(kBackgroundZIndex);  // z value for background
+      auto item = scene->GetScene()->addPixmap(image);
+      item->setZValue(z_value);
+      item->setPixmap(image.transformed(QTransform().scale(scale_x, scale_y)));
       coordinator_->AddComponent(entity, GraphicsItemComponent{item});
+      coordinator_->AddComponent(entity,
+                                 PositionComponent{{1.0f * x, 1.0f * y}});
     }
   }
-  scene->GetSceneView()->scale(2.5, 2.5);
+
+  QFile file_torch(QString::fromStdString(":animations/back_wall_torch.json"));
+  file_torch.open(QIODevice::ReadOnly);
+  QJsonObject input_torch = QJsonDocument::fromJson(
+      file_torch.readAll()).object();
+  file_torch.close();
+
+  for (const auto& position : input_torch["positions"].toArray()) {
+    int x = position[0].toInt();
+    int y = position[1].toInt();
+    x *= kTextureSize;
+    y *= kTextureSize;
+    engine::Entity entity = coordinator_->CreateEntity();
+    coordinator_->AddComponent(entity, PositionComponent{{1.0f * x, 1.0f * y}});
+    auto item = scene->GetScene()->addPixmap(
+        QPixmap(":textures/background/back_wall_and_torch_00.png"));
+    item->setZValue(kBackgroundZIndex);
+    coordinator_->AddComponent(entity, GraphicsItemComponent{item});
+    coordinator_->AddComponent(entity, AnimationComponent());
+    coordinator_->GetComponent<AnimationComponent>(entity).animations =
+        new AnimationPack(":animations/back_wall_torch.json");
+    coordinator_->GetComponent<AnimationComponent>(entity).movement_type =
+        MovementType::kTorchBurning;
+  }
 }
 
 }  // namespace core
