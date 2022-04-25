@@ -109,14 +109,15 @@ void Connector::StartGame(Scene* scene) {
   auto textures_types = input_object["textures"].toObject();
 
   for (const auto &key : textures_types.keys()) {
-    auto texture_path = textures_types[key].toArray()[0].toString();
-    auto z_value = textures_types[key].toArray()[1].toInt();
+    auto texture_path = textures_types[key].toObject()["path"].toString();
+    auto z_value = textures_types[key].toObject()["z_value"].toInt();
     QPixmap image(texture_path);
-    for (int i = 2; i < textures_types[key].toArray().size(); ++i) {
-      int x = textures_types[key].toArray()[i].toArray()[0].toInt();
-      int y = textures_types[key].toArray()[i].toArray()[1].toInt();
-      int scale_x = textures_types[key].toArray()[i].toArray()[2].toInt();
-      int scale_y = textures_types[key].toArray()[i].toArray()[3].toInt();
+    for (auto pos_and_scales : textures_types[key].toObject()
+                                    ["positions_and_scales"].toArray()) {
+      int x = pos_and_scales.toArray()[0].toInt();
+      int y = pos_and_scales.toArray()[1].toInt();
+      int scale_x = pos_and_scales.toArray()[2].toInt();
+      int scale_y = pos_and_scales.toArray()[3].toInt();
       x *= core::kTextureSize;
       y *= core::kTextureSize;
       engine::Entity entity = coordinator_->CreateEntity();

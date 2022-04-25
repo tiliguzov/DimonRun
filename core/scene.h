@@ -16,7 +16,8 @@ class Connector;
 
 enum ZValues {
     kBackgroundZIndex,
-    kPlayerZIndex = 3
+    zWallIndex,
+    kPlayerZIndex
 };
 
 class Scene : public QWidget {
