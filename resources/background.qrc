@@ -14,9 +14,16 @@
         <file>textures/background/wall_line.png</file>
         <file>textures/background/ceil_line.png</file>
         <file>textures/background/half_ceil_line.png</file>
+        <file>textures/background/handrail_foreground.png</file>
+        <file>textures/background/handrail_background.png</file>
+        <file>textures/background/bridge_end.png</file>
+        <file>textures/background/bridge.png</file>
+        <file>textures/background/door.png</file>
 
         <file>animations/back_wall_torch.json</file>
         <file>level0.json</file>
+        <file>animations/wave.json</file>
+        <file>animations/water.json</file>
     </qresource>
 
     <qresource>
@@ -24,5 +31,19 @@
         <file>textures/background/back_wall_and_torch_01.png</file>
         <file>textures/background/back_wall_and_torch_02.png</file>
         <file>textures/background/back_wall_and_torch_03.png</file>
+    </qresource>
+
+    <qresource>
+        <file>textures/background/wave_00.png</file>
+        <file>textures/background/wave_01.png</file>
+        <file>textures/background/wave_02.png</file>
+        <file>textures/background/wave_03.png</file>
+    </qresource>
+
+    <qresource>
+        <file>textures/background/water_00.png</file>
+        <file>textures/background/water_01.png</file>
+        <file>textures/background/water_02.png</file>
+        <file>textures/background/water_03.png</file>
     </qresource>
 </RCC>

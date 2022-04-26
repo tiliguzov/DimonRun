@@ -1,0 +1,17 @@
+{
+  "animations": {
+    "wave": [
+      ":textures/background/wave_00.png",
+      ":textures/background/wave_01.png",
+      ":textures/background/wave_02.png",
+      ":textures/background/wave_03.png"
+    ]
+  },
+  "frame_duration": 50,
+  "positions": [
+    [6, 2],
+    [7, 2],
+    [8, 2],
+    [9, 2]
+  ]
+}

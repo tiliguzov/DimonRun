@@ -50,8 +50,8 @@ void Scene::keyReleaseEvent(QKeyEvent *event) {
 void Scene::SetDefaultSceneSettings() {
     scene_view_->setScene(scene_);
     scene_view_->setGeometry(0, 0, kDefaultWindowWidth, kDefaultWindowHeight);
-    scene_view_->setAutoFillBackground(true);
-    scene_view_->setBackgroundBrush(Qt::darkGreen);
+    // scene_view_->setAutoFillBackground(true);
+    // scene_view_->setBackgroundBrush(Qt::darkGreen);
     scene_view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scene_view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scene_view_->viewport()->installEventFilter(this);  // wheel

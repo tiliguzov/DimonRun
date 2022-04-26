@@ -153,6 +153,54 @@ void Connector::StartGame(Scene* scene) {
     coordinator_->GetComponent<AnimationComponent>(entity).movement_type =
         MovementType::kTorchBurning;
   }
+
+  QFile file_wave(QString::fromStdString(":animations/wave.json"));
+  file_wave.open(QIODevice::ReadOnly);
+  QJsonObject input_wave = QJsonDocument::fromJson(
+      file_wave.readAll()).object();
+  file_wave.close();
+
+  for (const auto& position : input_wave["positions"].toArray()) {
+    int x = position[0].toInt();
+    int y = position[1].toInt();
+    x *= kTextureSize;
+    y *= kTextureSize;
+    engine::Entity entity = coordinator_->CreateEntity();
+    coordinator_->AddComponent(entity, PositionComponent{{1.0f * x, 1.0f * y}});
+    auto item = scene->GetScene()->addPixmap(
+        QPixmap(":textures/background/wave_00.png"));
+    item->setZValue(3);
+    coordinator_->AddComponent(entity, GraphicsItemComponent{item});
+    coordinator_->AddComponent(entity, AnimationComponent());
+    coordinator_->GetComponent<AnimationComponent>(entity).animations =
+        new AnimationPack(":animations/wave.json");
+    coordinator_->GetComponent<AnimationComponent>(entity).movement_type =
+        MovementType::kWave;
+  }
+
+  QFile file_water(QString::fromStdString(":animations/water.json"));
+  file_water.open(QIODevice::ReadOnly);
+  QJsonObject input_water = QJsonDocument::fromJson(
+      file_water.readAll()).object();
+  file_water.close();
+
+  for (const auto& position : input_water["positions"].toArray()) {
+    int x = position[0].toInt();
+    int y = position[1].toInt();
+    x *= kTextureSize;
+    y *= kTextureSize;
+    engine::Entity entity = coordinator_->CreateEntity();
+    coordinator_->AddComponent(entity, PositionComponent{{1.0f * x, 1.0f * y}});
+    auto item = scene->GetScene()->addPixmap(
+        QPixmap(":textures/background/water_00.png"));
+    item->setZValue(3);
+    coordinator_->AddComponent(entity, GraphicsItemComponent{item});
+    coordinator_->AddComponent(entity, AnimationComponent());
+    coordinator_->GetComponent<AnimationComponent>(entity).animations =
+        new AnimationPack(":animations/water.json");
+    coordinator_->GetComponent<AnimationComponent>(entity).movement_type =
+        MovementType::kWater;
+  }
 }
 
 }  // namespace core

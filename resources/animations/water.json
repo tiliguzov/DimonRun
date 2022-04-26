@@ -1,0 +1,17 @@
+{
+  "animations": {
+    "water": [
+      ":textures/background/water_00.png",
+      ":textures/background/water_01.png",
+      ":textures/background/water_02.png",
+      ":textures/background/water_03.png"
+    ]
+  },
+  "frame_duration": 50,
+  "positions": [
+    [6, 3],
+    [7, 3],
+    [8, 3],
+    [9, 3]
+  ]
+}
