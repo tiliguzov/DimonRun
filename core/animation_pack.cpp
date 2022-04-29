@@ -18,7 +18,7 @@ core::AnimationPack::AnimationPack(const std::string& path_to_json) {
     size_t type = size_t(str_to_type.at(key.toStdString()));
 
     for (const auto &frame_path : animation_types[key].toArray()) {
-      animations_[type].push_back(new QPixmap(frame_path.toString()));
+      frames_[type].push_back(new QPixmap(frame_path.toString()));
     }
   }
 
@@ -29,8 +29,8 @@ QPixmap* core::AnimationPack::GetFrame(core::MovementType type,
                                        int32_t current_time) const {
   int32_t count_of_frames = current_time /
       frame_duration_;
-  count_of_frames %= animations_[size_t(type)].size();
-  return animations_[size_t(type)][count_of_frames];
+  count_of_frames %= frames_[size_t(type)].size();
+  return frames_[size_t(type)][count_of_frames];
 }
 
 int32_t core::AnimationPack::GetFrameDuration() const {

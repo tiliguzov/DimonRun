@@ -26,8 +26,9 @@ class AnimationPack {
   int32_t GetFrameDuration() const;
 
  private:
-  std::array<std::vector<QPixmap*>, (size_t)(MovementType::kEnumSize)>
-      animations_;
+  std::array<std::vector<QPixmap*>,
+      static_cast<size_t>(MovementType::kEnumSize)>
+      frames_;
   uint32_t frame_duration_;
 
   const std::unordered_map<std::string, MovementType> str_to_type =

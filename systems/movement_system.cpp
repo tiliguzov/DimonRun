@@ -9,14 +9,12 @@ MovementSystem::MovementSystem(engine::Coordinator* coordinator)
 
 void MovementSystem::Update() {
   for (engine::Entity entity : entities_) {
-    auto& position_comp = coordinator_->
+    auto& pos_comp = coordinator_->
             GetComponent<core::PositionComponent>(entity);
-
-    auto& movement_comp =
+    auto& move_comp =
       coordinator_->GetComponent<core::MovementComponent>(entity);
 
-    position_comp.position +=
-            movement_comp.direction * movement_comp.current_speed;
+    pos_comp.position += move_comp.direction * move_comp.current_speed;
   }
 }
 

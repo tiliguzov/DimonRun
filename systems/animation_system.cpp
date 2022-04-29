@@ -10,26 +10,24 @@ void systems::AnimationSystem::Update() {
   time_ += core::kTickTime;
 
   for (engine::Entity entity : entities_) {
-    auto& animation_comp =
+    auto& anim_comp =
         coordinator_->GetComponent<core::AnimationComponent>(entity);
-    const auto& graphics_item_comp =
+    const auto& graphics_comp =
         coordinator_->GetComponent<core::GraphicsItemComponent>(entity);
 
     // check if we do not need to change frame
-    if (!animation_comp.type_changed_last_tick &&
-             CurrentFrameIsOk(animation_comp.animations
-             ->GetFrameDuration(), time_)) {
-      continue;
+    if (!CurrentFrameIsOk(anim_comp.frames->GetFrameDuration(), time_)) {
+      anim_comp.need_change_frame = true;
     }
-    animation_comp.type_changed_last_tick = false;
-
-    QPixmap* image = animation_comp.animations->GetFrame(
-        animation_comp.movement_type, time_);
-    if (animation_comp.direction == core::HorizontalDirection::kRight) {
-      graphics_item_comp.item->setPixmap(*image);
-    } else {
-      graphics_item_comp.item->setPixmap(
-          image->transformed(QTransform().scale(-1, 1)));
+    if (anim_comp.need_change_frame) {
+      QPixmap* image = anim_comp.frames->GetFrame(anim_comp.move_type, time_);
+      if (anim_comp.direction == core::HorizontalDirection::kRight) {
+        graphics_comp.item->setPixmap(*image);
+      } else {
+        graphics_comp.item->setPixmap(
+            image->transformed(QTransform().scale(-1, 1)));
+      }
+      anim_comp.need_change_frame = false;
     }
   }
 }

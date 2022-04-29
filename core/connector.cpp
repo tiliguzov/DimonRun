@@ -88,7 +88,7 @@ QGraphicsItem* Connector::CreateHero(Scene* scene) {
   item->setZValue(kPlayerZIndex);
   coordinator_->AddComponent(hero, GraphicsItemComponent{item});
   coordinator_->AddComponent(hero, AnimationComponent());
-  coordinator_->GetComponent<AnimationComponent>(hero).animations =
+  coordinator_->GetComponent<AnimationComponent>(hero).frames =
       new AnimationPack(":animations/hero.json");
   return item;
 }

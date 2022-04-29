@@ -29,12 +29,12 @@ enum class HorizontalDirection {
 };
 
 struct AnimationComponent {
-  const AnimationPack* animations{nullptr};
+  const AnimationPack* frames{nullptr};
   HorizontalDirection direction{HorizontalDirection::kRight};
-  MovementType movement_type{MovementType::kStaticInAir};
+  MovementType move_type{MovementType::kStaticInAir};
 
   // the flag that shows, if we have to change frame before its time pass
-  bool type_changed_last_tick{false};
+  bool need_change_frame{false};
 };
 
 }  // namespace core

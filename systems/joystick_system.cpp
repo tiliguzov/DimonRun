@@ -9,55 +9,51 @@ JoystickSystem::JoystickSystem(
 
 void JoystickSystem::Update() {
   for (const auto& entity : entities_) {
-    auto& motion_comp = coordinator_->
+    auto& move_comp = coordinator_->
             GetComponent<core::MovementComponent>(entity);
-
-    auto& position_comp = coordinator_->
+    auto& pos_comp = coordinator_->
             GetComponent<core::PositionComponent>(entity);
-
-    auto& animation_comp = coordinator_->
+    auto& anim_comp = coordinator_->
             GetComponent<core::AnimationComponent>(entity);
 
-    core::MovementType last_type = animation_comp.movement_type;
-    core::HorizontalDirection last_direction = animation_comp.direction;
+    core::MovementType old_type = anim_comp.move_type;
+    core::HorizontalDirection old_direction = anim_comp.direction;
 
     QVector2D direction;
     if (keyboard_->IsKeyPressed(core::KeyAction::kMoveDown)) {
       direction = {0.0, 1.0};
 
-      animation_comp.movement_type = core::MovementType::kFliesDown;
+      anim_comp.move_type = core::MovementType::kFliesDown;
     }
     if (keyboard_->IsKeyPressed(core::KeyAction::kMoveUp)) {
       direction = {0.0, -1.0};
 
-      animation_comp.movement_type = core::MovementType::kFliesUp;
+      anim_comp.move_type = core::MovementType::kFliesUp;
     }
     if (keyboard_->IsKeyPressed(core::KeyAction::kMoveLeft)) {
       direction = {-1.0, 0.0};
 
-      animation_comp.movement_type = core::MovementType::kFliesHorizontal;
-      animation_comp.direction = core::HorizontalDirection::kLeft;
+      anim_comp.move_type = core::MovementType::kFliesHorizontal;
+      anim_comp.direction = core::HorizontalDirection::kLeft;
     }
     if (keyboard_->IsKeyPressed(core::KeyAction::kMoveRight)) {
       direction = {1.0, 0.0};
 
-      animation_comp.movement_type = core::MovementType::kFliesHorizontal;
-      animation_comp.direction = core::HorizontalDirection::kRight;
+      anim_comp.move_type = core::MovementType::kFliesHorizontal;
+      anim_comp.direction = core::HorizontalDirection::kRight;
     }
-    if (static_cast<int>(position_comp.position.x()) %
-            core::kTextureSize == 0 &&
-        static_cast<int>(position_comp.position.y()) %
-            core::kTextureSize == 0) {
-        motion_comp.direction = direction;
+    if (static_cast<int>(pos_comp.position.x()) % core::kTextureSize == 0 &&
+        static_cast<int>(pos_comp.position.y()) % core::kTextureSize == 0) {
+      move_comp.direction = direction;
 
-        if (direction.isNull()) {
-          animation_comp.movement_type = core::MovementType::kStaticInAir;
-        }
+      if (direction.isNull()) {
+        anim_comp.move_type = core::MovementType::kStaticInAir;
+      }
     }
 
-    if (animation_comp.movement_type != last_type ||
-          animation_comp.direction != last_direction) {
-      animation_comp.type_changed_last_tick = true;
+    if (anim_comp.move_type != old_type ||
+          anim_comp.direction != old_direction) {
+      anim_comp.need_change_frame = true;
     }
   }
 }
