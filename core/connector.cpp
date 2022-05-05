@@ -13,6 +13,7 @@
 #include "systems/movement_system.h"
 #include "systems/painting_system.h"
 #include "systems/animation_system.h"
+#include "systems/collision_system.h"
 
 namespace core {
 
@@ -48,6 +49,7 @@ void Connector::RegisterSystems() {
 
         systems_.push_back(joystick_system_);
     }
+
     {
         auto movement_system = coordinator_
             ->RegisterSystem<systems::MovementSystem>(coordinator_.get());
@@ -56,6 +58,15 @@ void Connector::RegisterSystems() {
               coordinator_->GetComponentID<MovementComponent>()});
 
         systems_.push_back(movement_system);
+    }
+    {
+        auto collision_system = coordinator_
+            ->RegisterSystem<systems::CollisionSystem>(coordinator_.get());
+        coordinator_->SetSystemSignature<systems::CollisionSystem>
+            ({coordinator_->GetComponentID<PositionComponent>(),
+              coordinator_->GetComponentID<GraphicsItemComponent>(),
+              coordinator_->GetComponentID<CollisionComponent>()});
+        systems_.push_back(collision_system);
     }
     {
         auto painting_system = coordinator_
@@ -73,11 +84,13 @@ void Connector::RegisterSystems() {
               coordinator_->GetComponentID<GraphicsItemComponent>()});
         systems_.push_back(animation_system);
     }
+
 }
 
 void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<PositionComponent>();
   coordinator_->RegisterComponent<MovementComponent>();
+  coordinator_->RegisterComponent<CollisionComponent>();
   coordinator_->RegisterComponent<GraphicsItemComponent>();
   coordinator_->RegisterComponent<AnimationComponent>();
 }
@@ -86,6 +99,7 @@ QGraphicsItem* Connector::CreateHero(Scene* scene) {
   engine::Entity hero = coordinator_->CreateEntity();
   coordinator_->AddComponent(hero, PositionComponent{{0, 0}});
   coordinator_->AddComponent(hero, MovementComponent{{0, 0}, 1});
+  coordinator_->AddComponent(hero, CollisionComponent({1}));
   auto item = scene->GetScene()->addPixmap(
       QPixmap(":textures/hero/Hero_static_in_air_00.png"));
   // z value for hero
@@ -125,6 +139,7 @@ void Connector::StartGame(Scene* scene) {
       item->setZValue(z_value);
       item->setPixmap(image.transformed(QTransform().scale(scale_x, scale_y)));
       coordinator_->AddComponent(entity, GraphicsItemComponent{item});
+      coordinator_->AddComponent(entity, CollisionComponent({0}));
       coordinator_->AddComponent(entity,
                                  PositionComponent{{1.0f * x, 1.0f * y}});
     }

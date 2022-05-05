@@ -37,4 +37,8 @@ struct AnimationComponent {
   bool type_changed_last_tick{false};
 };
 
+struct CollisionComponent {
+    bool IsMovable;
+};
+
 }  // namespace core
