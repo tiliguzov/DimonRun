@@ -13,25 +13,24 @@ enum class MovementType {
   kStaticInAir,
   kFliesUp,
   kFliesDown,
-  kFliesHorizontal,
-
-  kEnumSize
+  kFliesHorizontal
 };
 
 class AnimationPack {
  public:
+  AnimationPack() = default;
   explicit AnimationPack(const std::string& path_to_json);
+  QJsonObject GetJsonObject(const std::string& path_to_json);
 
-  QPixmap* GetFrame(MovementType type, int current_time) const;
+  QPixmap& GetFrame(MovementType type, int current_time);
   int GetFrameDuration() const;
 
  private:
-  std::array<std::vector<QPixmap*>,
-      static_cast<size_t>(MovementType::kEnumSize)>
+  std::unordered_map<core::MovementType, std::vector<QPixmap>>
       frames_;
-  uint32_t frame_duration_;
+  uint32_t frame_duration_{100};
 
-  const std::unordered_map<std::string, MovementType> str_to_type =
+  std::unordered_map<std::string, MovementType> str_to_type =
       {{"static_in_air", MovementType::kStaticInAir},
        {"flies_up", MovementType::kFliesUp},
        {"flies_down", MovementType::kFliesDown},

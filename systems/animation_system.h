@@ -2,6 +2,7 @@
 
 #include "engine/coordinator.h"
 #include "engine/system.h"
+#include "core/components.h"
 
 namespace systems {
 
@@ -10,7 +11,8 @@ class AnimationSystem : public engine::System {
   explicit AnimationSystem(engine::Coordinator* coordinator);
   void Update() override;
 
-  static bool CurrentFrameIsOk(int32_t frame_duration, int32_t time);
+  static bool NeedChangeFrame(core::AnimationComponent& anim_comp,
+                              int32_t time);
 
  private:
   engine::Coordinator* coordinator_;

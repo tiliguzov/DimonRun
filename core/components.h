@@ -29,7 +29,7 @@ enum class HorizontalDirection {
 };
 
 struct AnimationComponent {
-  const AnimationPack* frames{nullptr};
+  AnimationPack frames;
   HorizontalDirection direction{HorizontalDirection::kRight};
   MovementType move_type{MovementType::kStaticInAir};
 

@@ -15,24 +15,24 @@ void systems::AnimationSystem::Update() {
     const auto& graphics_comp =
         coordinator_->GetComponent<core::GraphicsItemComponent>(entity);
 
-    // check if we do not need to change frame
-    if (!CurrentFrameIsOk(anim_comp.frames->GetFrameDuration(), time_)) {
-      anim_comp.need_change_frame = true;
-    }
-    if (anim_comp.need_change_frame) {
-      QPixmap* image = anim_comp.frames->GetFrame(anim_comp.move_type, time_);
+    if (NeedChangeFrame(anim_comp, time_)) {
+      QPixmap& image = anim_comp.frames.GetFrame(anim_comp.move_type, time_);
       if (anim_comp.direction == core::HorizontalDirection::kRight) {
-        graphics_comp.item->setPixmap(*image);
+        graphics_comp.item->setPixmap(image);
       } else {
         graphics_comp.item->setPixmap(
-            image->transformed(QTransform().scale(-1, 1)));
+            image.transformed(QTransform().scale(-1, 1)));
       }
       anim_comp.need_change_frame = false;
     }
   }
 }
-
-bool systems::AnimationSystem::CurrentFrameIsOk(int32_t frame_duration,
-                                                int32_t time) {
-  return (time % frame_duration) >= core::kTickTime;
+bool systems::AnimationSystem::NeedChangeFrame(
+          core::AnimationComponent& anim_comp,
+          int32_t time) {
+  if (anim_comp.need_change_frame) {
+    anim_comp.need_change_frame = false;
+    return true;
+  }
+  return (time % anim_comp.frames.GetFrameDuration()) >= core::kTickTime;
 }
