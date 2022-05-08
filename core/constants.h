@@ -15,6 +15,5 @@ const int kLeftUpXCoordiante = -10000;
 const int kLeftUpYCoordiante = -10000;
 const int kWidth = 20000;
 const int kHeight = 20000;
-const std::string kPathToHero = ":animations/hero.json";
 
 }  // namespace core

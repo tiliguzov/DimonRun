@@ -33,7 +33,8 @@ QPixmap& core::AnimationPack::GetFrame(core::MovementType type,
 int core::AnimationPack::GetFrameDuration() const {
   return frame_duration_;
 }
-QJsonObject core::AnimationPack::GetJsonObject(const std::string& path_to_json) {
+QJsonObject core::AnimationPack::GetJsonObject(
+    const std::string& path_to_json) {
   QFile file(QString::fromStdString(path_to_json));
   file.open(QIODevice::ReadOnly);
   QJsonObject input_object = QJsonDocument::fromJson(file.readAll()).object();

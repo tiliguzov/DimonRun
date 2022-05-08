@@ -11,7 +11,7 @@ class AnimationSystem : public engine::System {
   explicit AnimationSystem(engine::Coordinator* coordinator);
   void Update() override;
 
-  static bool NeedChangeFrame(core::AnimationComponent& anim_comp,
+  static bool NeedChangeFrame(core::AnimationComponent* anim_comp,
                               int32_t time);
 
  private:
