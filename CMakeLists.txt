@@ -30,7 +30,8 @@ add_executable(DimonRun
         systems/movement_system.cpp
         systems/joystick_system.cpp
         systems/painting_system.cpp
-        )
+        core/serializer.cpp
+        core/dungeon_name.h)
 
 
 target_link_libraries(DimonRun
