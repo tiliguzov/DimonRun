@@ -8,6 +8,7 @@
 #include "systems/joystick_system.h"
 #include "systems/movement_system.h"
 #include "systems/painting_system.h"
+#include "systems/collision_system.h"
 
 namespace core {
 
@@ -52,6 +53,15 @@ void Connector::RegisterSystems() {
         systems_.push_back(movement_system);
     }
     {
+            auto collision_system = coordinator_
+                ->RegisterSystem<systems::CollisionSystem>(coordinator_.get());
+            coordinator_->SetSystemSignature<systems::CollisionSystem>
+                ({coordinator_->GetComponentID<PositionComponent>(),
+                  coordinator_->GetComponentID<GraphicsItemComponent>(),
+                  coordinator_->GetComponentID<CollisionComponent>()});
+            systems_.push_back(collision_system);
+        }
+    {
         auto painting_system = coordinator_
             ->RegisterSystem<systems::PaintingSystem>(coordinator_.get());
         coordinator_->SetSystemSignature<systems::PaintingSystem>
@@ -61,16 +71,18 @@ void Connector::RegisterSystems() {
     }
 }
 
-void Connector::RegisterComponents() {
-  coordinator_->RegisterComponent<PositionComponent>();
-  coordinator_->RegisterComponent<MovementComponent>();
-  coordinator_->RegisterComponent<GraphicsItemComponent>();
+void Connector::RegisterComponents() {   
+    coordinator_->RegisterComponent<PositionComponent>();
+    coordinator_->RegisterComponent<MovementComponent>();
+    coordinator_->RegisterComponent<CollisionComponent>();
+    coordinator_->RegisterComponent<GraphicsItemComponent>();
 }
 
 QGraphicsItem* Connector::CreateHero(Scene* scene) {
   engine::Entity hero = coordinator_->CreateEntity();
   coordinator_->AddComponent(hero, PositionComponent{{0, 0}});
   coordinator_->AddComponent(hero, MovementComponent{{0, 0}, 1});
+  coordinator_->AddComponent(hero, CollisionComponent({1}));
   auto item = scene->GetScene()->addPixmap(QPixmap(":fox.png"));
   // z value for hero
   item->setZValue(kPlayerZIndex);
@@ -87,6 +99,7 @@ void Connector::StartGame(Scene* scene) {
       float x = i * core::kTextureSize;
       float y = j * core::kTextureSize;
       coordinator_->AddComponent(entity, PositionComponent{{x, y}});
+      coordinator_->AddComponent(entity, CollisionComponent({0}));
       auto item = scene->GetScene()->addPixmap(QPixmap(":ground.jpg"));
       item->setZValue(kBackgroundZIndex);  // z value for background
       coordinator_->AddComponent(entity, GraphicsItemComponent{item});

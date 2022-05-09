@@ -20,4 +20,8 @@ struct MovementComponent {
   float current_speed = 1;
 };
 
+struct CollisionComponent {
+    bool IsMovable;
+};
+
 }  // namespace core
