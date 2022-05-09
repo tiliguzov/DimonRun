@@ -18,6 +18,8 @@ add_executable(DimonRun
         core/scene.cpp
         core/keyboard.cpp
         core/animation_pack.cpp
+        core/serializer.cpp
+        core/dungeon_name.h
 
         engine/component_manager.cpp
         engine/coordinator.cpp
