@@ -13,7 +13,6 @@ class CollisionSystem : public engine::System {
   void Update() override;
 
  private:
-  bool IsIntersectPositions(core::PositionComponent&, core::PositionComponent&);
   engine::Coordinator* coordinator_;
 };
 

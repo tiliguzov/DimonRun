@@ -2,7 +2,25 @@
 #include "core/constants.h"
 
 #include <algorithm>
-#include <iostream>
+
+namespace {
+
+bool IsIntersectPositions(
+        core::PositionComponent& position1,
+        core::PositionComponent& position2) {
+    int first_x = position1.position.x(), first_y = position1.position.y();
+    int second_x = position2.position.x(), second_y = position2.position.y();
+    if (first_x > second_x) {
+        std::swap(first_x, second_x);
+        std::swap(first_y, second_y);
+    }
+    return (first_x + core::kTextureSize > second_x
+            && abs(first_y - second_y) < core::kTextureSize);
+}
+
+}
+
+
 systems::CollisionSystem::CollisionSystem(engine::Coordinator *coordinator)
     :coordinator_(coordinator) {}
 
@@ -35,10 +53,7 @@ void systems::CollisionSystem::Update() {
         auto& position_comp2 = coordinator_->
                 GetComponent<core::PositionComponent>(entity2);
 
-        core::PositionComponent position1 = position_comp1;
-        core::PositionComponent position2 = position_comp2;
-
-        if (IsIntersectPositions(position1, position2)) {
+        if (IsIntersectPositions(position_comp1, position_comp2)) {
             if ((static_cast<int>(position_comp1.position.x()) + 1)
                     % core::kTextureSize == 0) {
                 position_comp1.position.setX(position_comp1.position.x() + 1);
@@ -60,17 +75,4 @@ void systems::CollisionSystem::Update() {
       }
    }
 }
-
-bool systems::CollisionSystem::IsIntersectPositions(
-        core::PositionComponent& position1,
-        core::PositionComponent& position2) {
-    int first_x = position1.position.x(), first_y = position1.position.y();
-    int second_x = position2.position.x(), second_y = position2.position.y();
-    if (first_x > second_x) {
-        std::swap(first_x, second_x);
-        std::swap(first_y, second_y);
-    }
-    return (first_x + 50 > second_x && abs(first_y - second_y) < 50);
-}
-
 

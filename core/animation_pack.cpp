@@ -2,7 +2,6 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QJsonArray>
-#include <iostream>
 
 #include "animation_pack.h"
 

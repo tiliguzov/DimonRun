@@ -34,8 +34,7 @@ add_executable(DimonRun
         systems/joystick_system.cpp
         systems/painting_system.cpp
         systems/animation_system.cpp
-        systems/collision_system.cpp
-        systems/collision_system.h)
+        systems/collision_system.cpp)
 
 
 target_link_libraries(DimonRun
