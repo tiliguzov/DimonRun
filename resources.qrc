@@ -1,0 +1,12 @@
+<RCC>
+    <qresource>
+        <file>fox.png</file>
+        <file>ground1.jpg</file>
+        <file>ground2.jpg</file>
+
+<!--        <file>dungeons/default_hub.txt</file>-->
+<!--        <file>dungeons/edited_hub.txt</file>-->
+        <file>dungeons/default_hub.json</file>
+        <file>dungeons/default_hub_example.json</file>
+    </qresource>
+</RCC>

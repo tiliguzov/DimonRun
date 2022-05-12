@@ -15,6 +15,8 @@ struct PositionComponent {
 
 struct GraphicsItemComponent {
   QGraphicsPixmapItem* item;
+  // char source_name[kMaxPathLength];
+  std::string source_name;
 };
 
 struct MovementComponent {

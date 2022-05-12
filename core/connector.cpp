@@ -13,7 +13,7 @@
 namespace core {
 
 Connector::Connector() : coordinator_(std::make_unique<engine::Coordinator>()),
-                             keyboard_(std::make_unique<core::Keyboard>()) {
+                         keyboard_(std::make_unique<Keyboard>()) {
   RegisterComponents();
   RegisterSystems();
 }

@@ -19,4 +19,13 @@ void Coordinator::DestroyEntity(Entity entity) {
   system_manager_->EntityDestroyed(entity);
 }
 
+ComponentSignature Coordinator::GetComponentSignature(Entity entity) const {
+  return entity_manager_->GetComponentSignature(entity);
+}
+
+void Coordinator::SetComponentSignature(Entity entity,
+                                        ComponentSignature new_signature) {
+  entity_manager_->SetComponentSignature(entity, new_signature);
+}
+
 }  // namespace engine
