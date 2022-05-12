@@ -41,6 +41,9 @@ class Coordinator {
   template<typename ComponentType>
   void UpdateSignature(Entity entity, bool has_component);
 
+  ComponentSignature GetComponentSignature(Entity entity) const;
+  void SetComponentSignature(Entity entity, ComponentSignature new_signature);
+
   template<typename ComponentType>
   bool HasComponent(Entity entity) const;
 

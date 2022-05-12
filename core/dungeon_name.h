@@ -3,12 +3,12 @@
 namespace core {
 
 enum class DungeonName {
-  kRawHub,
+  kDefaultHub,
   kEditedHub,
-  kRawLevel1,
-  kRawLevel2,
-  kRawLevel3,
-  kRawLevel4,
+  kDefaultLevel1,
+  kDefaultLevel2,
+  kDefaultLevel3,
+  kDefaultLevel4,
   kEditedLevel1,
   kEditedLevel2,
   kEditedLevel3,

@@ -24,7 +24,7 @@ Scene::Scene(QWidget* parent, Connector* connector)
   show();
   setFocus();
   // example of interacting with engine
-  connector->StartGame(this);
+  connector->StartGame(this); // todo
 }
 
 void Scene::timerEvent(QTimerEvent* event) {

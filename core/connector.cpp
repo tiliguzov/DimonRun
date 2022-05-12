@@ -12,7 +12,7 @@
 namespace core {
 
 Connector::Connector() : coordinator_(std::make_unique<engine::Coordinator>()),
-                             keyboard_(std::make_unique<core::Keyboard>()) {
+                         keyboard_(std::make_unique<Keyboard>()) {
   RegisterComponents();
   RegisterSystems();
 }
@@ -74,24 +74,29 @@ QGraphicsItem* Connector::CreateHero(Scene* scene) {
   auto item = scene->GetScene()->addPixmap(QPixmap(":fox.png"));
   // z value for hero
   item->setZValue(kPlayerZIndex);
-  coordinator_->AddComponent(hero, GraphicsItemComponent{item});
+  coordinator_->AddComponent(hero, GraphicsItemComponent{item, ":fox.png"});
   return item;
 }
 
 // example of interacting with engine
 void Connector::StartGame(Scene* scene) {
-  const int test_scene_size_ = 2;
-  for (int i = -test_scene_size_; i <= test_scene_size_; ++i) {
-    for (int j = -test_scene_size_; j <= test_scene_size_; ++j) {
-      engine::Entity entity = coordinator_->CreateEntity();
-      float x = i * core::kTextureSize;
-      float y = j * core::kTextureSize;
-      coordinator_->AddComponent(entity, PositionComponent{{x, y}});
-      auto item = scene->GetScene()->addPixmap(QPixmap(":ground.jpg"));
-      item->setZValue(kBackgroundZIndex);  // z value for background
-      coordinator_->AddComponent(entity, GraphicsItemComponent{item});
-    }
-  }
+  serializer_ = std::make_unique<Serializer>(coordinator_.get(), scene);
+  // serializer_->DownloadDungeonFromJson(DungeonName::kDefaultHub);
+  // serializer_->UploadDungeon(DungeonName::kEditedHub);
+  serializer_->DownloadDungeon(DungeonName::kEditedHub);
+  // const int test_scene_size_ = 2;
+  // for (int i = -test_scene_size_; i <= test_scene_size_; ++i) {
+  //   for (int j = -test_scene_size_; j <= test_scene_size_; ++j) {
+  //     engine::Entity entity = coordinator_->CreateEntity();
+  //     float x = i * core::kTextureSize;
+  //     float y = j * core::kTextureSize;
+  //     coordinator_->AddComponent(entity, PositionComponent{{x, y}});
+  //     auto item = scene->GetScene()->addPixmap(QPixmap(":ground1.jpg"));
+  //     item->setZValue(kBackgroundZIndex);  // z value for background
+  //     coordinator_->AddComponent(entity, GraphicsItemComponent{
+  //         item, ":ground1.jpg"});
+  //   }
+  // }
 }
 
 }  // namespace core
