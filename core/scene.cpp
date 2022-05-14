@@ -12,6 +12,7 @@ namespace core {
 
 Scene::Scene(QWidget* parent, Connector* connector)
     : QWidget(parent),
+      parent_(parent),
       connector_(connector),
       timer_id_(startTimer(kTickTime)),
       scene_(new QGraphicsScene(this)),
@@ -45,6 +46,10 @@ void Scene::keyPressEvent(QKeyEvent *event) {
 
 void Scene::keyReleaseEvent(QKeyEvent *event) {
     connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
+}
+
+void Scene::resizeEvent(QResizeEvent* event) {
+  scene_view_->setGeometry(0, 0, this->width(), this->height());
 }
 
 void Scene::SetDefaultSceneSettings() {

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource>
+        <file>textures/background/ground.jpg</file>
+    </qresource>
+</RCC>

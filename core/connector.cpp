@@ -8,6 +8,7 @@
 #include "systems/joystick_system.h"
 #include "systems/movement_system.h"
 #include "systems/painting_system.h"
+#include "systems/animation_system.h"
 
 namespace core {
 
@@ -38,7 +39,8 @@ void Connector::RegisterSystems() {
                     coordinator_.get(), keyboard_.get());
 
         coordinator_->SetSystemSignature<systems::JoystickSystem>
-            ({coordinator_->GetComponentID<MovementComponent>()});
+            ({coordinator_->GetComponentID<MovementComponent>(),
+              coordinator_->GetComponentID<AnimationComponent>()});
 
         systems_.push_back(joystick_system_);
     }
@@ -59,22 +61,34 @@ void Connector::RegisterSystems() {
               coordinator_->GetComponentID<GraphicsItemComponent>()});
         systems_.push_back(painting_system);
     }
+    {
+        auto animation_system = coordinator_
+            ->RegisterSystem<systems::AnimationSystem>(coordinator_.get());
+        coordinator_->SetSystemSignature<systems::AnimationSystem>
+            ({coordinator_->GetComponentID<AnimationComponent>(),
+              coordinator_->GetComponentID<GraphicsItemComponent>()});
+        systems_.push_back(animation_system);
+    }
 }
 
 void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<PositionComponent>();
   coordinator_->RegisterComponent<MovementComponent>();
   coordinator_->RegisterComponent<GraphicsItemComponent>();
+  coordinator_->RegisterComponent<AnimationComponent>();
 }
 
 QGraphicsItem* Connector::CreateHero(Scene* scene) {
   engine::Entity hero = coordinator_->CreateEntity();
   coordinator_->AddComponent(hero, PositionComponent{{0, 0}});
   coordinator_->AddComponent(hero, MovementComponent{{0, 0}, 1});
-  auto item = scene->GetScene()->addPixmap(QPixmap(":fox.png"));
+  auto item = scene->GetScene()->addPixmap(
+      QPixmap(":textures/hero/Hero_static_in_air_00.png"));
   // z value for hero
   item->setZValue(kPlayerZIndex);
   coordinator_->AddComponent(hero, GraphicsItemComponent{item});
+  coordinator_->AddComponent(hero,
+          AnimationComponent{AnimationPack(":animations/hero.json")});
   return item;
 }
 
@@ -87,11 +101,13 @@ void Connector::StartGame(Scene* scene) {
       float x = i * core::kTextureSize;
       float y = j * core::kTextureSize;
       coordinator_->AddComponent(entity, PositionComponent{{x, y}});
-      auto item = scene->GetScene()->addPixmap(QPixmap(":ground.jpg"));
+      auto item = scene->GetScene()->addPixmap(
+          QPixmap(":textures/background/ground.jpg"));
       item->setZValue(kBackgroundZIndex);  // z value for background
       coordinator_->AddComponent(entity, GraphicsItemComponent{item});
     }
   }
+  scene->GetSceneView()->scale(2.5, 2.5);
 }
 
 }  // namespace core

@@ -33,13 +33,14 @@ class Scene : public QWidget {
   void timerEvent(QTimerEvent*) override;
   void keyPressEvent(QKeyEvent* event) override;
   void keyReleaseEvent(QKeyEvent* event) override;
+  void resizeEvent(QResizeEvent* event) override;
 
   void SetDefaultSceneSettings();
 
   bool eventFilter(QObject *object, QEvent *event) override;
 
-
   int32_t timer_id_;
+  QWidget* parent_;
   Connector* connector_;
   QGraphicsItem* hero_item_;
   QGraphicsScene* scene_;
