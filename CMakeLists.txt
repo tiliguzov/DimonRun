@@ -35,8 +35,18 @@ add_executable(DimonRun
         systems/painting_system.cpp
         systems/animation_system.cpp)
 
-
 target_link_libraries(DimonRun
+        Qt::Core
+        Qt::Gui
+        Qt::Widgets)
+
+add_executable(MapCreator
+        map_creator.cpp
+        map_creator_main.cpp
+        resources/hero.qrc
+        resources/background.qrc)
+
+target_link_libraries(MapCreator
         Qt::Core
         Qt::Gui
         Qt::Widgets)
