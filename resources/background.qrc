@@ -1,5 +1,12 @@
 <RCC>
     <qresource>
         <file>textures/background/ground.jpg</file>
+        <file>textures/background/back_wall.png</file>
+        <file>textures/background/floor_line.png</file>
+        <file>textures/background/handrail_foreground.png</file>
+    </qresource>
+
+    <qresource>
+        <file>list_of_textures.json</file>
     </qresource>
 </RCC>
