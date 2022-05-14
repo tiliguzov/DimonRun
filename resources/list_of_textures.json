@@ -1,0 +1,26 @@
+{
+  "0" : {
+    "ground" : [
+      ":textures/background/ground.jpg",
+      "Ground",
+      0
+    ],
+    "back_wall": [
+      ":textures/background/back_wall.png",
+      "Back wall",
+      0
+    ]
+  },
+  "1" : {
+    "floor_line" : [
+      ":textures/background/floor_line.png",
+      "Floor"
+    ]
+  },
+  "2" : {
+    "handrail_foreground" : [
+      ":textures/background/handrail_foreground.png",
+      "Handrail foreground"
+    ]
+  }
+}
