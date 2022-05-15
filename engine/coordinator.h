@@ -47,6 +47,8 @@ class Coordinator {
   template<typename ComponentType>
   bool HasComponent(Entity entity) const;
 
+  int GetEntityAliveCount();
+
  private:
   std::unique_ptr<ComponentManager> component_manager_;
   std::unique_ptr<EntityManager> entity_manager_;

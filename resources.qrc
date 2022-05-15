@@ -4,9 +4,6 @@
         <file>ground1.jpg</file>
         <file>ground2.jpg</file>
 
-<!--        <file>dungeons/default_hub.txt</file>-->
-<!--        <file>dungeons/edited_hub.txt</file>-->
-        <file>dungeons/default_hub.json</file>
-        <file>dungeons/default_hub_example.json</file>
+        <file>hand_created_dungeons/hub.json</file>
     </qresource>
 </RCC>

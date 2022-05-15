@@ -2,7 +2,6 @@
 
 #include <memory>
 
-#include "constants.h"
 #include "components.h"
 #include "engine/coordinator.h"
 #include "systems/joystick_system.h"
@@ -80,6 +79,7 @@ void Connector::RegisterComponents() {
 
 QGraphicsItem* Connector::CreateHero(Scene* scene) {
   engine::Entity hero = coordinator_->CreateEntity();
+  qDebug() << "create hero entity №" << hero;
   coordinator_->AddComponent(hero, PositionComponent{{0, 0}});
   coordinator_->AddComponent(hero, MovementComponent{{0, 0}, 1});
   auto item = scene->GetScene()->addPixmap(
@@ -94,19 +94,14 @@ QGraphicsItem* Connector::CreateHero(Scene* scene) {
 
 // example of interacting with engine
 void Connector::StartGame(Scene* scene) {
-  const int test_scene_size_ = 2;
-  for (int i = -test_scene_size_; i <= test_scene_size_; ++i) {
-    for (int j = -test_scene_size_; j <= test_scene_size_; ++j) {
-      engine::Entity entity = coordinator_->CreateEntity();
-      float x = i * core::kTextureSize;
-      float y = j * core::kTextureSize;
-      coordinator_->AddComponent(entity, PositionComponent{{x, y}});
-      auto item = scene->GetScene()->addPixmap(
-          QPixmap(":textures/background/ground.jpg"));
-      item->setZValue(kBackgroundZIndex);  // z value for background
-      coordinator_->AddComponent(entity, GraphicsItemComponent{item});
-    }
-  }
+  serializer_ = std::make_unique<Serializer>(coordinator_.get(), scene);
+  qDebug() << "entities before hub download:" << coordinator_->GetEntityAliveCount();
+  // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
+  // serializer_->UploadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
+  serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kDefault);
+  qDebug() << "entities after hub downloaded:" << coordinator_->GetEntityAliveCount();
+  serializer_->RemoveDungeon(DungeonName::kHub);
+  qDebug() << "entities after hub removed:" << coordinator_->GetEntityAliveCount();
   scene->GetSceneView()->scale(2.5, 2.5);
 }
 

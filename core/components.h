@@ -1,9 +1,9 @@
 #pragma once
 
-#include <QVector2D>
-#include <QPixmap>
 #include <QGraphicsItem>
 #include <QGraphicsView>
+#include <QPixmap>
+#include <QVector2D>
 
 #include "animation_pack.h"
 
@@ -15,7 +15,6 @@ struct PositionComponent {
 
 struct GraphicsItemComponent {
   QGraphicsPixmapItem* item;
-  // char source_name[kMaxPathLength];
   std::string source_name;
 };
 

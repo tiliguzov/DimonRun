@@ -5,10 +5,10 @@
 
 #include <QKeyEvent>
 
-#include "engine/coordinator.h"
 #include "core/keyboard.h"
 #include "core/scene.h"
 #include "core/serializer.h"
+#include "engine/coordinator.h"
 
 namespace core {
 
@@ -29,9 +29,10 @@ class Connector {
   void RegisterComponents();
 
   std::unique_ptr<engine::Coordinator> coordinator_;
-  std::vector<std::shared_ptr<engine::System>> systems_;
   std::unique_ptr<core::Keyboard> keyboard_;
   std::unique_ptr<Serializer> serializer_;
+
+  std::vector<std::shared_ptr<engine::System>> systems_;
 };
 
 }  // namespace core

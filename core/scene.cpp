@@ -25,7 +25,7 @@ Scene::Scene(QWidget* parent, Connector* connector)
   show();
   setFocus();
   // example of interacting with engine
-  connector->StartGame(this); // todo
+  connector->StartGame(this);
 }
 
 void Scene::timerEvent(QTimerEvent* event) {
@@ -41,11 +41,11 @@ void Scene::paintEvent(QPaintEvent*) {
 }
 
 void Scene::keyPressEvent(QKeyEvent *event) {
-    connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));
+  connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));
 }
 
 void Scene::keyReleaseEvent(QKeyEvent *event) {
-    connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
+  connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
 }
 
 void Scene::resizeEvent(QResizeEvent* event) {
@@ -53,16 +53,16 @@ void Scene::resizeEvent(QResizeEvent* event) {
 }
 
 void Scene::SetDefaultSceneSettings() {
-    scene_view_->setScene(scene_);
-    scene_view_->setGeometry(0, 0, kDefaultWindowWidth, kDefaultWindowHeight);
-    scene_view_->setAutoFillBackground(true);
-    scene_view_->setBackgroundBrush(Qt::darkGreen);
-    scene_view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scene_view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scene_view_->viewport()->installEventFilter(this);  // wheel
-    // scrolling disabled
-    scene_view_->setSceneRect(kLeftUpXCoordiante, kLeftUpYCoordiante,
-                              kWidth, kHeight);
+  scene_view_->setScene(scene_);
+  scene_view_->setGeometry(0, 0, kDefaultWindowWidth, kDefaultWindowHeight);
+  scene_view_->setAutoFillBackground(true);
+  scene_view_->setBackgroundBrush(Qt::darkGreen);
+  scene_view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  scene_view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  scene_view_->viewport()->installEventFilter(this);  // wheel
+  // scrolling disabled
+  scene_view_->setSceneRect(
+      kLeftUpXCoordinate, kLeftUpYCoordinate, kWidth, kHeight);
 }
 
 QGraphicsScene* Scene::GetScene() {

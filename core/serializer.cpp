@@ -1,58 +1,68 @@
-#include <fstream>
-#include <QFile>
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QJsonObject>
+#include "serializer.h"
+
 #include <QDebug>
+#include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+
+#include <fstream>
 #include <iostream>
 
-#include "serializer.h"
 #include "components.h"
 #include "constants.h"
-
-/// Bin file:
-/// float offset_x, float offset_y, int entities_count,
-/// entities[] (entity[i] = {std::bitmask component_signature, components[]}
-
-/// Serialization of components:
-/// Position component <-> float relative_x, float relative_y
-/// GraphicsItemComponent <-> const char* source_name, int z_value
-/// MovementComponent <-> float direction_x, float direction_y, float current_speed
 
 namespace core {
 
 Serializer::Serializer(engine::Coordinator* coordinator, Scene* scene) :
-    coordinator_(coordinator), scene_(scene) {
-  qDebug() << "init serializer";
-}
+    coordinator_(coordinator), scene_(scene) {}
 
-void Serializer::DownloadDungeon(DungeonName dungeon_name) {
-  qDebug() << "Download from " << static_cast<int>(dungeon_name);
-
+void Serializer::DownloadDungeon(
+    DungeonName dungeon_name,
+    DungeonType dungeon_type) {
   std::ifstream in_stream;
-  in_stream.open(source_by_name_.at(dungeon_name), std::ios::binary | std::ios::in);
+  std::string file_name;
+  switch (dungeon_type) {
+    case DungeonType::kDefault: {
+      file_name = source_by_name_default_.at(dungeon_name);
+      break;
+    }
+    case DungeonType::kEdited: {
+      file_name = source_by_name_edited_.at(dungeon_name);
+      break;
+    }
+    case DungeonType::kHandCreated: {
+      DownloadDungeonFromJson(dungeon_name);
+      return;
+    }
+  }
+  in_stream.open(file_name,
+                 std::ios::binary | std::ios::in);
   if (!in_stream) {
-    std::cerr << "Cannot open download file!";
+    std::cerr << "Cannot open dungeon download file!";
     exit(1);
   }
 
   dungeons_.insert({dungeon_name, std::make_unique<Dungeon>()});
   auto& new_dungeon = dungeons_.at(dungeon_name);
 
-  in_stream.read((char *) &new_dungeon->offset_x, sizeof(new_dungeon->offset_x));
-  in_stream.read((char *) &new_dungeon->offset_y, sizeof(new_dungeon->offset_y));
-  in_stream.read((char *) &new_dungeon->entities_count, sizeof(new_dungeon->entities_count));
-  std::cout << "down_xycount " << new_dungeon->offset_x << ' ' << new_dungeon->offset_y << ' '
-            << new_dungeon->entities_count << '\n';
+  in_stream.read((char*) &new_dungeon->offset_x, sizeof(new_dungeon->offset_x));
+  in_stream.read((char*) &new_dungeon->offset_y, sizeof(new_dungeon->offset_y));
+  in_stream.read((char*) &new_dungeon->entities_count,
+                 sizeof(new_dungeon->entities_count));
 
   for (int i = 0; i < new_dungeon->entities_count; i++) {
     engine::Entity new_entity = coordinator_->CreateEntity();
+    qDebug() << "create entity №" << new_entity;
     new_dungeon->entities.push_back(new_entity);
 
     engine::ComponentSignature component_signature;
-    in_stream.read((char *) &component_signature, sizeof(engine::ComponentSignature));
-    std::cout << "down_cs " << component_signature.to_string() << '\n';
+    in_stream.read((char *) &component_signature,
+                   sizeof(engine::ComponentSignature));
     coordinator_->SetComponentSignature(new_entity, component_signature);
+
+    // std::cout << "down_cs " << component_signature.to_string() << '\n';
+
 
     if (coordinator_->HasComponent<PositionComponent>(new_entity)) {
       coordinator_->AddComponent(
@@ -73,36 +83,53 @@ void Serializer::DownloadDungeon(DungeonName dungeon_name) {
 
   in_stream.close();
   if(!in_stream.good()) {
-    std::cerr << "Error occurred at reading time!";
+    std::cerr << "Error occurred at dungeon reading time!";
     exit(1);
   }
 
-  qDebug() << "Download finished";
+  // qDebug() << "Download finished";
 }
 
-void Serializer::UploadDungeon(DungeonName dungeon_name) {
+void Serializer::UploadDungeon(
+    DungeonName dungeon_name,
+    DungeonType dungeon_type) {
   std::ofstream out_stream;
-  out_stream.open(source_by_name_.at(dungeon_name), std::ios::binary | std::ios::out);
+  std::string file_name;
+  switch (dungeon_type) {
+    case DungeonType::kDefault:
+    case DungeonType::kEdited: {
+      file_name = source_by_name_edited_.at(dungeon_name);
+      break;
+    }
+    case DungeonType::kHandCreated: {
+      file_name = source_by_name_default_.at(dungeon_name);
+      break;
+    }
+  }
+  out_stream.open(file_name,
+                  std::ios::binary | std::ios::out);
   if (!out_stream) {
-    std::cerr << "Cannot open upload file!";
+    std::cerr << "Cannot open dungeon upload file!";
     exit(1);
   }
 
-  auto& dungeon = dungeons_.at(DungeonName::kDefaultHub);
+  auto& dungeon = dungeons_.at(dungeon_name);
 
   out_stream.write((char*) &dungeon->offset_x, sizeof(dungeon->offset_x));
   out_stream.write((char*) &dungeon->offset_y, sizeof(dungeon->offset_y));
-  out_stream.write((char*) &dungeon->entities_count, sizeof(dungeon->entities_count));
-  std::cout << "up_xycount " << dungeon->offset_x << ' ' << dungeon->offset_y << ' '
-  << dungeon->entities_count << '\n';
+  out_stream.write((char*) &dungeon->entities_count,
+                   sizeof(dungeon->entities_count));
+  // std::cout << "up_xycount " << dungeon->offset_x << ' ' << dungeon->offset_y << ' '
+  // << dungeon->entities_count << '\n';
 
   for (auto entity : dungeon->entities) {
     engine::ComponentSignature component_signature{
         coordinator_->GetComponentSignature(entity)};
     out_stream.write((char*) &component_signature,
         sizeof(engine::ComponentSignature));
+
     // std::string temp = component_signature.to_string();
-    std::cout << "up_cs " << component_signature.to_string() << '\n';
+    // std::cout << "up_cs " << component_signature.to_string() << '\n';
 
     if (coordinator_->HasComponent<PositionComponent>(entity)) {
       UploadComponent(out_stream, dungeon,
@@ -120,24 +147,26 @@ void Serializer::UploadDungeon(DungeonName dungeon_name) {
 
   out_stream.close();
   if(!out_stream.good()) {
-    std::cerr << "Error occurred at writing time!";
+    std::cerr << "Error occurred at dungeon writing time!";
     exit(1);
   }
 
-  qDebug() << "Upload finished";
+  // qDebug() << "Upload finished";
 }
 
 void Serializer::RemoveDungeon(DungeonName dungeon_name) {
   auto& removing_dungeon = dungeons_.at(dungeon_name);
   for (engine::Entity entity : removing_dungeon->entities) {
     coordinator_->DestroyEntity(entity);
+    qDebug() << "delete entity №" << entity;
   }
   dungeons_.erase(dungeon_name);
 }
 
 void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
-  qDebug() << "Download from json" << static_cast<int>(dungeon_name);
-  QFile input_file(json_source_by_name_.at(dungeon_name));
+  // qDebug() << "Download from json" << static_cast<int>(dungeon_name);
+
+  QFile input_file(source_by_name_hand_created_.at(dungeon_name));
   input_file.open(QFile::ReadOnly | QIODevice::Text);
   QByteArray bytes = input_file.readAll();
   QJsonDocument document = QJsonDocument::fromJson(bytes);
@@ -158,11 +187,10 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
     if (entity_object.contains("position_comp")) {  // position component
       QJsonObject position_comp_object{
           entity_object["position_comp"].toObject()};
-      PositionComponent position_component{{
-                                               static_cast<float>(
-                                                   position_comp_object["column"].toInt() * kTextureSize),
-                                               static_cast<float>(
-                                                   position_comp_object["row"].toInt() * kTextureSize)}};
+      PositionComponent position_component{
+          {static_cast<float>(position_comp_object["column"].toInt()
+          * kTextureSize), static_cast<float>(
+          position_comp_object["row"].toInt() * kTextureSize)}};
       coordinator_->AddComponent(new_entity, position_component);
     }
 
@@ -195,7 +223,7 @@ template<typename ComponentType>
 ComponentType Serializer::DownloadComponent(
     std::ifstream& stream,
     const std::unique_ptr<Dungeon>& dungeon) {
-  std::cout << "doun_default_comp\n";
+  // std::cout << "doun_default_comp\n";
   ComponentType component;
   stream.read((char*) &component, sizeof(ComponentType));
   return component;
@@ -205,7 +233,7 @@ template<typename ComponentType>
 void Serializer::UploadComponent(std::ofstream& stream,
                                  const std::unique_ptr<Dungeon>& dungeon,
                                  const ComponentType& component) {
-  std::cout << "up_default_comp\n";
+  // std::cout << "up_default_comp\n";
   stream.write((char*) &component, sizeof(ComponentType));
 }
 
@@ -229,7 +257,7 @@ PositionComponent Serializer::DownloadComponent<PositionComponent>(
   float y;
   stream.read((char*) &x, sizeof(float ));
   stream.read((char*) &y, sizeof(float ));
-  std::cout << "down_pos: " << x << ' ' << y << '\n';
+  // std::cout << "down_pos: " << x << ' ' << y << '\n';
   return PositionComponent{{x + dungeon->offset_x, y + dungeon->offset_y}};
 }
 
@@ -248,7 +276,7 @@ void Serializer::UploadComponent<PositionComponent>(
   float y{component.position.y() - dungeon->offset_y};
   stream.write((char*) &x, sizeof(float ));
   stream.write((char*) &y, sizeof(float ));
-  std::cout << "up_pos: " << x << ' ' << y << '\n';
+  // std::cout << "up_pos: " << x << ' ' << y << '\n';
 }
 
 
@@ -267,7 +295,7 @@ GraphicsItemComponent Serializer::DownloadComponent<GraphicsItemComponent>(
   item->setZValue(z_value);
   GraphicsItemComponent component{item, source_name};
 
-  std::cout << "down_graph " << source_name << ' ' << z_value << '\n';
+  // std::cout << "down_graph " << source_name << ' ' << z_value << '\n';
 
   return component;
 }
@@ -281,9 +309,7 @@ void Serializer::UploadComponent<GraphicsItemComponent>(
   int z_value{static_cast<int>(component.item->zValue())};
   stream.write((char*) component.source_name.data(), kMaxPathLength);
   stream.write((char*) &z_value, sizeof(int));
-  std::cout << "up_graph " << component.source_name.data() << ' ' << z_value << '\n';
+  // std::cout << "up_graph " << component.source_name.data() << ' ' << z_value << '\n';
 }
-
-//------------------------------------------------------------------------------
 
 } // core
