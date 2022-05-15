@@ -45,4 +45,8 @@ ComponentSignature EntityManager::GetComponentSignature(Entity entity) const {
   return component_signatures_[entity];
 }
 
+int EntityManager::GetEntityAliveCount() {
+  return used_entities_count_;
+}
+
 }  // namespace engine

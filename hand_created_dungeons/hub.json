@@ -1,0 +1,217 @@
+{
+	"offset_x": 0,
+	"offset_y": 0,
+	"entities": [
+		{
+			"position_comp": {
+				"row": 0,
+				"column": 0
+			},
+			"graphics_comp": {
+				"source": ":ground1.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": 1,
+				"column": 0
+			},
+			"graphics_comp": {
+				"source": ":ground1.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": -1,
+				"column": 0
+			},
+			"graphics_comp": {
+				"source": ":ground1.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": 0,
+				"column": 1
+			},
+			"graphics_comp": {
+				"source": ":ground1.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": 0,
+				"column": -1
+			},
+			"graphics_comp": {
+				"source": ":ground1.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": -1,
+				"column": -1
+			},
+			"graphics_comp": {
+				"source": ":ground2.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": -1,
+				"column": 1
+			},
+			"graphics_comp": {
+				"source": ":ground2.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": 1,
+				"column": 1
+			},
+			"graphics_comp": {
+				"source": ":ground2.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": 1,
+				"column": -1
+			},
+			"graphics_comp": {
+				"source": ":ground2.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": 2,
+				"column": -1
+			},
+			"graphics_comp": {
+				"source": ":ground2.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": 2,
+				"column": 0
+			},
+			"graphics_comp": {
+				"source": ":ground1.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": 2,
+				"column": 1
+			},
+			"graphics_comp": {
+				"source": ":ground2.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": -2,
+				"column": -1
+			},
+			"graphics_comp": {
+				"source": ":ground2.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": -2,
+				"column": 0
+			},
+			"graphics_comp": {
+				"source": ":ground1.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": -2,
+				"column": 1
+			},
+			"graphics_comp": {
+				"source": ":ground2.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": -1,
+				"column": 2
+			},
+			"graphics_comp": {
+				"source": ":ground2.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": 0,
+				"column": 2
+			},
+			"graphics_comp": {
+				"source": ":ground1.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": 1,
+				"column": 2
+			},
+			"graphics_comp": {
+				"source": ":ground2.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": -1,
+				"column": -2
+			},
+			"graphics_comp": {
+				"source": ":ground2.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": 0,
+				"column": -2
+			},
+			"graphics_comp": {
+				"source": ":ground1.jpg",
+				"z_value": 0
+			}
+		},
+		{
+			"position_comp": {
+				"row": 1,
+				"column": -2
+			},
+			"graphics_comp": {
+				"source": ":ground2.jpg",
+				"z_value": 0
+			}
+		}
+	]
+}
+

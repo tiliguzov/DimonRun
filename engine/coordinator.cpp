@@ -28,4 +28,9 @@ void Coordinator::SetComponentSignature(Entity entity,
   entity_manager_->SetComponentSignature(entity, new_signature);
 }
 
+int Coordinator::GetEntityAliveCount() {
+  return entity_manager_->GetEntityAliveCount();
+}
+
+
 }  // namespace engine

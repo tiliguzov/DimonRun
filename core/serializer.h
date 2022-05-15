@@ -1,9 +1,9 @@
 #pragma once
 
-#include "engine/coordinator.h"
 #include "components.h"
-#include "scene.h"
 #include "dungeon_name.h"
+#include "engine/coordinator.h"
+#include "scene.h"
 
 namespace core {
 
@@ -11,11 +11,9 @@ class Serializer {
  public:
   Serializer(engine::Coordinator* coordinator, Scene* scene);
 
-  void DownloadDungeon(DungeonName dungeon_name);
-  void UploadDungeon(DungeonName dungeon_name);
+  void DownloadDungeon(DungeonName dungeon_name, DungeonType dungeon_type);
+  void UploadDungeon(DungeonName dungeon_name, DungeonType dungeon_type);
   void RemoveDungeon(DungeonName dungeon_name);
-
-  void DownloadDungeonFromJson(DungeonName dungeon_name);
 
  private:
   struct Dungeon {
@@ -27,6 +25,8 @@ class Serializer {
   };
 
  private:
+  void DownloadDungeonFromJson(DungeonName dungeon_name);
+
   template<typename ComponentType>
   ComponentType DownloadComponent(
       std::ifstream& stream,
@@ -43,16 +43,23 @@ class Serializer {
   core::Scene* scene_;
 
   std::unordered_map<DungeonName, std::unique_ptr<Dungeon>> dungeons_;
-  std::unordered_map<DungeonName, std::string> source_by_name_{
-      {DungeonName::kDefaultHub, "default_hub.txt"},
-      {DungeonName::kEditedHub, "edited_hub.txt"}
+
+  // Paths to dungeon files
+  std::unordered_map<DungeonName, std::string> source_by_name_default_{
+      {DungeonName::kHub, "default_hub"}
   };
 
-  std::unordered_map<DungeonName, QString> json_source_by_name_{
-      // {DungeonName::kDefaultHub, ":dungeons/default_hub_example.json"}
-      {DungeonName::kDefaultHub, ":dungeons/default_hub.json"}
+  std::unordered_map<DungeonName, std::string> source_by_name_edited_{
+      {DungeonName::kHub, "edited_hub"}
   };
+
+  std::unordered_map<DungeonName, QString> source_by_name_hand_created_{
+      {DungeonName::kHub, ":hand_created_dungeons/hub.json"}
+  };
+
 };
+
+//----------- Position Component Specialization --------------------------------
 
 template<>
 PositionComponent Serializer::DownloadComponent<PositionComponent>(
@@ -60,21 +67,22 @@ PositionComponent Serializer::DownloadComponent<PositionComponent>(
     const std::unique_ptr<Dungeon>& dungeon);
 
 template<>
-GraphicsItemComponent Serializer::DownloadComponent<GraphicsItemComponent>(
-    std::ifstream& stream,
-    const std::unique_ptr<Dungeon>&);
-
-template<>
 void Serializer::UploadComponent<PositionComponent>(
     std::ofstream& stream,
     const std::unique_ptr<Dungeon>& dungeon,
     const PositionComponent& component);
+
+//----------- Graphics Item Component Specialization ---------------------------
+
+template<>
+GraphicsItemComponent Serializer::DownloadComponent<GraphicsItemComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&);
 
 template<>
 void Serializer::UploadComponent<GraphicsItemComponent>(
     std::ofstream& stream,
     const std::unique_ptr<Dungeon>&,
     const GraphicsItemComponent& component);
-
 
 } // core
