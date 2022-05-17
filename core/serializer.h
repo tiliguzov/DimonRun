@@ -54,7 +54,9 @@ class Serializer {
   };
 
   std::unordered_map<DungeonName, QString> source_by_name_hand_created_{
+      // {DungeonName::kHub, ":hand_created_dungeons/hub_mini.json"}
       {DungeonName::kHub, ":hand_created_dungeons/hub.json"}
+      // {DungeonName::kHub, ":hand_created_dungeons/hub_mid.json"}
   };
 
 };

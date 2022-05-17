@@ -5,5 +5,7 @@
         <file>ground2.jpg</file>
 
         <file>hand_created_dungeons/hub.json</file>
+        <file>hand_created_dungeons/hub_mini.json</file>
+        <file>hand_created_dungeons/hub_mid.json</file>
     </qresource>
 </RCC>
