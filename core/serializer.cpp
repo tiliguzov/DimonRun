@@ -53,16 +53,12 @@ void Serializer::DownloadDungeon(
 
   for (int i = 0; i < new_dungeon->entities_count; i++) {
     engine::Entity new_entity = coordinator_->CreateEntity();
-    qDebug() << "create entity №" << new_entity;
     new_dungeon->entities.push_back(new_entity);
 
     engine::ComponentSignature component_signature;
     in_stream.read((char *) &component_signature,
                    sizeof(engine::ComponentSignature));
     coordinator_->SetComponentSignature(new_entity, component_signature);
-
-    // std::cout << "down_cs " << component_signature.to_string() << '\n';
-
 
     if (coordinator_->HasComponent<PositionComponent>(new_entity)) {
       coordinator_->AddComponent(
@@ -79,6 +75,11 @@ void Serializer::DownloadDungeon(
           new_entity,
           DownloadComponent<MovementComponent>(in_stream, new_dungeon));
     }
+    if (coordinator_->HasComponent<AnimationComponent>(new_entity)) {
+      coordinator_->AddComponent(
+          new_entity,
+          DownloadComponent<AnimationComponent>(in_stream, new_dungeon));
+    }
   }
 
   in_stream.close();
@@ -86,8 +87,6 @@ void Serializer::DownloadDungeon(
     std::cerr << "Error occurred at dungeon reading time!";
     exit(1);
   }
-
-  // qDebug() << "Download finished";
 }
 
 void Serializer::UploadDungeon(
@@ -119,17 +118,12 @@ void Serializer::UploadDungeon(
   out_stream.write((char*) &dungeon->offset_y, sizeof(dungeon->offset_y));
   out_stream.write((char*) &dungeon->entities_count,
                    sizeof(dungeon->entities_count));
-  // std::cout << "up_xycount " << dungeon->offset_x << ' ' << dungeon->offset_y << ' '
-  // << dungeon->entities_count << '\n';
 
   for (auto entity : dungeon->entities) {
     engine::ComponentSignature component_signature{
         coordinator_->GetComponentSignature(entity)};
     out_stream.write((char*) &component_signature,
         sizeof(engine::ComponentSignature));
-
-    // std::string temp = component_signature.to_string();
-    // std::cout << "up_cs " << component_signature.to_string() << '\n';
 
     if (coordinator_->HasComponent<PositionComponent>(entity)) {
       UploadComponent(out_stream, dungeon,
@@ -143,6 +137,10 @@ void Serializer::UploadDungeon(
       UploadComponent(out_stream, dungeon,
           coordinator_->GetComponent<MovementComponent>(entity));
     }
+    if (coordinator_->HasComponent<AnimationComponent>(entity)) {
+      UploadComponent(out_stream, dungeon,
+          coordinator_->GetComponent<AnimationComponent>(entity));
+    }
   }
 
   out_stream.close();
@@ -150,22 +148,17 @@ void Serializer::UploadDungeon(
     std::cerr << "Error occurred at dungeon writing time!";
     exit(1);
   }
-
-  // qDebug() << "Upload finished";
 }
 
 void Serializer::RemoveDungeon(DungeonName dungeon_name) {
   auto& removing_dungeon = dungeons_.at(dungeon_name);
   for (engine::Entity entity : removing_dungeon->entities) {
     coordinator_->DestroyEntity(entity);
-    qDebug() << "delete entity №" << entity;
   }
   dungeons_.erase(dungeon_name);
 }
 
 void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
-  // qDebug() << "Download from json" << static_cast<int>(dungeon_name);
-
   QFile input_file(source_by_name_hand_created_.at(dungeon_name));
   input_file.open(QFile::ReadOnly | QIODevice::Text);
   QByteArray bytes = input_file.readAll();
@@ -214,6 +207,15 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
           static_cast<float>(movement_comp_object["current_speed"].toInt())};
       coordinator_->AddComponent(new_entity, movement_component);
     }
+
+    if (entity_object.contains("animation_comp")) {  // animation component
+      QJsonObject animation_comp_object{
+          entity_object["animation_comp"].toObject()};
+      QString source_name{animation_comp_object["source"].toString()};
+      coordinator_->AddComponent(new_entity,
+          AnimationComponent{AnimationPack(source_name.toStdString()),
+          source_name.toStdString()});
+    }
   }
 }
 
@@ -223,7 +225,6 @@ template<typename ComponentType>
 ComponentType Serializer::DownloadComponent(
     std::ifstream& stream,
     const std::unique_ptr<Dungeon>& dungeon) {
-  // std::cout << "doun_default_comp\n";
   ComponentType component;
   stream.read((char*) &component, sizeof(ComponentType));
   return component;
@@ -233,7 +234,6 @@ template<typename ComponentType>
 void Serializer::UploadComponent(std::ofstream& stream,
                                  const std::unique_ptr<Dungeon>& dungeon,
                                  const ComponentType& component) {
-  // std::cout << "up_default_comp\n";
   stream.write((char*) &component, sizeof(ComponentType));
 }
 
@@ -243,21 +243,10 @@ template<>
 PositionComponent Serializer::DownloadComponent<PositionComponent>(
     std::ifstream& stream,
     const std::unique_ptr<Dungeon>& dungeon) {
-  // PositionComponent position_component;
-  // stream.read((char*) &position_component, sizeof(PositionComponent));
-  // std::cout << "down_pos: " << position_component.position.x() << ' '
-  // << position_component.position.y() << '\n';
-  // position_component.position.setX(
-  //     position_component.position.x() + dungeon->offset_x);
-  // position_component.position.setY(
-  //     position_component.position.y() + dungeon->offset_y);
-  // return position_component;
-
   float x;
   float y;
   stream.read((char*) &x, sizeof(float ));
   stream.read((char*) &y, sizeof(float ));
-  // std::cout << "down_pos: " << x << ' ' << y << '\n';
   return PositionComponent{{x + dungeon->offset_x, y + dungeon->offset_y}};
 }
 
@@ -266,17 +255,10 @@ void Serializer::UploadComponent<PositionComponent>(
     std::ofstream& stream,
     const std::unique_ptr<Dungeon>& dungeon,
     const PositionComponent& component) {
-  // PositionComponent position_component{
-  //     {component.position.x() - dungeon->offset_x,
-  //      component.position.y() - dungeon->offset_y}};
-  // stream.write((char*) &position_component, sizeof(PositionComponent));
-  // std::cout << "up_pos: " << position_component.position.x() << ' '
-  // << position_component.position.y() << '\n';
   float x{component.position.x() - dungeon->offset_x};
   float y{component.position.y() - dungeon->offset_y};
   stream.write((char*) &x, sizeof(float ));
   stream.write((char*) &y, sizeof(float ));
-  // std::cout << "up_pos: " << x << ' ' << y << '\n';
 }
 
 
@@ -295,8 +277,6 @@ GraphicsItemComponent Serializer::DownloadComponent<GraphicsItemComponent>(
   item->setZValue(z_value);
   GraphicsItemComponent component{item, source_name};
 
-  // std::cout << "down_graph " << source_name << ' ' << z_value << '\n';
-
   return component;
 }
 
@@ -305,11 +285,30 @@ void Serializer::UploadComponent<GraphicsItemComponent>(
     std::ofstream& stream,
     const std::unique_ptr<Dungeon>&,
     const GraphicsItemComponent& component) {
-  // const char* file_name{component.source_name.data()};
   int z_value{static_cast<int>(component.item->zValue())};
   stream.write((char*) component.source_name.data(), kMaxPathLength);
   stream.write((char*) &z_value, sizeof(int));
-  // std::cout << "up_graph " << component.source_name.data() << ' ' << z_value << '\n';
+}
+
+
+//----------- Animation Component Specialization ---------------------------
+
+template<>
+AnimationComponent Serializer::DownloadComponent<AnimationComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&) {
+  char source_name[kMaxPathLength];
+  stream.read((char*) &source_name, kMaxPathLength);
+
+  return AnimationComponent{AnimationPack(source_name), source_name};
+}
+
+template<>
+void Serializer::UploadComponent<AnimationComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const AnimationComponent& component) {
+  stream.write((char*) component.source_name.data(), kMaxPathLength);
 }
 
 } // core

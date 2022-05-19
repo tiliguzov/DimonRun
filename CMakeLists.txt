@@ -34,6 +34,7 @@ add_executable(DimonRun
 
         resources/hero.qrc
         resources/background.qrc
+        resources/hand_created_dungeons.qrc
 
         systems/movement_system.cpp
         systems/joystick_system.cpp

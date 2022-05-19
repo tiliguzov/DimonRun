@@ -1,5 +1,6 @@
 <RCC>
     <qresource>
-        <file>textures/background/ground.jpg</file>
+        <file alias = "ground1.jpg">textures/background/ground1.jpg</file>
+        <file alias = "ground2.jpg">textures/background/ground2.jpg</file>
     </qresource>
 </RCC>

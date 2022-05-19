@@ -89,7 +89,8 @@ QGraphicsItem* Connector::CreateHero(Scene* scene) {
   item->setZValue(kPlayerZIndex);
   coordinator_->AddComponent(hero, GraphicsItemComponent{item});
   coordinator_->AddComponent(hero,
-          AnimationComponent{AnimationPack(":animations/hero.json")});
+          AnimationComponent{AnimationPack(":animations/hero.json"),
+                             ":animations/hero.json"});
   return item;
 }
 
@@ -101,9 +102,9 @@ void Connector::StartGame(Scene* scene) {
   // serializer_->UploadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
   // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kDefault);
   // qDebug() << "entities after hub downloaded:" << coordinator_->GetEntityAliveCount();
-  serializer_->RemoveDungeon(DungeonName::kHub);
-  qDebug() << "entities after hub removed:" << coordinator_->GetEntityAliveCount();
-  scene->GetSceneView()->scale(2.5, 2.5);
+  // serializer_->RemoveDungeon(DungeonName::kHub);
+  // qDebug() << "entities after hub removed:" << coordinator_->GetEntityAliveCount();
+  // scene->GetSceneView()->scale(2.5, 2.5);
 }
 
 }  // namespace core

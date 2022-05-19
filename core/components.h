@@ -31,6 +31,8 @@ enum class HorizontalDirection {
 
 struct AnimationComponent {
   AnimationPack frames;
+  std::string source_name;
+
   HorizontalDirection direction{HorizontalDirection::kRight};
   MovementType move_type{MovementType::kStaticInAir};
 

@@ -54,11 +54,8 @@ class Serializer {
   };
 
   std::unordered_map<DungeonName, QString> source_by_name_hand_created_{
-      // {DungeonName::kHub, ":hand_created_dungeons/hub_mini.json"}
-      {DungeonName::kHub, ":hand_created_dungeons/hub.json"}
-      // {DungeonName::kHub, ":hand_created_dungeons/hub_mid.json"}
+      {DungeonName::kHub, ":hub.json"}
   };
-
 };
 
 //----------- Position Component Specialization --------------------------------
@@ -86,5 +83,18 @@ void Serializer::UploadComponent<GraphicsItemComponent>(
     std::ofstream& stream,
     const std::unique_ptr<Dungeon>&,
     const GraphicsItemComponent& component);
+
+//----------- Animation Component Specialization ---------------------------
+
+template<>
+AnimationComponent Serializer::DownloadComponent<AnimationComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&);
+
+template<>
+void Serializer::UploadComponent<AnimationComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const AnimationComponent& component);
 
 } // core
