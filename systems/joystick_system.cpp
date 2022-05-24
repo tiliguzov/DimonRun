@@ -1,5 +1,4 @@
 #include "joystick_system.h"
-#include <iostream>
 
 namespace systems {
 

@@ -1,12 +1,16 @@
-#include <iostream>
 #include "animation_system.h"
+
+#include <iostream>
+
 #include "core/components.h"
 #include "core/constants.h"
 
-systems::AnimationSystem::AnimationSystem(engine::Coordinator* coordinator)
-      : coordinator_(coordinator), time_(0) {}
+namespace systems {
 
-void systems::AnimationSystem::Update() {
+AnimationSystem::AnimationSystem(engine::Coordinator* coordinator)
+    : coordinator_(coordinator), time_(0) {}
+
+void AnimationSystem::Update() {
   time_ += core::kTickTime;
 
   for (engine::Entity entity : entities_) {
@@ -27,12 +31,14 @@ void systems::AnimationSystem::Update() {
     }
   }
 }
-bool systems::AnimationSystem::NeedChangeFrame(
-          core::AnimationComponent* anim_comp,
-          int32_t time) {
+bool AnimationSystem::NeedChangeFrame(
+    core::AnimationComponent* anim_comp,
+    int32_t time) {
   if (anim_comp->need_change_frame) {
     anim_comp->need_change_frame = false;
     return true;
   }
   return (time % anim_comp->frames.GetFrameDuration()) >= core::kTickTime;
 }
+
+}  // namespace systems

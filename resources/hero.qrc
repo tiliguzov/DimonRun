@@ -1,19 +1,19 @@
 <RCC>
     <qresource>
-        <file>textures/hero/Hero_static_in_air_00.png</file>
-        <file>textures/hero/Hero_static_in_air_01.png</file>
+        <file alias = "Hero_static_in_air_00.png">textures/hero/Hero_static_in_air_00.png</file>
+        <file alias = "Hero_static_in_air_01.png">textures/hero/Hero_static_in_air_01.png</file>
 
-        <file>textures/hero/Hero_flies_up_00.png</file>
-        <file>textures/hero/Hero_flies_up_01.png</file>
+        <file alias = "Hero_flies_up_00.png">textures/hero/Hero_flies_up_00.png</file>
+        <file alias = "Hero_flies_up_01.png">textures/hero/Hero_flies_up_01.png</file>
 
-        <file>textures/hero/Hero_flies_down_00.png</file>
-        <file>textures/hero/Hero_flies_down_01.png</file>
+        <file alias = "Hero_flies_down_00.png">textures/hero/Hero_flies_down_00.png</file>
+        <file alias = "Hero_flies_down_01.png">textures/hero/Hero_flies_down_01.png</file>
 
-        <file>textures/hero/Hero_flies_horizontal_00.png</file>
-        <file>textures/hero/Hero_flies_horizontal_01.png</file>
+        <file alias = "Hero_flies_horizontal_00.png">textures/hero/Hero_flies_horizontal_00.png</file>
+        <file alias = "Hero_flies_horizontal_01.png">textures/hero/Hero_flies_horizontal_01.png</file>
     </qresource>
 
     <qresource>
-        <file>animations/hero.json</file>
+        <file alias = "hero.json">animations/hero.json</file>
     </qresource>
 </RCC>

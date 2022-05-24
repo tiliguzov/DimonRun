@@ -2,5 +2,12 @@
     <qresource>
         <file alias = "ground1.jpg">textures/background/ground1.jpg</file>
         <file alias = "ground2.jpg">textures/background/ground2.jpg</file>
+
+        <file alias = "back_wall_and_torch_00.png">textures/background/back_wall_and_torch_00.png</file>
+        <file alias = "back_wall_and_torch_01.png">textures/background/back_wall_and_torch_01.png</file>
+        <file alias = "back_wall_and_torch_02.png">textures/background/back_wall_and_torch_02.png</file>
+        <file alias = "back_wall_and_torch_03.png">textures/background/back_wall_and_torch_03.png</file>
+
+        <file alias = "back_wall_torch.json">animations/back_wall_torch.json</file>
     </qresource>
 </RCC>

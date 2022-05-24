@@ -5,6 +5,11 @@
 #include "engine/coordinator.h"
 #include "scene.h"
 
+#include <memory>
+#include <string>
+#include <unordered_map>
+#include <vector>
+
 namespace core {
 
 class Serializer {
@@ -97,4 +102,4 @@ void Serializer::UploadComponent<AnimationComponent>(
     const std::unique_ptr<Dungeon>&,
     const AnimationComponent& component);
 
-} // core
+}  // namespace core

@@ -1,7 +1,5 @@
 #pragma  once
 
-#include <string>
-
 namespace core {
 
 const int kTickTime = 5;
@@ -16,8 +14,8 @@ const int kLeftUpYCoordinate = -10000;
 const int kWidth = 20000;
 const int kHeight = 20000;
 
-// Number of bytes occupied by a char array containing the image file name for
-// the GraphicsItemComponent (from the executable file)
+// Number of bytes occupied by a char array containing the name for every
+// source file in binary file of dungeon
 const int kMaxPathLength = 100;
 
 }  // namespace core

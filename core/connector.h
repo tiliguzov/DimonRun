@@ -1,9 +1,9 @@
 #pragma once
 
+#include <QKeyEvent>
+
 #include <memory>
 #include <vector>
-
-#include <QKeyEvent>
 
 #include "core/keyboard.h"
 #include "core/scene.h"

@@ -208,8 +208,13 @@
 				"column": -2
 			},
 			"graphics_comp": {
-				"source": ":ground2.jpg",
+				"source": ":back_wall_and_torch_00.png",
 				"z_value": 0
+			},
+			"animation_comp": {
+				"source": ":back_wall_torch.json",
+				"direction": 1,
+				"move_type": 4
 			}
 		}
 	]
