@@ -6,7 +6,6 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_PREFIX_PATH "~/Proga_second_sem/Qt/6.2.3/gcc_64/")
 
 find_package(Qt6 COMPONENTS
         Core
@@ -22,7 +21,6 @@ add_executable(DimonRun
         core/keyboard.cpp
         core/animation_pack.cpp
         core/serializer.cpp
-        core/dungeon_name.h
 
         engine/component_manager.cpp
         engine/coordinator.cpp

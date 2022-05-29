@@ -31,6 +31,24 @@ class Serializer {
 
  private:
   void DownloadDungeonFromJson(DungeonName dungeon_name);
+  template<typename ComponentType>
+  void DownloadCompFromJson(
+      engine::Entity entity,
+      const std::unique_ptr<Dungeon>& dungeon,
+      const QJsonObject& entity_object);
+
+
+  template<typename ComponentType>
+  void DownloadCompIfNecessary(
+      engine::Entity entity,
+      const std::unique_ptr<Dungeon>& dungeon,
+      std::ifstream& stream);
+
+  template<typename ComponentType>
+  void UploadCompIfNecessary(
+      engine::Entity entity,
+      const std::unique_ptr<Dungeon>& dungeon,
+      std::ofstream& stream);
 
   template<typename ComponentType>
   ComponentType DownloadComponent(
@@ -48,22 +66,14 @@ class Serializer {
   core::Scene* scene_;
 
   std::unordered_map<DungeonName, std::unique_ptr<Dungeon>> dungeons_;
-
-  // Paths to dungeon files
-  std::unordered_map<DungeonName, std::string> source_by_name_default_{
-      {DungeonName::kHub, "default_hub"}
-  };
-
-  std::unordered_map<DungeonName, std::string> source_by_name_edited_{
-      {DungeonName::kHub, "edited_hub"}
-  };
-
-  std::unordered_map<DungeonName, QString> source_by_name_hand_created_{
-      {DungeonName::kHub, ":hub.json"}
-  };
 };
 
 //----------- Position Component Specialization --------------------------------
+template<>
+void Serializer::DownloadCompFromJson<PositionComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>& dungeon,
+    const QJsonObject& entity_object);
 
 template<>
 PositionComponent Serializer::DownloadComponent<PositionComponent>(
@@ -77,6 +87,11 @@ void Serializer::UploadComponent<PositionComponent>(
     const PositionComponent& component);
 
 //----------- Graphics Item Component Specialization ---------------------------
+template<>
+void Serializer::DownloadCompFromJson<GraphicsItemComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>& dungeon,
+    const QJsonObject& entity_object);
 
 template<>
 GraphicsItemComponent Serializer::DownloadComponent<GraphicsItemComponent>(
@@ -89,7 +104,19 @@ void Serializer::UploadComponent<GraphicsItemComponent>(
     const std::unique_ptr<Dungeon>&,
     const GraphicsItemComponent& component);
 
+//----------- Movement Component Specialization ---------------------------
+template<>
+void Serializer::DownloadCompFromJson<MovementComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>& dungeon,
+    const QJsonObject& entity_object);
+
 //----------- Animation Component Specialization ---------------------------
+template<>
+void Serializer::DownloadCompFromJson<AnimationComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>& dungeon,
+    const QJsonObject& entity_object);
 
 template<>
 AnimationComponent Serializer::DownloadComponent<AnimationComponent>(
