@@ -1,8 +1,8 @@
 #pragma once
 
+#include "core/components.h"
 #include "engine/coordinator.h"
 #include "engine/system.h"
-#include "core/components.h"
 
 namespace systems {
 

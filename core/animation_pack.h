@@ -3,17 +3,24 @@
 #include <QPixmap>
 
 #include <array>
-#include <vector>
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 namespace core {
+
+//  the direction hero face to, left or right
+enum class HorizontalDirection {
+  kLeft,
+  kRight
+};
 
 enum class MovementType {
   kStaticInAir,
   kFliesUp,
   kFliesDown,
-  kFliesHorizontal
+  kFliesHorizontal,
+  kTorchBurning
 };
 
 class AnimationPack {
@@ -34,7 +41,8 @@ class AnimationPack {
       {{"static_in_air", MovementType::kStaticInAir},
        {"flies_up", MovementType::kFliesUp},
        {"flies_down", MovementType::kFliesDown},
-       {"flies_horizontal", MovementType::kFliesHorizontal}};
+       {"flies_horizontal", MovementType::kFliesHorizontal},
+       {"torch_burning", MovementType::kTorchBurning}};
 };
 
 }  // namespace core

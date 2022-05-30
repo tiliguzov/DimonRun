@@ -15,9 +15,12 @@ find_package(Qt6 COMPONENTS
 
 add_executable(DimonRun
         core/connector.cpp
+        core/dungeon_name.h
         core/scene.cpp
+        core/serializer.cpp
         core/keyboard.cpp
         core/animation_pack.cpp
+        core/serializer.cpp
 
         engine/component_manager.cpp
         engine/coordinator.cpp
@@ -29,12 +32,12 @@ add_executable(DimonRun
 
         resources/hero.qrc
         resources/background.qrc
+        resources/hand_created_dungeons.qrc
 
         systems/movement_system.cpp
         systems/joystick_system.cpp
         systems/painting_system.cpp
         systems/animation_system.cpp)
-
 
 target_link_libraries(DimonRun
         Qt::Core

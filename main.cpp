@@ -1,5 +1,4 @@
 #include <QApplication>
-#include <QPushButton>
 
 #include "core/connector.h"
 #include "core/scene.h"

@@ -72,7 +72,7 @@ void ComponentArray<ComponentType>::DeleteComponent(Entity entity_of_deleted) {
   entity_by_index_[index_of_deleted] = entity_of_replaced;
   index_by_entity_[entity_of_replaced] = index_of_deleted;
 
-  entity_by_index_.erase(index_of_deleted);
+  entity_by_index_.erase(index_of_replaced);
   index_by_entity_.erase(entity_of_deleted);
   size_--;
 }

@@ -2,7 +2,6 @@
 
 #include <memory>
 
-#include "constants.h"
 #include "components.h"
 #include "engine/coordinator.h"
 #include "systems/joystick_system.h"
@@ -13,7 +12,7 @@
 namespace core {
 
 Connector::Connector() : coordinator_(std::make_unique<engine::Coordinator>()),
-                             keyboard_(std::make_unique<core::Keyboard>()) {
+                         keyboard_(std::make_unique<Keyboard>()) {
   RegisterComponents();
   RegisterSystems();
 }
@@ -80,33 +79,44 @@ void Connector::RegisterComponents() {
 
 QGraphicsItem* Connector::CreateHero(Scene* scene) {
   engine::Entity hero = coordinator_->CreateEntity();
-  coordinator_->AddComponent(hero, PositionComponent{{0, 0}});
+  coordinator_->AddComponent(hero, PositionComponent{{50, 50}});
   coordinator_->AddComponent(hero, MovementComponent{{0, 0}, 1});
   auto item = scene->GetScene()->addPixmap(
-      QPixmap(":textures/hero/Hero_static_in_air_00.png"));
-  // z value for hero
+      QPixmap(":Hero_static_in_air_00.png"));
   item->setZValue(kPlayerZIndex);
   coordinator_->AddComponent(hero, GraphicsItemComponent{item});
-  coordinator_->AddComponent(hero,
-          AnimationComponent{AnimationPack(":animations/hero.json")});
+  coordinator_->AddComponent(
+      hero,
+      AnimationComponent{AnimationPack(":hero.json"),
+                         ":hero.json",
+                         HorizontalDirection::kRight,
+                         MovementType::kStaticInAir});
   return item;
 }
 
 // example of interacting with engine
 void Connector::StartGame(Scene* scene) {
-  const int test_scene_size_ = 2;
-  for (int i = -test_scene_size_; i <= test_scene_size_; ++i) {
-    for (int j = -test_scene_size_; j <= test_scene_size_; ++j) {
-      engine::Entity entity = coordinator_->CreateEntity();
-      float x = i * core::kTextureSize;
-      float y = j * core::kTextureSize;
-      coordinator_->AddComponent(entity, PositionComponent{{x, y}});
-      auto item = scene->GetScene()->addPixmap(
-          QPixmap(":textures/background/ground.jpg"));
-      item->setZValue(kBackgroundZIndex);  // z value for background
-      coordinator_->AddComponent(entity, GraphicsItemComponent{item});
-    }
-  }
+  serializer_ = std::make_unique<Serializer>(coordinator_.get(), scene);
+
+  // [before game release] Download from json file to game
+  // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
+
+  // [before game release] Upload dungeon from game to default binary file
+  // serializer_->UploadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
+
+  // Download default dungeon from binary file to game
+  serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kDefault);
+
+  // Download edited dungeon from binary file to game
+  // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kEdited);
+
+  // Upload dungeon from game to binary file of edited dungeon
+  // serializer_->UploadDungeon(DungeonName::kHub, DungeonType::kDefault);
+  // serializer_->UploadDungeon(DungeonName::kHub, DungeonType::kEdited);
+
+  // Removes dungeon from game
+  // serializer_->RemoveDungeon(DungeonName::kHub);
+
   scene->GetSceneView()->scale(2.5, 2.5);
 }
 

@@ -1,7 +1,5 @@
 #include "painting_system.h"
 
-#include <iostream>
-
 #include "core/components.h"
 
 namespace  systems {

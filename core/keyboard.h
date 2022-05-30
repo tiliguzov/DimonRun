@@ -1,9 +1,9 @@
 #pragma once
 
+#include <QObject>
+
 #include <unordered_map>
 #include <vector>
-
-#include <QObject>
 
 namespace core {
 

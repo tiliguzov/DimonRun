@@ -1,0 +1,5 @@
+<RCC>
+    <qresource>
+        <file alias = "hub.json">hand_created_dungeons/hub.json</file>
+    </qresource>
+</RCC>

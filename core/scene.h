@@ -1,12 +1,12 @@
 #pragma once
 
-#include <memory>
-
+#include <QGraphicsItem>
+#include <QGraphicsScene>
+#include <QGraphicsView>
 #include <QTimerEvent>
 #include <QWidget>
-#include <QGraphicsScene>
-#include <QGraphicsItem>
-#include <QGraphicsView>
+
+#include <memory>
 
 #include "engine/coordinator.h"
 

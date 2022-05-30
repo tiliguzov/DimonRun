@@ -16,6 +16,8 @@ class EntityManager {
       Entity entity, ComponentSignature new_component_signature);
   ComponentSignature GetComponentSignature(Entity entity) const;
 
+  int GetEntityAliveCount();
+
  private:
   std::array<ComponentSignature, kMaxEntities> component_signatures_;
   std::queue<Entity> available_entities_;
