@@ -1,0 +1,11 @@
+{
+  "animations": {
+    "torch_burning": [
+      ":back_wall_and_torch_00.png",
+      ":back_wall_and_torch_01.png",
+      ":back_wall_and_torch_02.png",
+      ":back_wall_and_torch_03.png"
+    ]
+  },
+  "frame_duration": 100
+}
