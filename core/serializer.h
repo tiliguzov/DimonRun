@@ -62,6 +62,7 @@ class Serializer {
       const ComponentType& component);
 
   void RemoveEntityFromScene(engine::Entity entity);
+
  private:
   engine::Coordinator* coordinator_;
   core::Scene* scene_;
