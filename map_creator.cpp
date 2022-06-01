@@ -57,7 +57,12 @@ MapCreator::MapCreator(QWidget* parent, MCConnector* connector) :
   });
 
   connect(download_button_, &QPushButton::clicked, this, [&] {
-
+    auto file_name = QFileDialog::getOpenFileName(this);
+    if (!file_name.endsWith(".json", Qt::CaseSensitive)) {
+      return;
+    }
+    QJsonObject file = GetJsonObject(file_name.toStdString());
+    ReadFromJson(file);
   });
 }
 
@@ -132,11 +137,12 @@ void MapCreator::CreateGrid() {
 
 void MapCreator::mousePressEvent(QMouseEvent* event) {
   if (event->button() == Qt::RightButton && scene_view_->underMouse()) {
-    DeleteTexture();
+    DeleteTexture(MousePositionOnSceneView(), layer_);
   }
   if (event->button() == Qt::LeftButton &&
           new_texture_on && scene_view_->underMouse()) {
-    AddTexture();
+    AddTexture(MousePositionOnSceneView(), layer_,
+               source_[list_of_textures_[layer_]->currentItem()]);
   }
 }
 
@@ -147,34 +153,31 @@ void MapCreator::timerEvent(QTimerEvent* event) {
   connector_->OnTick();
 }
 
-void MapCreator::AddTexture() {
-  DeleteTexture();
+void MapCreator::AddTexture(QPointF point, int layer, const std::string &source) {
+  DeleteTexture(point, layer);
 
   auto coordinator = connector_->GetCoordinator();
 
   engine::Entity texture_entity = coordinator->CreateEntity();
-  auto point = MousePositionOnSceneView();
   coordinator->AddComponent(texture_entity,
             core::PositionComponent{{static_cast<float>(point.x()),
                                      static_cast<float>(point.y())}});
   auto pixmap_item = scene_->addPixmap(new_texture_);
   pixmap_item->setPos(point);
-  pixmap_item->setZValue(layer_);
+  pixmap_item->setZValue(layer);
   coordinator->AddComponent(texture_entity
-                            , core::GraphicsItemComponent{pixmap_item,
-                            source_[list_of_textures_[layer_]->currentItem()]});
+                            , core::GraphicsItemComponent{pixmap_item, source});
   items_.push_back(texture_entity);
   scale_of_items_[texture_entity] = new_texture_scale_;
   rotate_of_items_[texture_entity] = new_texture_rotate_;
 }
 
-void MapCreator::DeleteTexture() {
+void MapCreator::DeleteTexture(QPointF point, int layer) {
   auto coordinator = connector_->GetCoordinator();
-  auto pos = MousePositionOnSceneView();
   for (int i = 0; i < items_.size(); ++i) {
     auto entity = items_[i];
     auto item = coordinator->GetComponent<core::GraphicsItemComponent>(entity).item;
-    if (item->pos() == pos && item->zValue() == layer_) {
+    if (item->pos() == point && item->zValue() == layer) {
       coordinator->DestroyEntity(entity);
       items_.erase(items_.begin() + i);
       scene_->removeItem(item);
@@ -323,4 +326,25 @@ QJsonDocument MapCreator::AllEntities() {
   result["entities"] = entities;
   QJsonDocument res(result);
   return res;
+}
+
+void MapCreator::ReadFromJson(const QJsonObject& file) {
+  auto entities = file["entities"].toArray();
+  for (auto entity : entities) {
+    QPoint pos;
+    auto position_comp = entity.toObject()["position_comp"].toObject();
+    auto graphics_comp = entity.toObject()["graphics_comp"].toObject();
+    pos.setX(position_comp["column"].toInt() * 50);
+    pos.setY(position_comp["row"].toInt() * 50);
+    int layer = graphics_comp["z_value"].toInt();
+    new_texture_scale_ = {graphics_comp["scale_x"].toInt(), graphics_comp["scale_y"].toInt()};
+    new_texture_rotate_ = {graphics_comp["rotate"].toInt()};
+    auto source = graphics_comp["source"].toString();
+    new_texture_ = QPixmap(source);
+    new_texture_ = new_texture_.transformed(QTransform().scale(
+        new_texture_scale_.first, new_texture_scale_.second));
+    new_texture_ = new_texture_.transformed(QTransform()
+        .rotate(new_texture_rotate_));
+    AddTexture(pos, layer, source.toStdString());
+  }
 }

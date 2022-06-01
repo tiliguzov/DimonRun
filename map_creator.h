@@ -23,11 +23,12 @@ class MapCreator : public QWidget {
   void CreateDefaultScene();
   void LoadTextures();
   void CreateGrid();
-  void AddTexture();
-  void DeleteTexture();
+  void AddTexture(QPointF point, int layer, const std::string &source);
+  void DeleteTexture(QPointF point, int layer);
   void ChangeLayer();
   void ChooseItem();
   void SetDefaultScaleAndRotate();
+  void ReadFromJson(const QJsonObject& file);
   QJsonDocument AllEntities();
   QPointF MousePositionOnSceneView();
   static QJsonObject GetJsonObject(const std::string& path_to_json);

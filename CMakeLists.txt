@@ -53,7 +53,6 @@ add_executable(MapCreator
         core/components.h
         core/constants.h
         core/animation_pack.cpp
-        core/serializer.cpp
 
         resources/hero.qrc
         resources/background.qrc
