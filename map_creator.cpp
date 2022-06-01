@@ -1,5 +1,6 @@
 #include "map_creator.h"
 #include "core/components.h"
+#include "core/serializer.h"
 
 #include <QListWidgetItem>
 #include <QIcon>
@@ -12,6 +13,7 @@
 #include <QFont>
 #include <iostream>
 #include <string>
+#include <QFileDialog>
 
 MapCreator::MapCreator(QWidget* parent, MCConnector* connector) :
       QWidget(parent),
@@ -19,27 +21,13 @@ MapCreator::MapCreator(QWidget* parent, MCConnector* connector) :
       timer_id_(startTimer(5)),
       scene_(new QGraphicsScene(this)),
       scene_view_(new QGraphicsView(this)),
-      layer_button_(new QPushButton("0", this)) {
-  for (auto & list_of_texture : list_of_textures_) {
-    list_of_texture = new QListWidget(this);
-    list_of_texture->setGeometry(800, 0, 200, 600);
-    list_of_texture->setIconSize(QSize(50, 50));
-    list_of_texture->setVisible(false);
-  }
-  list_of_textures_[0]->setVisible(true);
-  QFont font;
-  font.setPixelSize(20);
-  layer_button_->setFont(font);
-  layer_button_->setGeometry(745, 0, 40, 40);
-
-  scene_view_->setScene(scene_);
-  scene_view_->centerOn(0, 0);
-  scene_view_->setGeometry(0, 0, 800, 600);
-
+      layer_button_(new QPushButton("0", this)),
+      save_button_(new QPushButton("Save", this)),
+      download_button_(new QPushButton("Download", this)),
+      last_item_(nullptr) {
+  CreateDefaultScene();
   LoadTextures();
   CreateGrid();
-  setGeometry(0, 0, 1000, 600);
-  show();
 
   connect(list_of_textures_[0], &QListWidget::itemClicked, this, [&] {
     ChooseItem();
@@ -56,6 +44,48 @@ MapCreator::MapCreator(QWidget* parent, MCConnector* connector) :
   connect(layer_button_, &QPushButton::clicked, this, [&] {
     ChangeLayer();
   });
+
+  connect(save_button_, &QPushButton::clicked, this, [&] {
+    auto file_name = QFileDialog::getSaveFileName(this);
+    if (!file_name.endsWith(".json", Qt::CaseSensitive)) {
+      return;
+    }
+    QFile file(file_name);
+    file.open(QIODevice::WriteOnly);
+    file.write(AllEntities().toJson());
+    file.close();
+  });
+
+  connect(download_button_, &QPushButton::clicked, this, [&] {
+
+  });
+}
+
+void MapCreator::CreateDefaultScene() {
+  for (auto & list_of_texture : list_of_textures_) {
+    list_of_texture = new QListWidget(this);
+    list_of_texture->setGeometry(800, 0, 200, 600);
+    list_of_texture->setIconSize(QSize(50, 50));
+    list_of_texture->setVisible(false);
+  }
+  list_of_textures_[0]->setVisible(true);
+  QFont font;
+  font.setPixelSize(20);
+
+  layer_button_->setFont(font);
+  layer_button_->setGeometry(745, 0, 40, 40);
+
+  save_button_->setFont(font);
+  save_button_->setGeometry(690, 500, 95, 40);
+
+  download_button_->setFont(font);
+  download_button_->setGeometry(690, 540, 95, 40);
+
+  scene_view_->setScene(scene_);
+  scene_view_->setGeometry(0, 0, 800, 600);
+  setGeometry(0, 0, 1000, 600);
+  scene_view_->centerOn(0, 0);
+  show();
 }
 
 void MapCreator::LoadTextures() {
@@ -67,6 +97,7 @@ void MapCreator::LoadTextures() {
       auto pixmap = new QPixmap(layer_textures[key2].toArray()[0].toString());
       QString name = layer_textures[key2].toArray()[1].toString();
       auto item = new QListWidgetItem(QIcon(*pixmap), name, list_of_textures_[layer]);
+      source_[item] = layer_textures[key2].toArray()[0].toString().toStdString();
     }
   }
 }
@@ -130,9 +161,11 @@ void MapCreator::AddTexture() {
   pixmap_item->setPos(point);
   pixmap_item->setZValue(layer_);
   coordinator->AddComponent(texture_entity
-                            , core::GraphicsItemComponent{pixmap_item});
-
+                            , core::GraphicsItemComponent{pixmap_item,
+                            source_[list_of_textures_[layer_]->currentItem()]});
   items_.push_back(texture_entity);
+  scale_of_items_[texture_entity] = new_texture_scale_;
+  rotate_of_items_[texture_entity] = new_texture_rotate_;
 }
 
 void MapCreator::DeleteTexture() {
@@ -187,19 +220,23 @@ void MapCreator::keyPressEvent(QKeyEvent* event) {
     case Qt::Key_S:
     case Qt::Key_W: {
       texture = texture.transformed(QTransform().scale(1, -1));
+      new_texture_scale_.second *= -1;
       break;
     }
     case Qt::Key_A:
     case Qt::Key_D: {
       texture = texture.transformed(QTransform().scale(-1, 1));
+      new_texture_scale_.first *= -1;
       break;
     }
     case Qt::Key_Q: {
       texture = texture.transformed(QTransform().rotate(-90));
+      new_texture_rotate_ -= 90;
       break;
     }
     case Qt::Key_E: {
       texture = texture.transformed(QTransform().rotate(90));
+      new_texture_rotate_ += 90;
       break;
     }
   }
@@ -208,6 +245,7 @@ void MapCreator::keyPressEvent(QKeyEvent* event) {
 }
 
 void MapCreator::ChangeLayer() {
+  SetDefaultScaleAndRotate();
   list_of_textures_[layer_]->setVisible(false);
   layer_++;
   layer_ %= 3;
@@ -231,11 +269,58 @@ void MapCreator::ChangeLayer() {
     }
   }
   new_texture_on = false;
+  new_texture_scale_ = {1, 1};
+  new_texture_rotate_ = 0;
 }
 
 void MapCreator::ChooseItem() {
+  SetDefaultScaleAndRotate();
+  last_item_ = list_of_textures_[layer_]->currentItem();
+  new_texture_scale_ = {1, 1};
+  new_texture_rotate_ = 0;
   new_texture_ = list_of_textures_[layer_]->currentItem()->icon().pixmap
       (50, 50, QIcon::Normal, QIcon::Off);
   new_texture_on = true;
   scene_view_->setFocus();
+}
+
+void MapCreator::SetDefaultScaleAndRotate() {
+  if (last_item_ != nullptr) {
+    new_texture_ = new_texture_.transformed(QTransform()
+                                                .scale(new_texture_scale_.first, new_texture_scale_.second));
+    new_texture_ = new_texture_.transformed(QTransform()
+                                                .rotate(-new_texture_rotate_));
+    last_item_->setIcon(QIcon(new_texture_));
+  }
+}
+
+QJsonDocument MapCreator::AllEntities() {
+  QJsonObject result;
+  result["offset_x"] = 0;
+  result["offset_y"] = 0;
+  QJsonArray entities;
+  auto coordinator = connector_->GetCoordinator();
+  for (auto entity : items_) {
+    QJsonObject entity_info;
+    QJsonObject pos_comp_info;
+    auto pos_comp = coordinator->GetComponent<core::PositionComponent>(entity);
+    pos_comp_info["row"] = pos_comp.position.y() / 50;
+    pos_comp_info["column"] = pos_comp.position.x() / 50;
+    entity_info["position_comp"] = pos_comp_info;
+
+    QJsonObject graphics_comp_info;
+    auto graphics_comp = coordinator->
+        GetComponent<core::GraphicsItemComponent>(entity);
+    graphics_comp_info["source"] = graphics_comp.source_name.c_str();
+    graphics_comp_info["z_value"] = graphics_comp.item->zValue();
+    graphics_comp_info["scale_x"] = scale_of_items_[entity].first;
+    graphics_comp_info["scale_y"] = scale_of_items_[entity].second;
+    graphics_comp_info["rotate"] = rotate_of_items_[entity];
+    entity_info["graphics_comp"] = graphics_comp_info;
+
+    entities.push_back(entity_info);
+  }
+  result["entities"] = entities;
+  QJsonDocument res(result);
+  return res;
 }

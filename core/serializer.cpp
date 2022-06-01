@@ -251,11 +251,23 @@ void Serializer::DownloadCompFromJson<GraphicsItemComponent>(
     const QJsonObject& entity_object) {
   if (entity_object.contains("graphics_comp")) {
     QJsonObject graphics_comp_object{entity_object["graphics_comp"].toObject()};
+
     QString source_name{graphics_comp_object["source"].toString()};
     auto item = scene_->GetScene()->addPixmap(QPixmap(source_name));
+
+    double scale_x{graphics_comp_object["scale_x"].toDouble()};
+    double scale_y{graphics_comp_object["scale_y"].toDouble()};
+    int rotate{graphics_comp_object["rotate"].toInt()};
+
     item->setZValue(graphics_comp_object["z_value"].toInt());
+    std::cerr << graphics_comp_object["z_value"].toInt() << std::endl;
+    item->setPixmap(item->pixmap().transformed(
+        QTransform().scale(scale_x, scale_y)));
+    item->setPixmap(item->pixmap().transformed(
+        QTransform().rotate(rotate)));
+
     GraphicsItemComponent graphics_item_component{
-        item, source_name.toStdString()};
+        item, source_name.toStdString(), scale_x, scale_y, rotate};
     coordinator_->AddComponent(entity, graphics_item_component);
   }
 }
