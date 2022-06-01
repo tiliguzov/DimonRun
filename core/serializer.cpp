@@ -31,6 +31,13 @@ void Write(std::ofstream& os, T* data, int size) {
 Serializer::Serializer(engine::Coordinator* coordinator, Scene* scene) :
     coordinator_(coordinator), scene_(scene) {}
 
+void Serializer::RemoveEntityFromScene(engine::Entity entity) {
+  if (coordinator_->HasComponent<GraphicsItemComponent>(entity)) {
+    scene_->GetScene()->removeItem(
+        coordinator_->GetComponent<GraphicsItemComponent>(entity).item);
+  }
+}
+
 void Serializer::DownloadDungeon(
     DungeonName dungeon_name,
     DungeonType dungeon_type) {
@@ -148,6 +155,7 @@ void Serializer::UploadCompIfNecessary(
 void Serializer::RemoveDungeon(DungeonName dungeon_name) {
   auto& removing_dungeon = dungeons_.at(dungeon_name);
   for (engine::Entity entity : removing_dungeon->entities) {
+    RemoveEntityFromScene(entity);
     coordinator_->DestroyEntity(entity);
   }
   dungeons_.erase(dungeon_name);

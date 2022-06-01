@@ -61,6 +61,8 @@ class Serializer {
       const std::unique_ptr<Dungeon>& dungeon,
       const ComponentType& component);
 
+  void RemoveEntityFromScene(engine::Entity entity);
+
  private:
   engine::Coordinator* coordinator_;
   core::Scene* scene_;
