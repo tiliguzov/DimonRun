@@ -45,10 +45,23 @@ target_link_libraries(DimonRun
         Qt::Widgets)
 
 add_executable(MapCreator
+        engine/component_manager.cpp
+        engine/coordinator.cpp
+        engine/entity_manager.cpp
+        engine/system.cpp
+        engine/system_manager.cpp
+        core/components.h
+        core/constants.h
+        core/animation_pack.cpp
+
+        resources/hero.qrc
+        resources/background.qrc
+
+        systems/painting_system.cpp
+        systems/animation_system.cpp
         map_creator.cpp
         map_creator_main.cpp
-        resources/hero.qrc
-        resources/background.qrc)
+        mc_connector.cpp)
 
 target_link_libraries(MapCreator
         Qt::Core

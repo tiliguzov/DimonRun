@@ -1,9 +1,11 @@
 #include <QApplication>
 
+#include "mc_connector.h"
 #include "map_creator.h"
 
 int main(int argc, char* argv[]) {
   QApplication a(argc, argv);
-  MapCreator scene(nullptr);
+  MCConnector connector;
+  MapCreator scene(nullptr, &connector);
   return QApplication::exec();
 }

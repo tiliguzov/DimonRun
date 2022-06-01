@@ -8,6 +8,10 @@
         <file alias = "back_wall_and_torch_02.png">textures/background/back_wall_and_torch_02.png</file>
         <file alias = "back_wall_and_torch_03.png">textures/background/back_wall_and_torch_03.png</file>
 
+        <file alias = "list_of_textures.json">list_of_textures.json</file>
         <file alias = "back_wall_torch.json">animations/back_wall_torch.json</file>
+        <file alias = "back_wall.png">textures/background/back_wall.png</file>
+        <file alias = "handrail_foreground.png">textures/background/handrail_foreground.png</file>
+        <file alias = "floor_line.png">textures/background/floor_line.png</file>
     </qresource>
 </RCC>
