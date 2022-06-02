@@ -12,6 +12,7 @@
 #include <QJsonObject>
 #include <QPushButton>
 #include <QTimerEvent>
+#include <QResizeEvent>
 #include <vector>
 #include <QKeyEvent>
 #include <QJsonDocument>
@@ -40,6 +41,7 @@ class MapCreator : public QWidget {
   void mousePressEvent(QMouseEvent* event) override;
   void timerEvent(QTimerEvent* event) override;
   void keyPressEvent(QKeyEvent* event) override;
+  void resizeEvent(QResizeEvent* event) override;
 
  private:
   MCConnector* connector_;

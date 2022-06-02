@@ -59,9 +59,9 @@ add_executable(MapCreator
 
         systems/painting_system.cpp
         systems/animation_system.cpp
-        map_creator.cpp
-        map_creator_main.cpp
-        mc_connector.cpp)
+        map_creator/map_creator.cpp
+        map_creator/map_creator_main.cpp
+        map_creator/mc_connector.cpp)
 
 target_link_libraries(MapCreator
         Qt::Core

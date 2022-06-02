@@ -242,7 +242,8 @@ void MapCreator::keyPressEvent(QKeyEvent* event) {
     ChangeLayer();
     return;
   }
-  if (list_of_textures_[layer_]->currentItem() == nullptr) {
+  if (list_of_textures_[layer_]->currentItem() == nullptr ||
+      !new_texture_on) {
     return;
   }
   auto texture = list_of_textures_[layer_]->currentItem()
@@ -387,4 +388,18 @@ void MapCreator::ReadFromJson(const QJsonObject& file) {
         .rotate(new_texture_rotate_));
     AddTexture(pos, layer, source.toStdString());
   }
+}
+
+void MapCreator::resizeEvent(QResizeEvent* event) {
+  int width = event->size().width();
+  int height = event->size().height();
+
+  scene_view_->setGeometry(0, 0, width - 200, height);
+  for (auto list_of_textures : list_of_textures_) {
+    list_of_textures->setGeometry(width - 200, 0, 200, height);
+  }
+
+  layer_button_->setGeometry(width - 255, 0, 40, 40);
+  save_button_->setGeometry(width - 310, height - 100, 95, 40);
+  download_button_->setGeometry(width - 310, height - 60, 95, 40);
 }
