@@ -108,12 +108,41 @@ void Serializer::UploadComponent<GraphicsItemComponent>(
     const std::unique_ptr<Dungeon>&,
     const GraphicsItemComponent& component);
 
+//----------- Collision Component Specialization --------------------------
+template<>
+void Serializer::DownloadCompFromJson<CollisionComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>& dungeon,
+    const QJsonObject& entity_object);
+
+template<>
+CollisionComponent Serializer::DownloadComponent<CollisionComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&);
+
+template<>
+void Serializer::UploadComponent<CollisionComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const CollisionComponent& component);
+
 //----------- Movement Component Specialization ---------------------------
 template<>
 void Serializer::DownloadCompFromJson<MovementComponent>(
     engine::Entity entity,
     const std::unique_ptr<Dungeon>& dungeon,
     const QJsonObject& entity_object);
+
+template<>
+MovementComponent Serializer::DownloadComponent<MovementComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&);
+
+template<>
+void Serializer::UploadComponent<MovementComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const MovementComponent& component);
 
 //----------- Animation Component Specialization ---------------------------
 template<>

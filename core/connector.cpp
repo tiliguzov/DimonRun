@@ -1,6 +1,7 @@
 #include "connector.h"
 
 #include <memory>
+#include <iostream>
 
 #include "constants.h"
 #include "components.h"
@@ -9,6 +10,7 @@
 #include "systems/movement_system.h"
 #include "systems/painting_system.h"
 #include "systems/animation_system.h"
+#include "systems/collision_system.h"
 
 namespace core {
 
@@ -32,6 +34,10 @@ void Connector::OnKeyRelease(Qt::Key key) {
     keyboard_->OnRelease(key);
 }
 
+void Connector::UseEvent(engine::Entity entity) {
+    // TODO show use event
+}
+
 void Connector::RegisterSystems() {
     {
         auto joystick_system_ = coordinator_
@@ -40,16 +46,27 @@ void Connector::RegisterSystems() {
 
         coordinator_->SetSystemSignature<systems::JoystickSystem>
             ({coordinator_->GetComponentID<MovementComponent>(),
-              coordinator_->GetComponentID<AnimationComponent>()});
+              coordinator_->GetComponentID<AnimationComponent>(),
+              coordinator_->GetComponentID<JoysticComponent>()});
 
         systems_.push_back(joystick_system_);
+    }
+    {
+        auto collision_system = coordinator_
+            ->RegisterSystem<systems::CollisionSystem>(coordinator_.get(), this);
+        coordinator_->SetSystemSignature<systems::CollisionSystem>
+            ({coordinator_->GetComponentID<PositionComponent>(),
+              coordinator_->GetComponentID<GraphicsItemComponent>(),
+              coordinator_->GetComponentID<CollisionComponent>()});
+        systems_.push_back(collision_system);
     }
     {
         auto movement_system = coordinator_
             ->RegisterSystem<systems::MovementSystem>(coordinator_.get());
         coordinator_->SetSystemSignature<systems::MovementSystem>
             ({coordinator_->GetComponentID<PositionComponent>(),
-              coordinator_->GetComponentID<MovementComponent>()});
+              coordinator_->GetComponentID<MovementComponent>(),
+              coordinator_->GetComponentID<CollisionComponent>()});
 
         systems_.push_back(movement_system);
     }
@@ -74,6 +91,8 @@ void Connector::RegisterSystems() {
 void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<PositionComponent>();
   coordinator_->RegisterComponent<MovementComponent>();
+  coordinator_->RegisterComponent<CollisionComponent>();
+  coordinator_->RegisterComponent<JoysticComponent>();
   coordinator_->RegisterComponent<GraphicsItemComponent>();
   coordinator_->RegisterComponent<AnimationComponent>();
 }
@@ -82,6 +101,8 @@ QGraphicsItem* Connector::CreateHero(Scene* scene) {
   engine::Entity hero = coordinator_->CreateEntity();
   coordinator_->AddComponent(hero, PositionComponent{{50, 50}});
   coordinator_->AddComponent(hero, MovementComponent{{0, 0}, 1});
+  coordinator_->AddComponent(hero, CollisionComponent({1, 0, 1, 0, 0}));
+  coordinator_->AddComponent(hero, JoysticComponent());
   auto item = scene->GetScene()->addPixmap(
       QPixmap(":Hero_static_in_air_00.png"));
   item->setZValue(kPlayerZIndex);
