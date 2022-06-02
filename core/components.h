@@ -18,6 +18,8 @@ struct PositionComponent {
 struct GraphicsItemComponent {
   QGraphicsPixmapItem* item;
   std::string source_name;
+  double scale_x, scale_y;
+  int rotate;
 };
 
 struct MovementComponent {

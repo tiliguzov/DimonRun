@@ -2,6 +2,7 @@
 
 #include <memory>
 
+#include "constants.h"
 #include "components.h"
 #include "engine/coordinator.h"
 #include "systems/joystick_system.h"
@@ -84,7 +85,8 @@ QGraphicsItem* Connector::CreateHero(Scene* scene) {
   auto item = scene->GetScene()->addPixmap(
       QPixmap(":Hero_static_in_air_00.png"));
   item->setZValue(kPlayerZIndex);
-  coordinator_->AddComponent(hero, GraphicsItemComponent{item});
+  coordinator_->AddComponent(hero, GraphicsItemComponent{item,
+                  ":Hero_static_in_air_00.png", 1, 1, 0});
   coordinator_->AddComponent(
       hero,
       AnimationComponent{AnimationPack(":hero.json"),
@@ -99,13 +101,13 @@ void Connector::StartGame(Scene* scene) {
   serializer_ = std::make_unique<Serializer>(coordinator_.get(), scene);
 
   // [before game release] Download from json file to game
-  // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
+  serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
 
   // [before game release] Upload dungeon from game to default binary file
   // serializer_->UploadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
 
   // Download default dungeon from binary file to game
-  serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kDefault);
+  // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kDefault);
 
   // Download edited dungeon from binary file to game
   // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kEdited);

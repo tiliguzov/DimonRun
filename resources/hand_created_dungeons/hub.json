@@ -1,222 +1,1916 @@
 {
-	"offset_x": 0,
-	"offset_y": 0,
-	"entities": [
-		{
-			"position_comp": {
-				"row": 0,
-				"column": 0
-			},
-			"graphics_comp": {
-				"source": ":ground1.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": 1,
-				"column": 0
-			},
-			"graphics_comp": {
-				"source": ":ground1.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": -1,
-				"column": 0
-			},
-			"graphics_comp": {
-				"source": ":ground1.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": 0,
-				"column": 1
-			},
-			"graphics_comp": {
-				"source": ":ground1.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": 0,
-				"column": -1
-			},
-			"graphics_comp": {
-				"source": ":ground1.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": -1,
-				"column": -1
-			},
-			"graphics_comp": {
-				"source": ":ground2.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": -1,
-				"column": 1
-			},
-			"graphics_comp": {
-				"source": ":ground2.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": 1,
-				"column": 1
-			},
-			"graphics_comp": {
-				"source": ":ground2.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": 1,
-				"column": -1
-			},
-			"graphics_comp": {
-				"source": ":ground2.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": 2,
-				"column": -1
-			},
-			"graphics_comp": {
-				"source": ":ground2.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": 2,
-				"column": 0
-			},
-			"graphics_comp": {
-				"source": ":ground1.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": 2,
-				"column": 1
-			},
-			"graphics_comp": {
-				"source": ":ground2.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": -2,
-				"column": -1
-			},
-			"graphics_comp": {
-				"source": ":ground2.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": -2,
-				"column": 0
-			},
-			"graphics_comp": {
-				"source": ":ground1.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": -2,
-				"column": 1
-			},
-			"graphics_comp": {
-				"source": ":ground2.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": -1,
-				"column": 2
-			},
-			"graphics_comp": {
-				"source": ":ground2.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": 0,
-				"column": 2
-			},
-			"graphics_comp": {
-				"source": ":ground1.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": 1,
-				"column": 2
-			},
-			"graphics_comp": {
-				"source": ":ground2.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": -1,
-				"column": -2
-			},
-			"graphics_comp": {
-				"source": ":ground2.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": 0,
-				"column": -2
-			},
-			"graphics_comp": {
-				"source": ":ground1.jpg",
-				"z_value": 0
-			}
-		},
-		{
-			"position_comp": {
-				"row": 1,
-				"column": -2
-			},
-			"graphics_comp": {
-				"source": ":back_wall_and_torch_00.png",
-				"z_value": 0
-			},
-			"animation_comp": {
-				"source": ":back_wall_torch.json",
-				"direction": 1,
-				"move_type": 4
-			}
-		}
-	]
+    "entities": [
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":column_down.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 9,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":column.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 9,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":column.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 9,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":column.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 9,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":column_up.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 9,
+                "row": 5
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 8,
+                "row": 5
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 8,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 8,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 8,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 8,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 6,
+                "row": 5
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 6,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 6,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 6,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 6,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":column_down.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":column.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":column.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":column.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":column_up.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 5
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 4,
+                "source": ":back_wall_torch.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall_and_torch_00.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 7,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 4,
+                "source": ":back_wall_torch.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall_and_torch_00.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 7,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 7,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 7,
+                "row": 5
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 6,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 7,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 8,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 9,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 5
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 10,
+                "row": 5
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 10,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 10,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 10,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 10,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 5
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 11,
+                "row": 5
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 11,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 11,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 11,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 11,
+                "row": 9
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 6,
+                "row": 11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 7,
+                "row": 11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 8,
+                "row": 11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 9,
+                "row": 11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 10,
+                "row": 11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 10
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 10
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 6,
+                "row": 10
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 8,
+                "row": 10
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 7,
+                "row": 10
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 10,
+                "row": 10
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 9,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 6,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 7,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 8,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 9,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 10,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 10,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": -1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 10
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 7,
+                "row": 4
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 6,
+                "row": 3
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 8,
+                "row": 3
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ceil_side.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 6,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":ceil_side.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 8,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ceil.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 7,
+                "row": 2
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 4,
+                "source": ":back_wall_torch.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall_and_torch_00.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 7,
+                "row": 3
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 6,
+                "row": 4
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 8,
+                "row": 4
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": -1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 10,
+                "row": 4
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_background.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_background.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_background.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_background.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_background.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":bridge_side.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":bridge.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":bridge.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":bridge.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":bridge.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_foreground.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_foreground.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_foreground.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_foreground.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_foreground.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 9
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 10
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 10
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 10
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": -1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 4
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":door.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 9
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":bridge_side.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_foreground.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_background.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 9
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ceil_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 6,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ceil_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 7,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ceil_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 8,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": -1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 4
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": -1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 9,
+                "row": 4
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 7,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -4,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -5,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -6,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -7,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -7,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -6,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -5,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -4,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -4,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -5,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -6,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -7,
+                "row": 10
+            }
+        }
+    ],
+    "offset_x": 0,
+    "offset_y": 0
 }
-
