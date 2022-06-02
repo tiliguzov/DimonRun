@@ -54,7 +54,6 @@ void Serializer::DownloadDungeon(
     DungeonName dungeon_name,
     DungeonType dungeon_type) {
   std::string file_name;
-  std::cout << "134235435346546463435435435" << std::endl;
   switch (dungeon_type) {
     case DungeonType::kDefault: {
       file_name = source_by_name_default.at(dungeon_name);
@@ -83,7 +82,6 @@ void Serializer::DownloadDungeon(
   for (int i = 0; i < dungeon->entities_count; i++) {
     engine::Entity entity = coordinator_->CreateEntity();
     dungeon->entities.push_back(entity);
-    std::cerr << "abd" << std::endl;
     engine::ComponentSignature component_signature;
     Read(stream, &component_signature, sizeof(engine::ComponentSignature));
     coordinator_->SetComponentSignature(entity, component_signature);
@@ -183,7 +181,6 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
   input_file.open(QFile::ReadOnly | QIODevice::Text);
   QByteArray bytes = input_file.readAll();
   QJsonDocument document = QJsonDocument::fromJson(bytes);
-  std::cout << "fdsfdsf" << std::endl;
   dungeons_.insert({dungeon_name, std::make_unique<Dungeon>()});
   auto& dungeon = dungeons_.at(dungeon_name);
 
@@ -198,7 +195,6 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
     dungeon->entities.push_back(entity);
     // Download component from json file if entity_object contains such
     // component data and add to entity
-    std::cout << "start" << std::endl;
     DownloadCompFromJson<PositionComponent>(
         entity, dungeon, entity_object);
 
@@ -407,8 +403,6 @@ void Serializer::DownloadCompFromJson<MovementComponent>(
         {static_cast<float>(movement_comp_object["direction_x"].toDouble()),
          static_cast<float>(movement_comp_object["direction_y"].toDouble())},
         static_cast<float>(movement_comp_object["current_speed"].toDouble())};
-    std::cout << entity << " add movement" << std::endl;
-    std::cout << "speed : " << movement_component.current_speed << std::endl;
     coordinator_->AddComponent(entity, movement_component);
   }
 }
@@ -420,7 +414,6 @@ MovementComponent Serializer::DownloadComponent<MovementComponent>(
     float dir_x;
     float dir_y;
     float cur_speed;
-    std::cout << "123" << std::endl;
     Read(stream, &dir_x, sizeof(float));
     Read(stream, &dir_y, sizeof(float));
     Read(stream, &cur_speed, sizeof(float));

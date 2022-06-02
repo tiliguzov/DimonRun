@@ -346,7 +346,14 @@
             "position_comp": {
                 "column": 6,
                 "row": 10
-            }
+            },
+            "collision_comp": {
+                   "is_movable": 0,
+                   "gravity": 0,
+                   "can_use": 0,
+                   "is_usable": 0,
+                   "is_breakable": 0
+           }
         },
         {
             "graphics_comp": {

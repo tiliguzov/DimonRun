@@ -23,7 +23,6 @@ void MovementSystem::Update() {
     if (std::abs(pos_comp.position.y() - std::round(pos_comp.position.y())) < eps) {
         pos_comp.position.setY(std::round(pos_comp.position.y()));
     }
-    std::cout << "position : " << entity << " : " << pos_comp.position.x() <<  " " << pos_comp.position.y() << std::endl;
   }
 }
 
