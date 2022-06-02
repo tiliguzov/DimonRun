@@ -15,6 +15,9 @@
 #include <vector>
 #include <QKeyEvent>
 #include <QJsonDocument>
+#include <utility>
+#include <string>
+#include <unordered_map>
 
 class MapCreator : public QWidget {
   Q_OBJECT

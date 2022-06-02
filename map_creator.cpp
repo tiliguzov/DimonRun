@@ -101,12 +101,15 @@ void MapCreator::LoadTextures() {
       auto texture_info = layer_textures[key2].toObject();
       auto pixmap = new QPixmap(texture_info["source"].toString());
       QString name = texture_info["name"].toString();
-      auto item = new QListWidgetItem(QIcon(*pixmap), name, list_of_textures_[layer]);
+      auto item = new QListWidgetItem(QIcon(*pixmap),
+                                      name, list_of_textures_[layer]);
       source_[item] = texture_info["source"].toString().toStdString();
       if (texture_info.contains("animation_source")) {
-        animation_source_[source_[item]] = texture_info["animation_source"].toString().toStdString();
+        animation_source_[source_[item]] =
+            texture_info["animation_source"].toString().toStdString();
         direction_[source_[item]] =
-            static_cast<core::HorizontalDirection>(texture_info["direction"].toInt());
+            static_cast<core::HorizontalDirection>
+            (texture_info["direction"].toInt());
         movement_type_[source_[item]] =
             str_to_type[texture_info["move_type"].toString().toStdString()];
       }
@@ -166,7 +169,8 @@ void MapCreator::timerEvent(QTimerEvent* event) {
   connector_->OnTick();
 }
 
-void MapCreator::AddTexture(QPointF point, int layer, const std::string &source) {
+void MapCreator::AddTexture(QPointF point,
+                            int layer, const std::string &source) {
   DeleteTexture(point, layer);
 
   auto coordinator = connector_->GetCoordinator();
@@ -199,7 +203,8 @@ void MapCreator::DeleteTexture(QPointF point, int layer) {
   auto coordinator = connector_->GetCoordinator();
   for (int i = 0; i < items_.size(); ++i) {
     auto entity = items_[i];
-    auto item = coordinator->GetComponent<core::GraphicsItemComponent>(entity).item;
+    auto item = coordinator->
+        GetComponent<core::GraphicsItemComponent>(entity).item;
     if (item->pos() == point && item->zValue() == layer) {
       coordinator->DestroyEntity(entity);
       items_.erase(items_.begin() + i);
@@ -218,8 +223,8 @@ QPointF MapCreator::MousePositionOnSceneView() {
   if (res.y() < 0) {
     res.setY(res.y() - 50);
   }
-  res.setX((int)res.x() / 50 * 50);
-  res.setY((int)res.y() / 50 * 50);
+  res.setX(static_cast<int>(res.x()) / 50 * 50);
+  res.setY(static_cast<int>(res.y()) / 50 * 50);
   return res;
 }
 
@@ -313,9 +318,9 @@ void MapCreator::ChooseItem() {
 void MapCreator::SetDefaultScaleAndRotate() {
   if (last_item_ != nullptr) {
     new_texture_ = new_texture_.transformed(QTransform()
-                                                .scale(new_texture_scale_.first, new_texture_scale_.second));
+        .scale(new_texture_scale_.first, new_texture_scale_.second));
     new_texture_ = new_texture_.transformed(QTransform()
-                                                .rotate(-new_texture_rotate_));
+        .rotate(-new_texture_rotate_));
     last_item_->setIcon(QIcon(new_texture_));
   }
 }
@@ -346,7 +351,8 @@ QJsonDocument MapCreator::AllEntities() {
 
     if (coordinator->HasComponent<core::AnimationComponent>(entity)) {
       QJsonObject anim_comp_info;
-      auto anim_comp = coordinator->GetComponent<core::AnimationComponent>(entity);
+      auto anim_comp = coordinator->
+          GetComponent<core::AnimationComponent>(entity);
       anim_comp_info["source"] = anim_comp.source_name.c_str();
       anim_comp_info["direction"] = static_cast<int>(anim_comp.direction);
       anim_comp_info["move_type"] = static_cast<int>(anim_comp.move_type);
@@ -370,7 +376,8 @@ void MapCreator::ReadFromJson(const QJsonObject& file) {
     pos.setX(position_comp["column"].toInt() * 50);
     pos.setY(position_comp["row"].toInt() * 50);
     int layer = graphics_comp["z_value"].toInt();
-    new_texture_scale_ = {graphics_comp["scale_x"].toInt(), graphics_comp["scale_y"].toInt()};
+    new_texture_scale_ = {graphics_comp["scale_x"].toInt(),
+                          graphics_comp["scale_y"].toInt()};
     new_texture_rotate_ = {graphics_comp["rotate"].toInt()};
     auto source = graphics_comp["source"].toString();
     new_texture_ = QPixmap(source);
