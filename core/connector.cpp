@@ -120,4 +120,8 @@ void Connector::StartGame(Scene* scene) {
   scene->GetSceneView()->scale(2.5, 2.5);
 }
 
+void Connector::DeleteEntity(engine::Entity entity) {
+  serializer_->DeleteEntity(entity);
+}
+
 }  // namespace core

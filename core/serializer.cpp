@@ -38,6 +38,18 @@ void Serializer::RemoveEntityFromScene(engine::Entity entity) {
   }
 }
 
+void Serializer::DeleteEntity(engine::Entity entity) {
+  for (auto& [dungeon_name, dungeon] : dungeons_) {
+    auto it = std::find(
+        dungeon->entities.begin(), dungeon->entities.end(), entity);
+    if (it != dungeon->entities.end()) {
+      dungeon->entities.erase(it);
+    }
+  }
+  RemoveEntityFromScene(entity);
+  coordinator_->DestroyEntity(entity);
+}
+
 void Serializer::DownloadDungeon(
     DungeonName dungeon_name,
     DungeonType dungeon_type) {

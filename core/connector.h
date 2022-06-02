@@ -24,6 +24,8 @@ class Connector {
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);
 
+  void DeleteEntity(engine::Entity entity);
+
  private:
   void RegisterSystems();
   void RegisterComponents();
