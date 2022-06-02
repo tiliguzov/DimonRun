@@ -31,6 +31,25 @@ void Write(std::ofstream& os, T* data, int size) {
 Serializer::Serializer(engine::Coordinator* coordinator, Scene* scene) :
     coordinator_(coordinator), scene_(scene) {}
 
+void Serializer::RemoveEntityFromScene(engine::Entity entity) {
+  if (coordinator_->HasComponent<GraphicsItemComponent>(entity)) {
+    scene_->GetScene()->removeItem(
+        coordinator_->GetComponent<GraphicsItemComponent>(entity).item);
+  }
+}
+
+void Serializer::DeleteEntity(engine::Entity entity) {
+  for (auto& [dungeon_name, dungeon] : dungeons_) {
+    auto it = std::find(
+        dungeon->entities.begin(), dungeon->entities.end(), entity);
+    if (it != dungeon->entities.end()) {
+      dungeon->entities.erase(it);
+    }
+  }
+  RemoveEntityFromScene(entity);
+  coordinator_->DestroyEntity(entity);
+}
+
 void Serializer::DownloadDungeon(
     DungeonName dungeon_name,
     DungeonType dungeon_type) {
@@ -148,6 +167,7 @@ void Serializer::UploadCompIfNecessary(
 void Serializer::RemoveDungeon(DungeonName dungeon_name) {
   auto& removing_dungeon = dungeons_.at(dungeon_name);
   for (engine::Entity entity : removing_dungeon->entities) {
+    RemoveEntityFromScene(entity);
     coordinator_->DestroyEntity(entity);
   }
   dungeons_.erase(dungeon_name);
@@ -251,11 +271,22 @@ void Serializer::DownloadCompFromJson<GraphicsItemComponent>(
     const QJsonObject& entity_object) {
   if (entity_object.contains("graphics_comp")) {
     QJsonObject graphics_comp_object{entity_object["graphics_comp"].toObject()};
+
     QString source_name{graphics_comp_object["source"].toString()};
     auto item = scene_->GetScene()->addPixmap(QPixmap(source_name));
+
+    double scale_x{graphics_comp_object["scale_x"].toDouble()};
+    double scale_y{graphics_comp_object["scale_y"].toDouble()};
+    int rotate{graphics_comp_object["rotate"].toInt()};
+
     item->setZValue(graphics_comp_object["z_value"].toInt());
+    item->setPixmap(item->pixmap().transformed(
+        QTransform().scale(scale_x, scale_y)));
+    item->setPixmap(item->pixmap().transformed(
+        QTransform().rotate(rotate)));
+
     GraphicsItemComponent graphics_item_component{
-        item, source_name.toStdString()};
+        item, source_name.toStdString(), scale_x, scale_y, rotate};
     coordinator_->AddComponent(entity, graphics_item_component);
   }
 }
@@ -266,12 +297,22 @@ GraphicsItemComponent Serializer::DownloadComponent<GraphicsItemComponent>(
     const std::unique_ptr<Dungeon>&) {
   char source_name[kMaxPathLength];
   int z_value;
+  double scale_x, scale_y;
+  int rotate;
   Read(stream, &source_name, kMaxPathLength);
   Read(stream, &z_value, sizeof(int));
+  Read(stream, &scale_x, sizeof(double));
+  Read(stream, &scale_y, sizeof(double));
+  Read(stream, &rotate, sizeof(int));
 
   auto item = scene_->GetScene()->addPixmap(QPixmap(source_name));
   item->setZValue(z_value);
-  GraphicsItemComponent component{item, source_name};
+  item->setPixmap(item->pixmap().transformed(
+      QTransform().scale(scale_x, scale_y)));
+  item->setPixmap(item->pixmap().transformed(
+      QTransform().rotate(rotate)));
+  GraphicsItemComponent component{item, source_name, scale_x,
+                                  scale_y, rotate};
 
   return component;
 }
@@ -282,8 +323,14 @@ void Serializer::UploadComponent<GraphicsItemComponent>(
     const std::unique_ptr<Dungeon>&,
     const GraphicsItemComponent& component) {
   int z_value{static_cast<int>(component.item->zValue())};
+  double scale_x{component.scale_x};
+  double scale_y{component.scale_y};
+  int rotate{component.rotate};
   Write(stream, component.source_name.data(), kMaxPathLength);
   Write(stream, &z_value, sizeof(int));
+  Write(stream, &scale_x, sizeof(double));
+  Write(stream, &scale_y, sizeof(double));
+  Write(stream, &rotate, sizeof(int));
 }
 
 //----------- Movement Component Specialization ---------------------------

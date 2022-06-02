@@ -8,6 +8,35 @@
         <file alias = "back_wall_and_torch_02.png">textures/background/back_wall_and_torch_02.png</file>
         <file alias = "back_wall_and_torch_03.png">textures/background/back_wall_and_torch_03.png</file>
 
+        <file alias = "list_of_textures.json">list_of_textures.json</file>
+        <file alias = "back_wall.png">textures/background/back_wall.png</file>
+        <file alias = "handrail_foreground.png">textures/background/handrail_foreground.png</file>
+        <file alias = "floor_line.png">textures/background/floor_line.png</file>
+        <file alias = "bridge.png">textures/background/bridge.png</file>
+        <file alias = "bridge_side.png">textures/background/bridge_side.png</file>
+        <file alias = "ceil.png">textures/background/ceil.png</file>
+        <file alias = "ceil_line.png">textures/background/ceil_line.png</file>
+        <file alias = "ceil_side.png">textures/background/ceil_side.png</file>
+        <file alias = "column.png">textures/background/column.png</file>
+        <file alias = "column_down.png">textures/background/column_down.png</file>
+        <file alias = "column_up.png">textures/background/column_up.png</file>
+        <file alias = "door.png">textures/background/door.png</file>
+        <file alias = "half_of_wall_line.png">textures/background/half_of_wall_line.png</file>
+        <file alias = "handrail_background.png">textures/background/handrail_background.png</file>
+        <file alias = "wall.png">textures/background/wall.png</file>
+        <file alias = "wall_inside.png">textures/background/wall_inside.png</file>
+        <file alias = "wall_line.png">textures/background/wall_line.png</file>
+
+        <file alias = "water_00.png">textures/background/water_00.png</file>
+        <file alias = "water_01.png">textures/background/water_01.png</file>
+        <file alias = "water_02.png">textures/background/water_02.png</file>
+
+        <file alias = "wave_00.png">textures/background/wave_00.png</file>
+        <file alias = "wave_01.png">textures/background/wave_01.png</file>
+        <file alias = "wave_02.png">textures/background/wave_02.png</file>
+
         <file alias = "back_wall_torch.json">animations/back_wall_torch.json</file>
+        <file alias = "water.json">animations/water.json</file>
+        <file alias = "wave.json">animations/wave.json</file>
     </qresource>
 </RCC>

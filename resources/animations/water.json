@@ -1,0 +1,10 @@
+{
+  "animations": {
+    "water_moving": [
+      ":water_00.png",
+      ":water_01.png",
+      ":water_02.png"
+    ]
+  },
+  "frame_duration": 60
+}

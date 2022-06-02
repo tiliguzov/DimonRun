@@ -15,7 +15,6 @@ find_package(Qt6 COMPONENTS
 
 add_executable(DimonRun
         core/connector.cpp
-        core/dungeon_name.h
         core/scene.cpp
         core/serializer.cpp
         core/keyboard.cpp
@@ -40,6 +39,28 @@ add_executable(DimonRun
         systems/animation_system.cpp)
 
 target_link_libraries(DimonRun
+        Qt::Core
+        Qt::Gui
+        Qt::Widgets)
+
+add_executable(MapCreator
+        engine/component_manager.cpp
+        engine/coordinator.cpp
+        engine/entity_manager.cpp
+        engine/system.cpp
+        engine/system_manager.cpp
+        core/animation_pack.cpp
+
+        resources/hero.qrc
+        resources/background.qrc
+
+        systems/painting_system.cpp
+        systems/animation_system.cpp
+        map_creator/map_creator.cpp
+        map_creator/map_creator_main.cpp
+        map_creator/mc_connector.cpp)
+
+target_link_libraries(MapCreator
         Qt::Core
         Qt::Gui
         Qt::Widgets)
