@@ -20,6 +20,8 @@ class Serializer {
   void UploadDungeon(DungeonName dungeon_name, DungeonType dungeon_type);
   void RemoveDungeon(DungeonName dungeon_name);
 
+  void DeleteEntity(engine::Entity entity);
+
  private:
   struct Dungeon {
     Dungeon() = default;
