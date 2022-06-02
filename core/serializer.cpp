@@ -280,7 +280,6 @@ void Serializer::DownloadCompFromJson<GraphicsItemComponent>(
     int rotate{graphics_comp_object["rotate"].toInt()};
 
     item->setZValue(graphics_comp_object["z_value"].toInt());
-    std::cerr << graphics_comp_object["z_value"].toInt() << std::endl;
     item->setPixmap(item->pixmap().transformed(
         QTransform().scale(scale_x, scale_y)));
     item->setPixmap(item->pixmap().transformed(
@@ -298,12 +297,22 @@ GraphicsItemComponent Serializer::DownloadComponent<GraphicsItemComponent>(
     const std::unique_ptr<Dungeon>&) {
   char source_name[kMaxPathLength];
   int z_value;
+  double scale_x, scale_y;
+  int rotate;
   Read(stream, &source_name, kMaxPathLength);
   Read(stream, &z_value, sizeof(int));
+  Read(stream, &scale_x, sizeof(double));
+  Read(stream, &scale_y, sizeof(double));
+  Read(stream, &rotate, sizeof(int));
 
   auto item = scene_->GetScene()->addPixmap(QPixmap(source_name));
   item->setZValue(z_value);
-  GraphicsItemComponent component{item, source_name};
+  item->setPixmap(item->pixmap().transformed(
+      QTransform().scale(scale_x, scale_y)));
+  item->setPixmap(item->pixmap().transformed(
+      QTransform().rotate(rotate)));
+  GraphicsItemComponent component{item, source_name, scale_x,
+                                  scale_y, rotate};
 
   return component;
 }
@@ -314,8 +323,14 @@ void Serializer::UploadComponent<GraphicsItemComponent>(
     const std::unique_ptr<Dungeon>&,
     const GraphicsItemComponent& component) {
   int z_value{static_cast<int>(component.item->zValue())};
+  double scale_x{component.scale_x};
+  double scale_y{component.scale_y};
+  int rotate{component.rotate};
   Write(stream, component.source_name.data(), kMaxPathLength);
   Write(stream, &z_value, sizeof(int));
+  Write(stream, &scale_x, sizeof(double));
+  Write(stream, &scale_y, sizeof(double));
+  Write(stream, &rotate, sizeof(int));
 }
 
 //----------- Movement Component Specialization ---------------------------

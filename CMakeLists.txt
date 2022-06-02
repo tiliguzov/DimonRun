@@ -15,7 +15,6 @@ find_package(Qt6 COMPONENTS
 
 add_executable(DimonRun
         core/connector.cpp
-        core/dungeon_name.h
         core/scene.cpp
         core/serializer.cpp
         core/keyboard.cpp
@@ -50,8 +49,6 @@ add_executable(MapCreator
         engine/entity_manager.cpp
         engine/system.cpp
         engine/system_manager.cpp
-        core/components.h
-        core/constants.h
         core/animation_pack.cpp
 
         resources/hero.qrc
