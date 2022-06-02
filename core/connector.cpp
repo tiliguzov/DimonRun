@@ -2,6 +2,7 @@
 
 #include <memory>
 
+#include "constants.h"
 #include "components.h"
 #include "engine/coordinator.h"
 #include "systems/joystick_system.h"
@@ -119,6 +120,10 @@ void Connector::StartGame(Scene* scene) {
   // serializer_->RemoveDungeon(DungeonName::kHub);
 
   scene->GetSceneView()->scale(2.5, 2.5);
+}
+
+void Connector::DeleteEntity(engine::Entity entity) {
+  serializer_->DeleteEntity(entity);
 }
 
 }  // namespace core

@@ -20,6 +20,8 @@ class Serializer {
   void UploadDungeon(DungeonName dungeon_name, DungeonType dungeon_type);
   void RemoveDungeon(DungeonName dungeon_name);
 
+  void DeleteEntity(engine::Entity entity);
+
  private:
   struct Dungeon {
     Dungeon() = default;
@@ -60,6 +62,8 @@ class Serializer {
       std::ofstream& stream,
       const std::unique_ptr<Dungeon>& dungeon,
       const ComponentType& component);
+
+  void RemoveEntityFromScene(engine::Entity entity);
 
  private:
   engine::Coordinator* coordinator_;
