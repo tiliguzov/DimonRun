@@ -11,7 +11,6 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QFont>
-#include <iostream>
 #include <string>
 #include <QFileDialog>
 
@@ -99,10 +98,18 @@ void MapCreator::LoadTextures() {
     int layer = key1.toInt();
     auto layer_textures = textures[key1].toObject();
     for (const auto& key2 : layer_textures.keys()) {
-      auto pixmap = new QPixmap(layer_textures[key2].toArray()[0].toString());
-      QString name = layer_textures[key2].toArray()[1].toString();
+      auto texture_info = layer_textures[key2].toObject();
+      auto pixmap = new QPixmap(texture_info["source"].toString());
+      QString name = texture_info["name"].toString();
       auto item = new QListWidgetItem(QIcon(*pixmap), name, list_of_textures_[layer]);
-      source_[item] = layer_textures[key2].toArray()[0].toString().toStdString();
+      source_[item] = texture_info["source"].toString().toStdString();
+      if (texture_info.contains("animation_source")) {
+        animation_source_[source_[item]] = texture_info["animation_source"].toString().toStdString();
+        direction_[source_[item]] =
+            static_cast<core::HorizontalDirection>(texture_info["direction"].toInt());
+        movement_type_[source_[item]] =
+            str_to_type[texture_info["move_type"].toString().toStdString()];
+      }
     }
   }
 }
@@ -132,7 +139,13 @@ void MapCreator::CreateGrid() {
     scene_->addItem(ox);
     scene_->addItem(oy);
   }
-  scene_view_->centerOn(0, 0);
+  pen.setCosmetic(false);
+  pen.setWidth(5);
+  auto red_dot = new QGraphicsEllipseItem(10, 10, 10, 10);
+  red_dot->setVisible(true);
+  red_dot->setPen(pen);
+  scene_->addItem(red_dot);
+  scene_view_->centerOn(0.0, 0.0);
 }
 
 void MapCreator::mousePressEvent(QMouseEvent* event) {
@@ -171,6 +184,15 @@ void MapCreator::AddTexture(QPointF point, int layer, const std::string &source)
                             new_texture_scale_.second,
                             new_texture_rotate_});
   items_.push_back(texture_entity);
+
+  if (animation_source_.count(source)) {
+    coordinator->AddComponent(texture_entity, core::AnimationComponent{
+        core::AnimationPack(animation_source_[source]),
+        animation_source_[source],
+        direction_[source],
+        movement_type_[source]
+        });
+  }
 }
 
 void MapCreator::DeleteTexture(QPointF point, int layer) {
@@ -321,6 +343,16 @@ QJsonDocument MapCreator::AllEntities() {
     graphics_comp_info["scale_y"] = graphics_comp.scale_y;
     graphics_comp_info["rotate"] = graphics_comp.rotate;
     entity_info["graphics_comp"] = graphics_comp_info;
+
+    if (coordinator->HasComponent<core::AnimationComponent>(entity)) {
+      QJsonObject anim_comp_info;
+      auto anim_comp = coordinator->GetComponent<core::AnimationComponent>(entity);
+      anim_comp_info["source"] = anim_comp.source_name.c_str();
+      anim_comp_info["direction"] = static_cast<int>(anim_comp.direction);
+      anim_comp_info["move_type"] = static_cast<int>(anim_comp.move_type);
+
+      entity_info["animation_comp"] = anim_comp_info;
+    }
 
     entities.push_back(entity_info);
   }

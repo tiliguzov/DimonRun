@@ -1,0 +1,10 @@
+{
+  "animations": {
+    "wave_moving": [
+      ":wave_00.png",
+      ":wave_01.png",
+      ":wave_02.png"
+    ]
+  },
+  "frame_duration": 60
+}

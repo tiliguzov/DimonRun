@@ -1,24 +1,105 @@
 {
   "0" : {
-    "ground" : [
-      ":ground1.jpg",
-      "Ground"
-    ],
-    "back_wall": [
-      ":back_wall.png",
-      "Back wall"
-    ]
+    "ground_1" : {
+      "source": ":ground1.jpg",
+      "name" : "Ground 1"
+    },
+    "ground_2" : {
+      "source": ":ground2.jpg",
+      "name" : "Ground 2"
+    },
+    "back_wall": {
+      "source" : ":back_wall.png",
+      "name" : "Back wall"
+    },
+    "back_wall_torch" : {
+      "source" : ":back_wall_and_torch_00.png",
+      "name" : "Back wall torch",
+      "animation_source" : ":back_wall_torch.json",
+      "direction" :  "left",
+      "move_type" : "torch_burning"
+    },
+    "ceil" : {
+      "source" : ":ceil.png",
+      "name" : "Ceil"
+    },
+    "ceil_side" : {
+      "source" : ":ceil_side.png",
+      "name" : "Ceil side"
+    },
+    "column" : {
+      "source" : ":column.png",
+      "name" : "Column"
+    },
+    "column_down" : {
+      "source" : ":column_down.png",
+      "name" : "Column down"
+    },
+    "column_up" : {
+      "source" : ":column_up.png",
+      "name" : "Column up"
+    },
+    "door" : {
+      "source" : ":door.png",
+      "name" : "Door"
+    },
+    "handrail_background" : {
+      "source" : ":handrail_background.png",
+      "name" : "Handrail background"
+    },
+    "wall" : {
+      "source" : ":wall.png",
+      "name" : "Wall"
+    },
+    "wall_inside" : {
+      "source" : ":wall_inside.png",
+      "name" : "Wall inside"
+    }
   },
   "1" : {
-    "floor_line" : [
-      ":floor_line.png",
-      "Floor"
-    ]
+    "floor_line" : {
+      "source" : ":floor_line.png",
+      "name" : "Floor"
+    },
+    "bridge" : {
+      "source" : ":bridge.png",
+      "name" : "Bridge"
+    },
+    "bridge_side" : {
+      "source" : ":bridge_side.png",
+      "name" : "Bridge side"
+    },
+    "ceil_line" : {
+      "source" : ":ceil_line.png",
+      "name" : "Ceil_line"
+    },
+    "half_of_wall_line" : {
+      "source" : ":half_of_wall_line.png",
+      "name" : "Half of wall line"
+    },
+    "wall_line" : {
+      "source" : ":wall_line.png",
+      "name" : "Wall line"
+    }
   },
   "2" : {
-    "handrail_foreground" : [
-      ":handrail_foreground.png",
-      "Handrail foreground"
-    ]
+    "handrail_foreground" : {
+      "source" : ":handrail_foreground.png",
+      "name" : "Handrail foreground"
+    },
+    "water" : {
+      "source" : ":water_00.png",
+      "name" : "Water",
+      "animation_source" : ":water.json",
+      "direction" :  "left",
+      "move_type" : "water_moving"
+    },
+    "wave" : {
+      "source" : ":wave_00.png",
+      "name" : "Wave",
+      "animation_source" : ":wave.json",
+      "direction" :  "left",
+      "move_type" : "wave_moving"
+    }
   }
 }

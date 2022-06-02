@@ -2,6 +2,7 @@
 
 #include "mc_connector.h"
 #include "core/constants.h"
+#include "core/animation_pack.h"
 
 #include <QWidget>
 #include <QGraphicsView>
@@ -54,4 +55,16 @@ class MapCreator : public QWidget {
   int layer_{0};
   std::vector <engine::Entity> items_;
   std::unordered_map<QListWidgetItem*, std::string> source_;
+  std::unordered_map<std::string, std::string> animation_source_;
+  std::unordered_map<std::string, core::HorizontalDirection> direction_;
+  std::unordered_map<std::string, core::MovementType> movement_type_;
+
+  std::unordered_map<std::string, core::MovementType> str_to_type =
+      {{"static_in_air", core::MovementType::kStaticInAir},
+       {"flies_up", core::MovementType::kFliesUp},
+       {"flies_down", core::MovementType::kFliesDown},
+       {"flies_horizontal", core::MovementType::kFliesHorizontal},
+       {"torch_burning", core::MovementType::kTorchBurning},
+       {"water_moving", core::MovementType::kWaterMoving},
+       {"wave_moving", core::MovementType::kWaveMoving}};
 };
