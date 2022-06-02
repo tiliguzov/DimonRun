@@ -53,7 +53,5 @@ class MapCreator : public QWidget {
   QPushButton* download_button_;
   int layer_{0};
   std::vector <engine::Entity> items_;
-  std::unordered_map<engine::Entity, std::pair <double, double> > scale_of_items_;
-  std::unordered_map<engine::Entity, int> rotate_of_items_;
   std::unordered_map<QListWidgetItem*, std::string> source_;
 };

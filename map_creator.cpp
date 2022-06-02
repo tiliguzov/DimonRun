@@ -166,10 +166,11 @@ void MapCreator::AddTexture(QPointF point, int layer, const std::string &source)
   pixmap_item->setPos(point);
   pixmap_item->setZValue(layer);
   coordinator->AddComponent(texture_entity
-                            , core::GraphicsItemComponent{pixmap_item, source});
+                            , core::GraphicsItemComponent{pixmap_item, source,
+                            new_texture_scale_.first,
+                            new_texture_scale_.second,
+                            new_texture_rotate_});
   items_.push_back(texture_entity);
-  scale_of_items_[texture_entity] = new_texture_scale_;
-  rotate_of_items_[texture_entity] = new_texture_rotate_;
 }
 
 void MapCreator::DeleteTexture(QPointF point, int layer) {
@@ -316,9 +317,9 @@ QJsonDocument MapCreator::AllEntities() {
         GetComponent<core::GraphicsItemComponent>(entity);
     graphics_comp_info["source"] = graphics_comp.source_name.c_str();
     graphics_comp_info["z_value"] = graphics_comp.item->zValue();
-    graphics_comp_info["scale_x"] = scale_of_items_[entity].first;
-    graphics_comp_info["scale_y"] = scale_of_items_[entity].second;
-    graphics_comp_info["rotate"] = rotate_of_items_[entity];
+    graphics_comp_info["scale_x"] = graphics_comp.scale_x;
+    graphics_comp_info["scale_y"] = graphics_comp.scale_y;
+    graphics_comp_info["rotate"] = graphics_comp.rotate;
     entity_info["graphics_comp"] = graphics_comp_info;
 
     entities.push_back(entity_info);
