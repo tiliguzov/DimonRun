@@ -14,7 +14,7 @@ namespace core {
 
 class Serializer {
  public:
-  Serializer(engine::Coordinator* coordinator, Scene* scene);
+  Serializer(engine::Coordinator* coordinator, QGraphicsScene* scene);
 
   void DownloadDungeon(DungeonName dungeon_name, DungeonType dungeon_type);
   void UploadDungeon(DungeonName dungeon_name, DungeonType dungeon_type);
@@ -68,7 +68,7 @@ class Serializer {
 
  private:
   engine::Coordinator* coordinator_;
-  core::Scene* scene_;
+  QGraphicsScene* scene_;
 
   std::unordered_map<DungeonName, std::unique_ptr<Dungeon>> dungeons_;
 };

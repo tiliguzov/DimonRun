@@ -15,7 +15,8 @@
 namespace core {
 
 Connector::Connector() : coordinator_(std::make_unique<engine::Coordinator>()),
-                         keyboard_(std::make_unique<Keyboard>()) {
+                         keyboard_(std::make_unique<Keyboard>()),
+                         current_dungeon_(DungeonName::kHub) {
   RegisterComponents();
   RegisterSystems();
 }
@@ -108,7 +109,7 @@ void Connector::RegisterComponents() {
 }
 
 // example of interacting with engine
-void Connector::StartGame(Scene* scene) {
+void Connector::StartGame(QGraphicsScene* scene) {
   serializer_ = std::make_unique<Serializer>(coordinator_.get(), scene);
 
   // [before game release] Download from json file to game
@@ -136,12 +137,25 @@ void Connector::StartGame(Scene* scene) {
 void Connector::DeleteEntity(engine::Entity entity) {
   serializer_->DeleteEntity(entity);
 }
+
 void Connector::CheckAndAddCoin(engine::Entity entity) {
   // TODO(someone) : check if its a coin then add
 }
 
 std::shared_ptr<engine::Coordinator> Connector::GetCoordinator() {
   return coordinator_;
+}
+
+DungeonName Connector::GetCurrentDungeon() {
+  return current_dungeon_;
+}
+
+void Connector::SetCurrentDungeon(DungeonName dungeon) {
+  current_dungeon_ = dungeon;
+}
+
+Serializer* Connector::GetSerializer() {
+  return serializer_.get();
 }
 
 }  // namespace core

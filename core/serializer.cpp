@@ -28,12 +28,13 @@ void Write(std::ofstream& os, T* data, int size) {
 
 }  // namespace
 
-Serializer::Serializer(engine::Coordinator* coordinator, Scene* scene) :
+Serializer::Serializer(engine::Coordinator* coordinator, QGraphicsScene* scene)
+    :
     coordinator_(coordinator), scene_(scene) {}
 
 void Serializer::RemoveEntityFromScene(engine::Entity entity) {
   if (coordinator_->HasComponent<GraphicsItemComponent>(entity)) {
-    scene_->GetScene()->removeItem(
+    scene_->removeItem(
         coordinator_->GetComponent<GraphicsItemComponent>(entity).item);
   }
 }
@@ -204,7 +205,6 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
     // component data and add to entity
     DownloadCompFromJson<PositionComponent>(
         entity, dungeon, entity_object);
-
     DownloadCompFromJson<GraphicsItemComponent>(
         entity, dungeon, entity_object);
     DownloadCompFromJson<MovementComponent>(
@@ -248,10 +248,11 @@ void Serializer::DownloadCompFromJson<PositionComponent>(
     QJsonObject position_comp_object{
         entity_object["position_comp"].toObject()};
     PositionComponent position_component{{
-                                             static_cast<float>(position_comp_object["column"].toInt()
-                                                 * kTextureSize + dungeon->offset_x),
-                                             static_cast<float>(position_comp_object["row"].toInt() * kTextureSize
-                                                 + dungeon->offset_y)}};
+      static_cast<float>(position_comp_object["column"].toInt()
+      * kTextureSize + dungeon->offset_x),
+      static_cast<float>(position_comp_object["row"].toInt()
+      * kTextureSize + dungeon->offset_y)}
+    };
     coordinator_->AddComponent(entity, position_component);
   }
 }
@@ -288,7 +289,7 @@ void Serializer::DownloadCompFromJson<GraphicsItemComponent>(
     QJsonObject graphics_comp_object{entity_object["graphics_comp"].toObject()};
 
     QString source_name{graphics_comp_object["source"].toString()};
-    auto item = scene_->GetScene()->addPixmap(QPixmap(source_name));
+    auto item = scene_->addPixmap(QPixmap(source_name));
 
     double scale_x{graphics_comp_object["scale_x"].toDouble()};
     double scale_y{graphics_comp_object["scale_y"].toDouble()};
@@ -320,7 +321,7 @@ GraphicsItemComponent Serializer::DownloadComponent<GraphicsItemComponent>(
   Read(stream, &scale_y, sizeof(double));
   Read(stream, &rotate, sizeof(int));
 
-  auto item = scene_->GetScene()->addPixmap(QPixmap(source_name));
+  auto item = scene_->addPixmap(QPixmap(source_name));
   item->setZValue(z_value);
   item->setPixmap(item->pixmap().transformed(
       QTransform().scale(scale_x, scale_y)));

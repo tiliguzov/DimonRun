@@ -1,5 +1,7 @@
 <RCC>
     <qresource>
         <file alias = "hub.json">hand_created_dungeons/hub.json</file>
+        <file alias = "level1.json">hand_created_dungeons/level1.json</file>
+        <file alias = "level2.json">hand_created_dungeons/level2.json</file>
     </qresource>
 </RCC>

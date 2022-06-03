@@ -10,22 +10,28 @@
 
 namespace core {
 
-Scene::Scene(QWidget* parent, Connector* connector)
-    : QWidget(parent),
-      parent_(parent),
-      connector_(connector),
-      timer_id_(startTimer(kTickTime)),
-      scene_(new QGraphicsScene(this)),
-      scene_view_(new QGraphicsView(this)) {
-
+Scene::Scene(QStackedWidget* parent, Connector* connector) :
+    QStackedWidget(parent),
+    parent_(parent),
+    connector_(connector),
+    timer_id_(startTimer(kTickTime)),
+    scene_(new QGraphicsScene(this)),
+    scene_view_(new QGraphicsView(this)),
+    fast_menu_(new FastMenu(this, ":/view/fast_menu.png")),
+    vault_(new Vault(this, ":/view/vault.png")) {
   SetDefaultSceneSettings();
+  addWidget(scene_view_);
+  addWidget(fast_menu_);
+  addWidget(vault_);
 
-  // hero_item_ = connector_->CreateHero(this);
+  hero_item_ = connector_->CreateHero(this);
 
   show();
   setFocus();
   // example of interacting with engine
-  connector->StartGame(this);
+  connector->StartGame(scene_);
+  ContinueGame();
+  scene_view_->scale(2.5, 2.5);
 }
 
 void Scene::timerEvent(QTimerEvent* event) {
@@ -45,16 +51,28 @@ void Scene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
 }
 
-void Scene::keyPressEvent(QKeyEvent *event) {
+void Scene::keyPressEvent(QKeyEvent* event) {
   connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));
+  if (event->key() == Qt::Key_Escape) {
+    if (is_menu_showed_) {
+      ContinueGame();
+    } else {
+      OpenFastMenu();
+    }
+    is_menu_showed_ = !is_menu_showed_;
+  }
+  if (event->key() == Qt::Key_E) {
+    if (is_vault_showed_) {
+      ContinueGame();
+    } else {
+      OpenVault();
+    }
+    is_vault_showed_ = !is_vault_showed_;
+  }
 }
 
-void Scene::keyReleaseEvent(QKeyEvent *event) {
+void Scene::keyReleaseEvent(QKeyEvent* event) {
   connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
-}
-
-void Scene::resizeEvent(QResizeEvent* event) {
-  scene_view_->setGeometry(0, 0, this->width(), this->height());
 }
 
 void Scene::SetDefaultSceneSettings() {
@@ -78,11 +96,53 @@ QGraphicsView* Scene::GetSceneView() {
   return scene_view_;
 }
 
-bool Scene::eventFilter(QObject *object, QEvent *event) {
+bool Scene::eventFilter(QObject* object, QEvent* event) {
   if (object == scene_view_->viewport() && event->type() == QEvent::Wheel) {
     return true;
   }
   return false;
+}
+
+void Scene::OpenFastMenu() {
+  fast_menu_->setGeometry(0, 0, kDefaultWindowWidth, kDefaultWindowHeight);
+  setCurrentWidget(fast_menu_);
+}
+
+void Scene::OpenVault() {
+  vault_->setGeometry(0, 0, kDefaultWindowWidth, kDefaultWindowHeight);
+  setCurrentWidget(vault_);
+}
+
+void Scene::ContinueGame() {
+  setCurrentWidget(scene_view_);
+}
+
+void Scene::resizeEvent(QResizeEvent* event) {
+  QSize new_size = size();
+  resize(new_size);
+  fast_menu_->Resize(new_size);
+  vault_->Resize(new_size);
+}
+
+void Scene::DownloadDungeon(DungeonName dungeon_name,
+                            DungeonType dungeon_type) {
+  connector_->GetSerializer()->DownloadDungeon(dungeon_name, dungeon_type);
+}
+
+void Scene::UploadDungeon(DungeonName dungeon_name, DungeonType dungeon_type) {
+  connector_->GetSerializer()->UploadDungeon(dungeon_name, dungeon_type);
+}
+
+void Scene::RemoveDungeon(DungeonName dungeon_name) {
+  connector_->GetSerializer()->RemoveDungeon(dungeon_name);
+}
+
+DungeonName Scene::GetCurrentDungeon() {
+  return connector_->GetCurrentDungeon();
+}
+
+void Scene::SetCurrentDungeon(DungeonName dungeon_name) {
+  connector_->SetCurrentDungeon(dungeon_name);
 }
 
 void Scene::SetHeroEntity(engine::Entity entity) {
