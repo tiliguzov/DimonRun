@@ -53,6 +53,7 @@ target_link_libraries(DimonRun
 add_executable(MapCreator
         core/connector.cpp
         core/scene.cpp
+        core/serializer.cpp
         core/keyboard.cpp
         core/animation_pack.cpp
         core/serializer.cpp
@@ -63,11 +64,10 @@ add_executable(MapCreator
         engine/system.cpp
         engine/system_manager.cpp
 
-        core/dungeon_name.h
-
         resources/hero.qrc
         resources/background.qrc
         resources/hand_created_dungeons.qrc
+        resources/view.qrc
 
         systems/movement_system.cpp
         systems/joystick_system.cpp
@@ -75,6 +75,10 @@ add_executable(MapCreator
         systems/animation_system.cpp
         systems/collision_system.cpp
         systems/illness_system.cpp
+
+        view/buttons/menu_button.cpp
+        view/widgets/fast_menu.cpp
+        view/widgets/vault.cpp
 
         map_creator/map_creator.cpp
         map_creator/map_creator_main.cpp

@@ -109,8 +109,9 @@ void Connector::RegisterComponents() {
 }
 
 // example of interacting with engine
-void Connector::StartGame(QGraphicsScene* scene) {
-  serializer_ = std::make_unique<Serializer>(coordinator_.get(), scene);
+void Connector::StartGame(QGraphicsScene* graphics_scene, Scene* scene) {
+  serializer_ =
+      std::make_unique<Serializer>(coordinator_.get(), graphics_scene, scene);
 
   // [before game release] Download from json file to game
   serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
@@ -130,8 +131,6 @@ void Connector::StartGame(QGraphicsScene* scene) {
 
   // Removes dungeon from game
   // serializer_->RemoveDungeon(DungeonName::kHub);
-
-  scene->GetSceneView()->scale(1.7, 1.7);
 }
 
 void Connector::DeleteEntity(engine::Entity entity) {

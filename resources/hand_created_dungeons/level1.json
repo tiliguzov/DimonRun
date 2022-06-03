@@ -2388,36 +2388,6 @@
         {
             "animation_comp": {
                 "direction": 0,
-                "move_type": 8,
-                "source": ":stone.json"
-            },
-            "collision_comp": {
-                "can_use": false,
-                "gravity": true,
-                "is_breakable": false,
-                "is_movable": true,
-                "is_usable": false
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":stone_00.png",
-                "z_value": 1
-            },
-            "movement_comp": {
-                "current_speed": 1,
-                "direction_x": 0,
-                "direction_y": 0
-            },
-            "position_comp": {
-                "column": 0,
-                "row": 0
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
                 "move_type": 6,
                 "source": ":wave.json"
             },
@@ -5248,8 +5218,40 @@
                 "column": 1,
                 "row": 2
             }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 0,
+                "source": ":hero.json"
+            },
+            "collision_comp": {
+                "can_use": true,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":Hero_static_in_air_00.png",
+                "z_value": 1
+            },
+            "joystick_comp": {
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": -9,
+                "row": -2
+            }
         }
     ],
     "offset_x": 0,
-    "offset_y": 50
+    "offset_y": 0
 }

@@ -1,314 +1,315 @@
 {
+    "background_image": ":background_image.jpg",
     "entities": [
         {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 0,
+                "source": ":hero.json"
+            },
+            "collision_comp": {
+                "can_use": true,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":column.png",
-                "z_value": 0
+                "source": ":Hero_static_in_air_00.png",
+                "z_value": 1
+            },
+            "joystick_comp": {
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
             },
             "position_comp": {
-                "column": 3,
+                "column": 0,
                 "row": 0
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":column.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 3,
-                "row": -1
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":column.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 3,
-                "row": -2
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":column.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 3,
-                "row": 1
             }
         },
         {
             "animation_comp": {
                 "direction": 0,
-                "move_type": 4,
-                "source": ":back_wall_torch.json"
+                "move_type": 7,
+                "source": ":coin.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
             },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":back_wall_and_torch_00.png",
-                "z_value": 0
+                "source": ":coin_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 1
             },
             "position_comp": {
                 "column": 2,
-                "row": -1
+                "row": 4
             }
         },
         {
             "animation_comp": {
                 "direction": 0,
-                "move_type": 4,
-                "source": ":back_wall_torch.json"
+                "move_type": 7,
+                "source": ":coin.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
             },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":back_wall_and_torch_00.png",
-                "z_value": 0
+                "source": ":coin_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 1
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 4
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 7,
+                "source": ":coin.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":coin_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 1
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 4
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 7,
+                "source": ":coin.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":coin_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 1
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 4
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 7,
+                "source": ":coin.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":coin_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 1
+            },
+            "position_comp": {
+                "column": 6,
+                "row": 4
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
             },
             "position_comp": {
                 "column": 2,
-                "row": 0
+                "row": 3
             }
         },
         {
             "animation_comp": {
                 "direction": 0,
-                "move_type": 4,
-                "source": ":back_wall_torch.json"
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
             },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":back_wall_and_torch_00.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 1,
-                "row": 0
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 4,
-                "source": ":back_wall_torch.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":back_wall_and_torch_00.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 1,
-                "row": -1
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 7,
-                "source": ":coin.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":coin_00.png",
+                "source": ":stone_00.png",
                 "z_value": 1
             },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
             "position_comp": {
-                "column": -1,
-                "row": -4
+                "column": 3,
+                "row": 3
             }
         },
         {
             "animation_comp": {
                 "direction": 0,
-                "move_type": 7,
-                "source": ":coin.json"
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
             },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":coin_00.png",
+                "source": ":stone_00.png",
                 "z_value": 1
             },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
             "position_comp": {
-                "column": -2,
-                "row": -3
+                "column": 4,
+                "row": 3
             }
         },
         {
             "animation_comp": {
                 "direction": 0,
-                "move_type": 7,
-                "source": ":coin.json"
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
             },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":coin_00.png",
+                "source": ":stone_00.png",
                 "z_value": 1
             },
-            "position_comp": {
-                "column": -3,
-                "row": -2
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 7,
-                "source": ":coin.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":coin_00.png",
-                "z_value": 1
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
             },
             "position_comp": {
-                "column": -4,
-                "row": -1
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 7,
-                "source": ":coin.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":coin_00.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": -3,
-                "row": 0
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 7,
-                "source": ":coin.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":coin_00.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": -2,
-                "row": 1
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 7,
-                "source": ":coin.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":coin_00.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": -1,
+                "column": 4,
                 "row": 2
             }
         },
         {
             "animation_comp": {
                 "direction": 0,
-                "move_type": 7,
-                "source": ":coin.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":coin_00.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 0,
-                "row": 1
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 7,
-                "source": ":coin.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":coin_00.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 0,
-                "row": -3
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 7,
-                "source": ":coin.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":coin_00.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 1,
-                "row": -2
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
                 "move_type": 8,
                 "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
             },
             "graphics_comp": {
                 "rotate": 0,
@@ -317,9 +318,14 @@
                 "source": ":stone_00.png",
                 "z_value": 1
             },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
             "position_comp": {
-                "column": -2,
-                "row": -2
+                "column": 5,
+                "row": 3
             }
         },
         {
@@ -328,6 +334,13 @@
                 "move_type": 8,
                 "source": ":stone.json"
             },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
@@ -335,9 +348,14 @@
                 "source": ":stone_00.png",
                 "z_value": 1
             },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
             "position_comp": {
-                "column": -1,
-                "row": -2
+                "column": 5,
+                "row": 2
             }
         },
         {
@@ -346,6 +364,13 @@
                 "move_type": 8,
                 "source": ":stone.json"
             },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
@@ -353,9 +378,14 @@
                 "source": ":stone_00.png",
                 "z_value": 1
             },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
             "position_comp": {
-                "column": -2,
-                "row": -1
+                "column": 6,
+                "row": 3
             }
         },
         {
@@ -364,6 +394,13 @@
                 "move_type": 8,
                 "source": ":stone.json"
             },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
@@ -371,9 +408,14 @@
                 "source": ":stone_00.png",
                 "z_value": 1
             },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
             "position_comp": {
-                "column": -1,
-                "row": -1
+                "column": 3,
+                "row": 2
             }
         },
         {
@@ -382,23 +424,12 @@
                 "move_type": 8,
                 "source": ":stone.json"
             },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":stone_00.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": -2,
-                "row": 0
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 8,
-                "source": ":stone.json"
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
             },
             "graphics_comp": {
                 "rotate": 0,
@@ -407,62 +438,13 @@
                 "source": ":stone_00.png",
                 "z_value": 1
             },
-            "position_comp": {
-                "column": -1,
-                "row": 0
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 8,
-                "source": ":stone.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":stone_00.png",
-                "z_value": 1
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
             },
             "position_comp": {
-                "column": 0,
-                "row": -1
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 8,
-                "source": ":stone.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":stone_00.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": -1,
-                "row": -3
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 8,
-                "source": ":stone.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":stone_00.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": -1,
+                "column": 4,
                 "row": 1
             }
         },
@@ -472,23 +454,12 @@
                 "move_type": 8,
                 "source": ":stone.json"
             },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":stone_00.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": -3,
-                "row": -1
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 8,
-                "source": ":stone.json"
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
             },
             "graphics_comp": {
                 "rotate": 0,
@@ -497,8 +468,13 @@
                 "source": ":stone_00.png",
                 "z_value": 1
             },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
             "position_comp": {
-                "column": 0,
+                "column": 4,
                 "row": 0
             }
         },
@@ -508,6 +484,13 @@
                 "move_type": 8,
                 "source": ":stone.json"
             },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
@@ -515,139 +498,464 @@
                 "source": ":stone_00.png",
                 "z_value": 1
             },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
             "position_comp": {
-                "column": 0,
+                "column": 4,
+                "row": -16
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": -15
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": -14
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": -1
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": -13
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": -12
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": -11
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 4,
                 "row": -2
             }
         },
         {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":bridge_side.png",
+                "source": ":stone_00.png",
                 "z_value": 1
             },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
             "position_comp": {
-                "column": -3,
-                "row": -5
+                "column": 4,
+                "row": -10
             }
         },
         {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":bridge.png",
+                "source": ":stone_00.png",
                 "z_value": 1
             },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
             "position_comp": {
-                "column": -2,
-                "row": -5
+                "column": 4,
+                "row": -9
             }
         },
         {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":bridge.png",
+                "source": ":stone_00.png",
                 "z_value": 1
             },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
             "position_comp": {
-                "column": -1,
-                "row": -5
+                "column": 4,
+                "row": -8
             }
         },
         {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":bridge.png",
+                "source": ":stone_00.png",
                 "z_value": 1
             },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
             "position_comp": {
-                "column": 0,
-                "row": -5
+                "column": 4,
+                "row": -3
             }
         },
         {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
             "graphics_comp": {
                 "rotate": 0,
-                "scale_x": -1,
+                "scale_x": 1,
                 "scale_y": 1,
-                "source": ":bridge_side.png",
+                "source": ":stone_00.png",
                 "z_value": 1
             },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
             "position_comp": {
-                "column": 1,
+                "column": 4,
+                "row": -7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": -6
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 4,
                 "row": -5
             }
         },
         {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": -1,
-                "source": ":bridge_side.png",
-                "z_value": 1
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json"
             },
-            "position_comp": {
-                "column": 1,
-                "row": -6
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": -1,
-                "source": ":bridge_side.png",
-                "z_value": 1
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
             },
-            "position_comp": {
-                "column": -3,
-                "row": -6
-            }
-        },
-        {
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
-                "scale_y": -1,
-                "source": ":bridge.png",
+                "scale_y": 1,
+                "source": ":stone_00.png",
                 "z_value": 1
             },
-            "position_comp": {
-                "column": -2,
-                "row": -6
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": -1,
-                "source": ":bridge.png",
-                "z_value": 1
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
             },
             "position_comp": {
-                "column": -1,
-                "row": -6
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": -1,
-                "source": ":bridge.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 0,
-                "row": -6
+                "column": 4,
+                "row": -4
             }
         }
     ],

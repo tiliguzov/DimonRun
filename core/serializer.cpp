@@ -28,13 +28,13 @@ void Write(std::ofstream& os, T* data, int size) {
 
 }  // namespace
 
-Serializer::Serializer(engine::Coordinator* coordinator, QGraphicsScene* scene)
+Serializer::Serializer(engine::Coordinator* coordinator, QGraphicsScene* graphics_scene, Scene* scene)
     :
-    coordinator_(coordinator), scene_(scene) {}
+    coordinator_(coordinator), graphics_scene_(graphics_scene), scene_(scene) {}
 
 void Serializer::RemoveEntityFromScene(engine::Entity entity) {
   if (coordinator_->HasComponent<GraphicsItemComponent>(entity)) {
-    scene_->removeItem(
+    graphics_scene_->removeItem(
         coordinator_->GetComponent<GraphicsItemComponent>(entity).item);
   }
 }
@@ -95,6 +95,7 @@ void Serializer::DownloadDungeon(
     DownloadCompIfNecessary<AnimationComponent>(entity, dungeon, stream);
     DownloadCompIfNecessary<CollisionComponent>(entity, dungeon, stream);
     DownloadCompIfNecessary<IllnessComponent>(entity, dungeon, stream);
+    DownloadCompIfNecessary<JoysticComponent>(entity, dungeon, stream);
   }
   stream.close();
   assert(stream.good() && "Error occurred at dungeon reading time!");
@@ -193,7 +194,7 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
 
   auto* item =
       new QGraphicsPixmapItem(QPixmap(document["background_image"].toString()));
-  scene_->GetScene()->addItem(item);
+  graphics_scene_->addItem(item);
   scene_->SetBackgroundImage(item);
 
   for (auto entity_data : entities_data) {
@@ -289,7 +290,7 @@ void Serializer::DownloadCompFromJson<GraphicsItemComponent>(
     QJsonObject graphics_comp_object{entity_object["graphics_comp"].toObject()};
 
     QString source_name{graphics_comp_object["source"].toString()};
-    auto item = scene_->addPixmap(QPixmap(source_name));
+    auto item = graphics_scene_->addPixmap(QPixmap(source_name));
 
     double scale_x{graphics_comp_object["scale_x"].toDouble()};
     double scale_y{graphics_comp_object["scale_y"].toDouble()};
@@ -321,7 +322,7 @@ GraphicsItemComponent Serializer::DownloadComponent<GraphicsItemComponent>(
   Read(stream, &scale_y, sizeof(double));
   Read(stream, &rotate, sizeof(int));
 
-  auto item = scene_->addPixmap(QPixmap(source_name));
+  auto item = graphics_scene_->addPixmap(QPixmap(source_name));
   item->setZValue(z_value);
   item->setPixmap(item->pixmap().transformed(
       QTransform().scale(scale_x, scale_y)));
