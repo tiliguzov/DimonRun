@@ -1,14 +1,10 @@
-//
-// Created by admin on 03.06.2022.
-//
-
 #include "vault.h"
 
 #include <QPainter>
 
 namespace core {
 
-core::Vault::Vault(core::AbstractScene* scene,
+Vault::Vault(core::AbstractScene* scene,
                    const QString& path_to_background) :
     scene_(scene),
     background_(new QPixmap(path_to_background)),

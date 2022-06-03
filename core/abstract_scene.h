@@ -11,6 +11,7 @@ class AbstractScene {
   virtual void OpenFastMenu() = 0;
   virtual void ContinueGame() = 0;
   virtual void OpenVault() = 0;
+  virtual void OpenScroll() = 0;
 
   virtual DungeonName GetCurrentDungeon() = 0;
   virtual void SetCurrentDungeon(DungeonName) = 0;
