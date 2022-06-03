@@ -15,6 +15,21 @@ struct PositionComponent {
   QVector2D position;
 };
 
+struct CollisionComponent {
+    bool is_movable;
+    bool gravity;
+    bool can_use;
+    bool is_usable;
+    bool is_breakable;
+};
+
+struct JoysticComponent {};
+
+struct IllnessComponent {
+  int kill_time;
+  bool is_ill;
+};
+
 struct GraphicsItemComponent {
   QGraphicsPixmapItem* item;
   std::string source_name;

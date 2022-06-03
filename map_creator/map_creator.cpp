@@ -123,7 +123,7 @@ void MapCreator::LoadTextures() {
         is_usable_[source_[item]] =
             texture_info["is_usable"].toBool();
         is_breakable_[source_[item]] =
-            texture_info["is_breakable_"].toBool();
+            texture_info["is_breakable"].toBool();
       }
     }
   }
