@@ -18,9 +18,7 @@ class Connector {
   Connector();
 
   void OnTick();
-  void StartGame(QGraphicsScene* scene);
-
-  QGraphicsItem* CreateHero(Scene* scene);
+  void StartGame(Scene* scene);
 
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);
@@ -33,11 +31,14 @@ class Connector {
   DungeonName GetCurrentDungeon();
   void SetCurrentDungeon(DungeonName);
 
+
+  std::shared_ptr<engine::Coordinator> GetCoordinator();
+
  private:
   void RegisterSystems();
   void RegisterComponents();
 
-  std::unique_ptr<engine::Coordinator> coordinator_;
+  std::shared_ptr<engine::Coordinator> coordinator_;
   std::unique_ptr<core::Keyboard> keyboard_;
   std::unique_ptr<Serializer> serializer_;
 

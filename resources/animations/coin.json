@@ -1,0 +1,17 @@
+{
+  "animations": {
+    "coin_moving": [
+      ":coin_00.png",
+      ":coin_01.png",
+      ":coin_02.png",
+      ":coin_03.png",
+      ":coin_04.png",
+      ":coin_05.png",
+      ":coin_06.png",
+      ":coin_07.png",
+      ":coin_08.png",
+      ":coin_09.png"
+    ]
+  },
+  "frame_duration": 30
+}

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "mc_connector.h"
+#include "core/connector.h"
 #include "core/constants.h"
 #include "core/animation_pack.h"
 
@@ -24,12 +24,13 @@ class MapCreator : public QWidget {
   Q_OBJECT
 
  public:
-  MapCreator(QWidget* parent, MCConnector* connector);
+  MapCreator(QWidget* parent, core::Connector* connector);
   void CreateDefaultScene();
   void LoadTextures();
   void CreateGrid();
   void AddTexture(QPointF point, int layer, const std::string &source);
   void DeleteTexture(QPointF point, int layer);
+  void DeleteAllTextures();
   void ChangeLayer();
   void ChooseItem();
   void SetDefaultScaleAndRotate();
@@ -44,7 +45,7 @@ class MapCreator : public QWidget {
   void resizeEvent(QResizeEvent* event) override;
 
  private:
-  MCConnector* connector_;
+  core::Connector* connector_;
   int32_t timer_id_;
   QGraphicsScene* scene_;
   QGraphicsView* scene_view_;
@@ -57,12 +58,26 @@ class MapCreator : public QWidget {
   QPushButton* layer_button_;
   QPushButton* save_button_;
   QPushButton* download_button_;
+  QPointF pos_of_hero_{0, 0};
   int layer_{0};
   std::vector <engine::Entity> items_;
   std::unordered_map<QListWidgetItem*, std::string> source_;
   std::unordered_map<std::string, std::string> animation_source_;
   std::unordered_map<std::string, core::HorizontalDirection> direction_;
   std::unordered_map<std::string, core::MovementType> movement_type_;
+
+  std::unordered_map<std::string, bool> is_movable_;
+  std::unordered_map<std::string, bool> gravity_;
+  std::unordered_map<std::string, bool> can_use_;
+  std::unordered_map<std::string, bool> is_usable_;
+  std::unordered_map<std::string, bool> is_breakable_;
+
+  std::unordered_map<std::string, bool> kill_time_;
+  std::unordered_map<std::string, bool> is_ill_;
+
+  std::unordered_map<std::string, double> current_speed_;
+  std::unordered_map<std::string, double> direction_x_;
+  std::unordered_map<std::string, double> direction_y_;
 
   std::unordered_map<std::string, core::MovementType> str_to_type =
       {{"static_in_air", core::MovementType::kStaticInAir},
@@ -71,5 +86,7 @@ class MapCreator : public QWidget {
        {"flies_horizontal", core::MovementType::kFliesHorizontal},
        {"torch_burning", core::MovementType::kTorchBurning},
        {"water_moving", core::MovementType::kWaterMoving},
-       {"wave_moving", core::MovementType::kWaveMoving}};
+       {"wave_moving", core::MovementType::kWaveMoving},
+       {"coin_moving", core::MovementType::kCoinMoving},
+       {"stone_moving", core::MovementType::kStoneMoving}};
 };

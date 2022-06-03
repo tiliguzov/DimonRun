@@ -1,6 +1,5 @@
 #include "map_creator.h"
 #include "core/components.h"
-#include "core/serializer.h"
 
 #include <QListWidgetItem>
 #include <QIcon>
@@ -13,8 +12,9 @@
 #include <QFont>
 #include <string>
 #include <QFileDialog>
+#include <QVector2D>
 
-MapCreator::MapCreator(QWidget* parent, MCConnector* connector) :
+MapCreator::MapCreator(QWidget* parent, core::Connector* connector) :
       QWidget(parent),
       connector_(connector),
       timer_id_(startTimer(5)),
@@ -113,8 +113,37 @@ void MapCreator::LoadTextures() {
         movement_type_[source_[item]] =
             str_to_type[texture_info["move_type"].toString().toStdString()];
       }
+      if (texture_info.contains("is_movable")) {
+        is_movable_[source_[item]] =
+            texture_info["is_movable"].toBool();
+        gravity_[source_[item]] =
+            texture_info["gravity"].toBool();
+        can_use_[source_[item]] =
+            texture_info["can_use"].toBool();
+        is_usable_[source_[item]] =
+            texture_info["is_usable"].toBool();
+        is_breakable_[source_[item]] =
+            texture_info["is_breakable"].toBool();
+      }
+
+      if (texture_info.contains("kill_time")) {
+        kill_time_[source_[item]] =
+            texture_info["kill_time"].toInt();
+        is_ill_[source_[item]] =
+            texture_info["is_ill"].toBool();
+      }
+
+      if (texture_info.contains("current_speed")) {
+        current_speed_[source_[item]] =
+            texture_info["current_speed"].toDouble();
+        direction_x_[source_[item]] =
+            texture_info["direction_x"].toDouble();
+        direction_y_[source_[item]] =
+            texture_info["direction_y"].toDouble();
+      }
     }
   }
+  AddTexture(pos_of_hero_, 1, ":Hero_static_in_air_00.png");
 }
 
 void MapCreator::CreateGrid() {
@@ -172,7 +201,10 @@ void MapCreator::timerEvent(QTimerEvent* event) {
 void MapCreator::AddTexture(QPointF point,
                             int layer, const std::string &source) {
   DeleteTexture(point, layer);
-
+  if (source == ":Hero_static_in_air_00.png") {
+    DeleteTexture(pos_of_hero_, 1);
+    pos_of_hero_ = point;
+  }
   auto coordinator = connector_->GetCoordinator();
 
   engine::Entity texture_entity = coordinator->CreateEntity();
@@ -197,6 +229,28 @@ void MapCreator::AddTexture(QPointF point,
         movement_type_[source]
         });
   }
+  if (is_movable_.count(source)) {
+    coordinator->AddComponent(texture_entity, core::CollisionComponent{
+      is_movable_[source],
+      gravity_[source],
+      can_use_[source],
+      is_usable_[source],
+      is_breakable_[source]
+    });
+  }
+  if (kill_time_.count(source)) {
+    coordinator->AddComponent(texture_entity, core::IllnessComponent{
+      kill_time_[source],
+      is_ill_[source]
+    });
+  }
+  if (current_speed_.count(source)) {
+    coordinator->AddComponent(texture_entity, core::MovementComponent{
+      {static_cast<float>(direction_x_[source]),
+      static_cast<float>(direction_y_[source])},
+      static_cast<float>(current_speed_[source])
+    });
+  }
 }
 
 void MapCreator::DeleteTexture(QPointF point, int layer) {
@@ -210,6 +264,18 @@ void MapCreator::DeleteTexture(QPointF point, int layer) {
       items_.erase(items_.begin() + i);
       scene_->removeItem(item);
     }
+  }
+}
+
+void MapCreator::DeleteAllTextures() {
+  auto coordinator = connector_->GetCoordinator();
+  for (int i = 0; i < items_.size(); ++i) {
+    auto entity = items_[i];
+    auto item = coordinator->
+        GetComponent<core::GraphicsItemComponent>(entity).item;
+    coordinator->DestroyEntity(entity);
+    items_.erase(items_.begin() + i);
+    scene_->removeItem(item);
   }
 }
 
@@ -330,6 +396,7 @@ QJsonDocument MapCreator::AllEntities() {
   QJsonObject result;
   result["offset_x"] = 0;
   result["offset_y"] = 0;
+  result["background_image"] = ":background_image.jpg";
   QJsonArray entities;
   auto coordinator = connector_->GetCoordinator();
   for (auto entity : items_) {
@@ -359,8 +426,46 @@ QJsonDocument MapCreator::AllEntities() {
       anim_comp_info["move_type"] = static_cast<int>(anim_comp.move_type);
 
       entity_info["animation_comp"] = anim_comp_info;
+
+      if (anim_comp_info["move_type"] == static_cast<int>
+              (core::MovementType::kStaticInAir)) {
+        entity_info["joystick_comp"] = QJsonObject();
+      }
     }
 
+    if (coordinator->HasComponent<core::CollisionComponent>(entity)) {
+      QJsonObject coll_comp_info;
+      auto coll_comp = coordinator->
+          GetComponent<core::CollisionComponent>(entity);
+      coll_comp_info["is_movable"] = coll_comp.is_movable;
+      coll_comp_info["gravity"] = coll_comp.gravity;
+      coll_comp_info["can_use"] = coll_comp.can_use;
+      coll_comp_info["is_usable"] = coll_comp.is_usable;
+      coll_comp_info["is_breakable"] = coll_comp.is_breakable;
+
+      entity_info["collision_comp"] = coll_comp_info;
+    }
+
+    if (coordinator->HasComponent<core::IllnessComponent>(entity)) {
+      QJsonObject illness_comp_info;
+      auto illness_comp = coordinator->
+          GetComponent<core::IllnessComponent>(entity);
+      illness_comp_info["kill_time"] = illness_comp.kill_time;
+      illness_comp_info["is_ill"] = illness_comp.is_ill;
+
+      entity_info["illness_comp"] = illness_comp_info;
+    }
+
+    if (coordinator->HasComponent<core::MovementComponent>(entity)) {
+      QJsonObject move_comp_info;
+      auto move_comp = coordinator->
+          GetComponent<core::MovementComponent>(entity);
+      move_comp_info["current_speed"] = move_comp.current_speed;
+      move_comp_info["direction_x"] = move_comp.direction.x();
+      move_comp_info["direction_y"] = move_comp.direction.y();
+
+      entity_info["movement_comp"] = move_comp_info;
+    }
     entities.push_back(entity_info);
   }
   result["entities"] = entities;
@@ -369,6 +474,10 @@ QJsonDocument MapCreator::AllEntities() {
 }
 
 void MapCreator::ReadFromJson(const QJsonObject& file) {
+  DeleteAllTextures();
+  pos_of_hero_ = {0, 0};
+  AddTexture(pos_of_hero_, 1, ":Hero_static_in_air_00.png");
+
   auto entities = file["entities"].toArray();
   for (auto entity : entities) {
     QPoint pos;
@@ -403,3 +512,4 @@ void MapCreator::resizeEvent(QResizeEvent* event) {
   save_button_->setGeometry(width - 310, height - 100, 95, 40);
   download_button_->setGeometry(width - 310, height - 60, 95, 40);
 }
+

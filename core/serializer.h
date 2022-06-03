@@ -14,7 +14,8 @@ namespace core {
 
 class Serializer {
  public:
-  Serializer(engine::Coordinator* coordinator, QGraphicsScene* scene);
+  Serializer(engine::Coordinator* coordinator,
+             Scene* scene);
 
   void DownloadDungeon(DungeonName dungeon_name, DungeonType dungeon_type);
   void UploadDungeon(DungeonName dungeon_name, DungeonType dungeon_type);
@@ -28,6 +29,7 @@ class Serializer {
     int offset_x{0};
     int offset_y{0};
     int entities_count{0};
+    QString background_image;
     std::vector<engine::Entity> entities;
   };
 
@@ -67,7 +69,8 @@ class Serializer {
 
  private:
   engine::Coordinator* coordinator_;
-  QGraphicsScene* scene_;
+  QGraphicsScene* graphics_scene_;
+  Scene* scene_;
 
   std::unordered_map<DungeonName, std::unique_ptr<Dungeon>> dungeons_;
 };
@@ -143,6 +146,26 @@ void Serializer::UploadComponent<IllnessComponent>(
     std::ofstream& stream,
     const std::unique_ptr<Dungeon>&,
     const IllnessComponent& component);
+
+
+//----------- Joystick Component Specialization ---------------------------
+
+template<>
+void Serializer::DownloadCompFromJson<JoysticComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>&,
+    const QJsonObject& entity_object);
+
+template<>
+JoysticComponent Serializer::DownloadComponent<JoysticComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&);
+
+template<>
+void Serializer::UploadComponent<JoysticComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const JoysticComponent& component);
 
 
 //----------- Movement Component Specialization ---------------------------

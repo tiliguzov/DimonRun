@@ -29,6 +29,8 @@ class Scene : public QStackedWidget, AbstractScene {
 
   QGraphicsScene* GetScene();
   QGraphicsView* GetSceneView();
+  void SetHeroEntity(engine::Entity entity);
+  void SetBackgroundImage(QGraphicsPixmapItem* item);
 
  private:
   void paintEvent(QPaintEvent*) override;
@@ -57,9 +59,10 @@ class Scene : public QStackedWidget, AbstractScene {
   int32_t timer_id_;
   QWidget* parent_;
   Connector* connector_;
-  QGraphicsItem* hero_item_;
+  engine::Entity hero_entity_;
   QGraphicsScene* scene_;
   QGraphicsView* scene_view_;
+  QGraphicsPixmapItem* background_image_;
 
   FastMenu* fast_menu_;
   bool is_menu_showed_{0};

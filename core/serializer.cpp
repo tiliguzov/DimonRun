@@ -28,13 +28,15 @@ void Write(std::ofstream& os, T* data, int size) {
 
 }  // namespace
 
-Serializer::Serializer(engine::Coordinator* coordinator, QGraphicsScene* scene)
+Serializer::Serializer(engine::Coordinator* coordinator, Scene* scene)
     :
-    coordinator_(coordinator), scene_(scene) {}
+    coordinator_(coordinator),
+    graphics_scene_(scene->GetScene()),
+    scene_(scene) {}
 
 void Serializer::RemoveEntityFromScene(engine::Entity entity) {
   if (coordinator_->HasComponent<GraphicsItemComponent>(entity)) {
-    scene_->removeItem(
+    graphics_scene_->removeItem(
         coordinator_->GetComponent<GraphicsItemComponent>(entity).item);
   }
 }
@@ -78,6 +80,7 @@ void Serializer::DownloadDungeon(
   auto& dungeon = dungeons_.at(dungeon_name);
   Read(stream, &dungeon->offset_x, sizeof(dungeon->offset_x));
   Read(stream, &dungeon->offset_y, sizeof(dungeon->offset_y));
+  Read(stream, &dungeon->background_image, sizeof(kMaxPathLength));
   Read(stream, &dungeon->entities_count, sizeof(dungeon->entities_count));
 
   for (int i = 0; i < dungeon->entities_count; i++) {
@@ -95,6 +98,7 @@ void Serializer::DownloadDungeon(
     DownloadCompIfNecessary<AnimationComponent>(entity, dungeon, stream);
     DownloadCompIfNecessary<CollisionComponent>(entity, dungeon, stream);
     DownloadCompIfNecessary<IllnessComponent>(entity, dungeon, stream);
+    DownloadCompIfNecessary<JoysticComponent>(entity, dungeon, stream);
   }
   stream.close();
   assert(stream.good() && "Error occurred at dungeon reading time!");
@@ -135,6 +139,7 @@ void Serializer::UploadDungeon(
   auto& dungeon = dungeons_.at(dungeon_name);
   Write(stream, &dungeon->offset_x, sizeof(dungeon->offset_x));
   Write(stream, &dungeon->offset_y, sizeof(dungeon->offset_y));
+  Write(stream, &dungeon->background_image, sizeof(kMaxPathLength));
   Write(stream, &dungeon->entities_count, sizeof(dungeon->entities_count));
 
   for (auto entity : dungeon->entities) {
@@ -150,6 +155,7 @@ void Serializer::UploadDungeon(
     UploadCompIfNecessary<AnimationComponent>(entity, dungeon, stream);
     UploadCompIfNecessary<CollisionComponent>(entity, dungeon, stream);
     UploadCompIfNecessary<IllnessComponent>(entity, dungeon, stream);
+    UploadCompIfNecessary<JoysticComponent>(entity, dungeon, stream);
   }
 
   stream.close();
@@ -189,6 +195,11 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
   dungeon->offset_y = document["offset_y"].toInt();
   QJsonArray entities_data = document["entities"].toArray();
   dungeon->entities_count = entities_data.size();
+  dungeon->background_image = document["background_image"].toString();
+  auto* item =
+      new QGraphicsPixmapItem(QPixmap(dungeon->background_image));
+  graphics_scene_->addItem(item);
+  scene_->SetBackgroundImage(item);
 
   for (auto entity_data : entities_data) {
     QJsonObject entity_object{entity_data.toObject()};
@@ -208,6 +219,8 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
     DownloadCompFromJson<CollisionComponent>(
         entity, dungeon, entity_object);
     DownloadCompFromJson<IllnessComponent>(
+        entity, dungeon, entity_object);
+    DownloadCompFromJson<JoysticComponent>(
         entity, dungeon, entity_object);
   }
 }
@@ -281,7 +294,7 @@ void Serializer::DownloadCompFromJson<GraphicsItemComponent>(
     QJsonObject graphics_comp_object{entity_object["graphics_comp"].toObject()};
 
     QString source_name{graphics_comp_object["source"].toString()};
-    auto item = scene_->addPixmap(QPixmap(source_name));
+    auto item = graphics_scene_->addPixmap(QPixmap(source_name));
 
     double scale_x{graphics_comp_object["scale_x"].toDouble()};
     double scale_y{graphics_comp_object["scale_y"].toDouble()};
@@ -313,7 +326,7 @@ GraphicsItemComponent Serializer::DownloadComponent<GraphicsItemComponent>(
   Read(stream, &scale_y, sizeof(double));
   Read(stream, &rotate, sizeof(int));
 
-  auto item = scene_->addPixmap(QPixmap(source_name));
+  auto item = graphics_scene_->addPixmap(QPixmap(source_name));
   item->setZValue(z_value);
   item->setPixmap(item->pixmap().transformed(
       QTransform().scale(scale_x, scale_y)));
@@ -439,6 +452,35 @@ void Serializer::UploadComponent<IllnessComponent>(
   bool is_ill{0};
   Write(stream, &kill_time, sizeof(int));
   Write(stream, &is_ill, sizeof(bool));
+}
+
+//----------- Joystick Component Specialization ---------------------------
+
+template<>
+void Serializer::DownloadCompFromJson<JoysticComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>& dungeon,
+    const QJsonObject& entity_object) {
+  if (entity_object.contains("joystick_comp")) {
+    scene_->SetHeroEntity(entity);
+    JoysticComponent joystick_component;
+    coordinator_->AddComponent(entity, joystick_component);
+  }
+}
+
+template<>
+JoysticComponent Serializer::DownloadComponent<JoysticComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&) {
+  JoysticComponent component;
+  return component;
+}
+
+template<>
+void Serializer::UploadComponent<JoysticComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const JoysticComponent& component) {
 }
 
 //----------- Movement Component Specialization ---------------------------

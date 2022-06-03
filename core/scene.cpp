@@ -20,19 +20,16 @@ Scene::Scene(QStackedWidget* parent, Connector* connector) :
     fast_menu_(new FastMenu(this, ":/view/fast_menu.png")),
     vault_(new Vault(this, ":/view/vault.png")) {
   SetDefaultSceneSettings();
-
   addWidget(scene_view_);
   addWidget(fast_menu_);
   addWidget(vault_);
 
-  hero_item_ = connector_->CreateHero(this);
-
   show();
   setFocus();
   // example of interacting with engine
-  connector->StartGame(scene_);
+  connector->StartGame(this);
   ContinueGame();
-  scene_view_->scale(2.5, 2.5);
+  scene_view_->scale(1.7, 1.7);
 }
 
 void Scene::timerEvent(QTimerEvent* event) {
@@ -40,7 +37,12 @@ void Scene::timerEvent(QTimerEvent* event) {
     return;
   }
   connector_->OnTick();
-  scene_view_->centerOn(hero_item_);
+  scene_view_->centerOn(connector_->GetCoordinator()->
+      GetComponent<GraphicsItemComponent>(hero_entity_).item);
+  auto pos = connector_->GetCoordinator()->
+      GetComponent<PositionComponent>(hero_entity_).position;
+  background_image_->setPos(pos.x() - background_image_->pixmap().width() / 2,
+                            pos.y() - background_image_->pixmap().height() / 2);
 }
 
 void Scene::paintEvent(QPaintEvent*) {
@@ -139,6 +141,14 @@ DungeonName Scene::GetCurrentDungeon() {
 
 void Scene::SetCurrentDungeon(DungeonName dungeon_name) {
   connector_->SetCurrentDungeon(dungeon_name);
+}
+
+void Scene::SetHeroEntity(engine::Entity entity) {
+  hero_entity_ = entity;
+}
+
+void Scene::SetBackgroundImage(QGraphicsPixmapItem* item) {
+  background_image_ = item;
 }
 
 }  // namespace core
