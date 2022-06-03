@@ -8,6 +8,7 @@
 #include <string>
 
 #include "animation_pack.h"
+#include "events_constants.h"
 
 namespace core {
 
@@ -50,6 +51,15 @@ struct AnimationComponent {
   int start_time{0};
   // the flag that shows, if we have to change frame before its time pass
   bool need_change_frame{false};
+};
+
+struct EventComponent{
+  EventType type;
+  int number;
+};
+
+struct CoinComponent{
+  int value;
 };
 
 }  // namespace core

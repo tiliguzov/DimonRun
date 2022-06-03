@@ -33,6 +33,11 @@ class Scene : public QStackedWidget, AbstractScene {
   void SetHeroEntity(engine::Entity entity);
   void SetBackgroundImage(QGraphicsPixmapItem* item);
 
+  void OpenFastMenu() override;
+  void ContinueGame() override;
+  void OpenVault() override;
+  void OpenScroll() override;
+
  private:
   void paintEvent(QPaintEvent*) override;
   void timerEvent(QTimerEvent*) override;
@@ -43,11 +48,6 @@ class Scene : public QStackedWidget, AbstractScene {
   void SetDefaultSceneSettings();
 
   bool eventFilter(QObject* object, QEvent* event) override;
-
-  void OpenFastMenu() override;
-  void ContinueGame() override;
-  void OpenVault() override;
-  void OpenScroll() override;
 
   DungeonName GetCurrentDungeon() override;
   void SetCurrentDungeon(DungeonName) override;
