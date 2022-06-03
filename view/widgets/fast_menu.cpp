@@ -1,5 +1,4 @@
 #include "fast_menu.h"
-#include "iostream"
 
 #include <QPainter>
 
@@ -28,10 +27,12 @@ FastMenu::FastMenu(AbstractScene* scene, const QString& path_to_background) :
   coins_->setGeometry(kCoins);
   count_coins_->setGeometry(kCoinsCounter);
   count_coins_->setFont(QFont("Copperplate", 14));
-  count_coins_->setStyleSheet("color: rgb(250, 250, 250); background: #241711;");
+  count_coins_->setStyleSheet("color: rgb(250, 250, 250);"
+                              "background: #241711;");
 
   shortcuts_->setFont(QFont("Copperplate", 14));
-  shortcuts_->setStyleSheet("color: rgb(250, 250, 250); background: #241711;");
+  shortcuts_->setStyleSheet("color: rgb(250, 250, 250);"
+                            "background: #241711;");
   shortcuts_->setGeometry(kShortcuts);
 
   places_->setGeometry(kShortcuts);
@@ -100,9 +101,8 @@ void FastMenu::OpenListPlaces() {
   places_text_.emplace_back("level1");
   places_text_.emplace_back("level2");
   places_text_.emplace_back("green screen");
-  int i = 1;
-  for (auto str: places_text_) {
-    QListWidgetItem* item = new QListWidgetItem(str, places_, i);
+  for (int i = 0; i < places_text_.size(); ++i) {
+    QListWidgetItem* item = new QListWidgetItem(places_text_[i], places_, i + 1);
     ++i;
   }
   connect(places_, &QListWidget::itemClicked,
@@ -196,4 +196,4 @@ void FastMenu::PlacesOpen() {
   ContinueGame();
 }
 
-}
+}  // namespace core

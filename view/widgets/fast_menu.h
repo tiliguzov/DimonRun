@@ -3,6 +3,8 @@
 #include "view/buttons/menu_button.h"
 #include "core/abstract_scene.h"
 
+#include <vector>
+
 #include <QWidget>
 #include <QStackedWidget>
 #include <QPaintEvent>
@@ -58,4 +60,4 @@ class FastMenu : public QStackedWidget {
   std::vector<QString> places_text_;
 };
 
-}
+} // namespace core

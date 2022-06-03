@@ -154,8 +154,6 @@ void Connector::StartGame(QGraphicsScene* scene) {
 
   // Removes dungeon from game
   // serializer_->RemoveDungeon(DungeonName::kHub);
-
-  // scene->GetSceneView()->scale(2.5, 2.5);
 }
 
 void Connector::DeleteEntity(engine::Entity entity) {

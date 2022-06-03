@@ -1,5 +1,4 @@
-#ifndef MENU_BUTTON_H
-#define MENU_BUTTON_H
+#pragma once
 
 #include <QPushButton>
 
@@ -20,5 +19,3 @@ class MenuButton : public QPushButton {
   QRect relative_pos_;
   QPixmap* pixmap_;
 };
-
-#endif //MENU_BUTTON_H

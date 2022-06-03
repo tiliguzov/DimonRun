@@ -15,8 +15,10 @@ class AbstractScene {
   virtual DungeonName GetCurrentDungeon() = 0;
   virtual void SetCurrentDungeon(DungeonName) = 0;
 
-  virtual void DownloadDungeon(DungeonName dungeon_name, DungeonType dungeon_type) = 0;
-  virtual void UploadDungeon(DungeonName dungeon_name, DungeonType dungeon_type) = 0;
+  virtual void DownloadDungeon(DungeonName dungeon_name,
+                               DungeonType dungeon_type) = 0;
+  virtual void UploadDungeon(DungeonName dungeon_name,
+                             DungeonType dungeon_type) = 0;
   virtual void RemoveDungeon(DungeonName dungeon_name) = 0;
 };
 

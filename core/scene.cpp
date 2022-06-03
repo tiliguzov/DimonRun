@@ -17,7 +17,7 @@ Scene::Scene(QStackedWidget* parent, Connector* connector) :
       timer_id_(startTimer(kTickTime)),
       scene_(new QGraphicsScene(this)),
       scene_view_(new QGraphicsView(this)),
-      fast_menu_(new FastMenu(this, ":/view/img.png")),
+      fast_menu_(new FastMenu(this, ":/view/fast_menu.png")),
       vault_(new Vault(this, ":/view/vault.png")) {
 
   SetDefaultSceneSettings();
@@ -67,7 +67,6 @@ void Scene::keyPressEvent(QKeyEvent *event) {
     is_vault_showed_ = !is_vault_showed_;
   }
 }
-
 
 void Scene::keyReleaseEvent(QKeyEvent *event) {
   connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));

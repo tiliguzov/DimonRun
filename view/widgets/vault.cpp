@@ -44,5 +44,5 @@ void Vault::Resize(QSize size) {
                             kCoinsVault.height() * size.height() / 1000);
 }
 
-}
+} // namespace core
 

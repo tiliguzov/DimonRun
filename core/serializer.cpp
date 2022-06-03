@@ -177,7 +177,6 @@ void Serializer::RemoveDungeon(DungeonName dungeon_name) {
 
 void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
   QFile input_file(source_by_name_hand_created.at(dungeon_name));
-  std::cout << source_by_name_hand_created.at(dungeon_name).toStdString() << std::endl;
   input_file.open(QFile::ReadOnly | QIODevice::Text);
   QByteArray bytes = input_file.readAll();
   QJsonDocument document = QJsonDocument::fromJson(bytes);
@@ -194,7 +193,6 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
     QJsonObject entity_object{entity_data.toObject()};
     engine::Entity entity = coordinator_->CreateEntity();
     dungeon->entities.push_back(entity);
-    std::cout << "entity " << std::endl;
 
     // Download component from json file if entity_object contains such
     // component data and add to entity

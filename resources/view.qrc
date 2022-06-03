@@ -8,7 +8,7 @@
         <file>view/close.png</file>
         <file>view/return.png</file>
         <file>view/coin.png</file>
-        <file>view/img.png</file>
+        <file>view/fast_menu.png</file>
         <file>view/vault.png</file>
     </qresource>
 </RCC>

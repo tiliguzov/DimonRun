@@ -1,9 +1,4 @@
-//
-// Created by admin on 03.06.2022.
-//
-
-#ifndef VAULT_H
-#define VAULT_H
+#pragma once
 
 #include "view/buttons/menu_button.h"
 #include "core/abstract_scene.h"
@@ -29,6 +24,4 @@ class Vault : public QStackedWidget {
   MenuButton* return_button_;
 };
 
-}
-
-#endif //VAULT_H
+} // namespace core
