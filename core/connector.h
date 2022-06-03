@@ -9,6 +9,7 @@
 #include "core/scene.h"
 #include "core/serializer.h"
 #include "engine/coordinator.h"
+#include "core/dungeon_name.h"
 
 namespace core {
 
@@ -17,7 +18,7 @@ class Connector {
   Connector();
 
   void OnTick();
-  void StartGame(Scene* scene);
+  void StartGame(QGraphicsScene* scene);
 
   QGraphicsItem* CreateHero(Scene* scene);
 
@@ -27,6 +28,11 @@ class Connector {
   void DeleteEntity(engine::Entity entity);
   void UseEvent(engine::Entity);
   void CheckAndAddCoin(engine::Entity);
+  Serializer* GetSerializer();
+
+  DungeonName GetCurrentDungeon();
+  void SetCurrentDungeon(DungeonName);
+
  private:
   void RegisterSystems();
   void RegisterComponents();
@@ -36,6 +42,8 @@ class Connector {
   std::unique_ptr<Serializer> serializer_;
 
   std::vector<std::shared_ptr<engine::System>> systems_;
+
+  DungeonName current_dungeon_;
 };
 
 }  // namespace core

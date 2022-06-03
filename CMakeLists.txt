@@ -32,13 +32,18 @@ add_executable(DimonRun
         resources/hero.qrc
         resources/background.qrc
         resources/hand_created_dungeons.qrc
+        resources/view.qrc
 
         systems/movement_system.cpp
         systems/joystick_system.cpp
         systems/painting_system.cpp
         systems/animation_system.cpp
         systems/collision_system.cpp
-        systems/illness_system.cpp)
+        systems/illness_system.cpp
+
+        view/buttons/menu_button.cpp
+        view/widgets/fast_menu.cpp
+        view/widgets/vault.cpp)
 
 target_link_libraries(DimonRun
         Qt::Core

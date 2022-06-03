@@ -1,68 +1,17 @@
 {
+    "background_image": ":background_image.jpg",
     "entities": [
         {
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":column_down.png",
+                "source": ":back_wall.png",
                 "z_value": 0
             },
             "position_comp": {
-                "column": 9,
-                "row": 9
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":column.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 9,
-                "row": 8
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":column.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 9,
-                "row": 7
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":column.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 9,
-                "row": 6
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":column_up.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 9,
-                "row": 5
+                "column": 0,
+                "row": -1
             }
         },
         {
@@ -74,8 +23,8 @@
                 "z_value": 0
             },
             "position_comp": {
-                "column": 8,
-                "row": 5
+                "column": -1,
+                "row": 0
             }
         },
         {
@@ -87,177 +36,8 @@
                 "z_value": 0
             },
             "position_comp": {
-                "column": 8,
-                "row": 6
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":back_wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 8,
-                "row": 7
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":back_wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 8,
-                "row": 8
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":back_wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 8,
-                "row": 9
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":back_wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 6,
-                "row": 5
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":back_wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 6,
-                "row": 6
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":back_wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 6,
-                "row": 8
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":back_wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 6,
-                "row": 7
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":back_wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 6,
-                "row": 9
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":column_down.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 5,
-                "row": 9
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":column.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 5,
-                "row": 8
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":column.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 5,
-                "row": 7
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":column.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 5,
-                "row": 6
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":column_up.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 5,
-                "row": 5
+                "column": 1,
+                "row": 0
             }
         },
         {
@@ -274,8 +54,8 @@
                 "z_value": 0
             },
             "position_comp": {
-                "column": 7,
-                "row": 8
+                "column": 1,
+                "row": -1
             }
         },
         {
@@ -292,34 +72,34 @@
                 "z_value": 0
             },
             "position_comp": {
-                "column": 7,
-                "row": 6
+                "column": -1,
+                "row": -1
             }
         },
         {
             "graphics_comp": {
                 "rotate": 0,
-                "scale_x": 1,
+                "scale_x": -1,
                 "scale_y": 1,
-                "source": ":back_wall.png",
+                "source": ":column_down.png",
                 "z_value": 0
             },
             "position_comp": {
-                "column": 7,
-                "row": 7
+                "column": 2,
+                "row": 0
             }
         },
         {
             "graphics_comp": {
                 "rotate": 0,
-                "scale_x": 1,
+                "scale_x": -1,
                 "scale_y": 1,
-                "source": ":back_wall.png",
+                "source": ":column_up.png",
                 "z_value": 0
             },
             "position_comp": {
-                "column": 7,
-                "row": 5
+                "column": 2,
+                "row": -1
             }
         },
         {
@@ -327,12 +107,12 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":floor_line.png",
-                "z_value": 1
+                "source": ":roof.png",
+                "z_value": 0
             },
             "position_comp": {
-                "column": 5,
-                "row": 10
+                "column": -2,
+                "row": -2
             }
         },
         {
@@ -340,178 +120,139 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":floor_line.png",
-                "z_value": 1
+                "source": ":roof.png",
+                "z_value": 0
             },
             "position_comp": {
-                "column": 6,
-                "row": 10
+                "column": -1,
+                "row": -2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":roof.png",
+                "z_value": 0
             },
+            "position_comp": {
+                "column": 0,
+                "row": -2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":roof.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": -2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":roof.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": -2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -3,
+                "row": -1
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 0
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": -1
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 0
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":roof.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -3,
+                "row": -2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":roof.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": -2
+            }
+        },
+        {
             "collision_comp": {
-                   "is_movable": 0,
-                   "gravity": 0,
-                   "can_use": 0,
-                   "is_usable": 0,
-                   "is_breakable": 0
-           }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":floor_line.png",
-                "z_value": 1
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
             },
-            "position_comp": {
-                "column": 7,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":floor_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 8,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":floor_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 9,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 4,
-                "row": 5
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 4,
-                "row": 6
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 4,
-                "row": 7
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 4,
-                "row": 8
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 10,
-                "row": 5
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 10,
-                "row": 6
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 10,
-                "row": 7
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 10,
-                "row": 8
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 10,
-                "row": 9
-            }
-        },
-        {
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
@@ -520,471 +261,58 @@
                 "z_value": 1
             },
             "position_comp": {
-                "column": 3,
-                "row": 5
+                "column": -4,
+                "row": 0
             }
         },
         {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
             },
-            "position_comp": {
-                "column": 3,
-                "row": 6
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 3,
-                "row": 7
-            }
-        },
-        {
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": -1,
                 "scale_y": 1,
                 "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 11,
-                "row": 5
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 11,
-                "row": 6
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 11,
-                "row": 7
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 11,
-                "row": 8
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 11,
-                "row": 9
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 5,
-                "source": ":water.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":water_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 4,
-                "row": 11
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 5,
-                "source": ":water.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":water_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 5,
-                "row": 11
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 5,
-                "source": ":water.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":water_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 6,
-                "row": 11
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 5,
-                "source": ":water.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":water_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 7,
-                "row": 11
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 5,
-                "source": ":water.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":water_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 8,
-                "row": 11
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 5,
-                "source": ":water.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":water_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 9,
-                "row": 11
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 5,
-                "source": ":water.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":water_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 10,
-                "row": 11
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 6,
-                "source": ":wave.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wave_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 5,
-                "row": 10
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 6,
-                "source": ":wave.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wave_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 4,
-                "row": 10
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 6,
-                "source": ":wave.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wave_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 6,
-                "row": 10
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 6,
-                "source": ":wave.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wave_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 8,
-                "row": 10
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 6,
-                "source": ":wave.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wave_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 7,
-                "row": 10
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 6,
-                "source": ":wave.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wave_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 10,
-                "row": 10
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 6,
-                "source": ":wave.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wave_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 9,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":ground2.jpg",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 4,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":ground2.jpg",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 5,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":ground2.jpg",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 6,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":ground2.jpg",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 7,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":ground2.jpg",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 8,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":ground2.jpg",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 9,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":ground2.jpg",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 10,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":floor_line.png",
                 "z_value": 1
             },
             "position_comp": {
                 "column": 4,
-                "row": 10
+                "row": -1
             }
         },
         {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
             "graphics_comp": {
                 "rotate": 0,
-                "scale_x": 1,
+                "scale_x": -1,
                 "scale_y": 1,
-                "source": ":floor_line.png",
+                "source": ":wall_line.png",
                 "z_value": 1
             },
             "position_comp": {
-                "column": 10,
-                "row": 10
+                "column": 4,
+                "row": 0
             }
         },
         {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
@@ -993,11 +321,178 @@
                 "z_value": 1
             },
             "position_comp": {
-                "column": 4,
-                "row": 8
+                "column": -3,
+                "row": -2
             }
         },
         {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": -1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -2,
+                "row": -2
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": -1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -1,
+                "row": -2
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": -1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 0,
+                "row": -2
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": -1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 1,
+                "row": -2
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": -1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 2,
+                "row": -2
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": -1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 3,
+                "row": -2
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 1
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 1
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
@@ -1007,7 +502,7 @@
             },
             "position_comp": {
                 "column": 3,
-                "row": 10
+                "row": 1
             }
         },
         {
@@ -1015,48 +510,12 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":ground2.jpg",
+                "source": ":wall.png",
                 "z_value": 0
             },
             "position_comp": {
-                "column": 3,
-                "row": 10
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 5,
-                "source": ":water.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":water_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 3,
-                "row": 11
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 6,
-                "source": ":wave.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wave_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 3,
-                "row": 10
+                "column": -3,
+                "row": 1
             }
         },
         {
@@ -1064,11 +523,37 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":back_wall.png",
+                "source": ":wall.png",
                 "z_value": 0
             },
             "position_comp": {
-                "column": 7,
+                "column": -3,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 3
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -3,
                 "row": 4
             }
         },
@@ -1081,21 +566,8 @@
                 "z_value": 0
             },
             "position_comp": {
-                "column": 6,
-                "row": 3
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":wall.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 8,
-                "row": 3
+                "column": -3,
+                "row": 5
             }
         },
         {
@@ -1103,25 +575,12 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":ceil_side.png",
+                "source": ":back_wall.png",
                 "z_value": 0
             },
             "position_comp": {
-                "column": 6,
-                "row": 2
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":ceil_side.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 8,
-                "row": 2
+                "column": -2,
+                "row": 1
             }
         },
         {
@@ -1129,11 +588,11 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":ceil.png",
+                "source": ":back_wall.png",
                 "z_value": 0
             },
             "position_comp": {
-                "column": 7,
+                "column": -2,
                 "row": 2
             }
         },
@@ -1151,7 +610,7 @@
                 "z_value": 0
             },
             "position_comp": {
-                "column": 7,
+                "column": -2,
                 "row": 3
             }
         },
@@ -1160,11 +619,76 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 4
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 5
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
                 "source": ":wall.png",
                 "z_value": 0
             },
             "position_comp": {
-                "column": 6,
+                "column": -1,
+                "row": 1
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 3
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -1,
                 "row": 4
             }
         },
@@ -1177,60 +701,8 @@
                 "z_value": 0
             },
             "position_comp": {
-                "column": 8,
-                "row": 4
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": -1,
-                "source": ":floor_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 10,
-                "row": 4
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":handrail_background.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 2,
-                "row": 9
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":handrail_background.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 1,
-                "row": 9
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":handrail_background.png",
-                "z_value": 0
-            },
-            "position_comp": {
                 "column": -1,
-                "row": 9
+                "row": 5
             }
         },
         {
@@ -1238,38 +710,12 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":handrail_background.png",
-                "z_value": 0
-            },
-            "position_comp": {
-                "column": 0,
-                "row": 9
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":handrail_background.png",
+                "source": ":back_wall.png",
                 "z_value": 0
             },
             "position_comp": {
                 "column": -2,
-                "row": 9
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": -1,
-                "scale_y": 1,
-                "source": ":bridge_side.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 2,
-                "row": 10
+                "row": -1
             }
         },
         {
@@ -1277,304 +723,12 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":bridge.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 1,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":bridge.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 0,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":bridge.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": -1,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":bridge.png",
-                "z_value": 1
+                "source": ":back_wall.png",
+                "z_value": 0
             },
             "position_comp": {
                 "column": -2,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":handrail_foreground.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 2,
-                "row": 9
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":handrail_foreground.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 1,
-                "row": 9
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":handrail_foreground.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 0,
-                "row": 9
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":handrail_foreground.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": -1,
-                "row": 9
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":handrail_foreground.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": -2,
-                "row": 9
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 5,
-                "source": ":water.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":water_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 2,
-                "row": 11
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 5,
-                "source": ":water.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":water_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 1,
-                "row": 11
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 5,
-                "source": ":water.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":water_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 0,
-                "row": 11
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 5,
-                "source": ":water.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":water_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": -1,
-                "row": 11
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 5,
-                "source": ":water.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":water_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": -2,
-                "row": 11
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 6,
-                "source": ":wave.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wave_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 1,
-                "row": 10
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 6,
-                "source": ":wave.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wave_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": 0,
-                "row": 10
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 6,
-                "source": ":wave.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wave_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": -1,
-                "row": 10
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 6,
-                "source": ":wave.json"
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wave_00.png",
-                "z_value": 2
-            },
-            "position_comp": {
-                "column": -2,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 3,
-                "row": 8
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": -1,
-                "source": ":floor_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 4,
-                "row": 4
+                "row": 0
             }
         },
         {
@@ -1586,26 +740,39 @@
                 "z_value": 0
             },
             "position_comp": {
-                "column": 4,
-                "row": 9
+                "column": -3,
+                "row": 6
             }
         },
         {
             "animation_comp": {
                 "direction": 0,
-                "move_type": 6,
-                "source": ":wave.json"
+                "move_type": 4,
+                "source": ":back_wall_torch.json"
             },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":wave_00.png",
-                "z_value": 2
+                "source": ":back_wall_and_torch_00.png",
+                "z_value": 0
             },
             "position_comp": {
-                "column": 2,
-                "row": 10
+                "column": -2,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 6
             }
         },
         {
@@ -1613,12 +780,12 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":bridge_side.png",
-                "z_value": 1
+                "source": ":ground2.jpg",
+                "z_value": 0
             },
             "position_comp": {
-                "column": -3,
-                "row": 10
+                "column": -1,
+                "row": 7
             }
         },
         {
@@ -1626,12 +793,12 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":handrail_foreground.png",
-                "z_value": 2
+                "source": ":ground2.jpg",
+                "z_value": 0
             },
             "position_comp": {
-                "column": -3,
-                "row": 9
+                "column": -2,
+                "row": 7
             }
         },
         {
@@ -1639,12 +806,773 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":handrail_background.png",
+                "source": ":ground2.jpg",
                 "z_value": 0
             },
             "position_comp": {
                 "column": -3,
-                "row": 9
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 8
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 7
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 7
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 7
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 3
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 4
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 5
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 6
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -4,
+                "row": 1
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -4,
+                "row": 4
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -4,
+                "row": 5
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_inside.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 1
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_inside.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 1
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_inside.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_inside.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 1
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_inside.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 1
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_inside.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_inside.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 3
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_inside.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 3
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_inside.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 4
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_inside.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 4
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_inside.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 5
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_inside.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 5
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_inside.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_inside.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground2.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -4,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -4,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -5,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -5,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -6,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -6,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -7,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -7,
+                "row": 7
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -4,
+                "row": 7
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -5,
+                "row": 7
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -6,
+                "row": 7
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -7,
+                "row": 7
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":grass.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -4,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":grass.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -5,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":grass.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -6,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":grass.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -7,
+                "row": 6
             }
         },
         {
@@ -1661,8 +1589,62 @@
                 "z_value": 2
             },
             "position_comp": {
-                "column": -3,
-                "row": 11
+                "column": -8,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -9,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -11,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -10,
+                "row": 8
             }
         },
         {
@@ -1679,8 +1661,162 @@
                 "z_value": 2
             },
             "position_comp": {
-                "column": -3,
-                "row": 10
+                "column": -8,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -9,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -10,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -11,
+                "row": 7
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": -1,
+                "scale_y": 1,
+                "source": ":bridge_side.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -4,
+                "row": -1
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":bridge.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -5,
+                "row": -1
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":bridge.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -7,
+                "row": -1
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":bridge.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -8,
+                "row": -1
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":bridge.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -9,
+                "row": -1
             }
         },
         {
@@ -1688,12 +1824,12 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":ceil_line.png",
-                "z_value": 1
+                "source": ":handrail_foreground.png",
+                "z_value": 2
             },
             "position_comp": {
-                "column": 6,
-                "row": 2
+                "column": -4,
+                "row": -2
             }
         },
         {
@@ -1701,12 +1837,12 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":ceil_line.png",
-                "z_value": 1
+                "source": ":handrail_foreground.png",
+                "z_value": 2
             },
             "position_comp": {
-                "column": 7,
-                "row": 2
+                "column": -5,
+                "row": -2
             }
         },
         {
@@ -1714,38 +1850,12 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":ceil_line.png",
-                "z_value": 1
+                "source": ":handrail_foreground.png",
+                "z_value": 2
             },
             "position_comp": {
-                "column": 8,
-                "row": 2
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": -1,
-                "source": ":floor_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 5,
-                "row": 4
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": -1,
-                "source": ":floor_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 9,
-                "row": 4
+                "column": -6,
+                "row": -2
             }
         },
         {
@@ -1753,11 +1863,814 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":back_wall.png",
+                "source": ":handrail_foreground.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -7,
+                "row": -2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_foreground.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -8,
+                "row": -2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_foreground.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -9,
+                "row": -2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_background.png",
                 "z_value": 0
             },
             "position_comp": {
-                "column": 7,
+                "column": -4,
+                "row": -2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_background.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -5,
+                "row": -2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_background.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -6,
+                "row": -2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_background.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -7,
+                "row": -2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_background.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -8,
+                "row": -2
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":bridge.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -6,
+                "row": -1
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -12,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -13,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -14,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -16,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -15,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -17,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -12,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -13,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -14,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -15,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -16,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -17,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -18,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -19,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -20,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -21,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -22,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 6,
+                "source": ":wave.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wave_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -23,
+                "row": 7
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -18,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -19,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -20,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -21,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -22,
+                "row": 8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 5,
+                "source": ":water.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":water_00.png",
+                "z_value": 2
+            },
+            "position_comp": {
+                "column": -23,
+                "row": 8
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -23,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -22,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -21,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -20,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -19,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -18,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -17,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -15,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -16,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -14,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -13,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -12,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -11,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -10,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -9,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -8,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -7,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -6,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -5,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -4,
                 "row": 9
             }
         },
@@ -1822,7 +2735,423 @@
                 "z_value": 0
             },
             "position_comp": {
+                "column": -8,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -9,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -10,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -11,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -12,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -13,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -14,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -15,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -16,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -17,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -18,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -23,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -22,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -20,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -21,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -19,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -23,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -22,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -21,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -20,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -19,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -18,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -17,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -16,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -15,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -14,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -13,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -12,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -11,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -9,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -10,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
                 "column": -7,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -8,
                 "row": 11
             }
         },
@@ -1870,78 +3199,1679 @@
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
-                "source": ":floor_line.png",
-                "z_value": 1
+                "source": ":ground1.jpg",
+                "z_value": 0
             },
             "position_comp": {
                 "column": -4,
-                "row": 10
+                "row": 12
             }
         },
         {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":floor_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": -5,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":floor_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": -6,
-                "row": 10
-            }
-        },
-        {
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":floor_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": -7,
-                "row": 10
-            }
-        },
-        {
-            "position_comp": {
-                "row": 2,
-                "column": 2
-            },
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
                 "scale_y": 1,
                 "source": ":ground1.jpg",
-                "z_value": 1
+                "z_value": 0
             },
+            "position_comp": {
+                "column": -5,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -6,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -7,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -8,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -9,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -10,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -11,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -12,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -13,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -14,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -15,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -16,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -17,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -23,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -22,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -21,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -20,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -19,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -18,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -22,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -23,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -20,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -21,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -19,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -18,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -17,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -16,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -15,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -14,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -13,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -12,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -11,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -10,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -9,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -8,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -7,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -6,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -5,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -4,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -4,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -5,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -6,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -7,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -8,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -9,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -11,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -10,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -12,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -13,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -23,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -21,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -22,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -20,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -19,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -18,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -17,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -16,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -15,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -14,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -3,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -2,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -1,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 14
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 13
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 12
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 11
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 10
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":ground1.jpg",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 9
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 3
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 4
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 5
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 3
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 2
+            }
+        },
+        {
             "collision_comp": {
-                "is_movable": 0,
-                "gravity": 0,
-                "can_use": 0,
-                "is_usable": 0,
-                "is_breakable": 1
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
             },
-            "illness_comp": {
-                "kill_time": 0,
-                "is_ill": 0
+            "graphics_comp": {
+                "rotate": 180,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 2
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 180,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 3
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 180,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 4
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 180,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 6
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 180,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 5
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 540,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 2
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 1
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -4,
+                "row": 3
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": -4,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":handrail_background.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": -9,
+                "row": -2
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 4,
+                "source": ":back_wall_torch.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall_and_torch_00.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 4
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 4,
+                "source": ":back_wall_torch.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall_and_torch_00.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 6
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 5
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 4,
+                "source": ":back_wall_torch.json"
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall_and_torch_00.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 1,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 0
             }
         }
     ],
     "offset_x": 0,
-    "offset_y": 0
+    "offset_y": 50
 }
