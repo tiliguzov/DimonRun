@@ -17,7 +17,8 @@
       "name" : "Back wall torch",
       "animation_source" : ":back_wall_torch.json",
       "direction" :  "left",
-      "move_type" : "torch_burning"
+      "move_type" : "torch_burning",
+      "start_time" : 0
     },
     "ceil" : {
       "source" : ":ceil.png",
@@ -58,6 +59,10 @@
     "roof" : {
       "source" : ":roof.png",
       "name" : "Roof"
+    },
+    "hub" : {
+      "source" : ":hub.png",
+      "name" : "Hub"
     }
   },
   "1" : {
@@ -116,12 +121,28 @@
       "animation_source" : ":coin.json",
       "direction" :  "left",
       "move_type" : "coin_moving",
+      "start_time" : 0,
+      "kill_time" : 300,
       "is_movable" : false,
       "gravity" : false,
       "can_use" : false,
       "is_usable" : false,
       "is_breakable" : true,
-      "kill_time" : 300,
+      "is_ill" : false
+    },
+    "rubbish" : {
+      "source" : ":rubbish_00.png",
+      "name" : "Rubbish",
+      "animation_source" : ":rubbish.json",
+      "direction" : "left",
+      "move_type" : "rubbish_destroy",
+      "start_time" : 2000000000,
+      "kill_time" : 400,
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : true,
       "is_ill" : false
     },
     "stone" : {
@@ -131,6 +152,7 @@
       "direction" :  "left",
       "move_type" : "stone_moving",
       "is_movable" : true,
+      "start_time" : 0,
       "gravity" : true,
       "can_use" : false,
       "is_usable" : false,
@@ -146,6 +168,7 @@
       "direction" :  "left",
       "move_type" : "static_in_air",
       "is_movable" : true,
+      "start_time" : 0,
       "gravity" : false,
       "can_use" : true,
       "is_usable" : false,
@@ -165,12 +188,14 @@
       "name" : "Water",
       "animation_source" : ":water.json",
       "direction" :  "left",
-      "move_type" : "water_moving"
+      "move_type" : "water_moving",
+      "start_time" : 0
     },
     "wave" : {
       "source" : ":wave_00.png",
       "name" : "Wave",
       "animation_source" : ":wave.json",
+      "start_time" : 0,
       "direction" :  "left",
       "move_type" : "wave_moving"
     },

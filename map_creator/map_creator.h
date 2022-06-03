@@ -65,6 +65,7 @@ class MapCreator : public QWidget {
   std::unordered_map<std::string, std::string> animation_source_;
   std::unordered_map<std::string, core::HorizontalDirection> direction_;
   std::unordered_map<std::string, core::MovementType> movement_type_;
+  std::unordered_map<std::string, int> start_time_;
 
   std::unordered_map<std::string, bool> is_movable_;
   std::unordered_map<std::string, bool> gravity_;
@@ -72,7 +73,7 @@ class MapCreator : public QWidget {
   std::unordered_map<std::string, bool> is_usable_;
   std::unordered_map<std::string, bool> is_breakable_;
 
-  std::unordered_map<std::string, bool> kill_time_;
+  std::unordered_map<std::string, int> kill_time_;
   std::unordered_map<std::string, bool> is_ill_;
 
   std::unordered_map<std::string, double> current_speed_;
@@ -88,5 +89,6 @@ class MapCreator : public QWidget {
        {"water_moving", core::MovementType::kWaterMoving},
        {"wave_moving", core::MovementType::kWaveMoving},
        {"coin_moving", core::MovementType::kCoinMoving},
-       {"stone_moving", core::MovementType::kStoneMoving}};
+       {"stone_moving", core::MovementType::kStoneMoving},
+       {"rubbish_destroy", core::MovementType::kRubbishDestroy}};
 };
