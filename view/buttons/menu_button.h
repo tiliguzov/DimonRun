@@ -3,7 +3,7 @@
 #include <QPushButton>
 
 class MenuButton : public QPushButton {
- Q_OBJECT
+  Q_OBJECT
  public:
   MenuButton(
       const QString& path_to_pixmap,

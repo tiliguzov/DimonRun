@@ -24,4 +24,4 @@ class Vault : public QStackedWidget {
   MenuButton* return_button_;
 };
 
-} // namespace core
+}  // namespace core

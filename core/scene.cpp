@@ -12,13 +12,13 @@ namespace core {
 
 Scene::Scene(QStackedWidget* parent, Connector* connector) :
     QStackedWidget(parent),
-      parent_(parent),
-      connector_(connector),
-      timer_id_(startTimer(kTickTime)),
-      scene_(new QGraphicsScene(this)),
-      scene_view_(new QGraphicsView(this)),
-      fast_menu_(new FastMenu(this, ":/view/fast_menu.png")),
-      vault_(new Vault(this, ":/view/vault.png")) {
+    parent_(parent),
+    connector_(connector),
+    timer_id_(startTimer(kTickTime)),
+    scene_(new QGraphicsScene(this)),
+    scene_view_(new QGraphicsView(this)),
+    fast_menu_(new FastMenu(this, ":/view/fast_menu.png")),
+    vault_(new Vault(this, ":/view/vault.png")) {
 
   SetDefaultSceneSettings();
 
@@ -48,7 +48,7 @@ void Scene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
 }
 
-void Scene::keyPressEvent(QKeyEvent *event) {
+void Scene::keyPressEvent(QKeyEvent* event) {
   connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));
   if (event->key() == Qt::Key_Escape) {
     if (is_menu_showed_) {
@@ -68,7 +68,7 @@ void Scene::keyPressEvent(QKeyEvent *event) {
   }
 }
 
-void Scene::keyReleaseEvent(QKeyEvent *event) {
+void Scene::keyReleaseEvent(QKeyEvent* event) {
   connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
 }
 
@@ -93,7 +93,7 @@ QGraphicsView* Scene::GetSceneView() {
   return scene_view_;
 }
 
-bool Scene::eventFilter(QObject *object, QEvent *event) {
+bool Scene::eventFilter(QObject* object, QEvent* event) {
   if (object == scene_view_->viewport() && event->type() == QEvent::Wheel) {
     return true;
   }
@@ -121,8 +121,8 @@ void Scene::resizeEvent(QResizeEvent* event) {
   vault_->Resize(new_size);
 }
 
-
-void Scene::DownloadDungeon(DungeonName dungeon_name, DungeonType dungeon_type) {
+void Scene::DownloadDungeon(DungeonName dungeon_name,
+                            DungeonType dungeon_type) {
   connector_->GetSerializer()->DownloadDungeon(dungeon_name, dungeon_type);
 }
 

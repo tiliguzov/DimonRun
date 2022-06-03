@@ -60,4 +60,4 @@ class FastMenu : public QStackedWidget {
   std::vector<QString> places_text_;
 };
 
-} // namespace core
+}  // namespace core

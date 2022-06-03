@@ -17,12 +17,12 @@ namespace core {
 class Connector;
 
 enum ZValues {
-    kBackgroundZIndex,
-    kPlayerZIndex
+  kBackgroundZIndex,
+  kPlayerZIndex
 };
 
 class Scene : public QStackedWidget, AbstractScene {
-  Q_OBJECT
+ Q_OBJECT
 
  public:
   Scene(QStackedWidget* parent, Connector* connector);
@@ -39,7 +39,7 @@ class Scene : public QStackedWidget, AbstractScene {
 
   void SetDefaultSceneSettings();
 
-  bool eventFilter(QObject *object, QEvent *event) override;
+  bool eventFilter(QObject* object, QEvent* event) override;
 
   void OpenFastMenu() override;
   void ContinueGame() override;
@@ -48,8 +48,10 @@ class Scene : public QStackedWidget, AbstractScene {
   DungeonName GetCurrentDungeon() override;
   void SetCurrentDungeon(DungeonName) override;
 
-  void DownloadDungeon(DungeonName dungeon_name, DungeonType dungeon_type) override;
-  void UploadDungeon(DungeonName dungeon_name, DungeonType dungeon_type) override;
+  void DownloadDungeon(DungeonName dungeon_name,
+                       DungeonType dungeon_type) override;
+  void UploadDungeon(DungeonName dungeon_name,
+                     DungeonType dungeon_type) override;
   void RemoveDungeon(DungeonName dungeon_name) override;
 
   int32_t timer_id_;

@@ -102,7 +102,8 @@ void FastMenu::OpenListPlaces() {
   places_text_.emplace_back("level2");
   places_text_.emplace_back("green screen");
   for (int i = 0; i < places_text_.size(); ++i) {
-    QListWidgetItem* item = new QListWidgetItem(places_text_[i], places_, i + 1);
+    QListWidgetItem
+        * item = new QListWidgetItem(places_text_[i], places_, i + 1);
     ++i;
   }
   connect(places_, &QListWidget::itemClicked,

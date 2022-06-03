@@ -37,7 +37,6 @@ constexpr QRect kCoinsVault(495, 160, 100, 60);
 const QString kShortcutsText{
     "ESC -> Open fast menu \nCTRL + M - Mute/unmute \nCTRL + Q - Exit game \nCTRL + S - сохраниться"};
 
-
 // Number of bytes occupied by a char array containing the name for every
 // source file in binary file of dungeon
 const int kMaxPathLength = 100;
@@ -62,10 +61,10 @@ const std::unordered_map<DungeonName, QString> source_by_name_hand_created{
 };
 
 const std::unordered_map<std::string, DungeonName> dungeon_name_by_note{
-    {"hub",DungeonName::kHub},
-    {"level1",DungeonName::kLevel1},
-    {"level2",DungeonName::kLevel2},
-    {"green screen",DungeonName::kNone}
+    {"hub", DungeonName::kHub},
+    {"level1", DungeonName::kLevel1},
+    {"level2", DungeonName::kLevel2},
+    {"green screen", DungeonName::kNone}
 };
 
 }  // namespace core

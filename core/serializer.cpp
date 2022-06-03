@@ -28,7 +28,8 @@ void Write(std::ofstream& os, T* data, int size) {
 
 }  // namespace
 
-Serializer::Serializer(engine::Coordinator* coordinator, QGraphicsScene* scene) :
+Serializer::Serializer(engine::Coordinator* coordinator, QGraphicsScene* scene)
+    :
     coordinator_(coordinator), scene_(scene) {}
 
 void Serializer::RemoveEntityFromScene(engine::Entity entity) {
@@ -39,7 +40,7 @@ void Serializer::RemoveEntityFromScene(engine::Entity entity) {
 }
 
 void Serializer::DeleteEntity(engine::Entity entity) {
-  for (auto&[dungeon_name, dungeon] : dungeons_) {
+  for (auto&[dungeon_name, dungeon]: dungeons_) {
     auto it = std::find(
         dungeon->entities.begin(), dungeon->entities.end(), entity);
     if (it != dungeon->entities.end()) {
@@ -136,7 +137,7 @@ void Serializer::UploadDungeon(
   Write(stream, &dungeon->offset_y, sizeof(dungeon->offset_y));
   Write(stream, &dungeon->entities_count, sizeof(dungeon->entities_count));
 
-  for (auto entity : dungeon->entities) {
+  for (auto entity: dungeon->entities) {
     engine::ComponentSignature component_signature{
         coordinator_->GetComponentSignature(entity)};
     Write(stream, &component_signature, sizeof(engine::ComponentSignature));
@@ -168,7 +169,7 @@ void Serializer::UploadCompIfNecessary(
 
 void Serializer::RemoveDungeon(DungeonName dungeon_name) {
   auto& removing_dungeon = dungeons_.at(dungeon_name);
-  for (engine::Entity entity : removing_dungeon->entities) {
+  for (engine::Entity entity: removing_dungeon->entities) {
     RemoveEntityFromScene(entity);
     coordinator_->DestroyEntity(entity);
   }
@@ -189,7 +190,7 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
   QJsonArray entities_data = document["entities"].toArray();
   dungeon->entities_count = entities_data.size();
 
-  for (auto entity_data : entities_data) {
+  for (auto entity_data: entities_data) {
     QJsonObject entity_object{entity_data.toObject()};
     engine::Entity entity = coordinator_->CreateEntity();
     dungeon->entities.push_back(entity);
@@ -237,11 +238,15 @@ void Serializer::DownloadCompFromJson<PositionComponent>(
     const QJsonObject& entity_object) {
   if (entity_object.contains("position_comp")) {
     QJsonObject position_comp_object{
-      entity_object["position_comp"].toObject()};
+        entity_object["position_comp"].toObject()};
     PositionComponent position_component{{
-      static_cast<float>(position_comp_object["column"].toInt()
-      * kTextureSize + dungeon->offset_x),
-      static_cast<float>(position_comp_object["row"].toInt() * kTextureSize
+                                             static_cast<float>(
+                                                 position_comp_object["column"].toInt()
+                                                     * kTextureSize
+                                                     + dungeon->offset_x),
+                                             static_cast<float>(
+                                                 position_comp_object["row"].toInt()
+                                                     * kTextureSize
                                                      + dungeon->offset_y)}};
     coordinator_->AddComponent(entity, position_component);
   }
