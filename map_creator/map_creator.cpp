@@ -143,6 +143,7 @@ void MapCreator::LoadTextures() {
       }
     }
   }
+  AddTexture(pos_of_hero_, 1, ":Hero_static_in_air_00.png");
 }
 
 void MapCreator::CreateGrid() {
@@ -200,7 +201,10 @@ void MapCreator::timerEvent(QTimerEvent* event) {
 void MapCreator::AddTexture(QPointF point,
                             int layer, const std::string &source) {
   DeleteTexture(point, layer);
-
+  if (source == ":Hero_static_in_air_00.png") {
+    DeleteTexture(pos_of_hero_, 1);
+    pos_of_hero_ = point;
+  }
   auto coordinator = connector_->GetCoordinator();
 
   engine::Entity texture_entity = coordinator->CreateEntity();
@@ -260,6 +264,18 @@ void MapCreator::DeleteTexture(QPointF point, int layer) {
       items_.erase(items_.begin() + i);
       scene_->removeItem(item);
     }
+  }
+}
+
+void MapCreator::DeleteAllTextures() {
+  auto coordinator = connector_->GetCoordinator();
+  for (int i = 0; i < items_.size(); ++i) {
+    auto entity = items_[i];
+    auto item = coordinator->
+        GetComponent<core::GraphicsItemComponent>(entity).item;
+    coordinator->DestroyEntity(entity);
+    items_.erase(items_.begin() + i);
+    scene_->removeItem(item);
   }
 }
 
@@ -410,6 +426,11 @@ QJsonDocument MapCreator::AllEntities() {
       anim_comp_info["move_type"] = static_cast<int>(anim_comp.move_type);
 
       entity_info["animation_comp"] = anim_comp_info;
+
+      if (anim_comp_info["move_type"] == static_cast<int>
+              (core::MovementType::kStaticInAir)) {
+        entity_info["joystick_comp"] = QJsonObject();
+      }
     }
 
     if (coordinator->HasComponent<core::CollisionComponent>(entity)) {
@@ -445,7 +466,6 @@ QJsonDocument MapCreator::AllEntities() {
 
       entity_info["movement_comp"] = move_comp_info;
     }
-
     entities.push_back(entity_info);
   }
   result["entities"] = entities;
@@ -454,6 +474,10 @@ QJsonDocument MapCreator::AllEntities() {
 }
 
 void MapCreator::ReadFromJson(const QJsonObject& file) {
+  DeleteAllTextures();
+  pos_of_hero_ = {0, 0};
+  AddTexture(pos_of_hero_, 1, ":Hero_static_in_air_00.png");
+
   auto entities = file["entities"].toArray();
   for (auto entity : entities) {
     QPoint pos;
@@ -488,3 +512,4 @@ void MapCreator::resizeEvent(QResizeEvent* event) {
   save_button_->setGeometry(width - 310, height - 100, 95, 40);
   download_button_->setGeometry(width - 310, height - 60, 95, 40);
 }
+

@@ -149,6 +149,7 @@ void Serializer::UploadDungeon(
     UploadCompIfNecessary<AnimationComponent>(entity, dungeon, stream);
     UploadCompIfNecessary<CollisionComponent>(entity, dungeon, stream);
     UploadCompIfNecessary<IllnessComponent>(entity, dungeon, stream);
+    UploadCompIfNecessary<JoysticComponent>(entity, dungeon, stream);
   }
 
   stream.close();
@@ -213,6 +214,8 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
     DownloadCompFromJson<CollisionComponent>(
         entity, dungeon, entity_object);
     DownloadCompFromJson<IllnessComponent>(
+        entity, dungeon, entity_object);
+    DownloadCompFromJson<JoysticComponent>(
         entity, dungeon, entity_object);
   }
 }
@@ -445,6 +448,35 @@ void Serializer::UploadComponent<IllnessComponent>(
   bool is_ill{0};
   Write(stream, &kill_time, sizeof(int));
   Write(stream, &is_ill, sizeof(bool));
+}
+
+//----------- Joystick Component Specialization ---------------------------
+
+template<>
+void Serializer::DownloadCompFromJson<JoysticComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>& dungeon,
+    const QJsonObject& entity_object) {
+  if (entity_object.contains("joystick_comp")) {
+    scene_->SetHeroEntity(entity);
+    JoysticComponent joystick_component;
+    coordinator_->AddComponent(entity, joystick_component);
+  }
+}
+
+template<>
+JoysticComponent Serializer::DownloadComponent<JoysticComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&) {
+  JoysticComponent component;
+  return component;
+}
+
+template<>
+void Serializer::UploadComponent<JoysticComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const JoysticComponent& component) {
 }
 
 //----------- Movement Component Specialization ---------------------------

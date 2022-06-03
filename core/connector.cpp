@@ -107,29 +107,6 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<AnimationComponent>();
 }
 
-QGraphicsItem* Connector::CreateHero(Scene* scene) {
-  engine::Entity hero = coordinator_->CreateEntity();
-  coordinator_->AddComponent(hero, PositionComponent{{50, 50}});
-  coordinator_->AddComponent(hero, MovementComponent{{0, 0}, 1});
-  coordinator_->AddComponent(hero, CollisionComponent({1, 0, 1, 0, 0}));
-  coordinator_->AddComponent(hero, JoysticComponent());
-  auto item = scene->GetScene()->addPixmap(
-      QPixmap(":Hero_static_in_air_00.png"));
-  item->setZValue(kPlayerZIndex);
-  coordinator_->AddComponent(
-      hero,
-      GraphicsItemComponent{item,
-                            ":Hero_static_in_air_00.png",
-                            1, 1, 0});
-  coordinator_->AddComponent(
-      hero,
-      AnimationComponent{AnimationPack(":hero.json"),
-                         ":hero.json",
-                         HorizontalDirection::kRight,
-                         MovementType::kStaticInAir});
-  return item;
-}
-
 // example of interacting with engine
 void Connector::StartGame(Scene* scene) {
   serializer_ = std::make_unique<Serializer>(coordinator_.get(), scene);

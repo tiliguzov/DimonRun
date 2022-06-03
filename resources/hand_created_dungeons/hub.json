@@ -2,6 +2,122 @@
     "background_image": ":background_image.jpg",
     "entities": [
         {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 7,
+                "source": ":coin.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":coin_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 1
+            },
+            "position_comp": {
+                "column": 4,
+                "row": -9
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 7,
+                "source": ":coin.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":coin_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 1
+            },
+            "position_comp": {
+                "column": 5,
+                "row": -6
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 7,
+                "source": ":coin.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":coin_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 1
+            },
+            "position_comp": {
+                "column": 7,
+                "row": -8
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 7,
+                "source": ":coin.json"
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":coin_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 1
+            },
+            "position_comp": {
+                "column": 7,
+                "row": -6
+            }
+        },
+        {
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
@@ -2383,36 +2499,6 @@
             "position_comp": {
                 "column": -17,
                 "row": 7
-            }
-        },
-        {
-            "animation_comp": {
-                "direction": 0,
-                "move_type": 8,
-                "source": ":stone.json"
-            },
-            "collision_comp": {
-                "can_use": false,
-                "gravity": true,
-                "is_breakable": false,
-                "is_movable": true,
-                "is_usable": false
-            },
-            "graphics_comp": {
-                "rotate": 0,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":stone_00.png",
-                "z_value": 1
-            },
-            "movement_comp": {
-                "current_speed": 1,
-                "direction_x": 0,
-                "direction_y": 0
-            },
-            "position_comp": {
-                "column": 0,
-                "row": 0
             }
         },
         {
@@ -5248,8 +5334,40 @@
                 "column": 1,
                 "row": 2
             }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 0,
+                "source": ":hero.json"
+            },
+            "collision_comp": {
+                "can_use": true,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":Hero_static_in_air_00.png",
+                "z_value": 1
+            },
+            "joystick_comp": {
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": -11,
+                "row": 6
+            }
         }
     ],
     "offset_x": 0,
-    "offset_y": 50
+    "offset_y": 0
 }

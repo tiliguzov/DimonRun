@@ -19,8 +19,6 @@ class Connector {
   void OnTick();
   void StartGame(Scene* scene);
 
-  QGraphicsItem* CreateHero(Scene* scene);
-
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);
 

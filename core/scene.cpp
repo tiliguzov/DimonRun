@@ -20,7 +20,7 @@ Scene::Scene(QWidget* parent, Connector* connector)
 
   SetDefaultSceneSettings();
 
-  hero_item_ = connector_->CreateHero(this);
+  // hero_item_ = connector_->CreateHero(this);
 
   show();
   setFocus();
@@ -33,7 +33,8 @@ void Scene::timerEvent(QTimerEvent* event) {
     return;
   }
   connector_->OnTick();
-  scene_view_->centerOn(hero_item_);
+  scene_view_->centerOn(connector_->GetCoordinator()->
+        GetComponent<GraphicsItemComponent>(hero_entity_).item);
 }
 
 void Scene::paintEvent(QPaintEvent*) {
@@ -78,6 +79,10 @@ bool Scene::eventFilter(QObject *object, QEvent *event) {
     return true;
   }
   return false;
+}
+
+void Scene::SetHeroEntity(engine::Entity entity) {
+  hero_entity_ = entity;
 }
 
 }  // namespace core

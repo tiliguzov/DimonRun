@@ -27,6 +27,7 @@ class Scene : public QWidget {
 
   QGraphicsScene* GetScene();
   QGraphicsView* GetSceneView();
+  void SetHeroEntity(engine::Entity entity);
 
  private:
   void paintEvent(QPaintEvent*) override;
@@ -42,7 +43,7 @@ class Scene : public QWidget {
   int32_t timer_id_;
   QWidget* parent_;
   Connector* connector_;
-  QGraphicsItem* hero_item_;
+  engine::Entity hero_entity_;
   QGraphicsScene* scene_;
   QGraphicsView* scene_view_;
 };

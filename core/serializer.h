@@ -146,6 +146,26 @@ void Serializer::UploadComponent<IllnessComponent>(
     const IllnessComponent& component);
 
 
+//----------- Joystick Component Specialization ---------------------------
+
+template<>
+void Serializer::DownloadCompFromJson<JoysticComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>&,
+    const QJsonObject& entity_object);
+
+template<>
+JoysticComponent Serializer::DownloadComponent<JoysticComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&);
+
+template<>
+void Serializer::UploadComponent<JoysticComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const JoysticComponent& component);
+
+
 //----------- Movement Component Specialization ---------------------------
 template<>
 void Serializer::DownloadCompFromJson<MovementComponent>(

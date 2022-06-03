@@ -138,6 +138,21 @@
       "current_speed" : 1.0,
       "direction_x" : 0,
       "direction_y" : 0
+    },
+    "hero" : {
+      "source" : ":Hero_static_in_air_00.png",
+      "name" : "Hero",
+      "animation_source" : ":hero.json",
+      "direction" :  "left",
+      "move_type" : "static_in_air",
+      "is_movable" : true,
+      "gravity" : false,
+      "can_use" : true,
+      "is_usable" : false,
+      "is_breakable" : false,
+      "current_speed" : 1.0,
+      "direction_x" : 0,
+      "direction_y" : 0
     }
   },
   "2" : {

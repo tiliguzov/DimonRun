@@ -30,6 +30,7 @@ class MapCreator : public QWidget {
   void CreateGrid();
   void AddTexture(QPointF point, int layer, const std::string &source);
   void DeleteTexture(QPointF point, int layer);
+  void DeleteAllTextures();
   void ChangeLayer();
   void ChooseItem();
   void SetDefaultScaleAndRotate();
@@ -57,6 +58,7 @@ class MapCreator : public QWidget {
   QPushButton* layer_button_;
   QPushButton* save_button_;
   QPushButton* download_button_;
+  QPointF pos_of_hero_{0, 0};
   int layer_{0};
   std::vector <engine::Entity> items_;
   std::unordered_map<QListWidgetItem*, std::string> source_;
