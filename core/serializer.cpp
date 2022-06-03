@@ -28,9 +28,11 @@ void Write(std::ofstream& os, T* data, int size) {
 
 }  // namespace
 
-Serializer::Serializer(engine::Coordinator* coordinator, QGraphicsScene* graphics_scene, Scene* scene)
+Serializer::Serializer(engine::Coordinator* coordinator, Scene* scene)
     :
-    coordinator_(coordinator), graphics_scene_(graphics_scene), scene_(scene) {}
+    coordinator_(coordinator),
+    graphics_scene_(scene->GetScene()),
+    scene_(scene) {}
 
 void Serializer::RemoveEntityFromScene(engine::Entity entity) {
   if (coordinator_->HasComponent<GraphicsItemComponent>(entity)) {
@@ -78,6 +80,7 @@ void Serializer::DownloadDungeon(
   auto& dungeon = dungeons_.at(dungeon_name);
   Read(stream, &dungeon->offset_x, sizeof(dungeon->offset_x));
   Read(stream, &dungeon->offset_y, sizeof(dungeon->offset_y));
+  Read(stream, &dungeon->background_image, sizeof(kMaxPathLength));
   Read(stream, &dungeon->entities_count, sizeof(dungeon->entities_count));
 
   for (int i = 0; i < dungeon->entities_count; i++) {
@@ -136,6 +139,7 @@ void Serializer::UploadDungeon(
   auto& dungeon = dungeons_.at(dungeon_name);
   Write(stream, &dungeon->offset_x, sizeof(dungeon->offset_x));
   Write(stream, &dungeon->offset_y, sizeof(dungeon->offset_y));
+  Write(stream, &dungeon->background_image, sizeof(kMaxPathLength));
   Write(stream, &dungeon->entities_count, sizeof(dungeon->entities_count));
 
   for (auto entity : dungeon->entities) {
@@ -191,9 +195,9 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
   dungeon->offset_y = document["offset_y"].toInt();
   QJsonArray entities_data = document["entities"].toArray();
   dungeon->entities_count = entities_data.size();
-
+  dungeon->background_image = document["background_image"].toString();
   auto* item =
-      new QGraphicsPixmapItem(QPixmap(document["background_image"].toString()));
+      new QGraphicsPixmapItem(QPixmap(dungeon->background_image));
   graphics_scene_->addItem(item);
   scene_->SetBackgroundImage(item);
 
@@ -420,7 +424,6 @@ void Serializer::DownloadCompFromJson<IllnessComponent>(
         collision_comp_object{entity_object["illness_comp"].toObject()};
     int kill_time{collision_comp_object["kill_time"].toInt()};
     bool is_ill{collision_comp_object["is_ill"].toBool()};
-    // assert(kill_time == 0 && "kill_time != 0");
     assert(is_ill == 0 && "kill_time != 0");
     IllnessComponent illness_component{kill_time, is_ill};
     coordinator_->AddComponent(entity, illness_component);
@@ -435,7 +438,6 @@ IllnessComponent Serializer::DownloadComponent<IllnessComponent>(
   bool is_ill;
   Read(stream, &kill_time, sizeof(int));
   Read(stream, &is_ill, sizeof(bool));
-  // assert(kill_time == 0 && "kill_time != 0");
   assert(is_ill == 0 && "is_ill != 0");
   IllnessComponent component{kill_time, is_ill};
   return component;

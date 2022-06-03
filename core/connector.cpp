@@ -109,9 +109,9 @@ void Connector::RegisterComponents() {
 }
 
 // example of interacting with engine
-void Connector::StartGame(QGraphicsScene* graphics_scene, Scene* scene) {
+void Connector::StartGame(Scene* scene) {
   serializer_ =
-      std::make_unique<Serializer>(coordinator_.get(), graphics_scene, scene);
+      std::make_unique<Serializer>(coordinator_.get(), scene);
 
   // [before game release] Download from json file to game
   serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);

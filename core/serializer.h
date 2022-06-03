@@ -15,7 +15,6 @@ namespace core {
 class Serializer {
  public:
   Serializer(engine::Coordinator* coordinator,
-             QGraphicsScene* graphics_scene,
              Scene* scene);
 
   void DownloadDungeon(DungeonName dungeon_name, DungeonType dungeon_type);
@@ -30,7 +29,7 @@ class Serializer {
     int offset_x{0};
     int offset_y{0};
     int entities_count{0};
-    QGraphicsPixmapItem* background_image;
+    QString background_image;
     std::vector<engine::Entity> entities;
   };
 

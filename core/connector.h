@@ -18,7 +18,7 @@ class Connector {
   Connector();
 
   void OnTick();
-  void StartGame(QGraphicsScene*, Scene*);
+  void StartGame(Scene* scene);
 
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);
@@ -33,6 +33,7 @@ class Connector {
 
 
   std::shared_ptr<engine::Coordinator> GetCoordinator();
+
  private:
   void RegisterSystems();
   void RegisterComponents();

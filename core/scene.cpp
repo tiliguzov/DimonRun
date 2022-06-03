@@ -27,7 +27,7 @@ Scene::Scene(QStackedWidget* parent, Connector* connector) :
   show();
   setFocus();
   // example of interacting with engine
-  connector->StartGame(scene_, this);
+  connector->StartGame(this);
   ContinueGame();
   scene_view_->scale(1.7, 1.7);
 }
@@ -37,14 +37,12 @@ void Scene::timerEvent(QTimerEvent* event) {
     return;
   }
   connector_->OnTick();
-  // if (connector_->GetCoordinator()->HasComponent<GraphicsItemComponent>(hero_entity_)) {
-    scene_view_->centerOn(connector_->GetCoordinator()->
-        GetComponent<GraphicsItemComponent>(hero_entity_).item);
-    auto pos = connector_->GetCoordinator()->
-        GetComponent<PositionComponent>(hero_entity_).position;
-    background_image_->setPos(pos.x() - background_image_->pixmap().width() / 2,
-                              pos.y() - background_image_->pixmap().height() / 2);
-  // }
+  scene_view_->centerOn(connector_->GetCoordinator()->
+      GetComponent<GraphicsItemComponent>(hero_entity_).item);
+  auto pos = connector_->GetCoordinator()->
+      GetComponent<PositionComponent>(hero_entity_).position;
+  background_image_->setPos(pos.x() - background_image_->pixmap().width() / 2,
+                            pos.y() - background_image_->pixmap().height() / 2);
 }
 
 void Scene::paintEvent(QPaintEvent*) {
