@@ -21,7 +21,7 @@ void Read(std::ifstream& is, T* data, int size) {
   is.read(reinterpret_cast<char*>(data), size);
 }
 
-template <typename T>
+template<typename T>
 void Write(std::ofstream& os, T* data, int size) {
   os.write(reinterpret_cast<const char*>(data), size);
 }
@@ -39,7 +39,7 @@ void Serializer::RemoveEntityFromScene(engine::Entity entity) {
 }
 
 void Serializer::DeleteEntity(engine::Entity entity) {
-  for (auto& [dungeon_name, dungeon] : dungeons_) {
+  for (auto&[dungeon_name, dungeon]: dungeons_) {
     auto it = std::find(
         dungeon->entities.begin(), dungeon->entities.end(), entity);
     if (it != dungeon->entities.end()) {
@@ -96,7 +96,6 @@ void Serializer::DownloadDungeon(
     DownloadCompIfNecessary<CollisionComponent>(entity, dungeon, stream);
     DownloadCompIfNecessary<IllnessComponent>(entity, dungeon, stream);
   }
-   std::cerr << "okkk" << std::endl;
   stream.close();
   assert(stream.good() && "Error occurred at dungeon reading time!");
 }
@@ -107,7 +106,7 @@ void Serializer::DownloadCompIfNecessary(
     const std::unique_ptr<Dungeon>& dungeon,
     std::ifstream& stream) {
   if (coordinator_->HasComponent<ComponentType>(entity)) {
-      std::cerr << "00000" << std::endl;
+    std::cerr << "00000" << std::endl;
     coordinator_->AddComponent(
         entity,
         DownloadComponent<ComponentType>(stream, dungeon));
@@ -139,7 +138,7 @@ void Serializer::UploadDungeon(
   Write(stream, &dungeon->offset_y, sizeof(dungeon->offset_y));
   Write(stream, &dungeon->entities_count, sizeof(dungeon->entities_count));
 
-  for (auto entity : dungeon->entities) {
+  for (auto entity: dungeon->entities) {
     engine::ComponentSignature component_signature{
         coordinator_->GetComponentSignature(entity)};
     Write(stream, &component_signature, sizeof(engine::ComponentSignature));
@@ -171,7 +170,7 @@ void Serializer::UploadCompIfNecessary(
 
 void Serializer::RemoveDungeon(DungeonName dungeon_name) {
   auto& removing_dungeon = dungeons_.at(dungeon_name);
-  for (engine::Entity entity : removing_dungeon->entities) {
+  for (engine::Entity entity: removing_dungeon->entities) {
     RemoveEntityFromScene(entity);
     coordinator_->DestroyEntity(entity);
   }
@@ -191,7 +190,7 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
   QJsonArray entities_data = document["entities"].toArray();
   dungeon->entities_count = entities_data.size();
 
-  for (auto entity_data : entities_data) {
+  for (auto entity_data: entities_data) {
     QJsonObject entity_object{entity_data.toObject()};
     engine::Entity entity = coordinator_->CreateEntity();
     dungeon->entities.push_back(entity);
@@ -241,10 +240,14 @@ void Serializer::DownloadCompFromJson<PositionComponent>(
   if (entity_object.contains("position_comp")) {
     QJsonObject position_comp_object{entity_object["position_comp"].toObject()};
     PositionComponent position_component{{
-        static_cast<float>(position_comp_object["column"].toInt()
-        * kTextureSize + dungeon->offset_x),
-        static_cast<float>(position_comp_object["row"].toInt()
-        * kTextureSize + dungeon->offset_y)}};
+                                             static_cast<float>(
+                                                 position_comp_object["column"].toInt()
+                                                     * kTextureSize
+                                                     + dungeon->offset_x),
+                                             static_cast<float>(
+                                                 position_comp_object["row"].toInt()
+                                                     * kTextureSize
+                                                     + dungeon->offset_y)}};
     coordinator_->AddComponent(entity, position_component);
   }
 }
@@ -270,7 +273,6 @@ void Serializer::UploadComponent<PositionComponent>(
   Write(stream, &x, sizeof(float));
   Write(stream, &y, sizeof(float));
 }
-
 
 //----------- Graphics Item Component Specialization ---------------------------
 template<>
@@ -349,13 +351,18 @@ void Serializer::DownloadCompFromJson<CollisionComponent>(
     const std::unique_ptr<Dungeon>& dungeon,
     const QJsonObject& entity_object) {
   if (entity_object.contains("collision_comp")) {
-    QJsonObject collision_comp_object{entity_object["collision_comp"].toObject()};
-    bool is_movable{static_cast<bool>(collision_comp_object["is_movable"].toInt())};
+    QJsonObject
+        collision_comp_object{entity_object["collision_comp"].toObject()};
+    bool is_movable
+        {static_cast<bool>(collision_comp_object["is_movable"].toInt())};
     bool gravity{static_cast<bool>(collision_comp_object["gravity"].toInt())};
     bool can_use{static_cast<bool>(collision_comp_object["can_use"].toInt())};
-    bool is_usable{static_cast<bool>(collision_comp_object["is_usable"].toInt())};
-    bool is_breakable{static_cast<bool>(collision_comp_object["is_breakable"].toInt())};
-    CollisionComponent collision_component{is_movable, gravity, can_use, is_usable, is_breakable};
+    bool is_usable
+        {static_cast<bool>(collision_comp_object["is_usable"].toInt())};
+    bool is_breakable
+        {static_cast<bool>(collision_comp_object["is_breakable"].toInt())};
+    CollisionComponent collision_component
+        {is_movable, gravity, can_use, is_usable, is_breakable};
     coordinator_->AddComponent(entity, collision_component);
   }
 }
@@ -374,7 +381,8 @@ CollisionComponent Serializer::DownloadComponent<CollisionComponent>(
   Read(stream, &can_use, sizeof(bool));
   Read(stream, &is_usable, sizeof(bool));
   Read(stream, &is_breakable, sizeof(bool));
-  CollisionComponent component{is_movable, gravity, can_use, is_usable, is_breakable};
+  CollisionComponent
+      component{is_movable, gravity, can_use, is_usable, is_breakable};
   return component;
 }
 
@@ -383,11 +391,11 @@ void Serializer::UploadComponent<CollisionComponent>(
     std::ofstream& stream,
     const std::unique_ptr<Dungeon>&,
     const CollisionComponent& component) {
-    bool is_movable{component.is_movable};
-    bool gravity{component.gravity};
-    bool can_use{component.can_use};
-    bool is_usable{component.is_usable};
-    bool is_breakable{component.is_breakable};
+  bool is_movable{component.is_movable};
+  bool gravity{component.gravity};
+  bool can_use{component.can_use};
+  bool is_usable{component.is_usable};
+  bool is_breakable{component.is_breakable};
   Write(stream, &is_movable, sizeof(bool));
   Write(stream, &gravity, sizeof(bool));
   Write(stream, &can_use, sizeof(bool));
@@ -402,7 +410,8 @@ void Serializer::DownloadCompFromJson<IllnessComponent>(
     const std::unique_ptr<Dungeon>& dungeon,
     const QJsonObject& entity_object) {
   if (entity_object.contains("collision_comp")) {
-    QJsonObject collision_comp_object{entity_object["collision_comp"].toObject()};
+    QJsonObject
+        collision_comp_object{entity_object["collision_comp"].toObject()};
     int kill_time{collision_comp_object["kill_time"].toInt()};
     assert(kill_time == 0 && "kill_time != 0");
     IllnessComponent illness_component{kill_time};
@@ -430,7 +439,6 @@ void Serializer::UploadComponent<IllnessComponent>(
   Write(stream, &kill_time, sizeof(int));
 }
 
-
 //----------- Movement Component Specialization ---------------------------
 template<>
 void Serializer::DownloadCompFromJson<MovementComponent>(
@@ -450,17 +458,17 @@ void Serializer::DownloadCompFromJson<MovementComponent>(
 template<>
 MovementComponent Serializer::DownloadComponent<MovementComponent>(
     std::ifstream& stream,
-        const std::unique_ptr<Dungeon>&) {
-    float dir_x;
-    float dir_y;
-    float cur_speed;
-    Read(stream, &dir_x, sizeof(float));
-    Read(stream, &dir_y, sizeof(float));
-    Read(stream, &cur_speed, sizeof(float));
+    const std::unique_ptr<Dungeon>&) {
+  float dir_x;
+  float dir_y;
+  float cur_speed;
+  Read(stream, &dir_x, sizeof(float));
+  Read(stream, &dir_y, sizeof(float));
+  Read(stream, &cur_speed, sizeof(float));
 
-    return MovementComponent{{static_cast<float>(dir_x),
-                                static_cast<float>(dir_y)},
-                                static_cast<float>(cur_speed)};
+  return MovementComponent{{static_cast<float>(dir_x),
+                            static_cast<float>(dir_y)},
+                           static_cast<float>(cur_speed)};
 }
 
 template<>
@@ -468,12 +476,12 @@ void Serializer::UploadComponent<MovementComponent>(
     std::ofstream& stream,
     const std::unique_ptr<Dungeon>&,
     const MovementComponent& component) {
-    float dir_x{component.direction.x()};
-    float dir_y{component.direction.x()};
-    float cur_speed{component.current_speed};
-    Write(stream, &dir_x, sizeof(float));
-    Write(stream, &dir_y, sizeof(float));
-    Write(stream, &cur_speed, sizeof(float));
+  float dir_x{component.direction.x()};
+  float dir_y{component.direction.x()};
+  float cur_speed{component.current_speed};
+  Write(stream, &dir_x, sizeof(float));
+  Write(stream, &dir_y, sizeof(float));
+  Write(stream, &cur_speed, sizeof(float));
 }
 
 //----------- Animation Component Specialization ---------------------------
@@ -488,7 +496,7 @@ void Serializer::DownloadCompFromJson<AnimationComponent>(
     QString source_name{animation_comp_object["source"].toString()};
     HorizontalDirection direction{
         static_cast<HorizontalDirection>(
-        animation_comp_object["direction"].toInt())};
+            animation_comp_object["direction"].toInt())};
     MovementType move_type{
         static_cast<MovementType>(animation_comp_object["move_type"].toInt())};
     coordinator_->AddComponent(entity, AnimationComponent{
@@ -510,8 +518,8 @@ AnimationComponent Serializer::DownloadComponent<AnimationComponent>(
   Read(stream, &direction, sizeof(int));
   Read(stream, &move_type, sizeof(int));
   return AnimationComponent{AnimationPack(source_name), source_name,
-      static_cast<HorizontalDirection>(direction),
-      static_cast<MovementType>(move_type)};
+                            static_cast<HorizontalDirection>(direction),
+                            static_cast<MovementType>(move_type)};
 }
 
 template<>
