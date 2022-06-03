@@ -1,6 +1,7 @@
 #include "connector.h"
 
 #include <memory>
+#include <iostream>
 
 #include "constants.h"
 #include "components.h"
@@ -36,7 +37,16 @@ void Connector::OnKeyRelease(Qt::Key key) {
 }
 
 void Connector::UseEvent(engine::Entity entity) {
-  // TODO(someone): show use event
+  auto event_comp = coordinator_->GetComponent<EventComponent>(entity);
+  switch (event_comp.type) {
+    case EventType::kNewDungeonChest: {
+
+      break;
+    }
+    default: {
+      std::cout << "strange event\n";
+    }
+  }
 }
 
 void Connector::RegisterSystems() {

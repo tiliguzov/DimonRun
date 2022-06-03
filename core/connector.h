@@ -10,6 +10,7 @@
 #include "core/serializer.h"
 #include "engine/coordinator.h"
 #include "core/dungeon_name.h"
+#include "core/events_constants.h"
 
 namespace core {
 
