@@ -26,7 +26,7 @@ class Connector {
 
   void DeleteEntity(engine::Entity entity);
   void UseEvent(engine::Entity);
-
+  void CheckAndAddCoin(engine::Entity);
  private:
   void RegisterSystems();
   void RegisterComponents();

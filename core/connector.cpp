@@ -11,6 +11,7 @@
 #include "systems/painting_system.h"
 #include "systems/animation_system.h"
 #include "systems/collision_system.h"
+#include "systems/illness_system.h"
 
 namespace core {
 
@@ -50,6 +51,16 @@ void Connector::RegisterSystems() {
               coordinator_->GetComponentID<JoysticComponent>()});
 
         systems_.push_back(joystick_system_);
+    }
+    {
+      auto illness_system_ = coordinator_
+          ->RegisterSystem<systems::IllnessSystem>(
+              coordinator_.get(), this);
+
+      coordinator_->SetSystemSignature<systems::IllnessSystem>
+          ({coordinator_->GetComponentID<IllnessComponent>()});
+
+      systems_.push_back(illness_system_);
     }
     {
         auto collision_system = coordinator_
@@ -93,6 +104,7 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<MovementComponent>();
   coordinator_->RegisterComponent<CollisionComponent>();
   coordinator_->RegisterComponent<JoysticComponent>();
+  coordinator_->RegisterComponent<IllnessComponent>();
   coordinator_->RegisterComponent<GraphicsItemComponent>();
   coordinator_->RegisterComponent<AnimationComponent>();
 }
@@ -145,6 +157,9 @@ void Connector::StartGame(Scene* scene) {
 
 void Connector::DeleteEntity(engine::Entity entity) {
   serializer_->DeleteEntity(entity);
+}
+void Connector::CheckAndAddCoin(engine::Entity entity) {
+  // TODO : check if its a coin then add
 }
 
 }  // namespace core

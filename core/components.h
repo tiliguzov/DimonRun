@@ -25,6 +25,10 @@ struct CollisionComponent {
 
 struct JoysticComponent {};
 
+struct IllnessComponent {
+  int kill_time;
+};
+
 struct GraphicsItemComponent {
   QGraphicsPixmapItem* item;
   std::string source_name;

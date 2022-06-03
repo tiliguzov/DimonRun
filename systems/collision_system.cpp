@@ -88,7 +88,7 @@ void systems::CollisionSystem::Update() {
       if (collision_comp1.can_use && collision_comp2.is_usable &&
           (IntersectPositions(new_position1, position_comp2).first > eps ||
               IntersectPositions(new_position1, position_comp2).second > eps)) {
-
+        connector_->UseEvent(entity2);
         std::cout
             << "THIS IS USSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSEEEEEEEEEEEEEEEEEEEEEEE"
             << std::endl;
@@ -97,9 +97,21 @@ void systems::CollisionSystem::Update() {
       if (collision_comp1.can_use && collision_comp2.is_breakable &&
           (IntersectPositions(new_position1, position_comp2).first > eps ||
               IntersectPositions(new_position1, position_comp2).second > eps)) {
-        // TODO: set illness. start animation
-        std::cout << "THIS IS ILNEEEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSSSSS"
-                  << std::endl;
+        // TODO: start animation
+        auto& illness_comp2 = coordinator_->GetComponent<core::IllnessComponent>(entity2);
+        if (illness_comp2.kill_time == 0) {
+          illness_comp2.kill_time = 300;
+          // if (coordinator_->HasComponent<core::AnimationComponent>(entity2) &&
+          //     coordinator_->
+          //     GetComponent<core::AnimationComponent>(entity2).move_type ==
+          //     core::MovementType::kCoinMoving) {
+          //   connector_->AddCoin(entity2);
+          // } else {
+          //   // TODO : start death animation
+          // }
+          std::cout << "THIS IS ILNEEEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSSSSS"
+                    << std::endl;
+        }
         continue;
       }
       if (collision_comp2.is_movable == false) {

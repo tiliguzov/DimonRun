@@ -94,6 +94,7 @@ void Serializer::DownloadDungeon(
     DownloadCompIfNecessary<MovementComponent>(entity, dungeon, stream);
     DownloadCompIfNecessary<AnimationComponent>(entity, dungeon, stream);
     DownloadCompIfNecessary<CollisionComponent>(entity, dungeon, stream);
+    DownloadCompIfNecessary<IllnessComponent>(entity, dungeon, stream);
   }
    std::cerr << "okkk" << std::endl;
   stream.close();
@@ -150,6 +151,7 @@ void Serializer::UploadDungeon(
     UploadCompIfNecessary<MovementComponent>(entity, dungeon, stream);
     UploadCompIfNecessary<AnimationComponent>(entity, dungeon, stream);
     UploadCompIfNecessary<CollisionComponent>(entity, dungeon, stream);
+    UploadCompIfNecessary<IllnessComponent>(entity, dungeon, stream);
   }
 
   stream.close();
@@ -205,6 +207,8 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
     DownloadCompFromJson<AnimationComponent>(
         entity, dungeon, entity_object);
     DownloadCompFromJson<CollisionComponent>(
+        entity, dungeon, entity_object);
+    DownloadCompFromJson<IllnessComponent>(
         entity, dungeon, entity_object);
   }
 
@@ -390,6 +394,42 @@ void Serializer::UploadComponent<CollisionComponent>(
   Write(stream, &is_usable, sizeof(bool));
   Write(stream, &is_breakable, sizeof(bool));
 }
+
+//----------- Illness Component Specialization ---------------------------
+template<>
+void Serializer::DownloadCompFromJson<IllnessComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>& dungeon,
+    const QJsonObject& entity_object) {
+  if (entity_object.contains("collision_comp")) {
+    QJsonObject collision_comp_object{entity_object["collision_comp"].toObject()};
+    int kill_time{collision_comp_object["kill_time"].toInt()};
+    assert(kill_time == 0 && "kill_time != 0");
+    IllnessComponent illness_component{kill_time};
+    coordinator_->AddComponent(entity, illness_component);
+  }
+}
+
+template<>
+IllnessComponent Serializer::DownloadComponent<IllnessComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&) {
+  int kill_time;
+  Read(stream, &kill_time, sizeof(int));
+  assert(kill_time == 0 && "kill_time != 0");
+  IllnessComponent component{kill_time};
+  return component;
+}
+
+template<>
+void Serializer::UploadComponent<IllnessComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const IllnessComponent& component) {
+  int kill_time{0};
+  Write(stream, &kill_time, sizeof(int));
+}
+
 
 //----------- Movement Component Specialization ---------------------------
 template<>

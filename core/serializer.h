@@ -126,6 +126,25 @@ void Serializer::UploadComponent<CollisionComponent>(
     const std::unique_ptr<Dungeon>&,
     const CollisionComponent& component);
 
+//----------- Illness Component Specialization --------------------------
+template<>
+void Serializer::DownloadCompFromJson<IllnessComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>& dungeon,
+    const QJsonObject& entity_object);
+
+template<>
+IllnessComponent Serializer::DownloadComponent<IllnessComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&);
+
+template<>
+void Serializer::UploadComponent<IllnessComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const IllnessComponent& component);
+
+
 //----------- Movement Component Specialization ---------------------------
 template<>
 void Serializer::DownloadCompFromJson<MovementComponent>(
