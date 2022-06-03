@@ -1,6 +1,6 @@
 #pragma  once
 
-#include "QString"
+#include <QString>
 
 #include <string>
 #include <unordered_map>
@@ -61,11 +61,5 @@ const std::unordered_map<DungeonName, QString> source_by_name_hand_created{
     {DungeonName::kLevel2, ":level2.json"}
 };
 
-const std::unordered_map<std::string, DungeonName> dungeon_name_by_note{
-    {"hub", DungeonName::kHub},
-    {"level1", DungeonName::kLevel1},
-    {"level2", DungeonName::kLevel2},
-    {"green screen", DungeonName::kNone}
-};
 
 }  // namespace core

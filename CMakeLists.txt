@@ -20,6 +20,8 @@ add_executable(DimonRun
         core/keyboard.cpp
         core/animation_pack.cpp
         core/serializer.cpp
+        core/location_manager/location_manager.cpp
+        core/location_manager/settings_manager.cpp
 
         engine/component_manager.cpp
         engine/coordinator.cpp

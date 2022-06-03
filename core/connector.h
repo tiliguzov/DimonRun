@@ -10,6 +10,7 @@
 #include "core/serializer.h"
 #include "engine/coordinator.h"
 #include "core/dungeon_name.h"
+#include "core/location_manager/location_manager.h"
 
 namespace core {
 
@@ -41,6 +42,7 @@ class Connector {
   std::shared_ptr<engine::Coordinator> coordinator_;
   std::unique_ptr<core::Keyboard> keyboard_;
   std::unique_ptr<Serializer> serializer_;
+  std::unique_ptr<LocationManager> location_manager_;
 
   std::vector<std::shared_ptr<engine::System>> systems_;
 

@@ -11,12 +11,15 @@
 #include "systems/animation_system.h"
 #include "systems/collision_system.h"
 #include "systems/illness_system.h"
+#include "core/location_manager/location_manager.h"
 
 namespace core {
 
 Connector::Connector() : coordinator_(std::make_unique<engine::Coordinator>()),
                          keyboard_(std::make_unique<Keyboard>()),
-                         current_dungeon_(DungeonName::kHub) {
+                         current_dungeon_(DungeonName::kHub),
+                         location_manager_(
+                             std::make_unique<LocationManager>()) {
   RegisterComponents();
   RegisterSystems();
 }

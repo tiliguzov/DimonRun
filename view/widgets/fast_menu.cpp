@@ -188,11 +188,11 @@ void FastMenu::MuteMusic() {
 
 void FastMenu::PlacesOpen() {
   QListWidgetItem* item = places_->currentItem();
-  scene_->RemoveDungeon(scene_->GetCurrentDungeon());
-  auto dungeon_name = dungeon_name_by_note.at(item->text().toStdString());
-  scene_->DownloadDungeon(dungeon_name, DungeonType::kHandCreated);
-  scene_->SetCurrentDungeon(dungeon_name);
-  ContinueGame();
+  // scene_->RemoveDungeon(scene_->GetCurrentDungeon());
+  // auto dungeon_name = dungeon_name_by_note.at(item->text().toStdString());
+  // scene_->DownloadDungeon(dungeon_name, DungeonType::kHandCreated);
+  // scene_->SetCurrentDungeon(dungeon_name);
+  // ContinueGame();
 }
 
 }  // namespace core
