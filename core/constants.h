@@ -35,7 +35,8 @@ constexpr QRect kReturnVault(390, 620, 200, 70);
 constexpr QRect kCoinsVault(495, 160, 100, 60);
 
 const QString kShortcutsText{
-    "ESC -> Open fast menu \nCTRL + M - Mute/unmute \nCTRL + Q - Exit game \nCTRL + S - сохраниться"};
+    "ESC -> Open fast menu \nCTRL + M - Mute/unmute \nCTRL + Q - "
+    "Exit game \nCTRL + S - сохраниться"};
 
 // Number of bytes occupied by a char array containing the name for every
 // source file in binary file of dungeon

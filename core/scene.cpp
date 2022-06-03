@@ -19,7 +19,6 @@ Scene::Scene(QStackedWidget* parent, Connector* connector) :
     scene_view_(new QGraphicsView(this)),
     fast_menu_(new FastMenu(this, ":/view/fast_menu.png")),
     vault_(new Vault(this, ":/view/vault.png")) {
-
   SetDefaultSceneSettings();
 
   addWidget(scene_view_);

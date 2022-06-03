@@ -22,7 +22,7 @@ enum ZValues {
 };
 
 class Scene : public QStackedWidget, AbstractScene {
- Q_OBJECT
+  Q_OBJECT
 
  public:
   Scene(QStackedWidget* parent, Connector* connector);
