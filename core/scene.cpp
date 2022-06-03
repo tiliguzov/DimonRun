@@ -3,7 +3,6 @@
 #include <QKeyEvent>
 #include <QPainter>
 #include <QTimerEvent>
-#include <QWidget>
 
 #include "connector.h"
 #include "constants.h"
@@ -18,11 +17,14 @@ Scene::Scene(QStackedWidget* parent, Connector* connector) :
     scene_(new QGraphicsScene(this)),
     scene_view_(new QGraphicsView(this)),
     fast_menu_(new FastMenu(this, ":/view/fast_menu.png")),
-    vault_(new Vault(this, ":/view/vault.png")) {
+    vault_(new Vault(this, ":/view/vault.png")),
+    scroll_(new Scroll(this, ":/view/vault.png")){
   SetDefaultSceneSettings();
+
   addWidget(scene_view_);
   addWidget(fast_menu_);
   addWidget(vault_);
+  addWidget(scroll_);
 
   show();
   setFocus();
@@ -66,6 +68,14 @@ void Scene::keyPressEvent(QKeyEvent* event) {
       OpenVault();
     }
     is_vault_showed_ = !is_vault_showed_;
+  }
+  if (event->key() == Qt::Key_O) {
+    if (is_scroll_showed_) {
+      ContinueGame();
+    } else {
+      OpenScroll();
+    }
+    is_scroll_showed_ = !is_scroll_showed_;
   }
 }
 
@@ -111,6 +121,11 @@ void Scene::OpenVault() {
   setCurrentWidget(vault_);
 }
 
+void Scene::OpenScroll() {
+  scroll_->setGeometry(0, 0, kDefaultWindowWidth, kDefaultWindowHeight);
+  setCurrentWidget(scroll_);
+}
+
 void Scene::ContinueGame() {
   setCurrentWidget(scene_view_);
 }
@@ -120,6 +135,7 @@ void Scene::resizeEvent(QResizeEvent* event) {
   resize(new_size);
   fast_menu_->Resize(new_size);
   vault_->Resize(new_size);
+  scroll_->Resize(new_size);
 }
 
 void Scene::DownloadDungeon(DungeonName dungeon_name,
