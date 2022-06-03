@@ -47,7 +47,7 @@ struct AnimationComponent {
   std::string source_name;
   HorizontalDirection direction;
   MovementType move_type;
-
+  int start_time{0};
   // the flag that shows, if we have to change frame before its time pass
   bool need_change_frame{false};
 };

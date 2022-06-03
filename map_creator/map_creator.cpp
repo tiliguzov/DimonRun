@@ -13,6 +13,7 @@
 #include <string>
 #include <QFileDialog>
 #include <QVector2D>
+#include <iostream>
 
 MapCreator::MapCreator(QWidget* parent, core::Connector* connector) :
       QWidget(parent),
@@ -112,6 +113,8 @@ void MapCreator::LoadTextures() {
             (texture_info["direction"].toInt());
         movement_type_[source_[item]] =
             str_to_type[texture_info["move_type"].toString().toStdString()];
+        start_time_[source_[item]] =
+            texture_info["start_time"].toInt();
       }
       if (texture_info.contains("is_movable")) {
         is_movable_[source_[item]] =
@@ -226,7 +229,8 @@ void MapCreator::AddTexture(QPointF point,
         core::AnimationPack(animation_source_[source]),
         animation_source_[source],
         direction_[source],
-        movement_type_[source]
+        movement_type_[source],
+        start_time_[source]
         });
   }
   if (is_movable_.count(source)) {
@@ -424,7 +428,7 @@ QJsonDocument MapCreator::AllEntities() {
       anim_comp_info["source"] = anim_comp.source_name.c_str();
       anim_comp_info["direction"] = static_cast<int>(anim_comp.direction);
       anim_comp_info["move_type"] = static_cast<int>(anim_comp.move_type);
-
+      anim_comp_info["start_time"] = anim_comp.start_time;
       entity_info["animation_comp"] = anim_comp_info;
 
       if (anim_comp_info["move_type"] == static_cast<int>

@@ -1,5 +1,6 @@
 #include "collision_system.h"
 #include "core/constants.h"
+#include "animation_system.h"
 
 #include <cmath>
 #include <algorithm>
@@ -45,9 +46,10 @@ std::pair<double, double> IntersectPositions(
 
 systems::CollisionSystem::CollisionSystem(engine::Coordinator* coordinator,
                                           core::Connector* connector)
-    : coordinator_(coordinator), connector_(connector) {}
+    : coordinator_(coordinator), connector_(connector), time_(0) {}
 
 void systems::CollisionSystem::Update() {
+  time_ += core::kTickTime;
   std::vector<engine::Entity> movable_entities;
   for (engine::Entity entity : entities_) {
     auto& collision_comp =
@@ -103,15 +105,22 @@ void systems::CollisionSystem::Update() {
             coordinator_->GetComponent<core::IllnessComponent>(entity2);
         if (!illness_comp2.is_ill) {
           illness_comp2.is_ill = true;
-          // if (coordinator_->
-          // HasComponent<core::AnimationComponent>(entity2) &&
-          //     coordinator_->
-          //     GetComponent<core::AnimationComponent>(entity2).move_type ==
-          //     core::MovementType::kCoinMoving) {
-          //   connector_->AddCoin(entity2);
-          // } else {
-          //   // TODO(egor) : start death animation
-          // }
+          if (coordinator_->
+          HasComponent<core::AnimationComponent>(entity2) &&
+              coordinator_->
+              GetComponent<core::AnimationComponent>(entity2).move_type ==
+              core::MovementType::kCoinMoving) {
+            // connector_->AddCoin(entity2);
+          } else if (coordinator_->
+              HasComponent<core::AnimationComponent>(entity2) &&
+              coordinator_->
+              GetComponent<core::AnimationComponent>(entity2).move_type ==
+              core::MovementType::kRubbishDestroy &&
+              coordinator_->GetComponent<core::AnimationComponent>
+                  (entity2).start_time > time_) {
+            coordinator_->GetComponent<core::AnimationComponent>(entity2)
+                .start_time = time_;
+          }
           std::cout << "THIS IS ILNEEEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSSSSS"
                     << std::endl;
         }

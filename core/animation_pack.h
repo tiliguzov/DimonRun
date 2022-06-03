@@ -24,7 +24,8 @@ enum class MovementType {
   kWaterMoving,
   kWaveMoving,
   kCoinMoving,
-  kStoneMoving
+  kStoneMoving,
+  kRubbishDestroy
 };
 
 class AnimationPack {
@@ -50,7 +51,8 @@ class AnimationPack {
        {"water_moving", MovementType::kWaterMoving},
        {"wave_moving", MovementType::kWaveMoving},
        {"coin_moving", MovementType::kCoinMoving},
-       {"stone_moving", MovementType::kStoneMoving}};
+       {"stone_moving", MovementType::kStoneMoving},
+       {"rubbish_destroy", MovementType::kRubbishDestroy}};
 };
 
 }  // namespace core

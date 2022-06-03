@@ -3,6 +3,7 @@
         <file alias = "ground1.jpg">textures/background/ground1.jpg</file>
         <file alias = "ground2.jpg">textures/background/ground2.jpg</file>
         <file alias = "background_image.jpg">textures/background/background_image.jpg</file>
+        <file alias = "hub.png">textures/background/hub.png</file>
 
         <file alias = "back_wall_and_torch_00.png">textures/background/back_wall_and_torch_00.png</file>
         <file alias = "back_wall_and_torch_01.png">textures/background/back_wall_and_torch_01.png</file>
@@ -54,10 +55,19 @@
         <file alias = "stone_02.png">textures/background/stone_02.png</file>
         <file alias = "stone_03.png">textures/background/stone_03.png</file>
 
+        <file alias = "rubbish_00.png">textures/background/rubbish_00.png</file>
+        <file alias = "rubbish_01.png">textures/background/rubbish_01.png</file>
+        <file alias = "rubbish_02.png">textures/background/rubbish_02.png</file>
+        <file alias = "rubbish_03.png">textures/background/rubbish_03.png</file>
+        <file alias = "rubbish_04.png">textures/background/rubbish_04.png</file>
+        <file alias = "rubbish_05.png">textures/background/rubbish_05.png</file>
+        <file alias = "rubbish_06.png">textures/background/rubbish_06.png</file>
+
         <file alias = "back_wall_torch.json">animations/back_wall_torch.json</file>
         <file alias = "water.json">animations/water.json</file>
         <file alias = "wave.json">animations/wave.json</file>
         <file alias = "coin.json">animations/coin.json</file>
         <file alias = "stone.json">animations/stone.json</file>
+        <file alias = "rubbish.json">animations/rubbish.json</file>
     </qresource>
 </RCC>

@@ -18,7 +18,8 @@ void AnimationSystem::Update() {
         coordinator_->GetComponent<core::GraphicsItemComponent>(entity);
 
     if (NeedChangeFrame(&anim_comp, time_)) {
-      QPixmap& image = anim_comp.frames.GetFrame(anim_comp.move_type, time_);
+      QPixmap& image = anim_comp.frames.GetFrame(anim_comp.move_type, time_ -
+            anim_comp.start_time);
       if (anim_comp.direction == core::HorizontalDirection::kRight) {
         graphics_comp.item->setPixmap(image);
       } else {
@@ -36,7 +37,8 @@ bool AnimationSystem::NeedChangeFrame(
     anim_comp->need_change_frame = false;
     return true;
   }
-  return (time % anim_comp->frames.GetFrameDuration()) >= core::kTickTime;
+  return (anim_comp->start_time <= time_ &&
+          (time % anim_comp->frames.GetFrameDuration()) >= core::kTickTime);
 }
 
 }  // namespace systems

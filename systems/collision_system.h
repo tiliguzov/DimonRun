@@ -14,6 +14,7 @@ class CollisionSystem : public engine::System {
   void Update() override;
 
  private:
+  int64_t time_;
   engine::Coordinator* coordinator_;
   core::Connector* connector_;
 };
