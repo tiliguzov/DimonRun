@@ -120,7 +120,8 @@ QGraphicsItem* Connector::CreateHero(Scene* scene) {
   item->setZValue(kPlayerZIndex);
   coordinator_->AddComponent(
       hero,
-      GraphicsItemComponent{item,":Hero_static_in_air_00.png",
+      GraphicsItemComponent{item,
+                            ":Hero_static_in_air_00.png",
                             1, 1, 0});
   coordinator_->AddComponent(
       hero,
