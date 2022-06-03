@@ -161,6 +161,15 @@
       "direction_x" : 0,
       "direction_y" : 0
     },
+    "chest" : {
+      "source" : ":chest.png",
+      "name" : "Stone",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : true,
+      "is_breakable" : false
+    },
     "hero" : {
       "source" : ":Hero_static_in_air_00.png",
       "name" : "Hero",
@@ -202,6 +211,22 @@
     "grass" : {
       "source" : ":grass.png",
       "name" : "Grass"
+    },
+    "column_foreground" : {
+      "source" : ":column_foreground.png",
+      "name" : "Column foreground"
+    },
+    "column_foreground_up" : {
+      "source" : ":column_foreground_up.png",
+      "name" : "Column foreground up"
+    },
+    "column_foreground_down" : {
+      "source" : ":column_foreground_down.png",
+      "name" : "Column foreground down"
+    },
+    "liana" : {
+      "source" : ":liana.png",
+      "name" : "liana"
     }
   }
 }
