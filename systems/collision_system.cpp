@@ -2,6 +2,7 @@
 #include "core/constants.h"
 
 #include <cmath>
+#include <algorithm>
 #include <iostream>
 #include <assert.h>
 #include <vector>
@@ -98,8 +99,10 @@ void systems::CollisionSystem::Update() {
       if (collision_comp1.can_use && collision_comp2.is_breakable &&
           (IntersectPositions(new_position1, position_comp2).first > eps ||
               IntersectPositions(new_position1, position_comp2).second > eps)) {
-        auto& illness_comp2 = coordinator_->GetComponent<core::IllnessComponent>(entity2);
-        if (illness_comp2.kill_time == 0) {
+        auto& illness_comp2 =
+            coordinator_->GetComponent<core::IllnessComponent>(entity2);
+        if (!illness_comp2.is_ill) {
+          illness_comp2.is_ill = true;
           illness_comp2.kill_time = 300;
           // if (coordinator_->
           // HasComponent<core::AnimationComponent>(entity2) &&

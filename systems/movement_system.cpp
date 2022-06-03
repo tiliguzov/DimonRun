@@ -11,7 +11,7 @@ MovementSystem::MovementSystem(engine::Coordinator* coordinator)
 
 void MovementSystem::Update() {
   const long double eps = 1e-1;
-  for (engine::Entity entity: entities_) {
+  for (engine::Entity entity : entities_) {
     auto& pos_comp = coordinator_->
         GetComponent<core::PositionComponent>(entity);
     auto& move_comp =

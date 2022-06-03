@@ -22,7 +22,7 @@ Connector::Connector() : coordinator_(std::make_unique<engine::Coordinator>()),
 }
 
 void Connector::OnTick() {
-  for (const auto& system: systems_) {
+  for (const auto& system : systems_) {
     system->Update();
   }
 }
@@ -36,7 +36,7 @@ void Connector::OnKeyRelease(Qt::Key key) {
 }
 
 void Connector::UseEvent(engine::Entity entity) {
-  // TODO show use event
+  // TODO(someone): show use event
 }
 
 void Connector::RegisterSystems() {
@@ -118,9 +118,10 @@ QGraphicsItem* Connector::CreateHero(Scene* scene) {
   auto item = scene->GetScene()->addPixmap(
       QPixmap(":Hero_static_in_air_00.png"));
   item->setZValue(kPlayerZIndex);
-  coordinator_->AddComponent(hero, GraphicsItemComponent{item,
-                                                         ":Hero_static_in_air_00.png",
-                                                         1, 1, 0});
+  coordinator_->AddComponent(
+      hero,
+      GraphicsItemComponent{item,":Hero_static_in_air_00.png",
+                            1, 1, 0});
   coordinator_->AddComponent(
       hero,
       AnimationComponent{AnimationPack(":hero.json"),

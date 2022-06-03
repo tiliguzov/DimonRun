@@ -1935,6 +1935,10 @@
                 "can_use": 0,
                 "is_usable": 0,
                 "is_breakable": 1
+            },
+            "illness_comp": {
+                "kill_time": 0,
+                "is_ill": 0
             }
         }
     ],

@@ -27,6 +27,7 @@ struct JoysticComponent {};
 
 struct IllnessComponent {
   int kill_time;
+  bool is_ill;
 };
 
 struct GraphicsItemComponent {

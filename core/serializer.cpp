@@ -39,7 +39,7 @@ void Serializer::RemoveEntityFromScene(engine::Entity entity) {
 }
 
 void Serializer::DeleteEntity(engine::Entity entity) {
-  for (auto&[dungeon_name, dungeon]: dungeons_) {
+  for (auto&[dungeon_name, dungeon] : dungeons_) {
     auto it = std::find(
         dungeon->entities.begin(), dungeon->entities.end(), entity);
     if (it != dungeon->entities.end()) {
@@ -138,7 +138,7 @@ void Serializer::UploadDungeon(
   Write(stream, &dungeon->offset_y, sizeof(dungeon->offset_y));
   Write(stream, &dungeon->entities_count, sizeof(dungeon->entities_count));
 
-  for (auto entity: dungeon->entities) {
+  for (auto entity : dungeon->entities) {
     engine::ComponentSignature component_signature{
         coordinator_->GetComponentSignature(entity)};
     Write(stream, &component_signature, sizeof(engine::ComponentSignature));
@@ -170,7 +170,7 @@ void Serializer::UploadCompIfNecessary(
 
 void Serializer::RemoveDungeon(DungeonName dungeon_name) {
   auto& removing_dungeon = dungeons_.at(dungeon_name);
-  for (engine::Entity entity: removing_dungeon->entities) {
+  for (engine::Entity entity : removing_dungeon->entities) {
     RemoveEntityFromScene(entity);
     coordinator_->DestroyEntity(entity);
   }
@@ -190,7 +190,7 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
   QJsonArray entities_data = document["entities"].toArray();
   dungeon->entities_count = entities_data.size();
 
-  for (auto entity_data: entities_data) {
+  for (auto entity_data : entities_data) {
     QJsonObject entity_object{entity_data.toObject()};
     engine::Entity entity = coordinator_->CreateEntity();
     dungeon->entities.push_back(entity);
@@ -210,7 +210,6 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
     DownloadCompFromJson<IllnessComponent>(
         entity, dungeon, entity_object);
   }
-
 }
 
 //----------- Default Component Download/Upload --------------------------------
@@ -238,15 +237,12 @@ void Serializer::DownloadCompFromJson<PositionComponent>(
     const std::unique_ptr<Dungeon>& dungeon,
     const QJsonObject& entity_object) {
   if (entity_object.contains("position_comp")) {
-    QJsonObject position_comp_object{entity_object["position_comp"].toObject()};
+    QJsonObject position_comp_object{
+      entity_object["position_comp"].toObject()};
     PositionComponent position_component{{
-                                             static_cast<float>(
-                                                 position_comp_object["column"].toInt()
-                                                     * kTextureSize
-                                                     + dungeon->offset_x),
-                                             static_cast<float>(
-                                                 position_comp_object["row"].toInt()
-                                                     * kTextureSize
+      static_cast<float>(position_comp_object["column"].toInt()
+      * kTextureSize + dungeon->offset_x),
+      static_cast<float>(position_comp_object["row"].toInt() * kTextureSize
                                                      + dungeon->offset_y)}};
     coordinator_->AddComponent(entity, position_component);
   }
@@ -409,12 +405,14 @@ void Serializer::DownloadCompFromJson<IllnessComponent>(
     engine::Entity entity,
     const std::unique_ptr<Dungeon>& dungeon,
     const QJsonObject& entity_object) {
-  if (entity_object.contains("collision_comp")) {
+  if (entity_object.contains("illness_comp")) {
     QJsonObject
-        collision_comp_object{entity_object["collision_comp"].toObject()};
+        collision_comp_object{entity_object["illness_comp"].toObject()};
     int kill_time{collision_comp_object["kill_time"].toInt()};
+    bool is_ill{static_cast<bool>(collision_comp_object["is_ill"].toInt())};
     assert(kill_time == 0 && "kill_time != 0");
-    IllnessComponent illness_component{kill_time};
+    assert(is_ill == 0 && "kill_time != 0");
+    IllnessComponent illness_component{kill_time, is_ill};
     coordinator_->AddComponent(entity, illness_component);
   }
 }
@@ -424,9 +422,12 @@ IllnessComponent Serializer::DownloadComponent<IllnessComponent>(
     std::ifstream& stream,
     const std::unique_ptr<Dungeon>&) {
   int kill_time;
+  bool is_ill;
   Read(stream, &kill_time, sizeof(int));
+  Read(stream, &is_ill, sizeof(bool));
   assert(kill_time == 0 && "kill_time != 0");
-  IllnessComponent component{kill_time};
+  assert(is_ill == 0 && "is_ill != 0");
+  IllnessComponent component{kill_time, is_ill};
   return component;
 }
 
@@ -436,7 +437,9 @@ void Serializer::UploadComponent<IllnessComponent>(
     const std::unique_ptr<Dungeon>&,
     const IllnessComponent& component) {
   int kill_time{0};
+  bool is_ill{0};
   Write(stream, &kill_time, sizeof(int));
+  Write(stream, &is_ill, sizeof(bool));
 }
 
 //----------- Movement Component Specialization ---------------------------
