@@ -175,10 +175,9 @@ void systems::CollisionSystem::Update() {
           }
         } else if (intersection.second == core::kTextureSize) {
           if (new_position1.position.x() < new_position2.position.x()) {
-            new_position2.position +=
-                QVector2D {1, 0} * movement_comp1.current_speed;
-
             if (!collision_comp1.gravity && collision_comp2.gravity) {
+              new_position2.position +=
+                  QVector2D {1, 0} * movement_comp1.current_speed;
               if (movement_comp2.direction != QVector2D{0, 0}) {
                 movement_comp1.direction = {0, 0};
                 continue;
@@ -223,6 +222,9 @@ void systems::CollisionSystem::Update() {
                 movement_comp1.direction = {0, 0};
               }
             } else if (collision_comp1.gravity && !collision_comp2.gravity) {
+              new_position1.position +=
+                  QVector2D {-1, 0} * movement_comp1.current_speed;
+
               if (movement_comp1.direction != QVector2D{0, 0}) {
                 movement_comp2.direction = {0, 0};
                 continue;
@@ -339,7 +341,8 @@ void systems::CollisionSystem::Update() {
         auto new_position = position_comp1;
         new_position.position += {0, movement_comp1.current_speed};
         const long double eps = 1e-1;
-        if (IntersectPositions(new_position, position_comp2).second > eps) {
+        if (IntersectPositions(new_position, position_comp2).second > eps ||
+            IntersectPositions(new_position, position_comp2).first > eps) {
           movement_comp1.direction = {0, 0};
           is_bad = true;
           break;
