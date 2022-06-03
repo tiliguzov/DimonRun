@@ -543,11 +543,13 @@ void Serializer::DownloadCompFromJson<AnimationComponent>(
             animation_comp_object["direction"].toInt())};
     MovementType move_type{
         static_cast<MovementType>(animation_comp_object["move_type"].toInt())};
+    int start_time = animation_comp_object["start_time"].toInt();
     coordinator_->AddComponent(entity, AnimationComponent{
         AnimationPack(source_name.toStdString()),
         source_name.toStdString(),
         direction,
-        move_type});
+        move_type,
+        start_time});
   }
 }
 
@@ -558,12 +560,15 @@ AnimationComponent Serializer::DownloadComponent<AnimationComponent>(
   char source_name[kMaxPathLength];
   int direction;
   int move_type;
+  int start_time;
   Read(stream, &source_name, kMaxPathLength);
   Read(stream, &direction, sizeof(int));
   Read(stream, &move_type, sizeof(int));
+  Read(stream, &start_time, sizeof(int));
   return AnimationComponent{AnimationPack(source_name), source_name,
                             static_cast<HorizontalDirection>(direction),
-                            static_cast<MovementType>(move_type)};
+                            static_cast<MovementType>(move_type),
+                            start_time};
 }
 
 template<>
@@ -573,9 +578,11 @@ void Serializer::UploadComponent<AnimationComponent>(
     const AnimationComponent& component) {
   int direction{static_cast<int>(component.direction)};
   int move_type{static_cast<int>(component.move_type)};
+  int start_time{component.start_time};
   Write(stream, component.source_name.data(), kMaxPathLength);
   Write(stream, &direction, sizeof(int));
   Write(stream, &move_type, sizeof(int));
+  Write(stream, &start_time, sizeof(int));
 }
 
 }  // namespace core
