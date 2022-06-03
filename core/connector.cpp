@@ -58,7 +58,7 @@ void Connector::UseEvent(engine::Entity entity) {
     }
     case EventType::kProgressReset: {
       OpenNewDungeon(DungeonName::kHub);
-      location_manager_->ResetProgress();
+      location_manager_->Reset();
     }
     default: {
       std::cout << "strange event\n";
@@ -190,6 +190,10 @@ void Connector::OpenNewDungeon(DungeonName dungeon_name) {
   // Add new dungeon
   current_dungeons_.insert(dungeon_name);
   serializer_->DownloadDungeon(dungeon_name, DungeonType::kDefault);
+}
+
+LocationManager* Connector::GetLocationManager() const {
+  return location_manager_.get();
 }
 
 }  // namespace core

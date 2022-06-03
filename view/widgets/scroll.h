@@ -8,7 +8,7 @@
 
 namespace core {
 
-class Scroll : public QStackedWidget{
+class Scroll : public QStackedWidget {
  public:
   Scroll(core::AbstractScene* parent, const QString& path_to_background);
   void Resize(QSize size);
@@ -20,6 +20,7 @@ class Scroll : public QStackedWidget{
   AbstractScene* scene_;
   QPixmap* background_;
 
+  QLabel* text_;
   MenuButton* return_button_;
 };
 

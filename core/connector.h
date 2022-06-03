@@ -30,6 +30,7 @@ class Connector {
   void CheckAndAddCoin(engine::Entity);
   void OpenNewDungeon(DungeonName dungeon_name);
 
+  LocationManager* GetLocationManager() const;
 
   std::shared_ptr<engine::Coordinator> GetCoordinator();
 

@@ -14,6 +14,7 @@ class LocationManager {
 
     int GetVaultCoins() const;
     void SetVaultCoins(int);
+    void AddCoins(int);
 
     void UnlockLocation(std::string);
     void UnlockLocation(DungeonName);

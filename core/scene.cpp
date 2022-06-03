@@ -16,7 +16,9 @@ Scene::Scene(QStackedWidget* parent, Connector* connector) :
     timer_id_(startTimer(kTickTime)),
     scene_(new QGraphicsScene(this)),
     scene_view_(new QGraphicsView(this)),
-    fast_menu_(new FastMenu(this, ":/view/fast_menu.png")),
+    fast_menu_(new FastMenu(this,
+                            ":/view/fast_menu.png",
+                            connector_->GetLocationManager())),
     vault_(new Vault(this, ":/view/vault.png")),
     scroll_(new Scroll(this, ":/view/vault.png")){
   SetDefaultSceneSettings();
@@ -73,7 +75,7 @@ void Scene::keyPressEvent(QKeyEvent* event) {
     if (is_scroll_showed_) {
       ContinueGame();
     } else {
-      OpenScroll();
+      OpenScroll("Some text");
     }
     is_scroll_showed_ = !is_scroll_showed_;
   }
@@ -121,7 +123,7 @@ void Scene::OpenVault() {
   setCurrentWidget(vault_);
 }
 
-void Scene::OpenScroll() {
+void Scene::OpenScroll(std::string message) {
   scroll_->setGeometry(0, 0, kDefaultWindowWidth, kDefaultWindowHeight);
   setCurrentWidget(scroll_);
 }
@@ -138,25 +140,8 @@ void Scene::resizeEvent(QResizeEvent* event) {
   scroll_->Resize(new_size);
 }
 
-void Scene::DownloadDungeon(DungeonName dungeon_name,
-                            DungeonType dungeon_type) {
-  connector_->GetSerializer()->DownloadDungeon(dungeon_name, dungeon_type);
-}
-
-void Scene::UploadDungeon(DungeonName dungeon_name, DungeonType dungeon_type) {
-  connector_->GetSerializer()->UploadDungeon(dungeon_name, dungeon_type);
-}
-
-void Scene::RemoveDungeon(DungeonName dungeon_name) {
-  connector_->GetSerializer()->RemoveDungeon(dungeon_name);
-}
-
-DungeonName Scene::GetCurrentDungeon() {
-  return connector_->GetCurrentDungeon();
-}
-
-void Scene::SetCurrentDungeon(DungeonName dungeon_name) {
-  connector_->SetCurrentDungeon(dungeon_name);
+void Scene::OpenNewDungeon(DungeonName dungeon_name) {
+  connector_->OpenNewDungeon(dungeon_name);
 }
 
 void Scene::SetHeroEntity(engine::Entity entity) {

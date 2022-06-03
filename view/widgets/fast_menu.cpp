@@ -1,10 +1,14 @@
 #include "fast_menu.h"
 
+#include "core/location_manager/constants.h"
+#include "core/location_manager/location_manager.h"
 #include <QPainter>
 
 namespace core {
 
-FastMenu::FastMenu(AbstractScene* scene, const QString& path_to_background) :
+FastMenu::FastMenu(AbstractScene* scene,
+                   const QString& path_to_background,
+                   LocationManager* location_manager) :
     scene_(scene),
     background_(new QPixmap(path_to_background)),
     resume_button_(new MenuButton(":/view/close.png", this, kResumeButton)),
@@ -19,7 +23,8 @@ FastMenu::FastMenu(AbstractScene* scene, const QString& path_to_background) :
     music_(new QLabel("MUSIC", this)),
     shortcuts_(new QLabel(kShortcutsText, this)),
     return_button_(new MenuButton(":/view/return.png", this, kReturn)),
-    places_(new QListWidget(this)) {
+    places_(new QListWidget(this)),
+    location_manager_(location_manager) {
   music_->setFont(QFont("Copperplate", 22));
   music_->setStyleSheet("color: rgb(250, 250, 250); background: #241711;");
   music_->setGeometry(kMusicText);
@@ -188,11 +193,11 @@ void FastMenu::MuteMusic() {
 
 void FastMenu::PlacesOpen() {
   QListWidgetItem* item = places_->currentItem();
-  // scene_->RemoveDungeon(scene_->GetCurrentDungeon());
-  // auto dungeon_name = dungeon_name_by_note.at(item->text().toStdString());
-  // scene_->DownloadDungeon(dungeon_name, DungeonType::kHandCreated);
-  // scene_->SetCurrentDungeon(dungeon_name);
-  // ContinueGame();
+  if (item->text() != "hub") {
+    location_manager_->GoToLocation(item->text().toStdString());
+  }
+  scene_->OpenNewDungeon(dungeon_name_by_note.at(item->text().toStdString()));
+  ContinueGame();
 }
 
 }  // namespace core

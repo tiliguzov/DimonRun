@@ -37,14 +37,14 @@ const std::vector<NewDungeonChestData> new_dungeon_chests_data{
     {"координаты третьего уровня", DungeonName::kLevel3}
 };
 
-struct CoinChest {
-  std::string scroll_massage;
-  int coins;
-};
+// struct CoinChest {
+//   std::string scroll_massage;
+//   int coins;
+// };
 
-struct std::vector<CoinChest> coin_chests_data{
-    {"+1 coin", 1},
-    {"+2 coin", 2}
-};
+// struct std::vector<CoinChest> coin_chests_data{
+//     {"+1 coin", 1},
+//     {"+2 coin", 2}
+// };
 
 }  // namespace core

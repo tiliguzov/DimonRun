@@ -36,7 +36,7 @@ class Scene : public QStackedWidget, AbstractScene {
   void OpenFastMenu() override;
   void ContinueGame() override;
   void OpenVault() override;
-  void OpenScroll() override;
+  void OpenScroll(std::string) override;
 
  private:
   void paintEvent(QPaintEvent*) override;
@@ -49,14 +49,7 @@ class Scene : public QStackedWidget, AbstractScene {
 
   bool eventFilter(QObject* object, QEvent* event) override;
 
-  DungeonName GetCurrentDungeon() override;
-  void SetCurrentDungeon(DungeonName) override;
-
-  void DownloadDungeon(DungeonName dungeon_name,
-                       DungeonType dungeon_type) override;
-  void UploadDungeon(DungeonName dungeon_name,
-                     DungeonType dungeon_type) override;
-  void RemoveDungeon(DungeonName dungeon_name) override;
+  void OpenNewDungeon(DungeonName) override;
 
   int32_t timer_id_;
   QWidget* parent_;

@@ -3,7 +3,6 @@
         <file alias = "ground1.jpg">textures/background/ground1.jpg</file>
         <file alias = "ground2.jpg">textures/background/ground2.jpg</file>
         <file alias = "background_image.jpg">textures/background/background_image.jpg</file>
-        <file alias = "hub.png">textures/background/hub.png</file>
 
         <file alias = "back_wall_and_torch_00.png">textures/background/back_wall_and_torch_00.png</file>
         <file alias = "back_wall_and_torch_01.png">textures/background/back_wall_and_torch_01.png</file>

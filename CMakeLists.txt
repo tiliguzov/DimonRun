@@ -45,7 +45,8 @@ add_executable(DimonRun
 
         view/buttons/menu_button.cpp
         view/widgets/fast_menu.cpp
-        view/widgets/vault.cpp)
+        view/widgets/vault.cpp
+        view/widgets/scroll.cpp)
 
 target_link_libraries(DimonRun
         Qt::Core
