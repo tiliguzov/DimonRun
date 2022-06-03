@@ -9,21 +9,23 @@
 #include <memory>
 
 #include "engine/coordinator.h"
+#include "view/widgets/fast_menu.h"
+#include "view/widgets/vault.h"
 
 namespace core {
 
 class Connector;
 
 enum ZValues {
-    kBackgroundZIndex,
-    kPlayerZIndex
+  kBackgroundZIndex,
+  kPlayerZIndex
 };
 
-class Scene : public QWidget {
+class Scene : public QStackedWidget, AbstractScene {
   Q_OBJECT
 
  public:
-  Scene(QWidget* parent, Connector* connector);
+  Scene(QStackedWidget* parent, Connector* connector);
 
   QGraphicsScene* GetScene();
   QGraphicsView* GetSceneView();
@@ -37,7 +39,20 @@ class Scene : public QWidget {
 
   void SetDefaultSceneSettings();
 
-  bool eventFilter(QObject *object, QEvent *event) override;
+  bool eventFilter(QObject* object, QEvent* event) override;
+
+  void OpenFastMenu() override;
+  void ContinueGame() override;
+  void OpenVault() override;
+
+  DungeonName GetCurrentDungeon() override;
+  void SetCurrentDungeon(DungeonName) override;
+
+  void DownloadDungeon(DungeonName dungeon_name,
+                       DungeonType dungeon_type) override;
+  void UploadDungeon(DungeonName dungeon_name,
+                     DungeonType dungeon_type) override;
+  void RemoveDungeon(DungeonName dungeon_name) override;
 
   int32_t timer_id_;
   QWidget* parent_;
@@ -45,6 +60,12 @@ class Scene : public QWidget {
   QGraphicsItem* hero_item_;
   QGraphicsScene* scene_;
   QGraphicsView* scene_view_;
+
+  FastMenu* fast_menu_;
+  bool is_menu_showed_{0};
+
+  Vault* vault_;
+  bool is_vault_showed_{0};
 };
 
 }  // namespace core

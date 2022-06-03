@@ -28,12 +28,13 @@ void Write(std::ofstream& os, T* data, int size) {
 
 }  // namespace
 
-Serializer::Serializer(engine::Coordinator* coordinator, Scene* scene) :
+Serializer::Serializer(engine::Coordinator* coordinator, QGraphicsScene* scene)
+    :
     coordinator_(coordinator), scene_(scene) {}
 
 void Serializer::RemoveEntityFromScene(engine::Entity entity) {
   if (coordinator_->HasComponent<GraphicsItemComponent>(entity)) {
-    scene_->GetScene()->removeItem(
+    scene_->removeItem(
         coordinator_->GetComponent<GraphicsItemComponent>(entity).item);
   }
 }
@@ -198,7 +199,6 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
     // component data and add to entity
     DownloadCompFromJson<PositionComponent>(
         entity, dungeon, entity_object);
-
     DownloadCompFromJson<GraphicsItemComponent>(
         entity, dungeon, entity_object);
     DownloadCompFromJson<MovementComponent>(
@@ -238,12 +238,13 @@ void Serializer::DownloadCompFromJson<PositionComponent>(
     const QJsonObject& entity_object) {
   if (entity_object.contains("position_comp")) {
     QJsonObject position_comp_object{
-      entity_object["position_comp"].toObject()};
+        entity_object["position_comp"].toObject()};
     PositionComponent position_component{{
       static_cast<float>(position_comp_object["column"].toInt()
       * kTextureSize + dungeon->offset_x),
-      static_cast<float>(position_comp_object["row"].toInt() * kTextureSize
-                                                     + dungeon->offset_y)}};
+      static_cast<float>(position_comp_object["row"].toInt()
+      * kTextureSize + dungeon->offset_y)}
+    };
     coordinator_->AddComponent(entity, position_component);
   }
 }
@@ -280,7 +281,7 @@ void Serializer::DownloadCompFromJson<GraphicsItemComponent>(
     QJsonObject graphics_comp_object{entity_object["graphics_comp"].toObject()};
 
     QString source_name{graphics_comp_object["source"].toString()};
-    auto item = scene_->GetScene()->addPixmap(QPixmap(source_name));
+    auto item = scene_->addPixmap(QPixmap(source_name));
 
     double scale_x{graphics_comp_object["scale_x"].toDouble()};
     double scale_y{graphics_comp_object["scale_y"].toDouble()};
@@ -312,7 +313,7 @@ GraphicsItemComponent Serializer::DownloadComponent<GraphicsItemComponent>(
   Read(stream, &scale_y, sizeof(double));
   Read(stream, &rotate, sizeof(int));
 
-  auto item = scene_->GetScene()->addPixmap(QPixmap(source_name));
+  auto item = scene_->addPixmap(QPixmap(source_name));
   item->setZValue(z_value);
   item->setPixmap(item->pixmap().transformed(
       QTransform().scale(scale_x, scale_y)));
@@ -350,13 +351,13 @@ void Serializer::DownloadCompFromJson<CollisionComponent>(
     QJsonObject
         collision_comp_object{entity_object["collision_comp"].toObject()};
     bool is_movable
-        {static_cast<bool>(collision_comp_object["is_movable"].toInt())};
-    bool gravity{static_cast<bool>(collision_comp_object["gravity"].toInt())};
-    bool can_use{static_cast<bool>(collision_comp_object["can_use"].toInt())};
+        {collision_comp_object["is_movable"].toBool()};
+    bool gravity{collision_comp_object["gravity"].toBool()};
+    bool can_use{collision_comp_object["can_use"].toBool()};
     bool is_usable
-        {static_cast<bool>(collision_comp_object["is_usable"].toInt())};
+        {collision_comp_object["is_usable"].toBool()};
     bool is_breakable
-        {static_cast<bool>(collision_comp_object["is_breakable"].toInt())};
+        {collision_comp_object["is_breakable"].toBool()};
     CollisionComponent collision_component
         {is_movable, gravity, can_use, is_usable, is_breakable};
     coordinator_->AddComponent(entity, collision_component);
@@ -409,8 +410,7 @@ void Serializer::DownloadCompFromJson<IllnessComponent>(
     QJsonObject
         collision_comp_object{entity_object["illness_comp"].toObject()};
     int kill_time{collision_comp_object["kill_time"].toInt()};
-    bool is_ill{static_cast<bool>(collision_comp_object["is_ill"].toInt())};
-    assert(kill_time == 0 && "kill_time != 0");
+    bool is_ill{collision_comp_object["is_ill"].toBool()};
     assert(is_ill == 0 && "kill_time != 0");
     IllnessComponent illness_component{kill_time, is_ill};
     coordinator_->AddComponent(entity, illness_component);
@@ -425,7 +425,6 @@ IllnessComponent Serializer::DownloadComponent<IllnessComponent>(
   bool is_ill;
   Read(stream, &kill_time, sizeof(int));
   Read(stream, &is_ill, sizeof(bool));
-  assert(kill_time == 0 && "kill_time != 0");
   assert(is_ill == 0 && "is_ill != 0");
   IllnessComponent component{kill_time, is_ill};
   return component;

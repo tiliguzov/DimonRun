@@ -1,0 +1,14 @@
+<RCC>
+    <qresource>
+        <file>view/places.png</file>
+        <file>view/off.png</file>
+        <file>view/on.png</file>
+        <file>view/shortcuts.png</file>
+        <file>view/places.png</file>
+        <file>view/close.png</file>
+        <file>view/return.png</file>
+        <file>view/coin.png</file>
+        <file>view/fast_menu.png</file>
+        <file>view/vault.png</file>
+    </qresource>
+</RCC>
