@@ -25,7 +25,8 @@ class Connector {
   void OnKeyRelease(Qt::Key key);
 
   void DeleteEntity(engine::Entity entity);
-
+  void UseEvent(engine::Entity);
+  void CheckAndAddCoin(engine::Entity);
  private:
   void RegisterSystems();
   void RegisterComponents();

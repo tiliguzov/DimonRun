@@ -1,6 +1,7 @@
 #include "connector.h"
 
 #include <memory>
+#include <iostream>
 
 #include "constants.h"
 #include "components.h"
@@ -9,6 +10,8 @@
 #include "systems/movement_system.h"
 #include "systems/painting_system.h"
 #include "systems/animation_system.h"
+#include "systems/collision_system.h"
+#include "systems/illness_system.h"
 
 namespace core {
 
@@ -25,55 +28,82 @@ void Connector::OnTick() {
 }
 
 void Connector::OnKeyPress(Qt::Key key) {
-    keyboard_->OnPress(key);
+  keyboard_->OnPress(key);
 }
 
 void Connector::OnKeyRelease(Qt::Key key) {
-    keyboard_->OnRelease(key);
+  keyboard_->OnRelease(key);
+}
+
+void Connector::UseEvent(engine::Entity entity) {
+  // TODO(someone): show use event
 }
 
 void Connector::RegisterSystems() {
-    {
-        auto joystick_system_ = coordinator_
-            ->RegisterSystem<systems::JoystickSystem>(
-                    coordinator_.get(), keyboard_.get());
+  {
+    auto joystick_system_ = coordinator_
+        ->RegisterSystem<systems::JoystickSystem>(
+            coordinator_.get(), keyboard_.get());
 
-        coordinator_->SetSystemSignature<systems::JoystickSystem>
-            ({coordinator_->GetComponentID<MovementComponent>(),
-              coordinator_->GetComponentID<AnimationComponent>()});
+    coordinator_->SetSystemSignature<systems::JoystickSystem>
+        ({coordinator_->GetComponentID<MovementComponent>(),
+          coordinator_->GetComponentID<AnimationComponent>(),
+          coordinator_->GetComponentID<JoysticComponent>()});
 
-        systems_.push_back(joystick_system_);
-    }
-    {
-        auto movement_system = coordinator_
-            ->RegisterSystem<systems::MovementSystem>(coordinator_.get());
-        coordinator_->SetSystemSignature<systems::MovementSystem>
-            ({coordinator_->GetComponentID<PositionComponent>(),
-              coordinator_->GetComponentID<MovementComponent>()});
+    systems_.push_back(joystick_system_);
+  }
+  {
+    auto illness_system_ = coordinator_
+        ->RegisterSystem<systems::IllnessSystem>(
+            coordinator_.get(), this);
 
-        systems_.push_back(movement_system);
-    }
-    {
-        auto painting_system = coordinator_
-            ->RegisterSystem<systems::PaintingSystem>(coordinator_.get());
-        coordinator_->SetSystemSignature<systems::PaintingSystem>
-            ({coordinator_->GetComponentID<PositionComponent>(),
-              coordinator_->GetComponentID<GraphicsItemComponent>()});
-        systems_.push_back(painting_system);
-    }
-    {
-        auto animation_system = coordinator_
-            ->RegisterSystem<systems::AnimationSystem>(coordinator_.get());
-        coordinator_->SetSystemSignature<systems::AnimationSystem>
-            ({coordinator_->GetComponentID<AnimationComponent>(),
-              coordinator_->GetComponentID<GraphicsItemComponent>()});
-        systems_.push_back(animation_system);
-    }
+    coordinator_->SetSystemSignature<systems::IllnessSystem>
+        ({coordinator_->GetComponentID<IllnessComponent>()});
+
+    systems_.push_back(illness_system_);
+  }
+  {
+    auto collision_system = coordinator_
+        ->RegisterSystem<systems::CollisionSystem>(coordinator_.get(), this);
+    coordinator_->SetSystemSignature<systems::CollisionSystem>
+        ({coordinator_->GetComponentID<PositionComponent>(),
+          coordinator_->GetComponentID<GraphicsItemComponent>(),
+          coordinator_->GetComponentID<CollisionComponent>()});
+    systems_.push_back(collision_system);
+  }
+  {
+    auto movement_system = coordinator_
+        ->RegisterSystem<systems::MovementSystem>(coordinator_.get());
+    coordinator_->SetSystemSignature<systems::MovementSystem>
+        ({coordinator_->GetComponentID<PositionComponent>(),
+          coordinator_->GetComponentID<MovementComponent>()});
+
+    systems_.push_back(movement_system);
+  }
+  {
+    auto painting_system = coordinator_
+        ->RegisterSystem<systems::PaintingSystem>(coordinator_.get());
+    coordinator_->SetSystemSignature<systems::PaintingSystem>
+        ({coordinator_->GetComponentID<PositionComponent>(),
+          coordinator_->GetComponentID<GraphicsItemComponent>()});
+    systems_.push_back(painting_system);
+  }
+  {
+    auto animation_system = coordinator_
+        ->RegisterSystem<systems::AnimationSystem>(coordinator_.get());
+    coordinator_->SetSystemSignature<systems::AnimationSystem>
+        ({coordinator_->GetComponentID<AnimationComponent>(),
+          coordinator_->GetComponentID<GraphicsItemComponent>()});
+    systems_.push_back(animation_system);
+  }
 }
 
 void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<PositionComponent>();
   coordinator_->RegisterComponent<MovementComponent>();
+  coordinator_->RegisterComponent<CollisionComponent>();
+  coordinator_->RegisterComponent<JoysticComponent>();
+  coordinator_->RegisterComponent<IllnessComponent>();
   coordinator_->RegisterComponent<GraphicsItemComponent>();
   coordinator_->RegisterComponent<AnimationComponent>();
 }
@@ -82,11 +112,16 @@ QGraphicsItem* Connector::CreateHero(Scene* scene) {
   engine::Entity hero = coordinator_->CreateEntity();
   coordinator_->AddComponent(hero, PositionComponent{{50, 50}});
   coordinator_->AddComponent(hero, MovementComponent{{0, 0}, 1});
+  coordinator_->AddComponent(hero, CollisionComponent({1, 0, 1, 0, 0}));
+  coordinator_->AddComponent(hero, JoysticComponent());
   auto item = scene->GetScene()->addPixmap(
       QPixmap(":Hero_static_in_air_00.png"));
   item->setZValue(kPlayerZIndex);
-  coordinator_->AddComponent(hero, GraphicsItemComponent{item,
-                  ":Hero_static_in_air_00.png", 1, 1, 0});
+  coordinator_->AddComponent(
+      hero,
+      GraphicsItemComponent{item,
+                            ":Hero_static_in_air_00.png",
+                            1, 1, 0});
   coordinator_->AddComponent(
       hero,
       AnimationComponent{AnimationPack(":hero.json"),
@@ -124,6 +159,9 @@ void Connector::StartGame(Scene* scene) {
 
 void Connector::DeleteEntity(engine::Entity entity) {
   serializer_->DeleteEntity(entity);
+}
+void Connector::CheckAndAddCoin(engine::Entity entity) {
+  // TODO(someone) : check if its a coin then add
 }
 
 }  // namespace core

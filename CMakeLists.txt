@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.20.2)
 project(DimonRun)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -36,7 +36,9 @@ add_executable(DimonRun
         systems/movement_system.cpp
         systems/joystick_system.cpp
         systems/painting_system.cpp
-        systems/animation_system.cpp)
+        systems/animation_system.cpp
+        systems/collision_system.cpp
+        systems/illness_system.cpp)
 
 target_link_libraries(DimonRun
         Qt::Core
