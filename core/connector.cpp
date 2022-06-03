@@ -76,8 +76,7 @@ void Connector::RegisterSystems() {
         ->RegisterSystem<systems::MovementSystem>(coordinator_.get());
     coordinator_->SetSystemSignature<systems::MovementSystem>
         ({coordinator_->GetComponentID<PositionComponent>(),
-          coordinator_->GetComponentID<MovementComponent>(),
-          coordinator_->GetComponentID<CollisionComponent>()});
+          coordinator_->GetComponentID<MovementComponent>()});
 
     systems_.push_back(movement_system);
   }

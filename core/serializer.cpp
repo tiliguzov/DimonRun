@@ -88,7 +88,6 @@ void Serializer::DownloadDungeon(
 
     // Download component from file and add to entity, if entity should
     // have this component according to it's signature
-
     DownloadCompIfNecessary<PositionComponent>(entity, dungeon, stream);
     DownloadCompIfNecessary<GraphicsItemComponent>(entity, dungeon, stream);
     DownloadCompIfNecessary<MovementComponent>(entity, dungeon, stream);
@@ -106,7 +105,6 @@ void Serializer::DownloadCompIfNecessary(
     const std::unique_ptr<Dungeon>& dungeon,
     std::ifstream& stream) {
   if (coordinator_->HasComponent<ComponentType>(entity)) {
-    std::cerr << "00000" << std::endl;
     coordinator_->AddComponent(
         entity,
         DownloadComponent<ComponentType>(stream, dungeon));
@@ -182,6 +180,7 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
   input_file.open(QFile::ReadOnly | QIODevice::Text);
   QByteArray bytes = input_file.readAll();
   QJsonDocument document = QJsonDocument::fromJson(bytes);
+
   dungeons_.insert({dungeon_name, std::make_unique<Dungeon>()});
   auto& dungeon = dungeons_.at(dungeon_name);
 
@@ -194,6 +193,7 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
     QJsonObject entity_object{entity_data.toObject()};
     engine::Entity entity = coordinator_->CreateEntity();
     dungeon->entities.push_back(entity);
+
     // Download component from json file if entity_object contains such
     // component data and add to entity
     DownloadCompFromJson<PositionComponent>(
