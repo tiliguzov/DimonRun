@@ -5,11 +5,13 @@
 #include <string>
 #include <vector>
 
+#include "dungeon_name.h"
+
 namespace core {
 
 enum class EventType {
   kSecretRoom,
-  kNewDungeonChest,
+  kNextDungeon,
   kCoinChest,
   kVault,
   kGameExit,
@@ -17,26 +19,22 @@ enum class EventType {
 };
 
 struct SecretRoomData {
-  std::string bin_source;
-  std::string json_source;
+  DungeonName name;
 };
 
 const std::vector<SecretRoomData> secret_rooms_data{
-    {"secret_room_1", ":secret_room_1.json"},
-    {"secret_room_2", ":secret_room_2.json"},
-    {"secret_room_3", ":secret_room_3.json"}
+    {DungeonName::kSecretRoom1},
+    {DungeonName::kSecretRoom2}
 };
 
 struct NewDungeonChestData {
   std::string scroll_massage;
-  std::string menu_note;
-  std::string bin_source;
-  std::string json_source;
+  DungeonName name;
 };
 
 const std::vector<NewDungeonChestData> new_dungeon_chests_data{
-    {"координаты второго уровня", "Dungeon_2", "level2", ":level2.json"},
-    {"координаты третьего уровня", "Dungeon_3", "level3", ":level3.json"}
+    {"координаты второго уровня", DungeonName::kLevel2},
+    {"координаты третьего уровня", DungeonName::kLevel3}
 };
 
 struct CoinChest {

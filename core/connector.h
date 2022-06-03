@@ -27,10 +27,7 @@ class Connector {
   void DeleteEntity(engine::Entity entity);
   void UseEvent(engine::Entity);
   void CheckAndAddCoin(engine::Entity);
-  Serializer* GetSerializer();
-
-  DungeonName GetCurrentDungeon();
-  void SetCurrentDungeon(DungeonName);
+  void OpenNewDungeon(DungeonName dungeon_name);
 
 
   std::shared_ptr<engine::Coordinator> GetCoordinator();
@@ -39,13 +36,15 @@ class Connector {
   void RegisterSystems();
   void RegisterComponents();
 
+  Scene* scene_{nullptr};
+
   std::shared_ptr<engine::Coordinator> coordinator_;
   std::unique_ptr<core::Keyboard> keyboard_;
   std::unique_ptr<Serializer> serializer_;
 
   std::vector<std::shared_ptr<engine::System>> systems_;
 
-  DungeonName current_dungeon_;
+  std::unordered_set<DungeonName> current_dungeons_;
 };
 
 }  // namespace core

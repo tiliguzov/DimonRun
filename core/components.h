@@ -58,4 +58,8 @@ struct EventComponent{
   int number;
 };
 
+struct CoinComponent{
+  int value;
+};
+
 }  // namespace core
