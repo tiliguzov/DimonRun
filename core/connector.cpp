@@ -163,4 +163,8 @@ void Connector::CheckAndAddCoin(engine::Entity entity) {
   // TODO(someone) : check if its a coin then add
 }
 
+std::shared_ptr<engine::Coordinator> Connector::GetCoordinator() {
+  return coordinator_;
+}
+
 }  // namespace core

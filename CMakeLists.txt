@@ -46,21 +46,34 @@ target_link_libraries(DimonRun
         Qt::Widgets)
 
 add_executable(MapCreator
+        core/connector.cpp
+        core/scene.cpp
+        core/keyboard.cpp
+        core/animation_pack.cpp
+        core/serializer.cpp
+
         engine/component_manager.cpp
         engine/coordinator.cpp
         engine/entity_manager.cpp
         engine/system.cpp
         engine/system_manager.cpp
-        core/animation_pack.cpp
+
+        core/dungeon_name.h
 
         resources/hero.qrc
         resources/background.qrc
+        resources/hand_created_dungeons.qrc
 
+        systems/movement_system.cpp
+        systems/joystick_system.cpp
         systems/painting_system.cpp
         systems/animation_system.cpp
+        systems/collision_system.cpp
+        systems/illness_system.cpp
+
         map_creator/map_creator.cpp
         map_creator/map_creator_main.cpp
-        map_creator/mc_connector.cpp)
+        )
 
 target_link_libraries(MapCreator
         Qt::Core

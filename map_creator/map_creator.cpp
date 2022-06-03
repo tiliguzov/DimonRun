@@ -1,6 +1,5 @@
 #include "map_creator.h"
 #include "core/components.h"
-#include "core/serializer.h"
 
 #include <QListWidgetItem>
 #include <QIcon>
@@ -13,8 +12,9 @@
 #include <QFont>
 #include <string>
 #include <QFileDialog>
+#include <QVector2D>
 
-MapCreator::MapCreator(QWidget* parent, MCConnector* connector) :
+MapCreator::MapCreator(QWidget* parent, core::Connector* connector) :
       QWidget(parent),
       connector_(connector),
       timer_id_(startTimer(5)),
@@ -125,6 +125,22 @@ void MapCreator::LoadTextures() {
         is_breakable_[source_[item]] =
             texture_info["is_breakable"].toBool();
       }
+
+      if (texture_info.contains("kill_time")) {
+        kill_time_[source_[item]] =
+            texture_info["kill_time"].toInt();
+        is_ill_[source_[item]] =
+            texture_info["is_ill"].toBool();
+      }
+
+      if (texture_info.contains("current_speed")) {
+        current_speed_[source_[item]] =
+            texture_info["current_speed"].toDouble();
+        direction_x_[source_[item]] =
+            texture_info["direction_x"].toDouble();
+        direction_y_[source_[item]] =
+            texture_info["direction_y"].toDouble();
+      }
     }
   }
 }
@@ -208,6 +224,28 @@ void MapCreator::AddTexture(QPointF point,
         direction_[source],
         movement_type_[source]
         });
+  }
+  if (is_movable_.count(source)) {
+    coordinator->AddComponent(texture_entity, core::CollisionComponent{
+      is_movable_[source],
+      gravity_[source],
+      can_use_[source],
+      is_usable_[source],
+      is_breakable_[source]
+    });
+  }
+  if (kill_time_.count(source)) {
+    coordinator->AddComponent(texture_entity, core::IllnessComponent{
+      kill_time_[source],
+      is_ill_[source]
+    });
+  }
+  if (current_speed_.count(source)) {
+    coordinator->AddComponent(texture_entity, core::MovementComponent{
+      {static_cast<float>(direction_x_[source]),
+      static_cast<float>(direction_y_[source])},
+      static_cast<float>(current_speed_[source])
+    });
   }
 }
 
@@ -372,6 +410,40 @@ QJsonDocument MapCreator::AllEntities() {
       anim_comp_info["move_type"] = static_cast<int>(anim_comp.move_type);
 
       entity_info["animation_comp"] = anim_comp_info;
+    }
+
+    if (coordinator->HasComponent<core::CollisionComponent>(entity)) {
+      QJsonObject coll_comp_info;
+      auto coll_comp = coordinator->
+          GetComponent<core::CollisionComponent>(entity);
+      coll_comp_info["is_movable"] = coll_comp.is_movable;
+      coll_comp_info["gravity"] = coll_comp.gravity;
+      coll_comp_info["can_use"] = coll_comp.can_use;
+      coll_comp_info["is_usable"] = coll_comp.is_usable;
+      coll_comp_info["is_breakable"] = coll_comp.is_breakable;
+
+      entity_info["collision_comp"] = coll_comp_info;
+    }
+
+    if (coordinator->HasComponent<core::IllnessComponent>(entity)) {
+      QJsonObject illness_comp_info;
+      auto illness_comp = coordinator->
+          GetComponent<core::IllnessComponent>(entity);
+      illness_comp_info["kill_time"] = illness_comp.kill_time;
+      illness_comp_info["is_ill"] = illness_comp.is_ill;
+
+      entity_info["illness_comp"] = illness_comp_info;
+    }
+
+    if (coordinator->HasComponent<core::MovementComponent>(entity)) {
+      QJsonObject move_comp_info;
+      auto move_comp = coordinator->
+          GetComponent<core::MovementComponent>(entity);
+      move_comp_info["current_speed"] = move_comp.current_speed;
+      move_comp_info["direction_x"] = move_comp.direction.x();
+      move_comp_info["direction_y"] = move_comp.direction.y();
+
+      entity_info["movement_comp"] = move_comp_info;
     }
 
     entities.push_back(entity_info);

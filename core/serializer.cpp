@@ -82,7 +82,6 @@ void Serializer::DownloadDungeon(
   for (int i = 0; i < dungeon->entities_count; i++) {
     engine::Entity entity = coordinator_->CreateEntity();
     dungeon->entities.push_back(entity);
-
     engine::ComponentSignature component_signature;
     Read(stream, &component_signature, sizeof(engine::ComponentSignature));
     coordinator_->SetComponentSignature(entity, component_signature);
@@ -96,7 +95,6 @@ void Serializer::DownloadDungeon(
     DownloadCompIfNecessary<CollisionComponent>(entity, dungeon, stream);
     DownloadCompIfNecessary<IllnessComponent>(entity, dungeon, stream);
   }
-
   stream.close();
   assert(stream.good() && "Error occurred at dungeon reading time!");
 }
@@ -190,11 +188,11 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
   dungeon->offset_y = document["offset_y"].toInt();
   QJsonArray entities_data = document["entities"].toArray();
   dungeon->entities_count = entities_data.size();
-  dungeon->background_image = new QGraphicsPixmapItem
-      (QPixmap(document["background_image"].toString()));
-  scene_->GetScene()->addItem(dungeon->background_image);
-  dungeon->background_image->setPos(-1000, -450);
 
+  auto* item =
+      new QGraphicsPixmapItem(QPixmap(document["background_image"].toString()));
+  item->setPos(-1100, -350);
+  scene_->GetScene()->addItem(item);
 
   for (auto entity_data : entities_data) {
     QJsonObject entity_object{entity_data.toObject()};
@@ -205,6 +203,7 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
     // component data and add to entity
     DownloadCompFromJson<PositionComponent>(
         entity, dungeon, entity_object);
+
     DownloadCompFromJson<GraphicsItemComponent>(
         entity, dungeon, entity_object);
     DownloadCompFromJson<MovementComponent>(
@@ -244,12 +243,12 @@ void Serializer::DownloadCompFromJson<PositionComponent>(
     const QJsonObject& entity_object) {
   if (entity_object.contains("position_comp")) {
     QJsonObject position_comp_object{
-      entity_object["position_comp"].toObject()};
+        entity_object["position_comp"].toObject()};
     PositionComponent position_component{{
-      static_cast<float>(position_comp_object["column"].toInt()
-      * kTextureSize + dungeon->offset_x),
-      static_cast<float>(position_comp_object["row"].toInt() * kTextureSize
-                                                     + dungeon->offset_y)}};
+                                             static_cast<float>(position_comp_object["column"].toInt()
+                                                 * kTextureSize + dungeon->offset_x),
+                                             static_cast<float>(position_comp_object["row"].toInt() * kTextureSize
+                                                 + dungeon->offset_y)}};
     coordinator_->AddComponent(entity, position_component);
   }
 }
@@ -275,7 +274,6 @@ void Serializer::UploadComponent<PositionComponent>(
   Write(stream, &x, sizeof(float));
   Write(stream, &y, sizeof(float));
 }
-
 
 //----------- Graphics Item Component Specialization ---------------------------
 template<>
@@ -345,6 +343,108 @@ void Serializer::UploadComponent<GraphicsItemComponent>(
   Write(stream, &scale_x, sizeof(double));
   Write(stream, &scale_y, sizeof(double));
   Write(stream, &rotate, sizeof(int));
+}
+
+//----------- Collision Component Specialization ---------------------------
+template<>
+void Serializer::DownloadCompFromJson<CollisionComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>& dungeon,
+    const QJsonObject& entity_object) {
+  if (entity_object.contains("collision_comp")) {
+    QJsonObject
+        collision_comp_object{entity_object["collision_comp"].toObject()};
+    bool is_movable
+        {collision_comp_object["is_movable"].toBool()};
+    bool gravity{collision_comp_object["gravity"].toBool()};
+    bool can_use{collision_comp_object["can_use"].toBool()};
+    bool is_usable
+        {collision_comp_object["is_usable"].toBool()};
+    bool is_breakable
+        {collision_comp_object["is_breakable"].toBool()};
+    CollisionComponent collision_component
+        {is_movable, gravity, can_use, is_usable, is_breakable};
+    coordinator_->AddComponent(entity, collision_component);
+  }
+}
+
+template<>
+CollisionComponent Serializer::DownloadComponent<CollisionComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&) {
+  bool is_movable;
+  bool gravity;
+  bool can_use;
+  bool is_usable;
+  bool is_breakable;
+  Read(stream, &is_movable, sizeof(bool));
+  Read(stream, &gravity, sizeof(bool));
+  Read(stream, &can_use, sizeof(bool));
+  Read(stream, &is_usable, sizeof(bool));
+  Read(stream, &is_breakable, sizeof(bool));
+  CollisionComponent
+      component{is_movable, gravity, can_use, is_usable, is_breakable};
+  return component;
+}
+
+template<>
+void Serializer::UploadComponent<CollisionComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const CollisionComponent& component) {
+  bool is_movable{component.is_movable};
+  bool gravity{component.gravity};
+  bool can_use{component.can_use};
+  bool is_usable{component.is_usable};
+  bool is_breakable{component.is_breakable};
+  Write(stream, &is_movable, sizeof(bool));
+  Write(stream, &gravity, sizeof(bool));
+  Write(stream, &can_use, sizeof(bool));
+  Write(stream, &is_usable, sizeof(bool));
+  Write(stream, &is_breakable, sizeof(bool));
+}
+
+//----------- Illness Component Specialization ---------------------------
+template<>
+void Serializer::DownloadCompFromJson<IllnessComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>& dungeon,
+    const QJsonObject& entity_object) {
+  if (entity_object.contains("illness_comp")) {
+    QJsonObject
+        collision_comp_object{entity_object["illness_comp"].toObject()};
+    int kill_time{collision_comp_object["kill_time"].toInt()};
+    bool is_ill{collision_comp_object["is_ill"].toBool()};
+    // assert(kill_time == 0 && "kill_time != 0");
+    assert(is_ill == 0 && "kill_time != 0");
+    IllnessComponent illness_component{kill_time, is_ill};
+    coordinator_->AddComponent(entity, illness_component);
+  }
+}
+
+template<>
+IllnessComponent Serializer::DownloadComponent<IllnessComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&) {
+  int kill_time;
+  bool is_ill;
+  Read(stream, &kill_time, sizeof(int));
+  Read(stream, &is_ill, sizeof(bool));
+  // assert(kill_time == 0 && "kill_time != 0");
+  assert(is_ill == 0 && "is_ill != 0");
+  IllnessComponent component{kill_time, is_ill};
+  return component;
+}
+
+template<>
+void Serializer::UploadComponent<IllnessComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const IllnessComponent& component) {
+  int kill_time{0};
+  bool is_ill{0};
+  Write(stream, &kill_time, sizeof(int));
+  Write(stream, &is_ill, sizeof(bool));
 }
 
 //----------- Movement Component Specialization ---------------------------

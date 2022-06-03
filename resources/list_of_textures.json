@@ -119,8 +119,10 @@
       "is_movable" : false,
       "gravity" : false,
       "can_use" : false,
-      "is_usable" : true,
-      "is_breakable" : true
+      "is_usable" : false,
+      "is_breakable" : true,
+      "kill_time" : 300,
+      "is_ill" : false
     },
     "stone" : {
       "source" : ":stone_00.png",
@@ -132,7 +134,10 @@
       "gravity" : true,
       "can_use" : false,
       "is_usable" : false,
-      "is_breakable" : false
+      "is_breakable" : false,
+      "current_speed" : 1.0,
+      "direction_x" : 0,
+      "direction_y" : 0
     }
   },
   "2" : {

@@ -103,7 +103,6 @@ void systems::CollisionSystem::Update() {
             coordinator_->GetComponent<core::IllnessComponent>(entity2);
         if (!illness_comp2.is_ill) {
           illness_comp2.is_ill = true;
-          illness_comp2.kill_time = 300;
           // if (coordinator_->
           // HasComponent<core::AnimationComponent>(entity2) &&
           //     coordinator_->

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "mc_connector.h"
+#include "core/connector.h"
 #include "core/constants.h"
 #include "core/animation_pack.h"
 
@@ -24,7 +24,7 @@ class MapCreator : public QWidget {
   Q_OBJECT
 
  public:
-  MapCreator(QWidget* parent, MCConnector* connector);
+  MapCreator(QWidget* parent, core::Connector* connector);
   void CreateDefaultScene();
   void LoadTextures();
   void CreateGrid();
@@ -44,7 +44,7 @@ class MapCreator : public QWidget {
   void resizeEvent(QResizeEvent* event) override;
 
  private:
-  MCConnector* connector_;
+  core::Connector* connector_;
   int32_t timer_id_;
   QGraphicsScene* scene_;
   QGraphicsView* scene_view_;
@@ -69,6 +69,13 @@ class MapCreator : public QWidget {
   std::unordered_map<std::string, bool> can_use_;
   std::unordered_map<std::string, bool> is_usable_;
   std::unordered_map<std::string, bool> is_breakable_;
+
+  std::unordered_map<std::string, bool> kill_time_;
+  std::unordered_map<std::string, bool> is_ill_;
+
+  std::unordered_map<std::string, double> current_speed_;
+  std::unordered_map<std::string, double> direction_x_;
+  std::unordered_map<std::string, double> direction_y_;
 
   std::unordered_map<std::string, core::MovementType> str_to_type =
       {{"static_in_air", core::MovementType::kStaticInAir},

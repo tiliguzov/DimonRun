@@ -27,11 +27,13 @@ class Connector {
   void DeleteEntity(engine::Entity entity);
   void UseEvent(engine::Entity);
   void CheckAndAddCoin(engine::Entity);
+
+  std::shared_ptr<engine::Coordinator> GetCoordinator();
  private:
   void RegisterSystems();
   void RegisterComponents();
 
-  std::unique_ptr<engine::Coordinator> coordinator_;
+  std::shared_ptr<engine::Coordinator> coordinator_;
   std::unique_ptr<core::Keyboard> keyboard_;
   std::unique_ptr<Serializer> serializer_;
 
