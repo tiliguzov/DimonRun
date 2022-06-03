@@ -28,6 +28,7 @@ class Scene : public QWidget {
   QGraphicsScene* GetScene();
   QGraphicsView* GetSceneView();
   void SetHeroEntity(engine::Entity entity);
+  void SetBackgroundImage(QGraphicsPixmapItem* item);
 
  private:
   void paintEvent(QPaintEvent*) override;
@@ -46,6 +47,7 @@ class Scene : public QWidget {
   engine::Entity hero_entity_;
   QGraphicsScene* scene_;
   QGraphicsView* scene_view_;
+  QGraphicsPixmapItem* background_image_;
 };
 
 }  // namespace core

@@ -192,8 +192,8 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
 
   auto* item =
       new QGraphicsPixmapItem(QPixmap(document["background_image"].toString()));
-  item->setPos(-1100, -350);
   scene_->GetScene()->addItem(item);
+  scene_->SetBackgroundImage(item);
 
   for (auto entity_data : entities_data) {
     QJsonObject entity_object{entity_data.toObject()};

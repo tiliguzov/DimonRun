@@ -35,6 +35,10 @@ void Scene::timerEvent(QTimerEvent* event) {
   connector_->OnTick();
   scene_view_->centerOn(connector_->GetCoordinator()->
         GetComponent<GraphicsItemComponent>(hero_entity_).item);
+  auto pos = connector_->GetCoordinator()->
+      GetComponent<PositionComponent>(hero_entity_).position;
+  background_image_->setPos(pos.x() - background_image_->pixmap().width() / 2,
+                            pos.y() - background_image_->pixmap().height() / 2);
 }
 
 void Scene::paintEvent(QPaintEvent*) {
@@ -83,6 +87,10 @@ bool Scene::eventFilter(QObject *object, QEvent *event) {
 
 void Scene::SetHeroEntity(engine::Entity entity) {
   hero_entity_ = entity;
+}
+
+void Scene::SetBackgroundImage(QGraphicsPixmapItem* item) {
+  background_image_ = item;
 }
 
 }  // namespace core
