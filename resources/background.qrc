@@ -2,6 +2,7 @@
     <qresource>
         <file alias = "ground1.jpg">textures/background/ground1.jpg</file>
         <file alias = "ground2.jpg">textures/background/ground2.jpg</file>
+        <file alias = "background_image.jpg">textures/background/background_image.jpg</file>
 
         <file alias = "back_wall_and_torch_00.png">textures/background/back_wall_and_torch_00.png</file>
         <file alias = "back_wall_and_torch_01.png">textures/background/back_wall_and_torch_01.png</file>
@@ -26,6 +27,8 @@
         <file alias = "wall.png">textures/background/wall.png</file>
         <file alias = "wall_inside.png">textures/background/wall_inside.png</file>
         <file alias = "wall_line.png">textures/background/wall_line.png</file>
+        <file alias = "grass.png">textures/background/grass.png</file>
+        <file alias = "roof.png">textures/background/roof.png</file>
 
         <file alias = "water_00.png">textures/background/water_00.png</file>
         <file alias = "water_01.png">textures/background/water_01.png</file>
@@ -35,8 +38,26 @@
         <file alias = "wave_01.png">textures/background/wave_01.png</file>
         <file alias = "wave_02.png">textures/background/wave_02.png</file>
 
+        <file alias = "coin_00.png">textures/background/coin_00.png</file>
+        <file alias = "coin_01.png">textures/background/coin_01.png</file>
+        <file alias = "coin_02.png">textures/background/coin_02.png</file>
+        <file alias = "coin_03.png">textures/background/coin_03.png</file>
+        <file alias = "coin_04.png">textures/background/coin_04.png</file>
+        <file alias = "coin_05.png">textures/background/coin_05.png</file>
+        <file alias = "coin_06.png">textures/background/coin_06.png</file>
+        <file alias = "coin_07.png">textures/background/coin_07.png</file>
+        <file alias = "coin_08.png">textures/background/coin_08.png</file>
+        <file alias = "coin_09.png">textures/background/coin_09.png</file>
+
+        <file alias = "stone_00.png">textures/background/stone_00.png</file>
+        <file alias = "stone_01.png">textures/background/stone_01.png</file>
+        <file alias = "stone_02.png">textures/background/stone_02.png</file>
+        <file alias = "stone_03.png">textures/background/stone_03.png</file>
+
         <file alias = "back_wall_torch.json">animations/back_wall_torch.json</file>
         <file alias = "water.json">animations/water.json</file>
         <file alias = "wave.json">animations/wave.json</file>
+        <file alias = "coin.json">animations/coin.json</file>
+        <file alias = "stone.json">animations/stone.json</file>
     </qresource>
 </RCC>

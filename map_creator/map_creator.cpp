@@ -113,6 +113,18 @@ void MapCreator::LoadTextures() {
         movement_type_[source_[item]] =
             str_to_type[texture_info["move_type"].toString().toStdString()];
       }
+      if (texture_info.contains("is_movable")) {
+        is_movable_[source_[item]] =
+            texture_info["is_movable"].toBool();
+        gravity_[source_[item]] =
+            texture_info["gravity"].toBool();
+        can_use_[source_[item]] =
+            texture_info["can_use"].toBool();
+        is_usable_[source_[item]] =
+            texture_info["is_usable"].toBool();
+        is_breakable_[source_[item]] =
+            texture_info["is_breakable_"].toBool();
+      }
     }
   }
 }
@@ -330,6 +342,7 @@ QJsonDocument MapCreator::AllEntities() {
   QJsonObject result;
   result["offset_x"] = 0;
   result["offset_y"] = 0;
+  result["background_image"] = ":background_image.jpg";
   QJsonArray entities;
   auto coordinator = connector_->GetCoordinator();
   for (auto entity : items_) {

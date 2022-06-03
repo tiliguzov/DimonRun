@@ -119,7 +119,7 @@ void Connector::StartGame(Scene* scene) {
   // Removes dungeon from game
   // serializer_->RemoveDungeon(DungeonName::kHub);
 
-  scene->GetSceneView()->scale(2.5, 2.5);
+  scene->GetSceneView()->scale(1.7, 1.7);
 }
 
 void Connector::DeleteEntity(engine::Entity entity) {

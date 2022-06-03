@@ -54,20 +54,39 @@
     "wall_inside" : {
       "source" : ":wall_inside.png",
       "name" : "Wall inside"
+    },
+    "roof" : {
+      "source" : ":roof.png",
+      "name" : "Roof"
     }
   },
   "1" : {
     "floor_line" : {
       "source" : ":floor_line.png",
-      "name" : "Floor"
+      "name" : "Floor",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : false
     },
     "bridge" : {
       "source" : ":bridge.png",
-      "name" : "Bridge"
+      "name" : "Bridge",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : false
     },
     "bridge_side" : {
       "source" : ":bridge_side.png",
-      "name" : "Bridge side"
+      "name" : "Bridge side",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : false
     },
     "ceil_line" : {
       "source" : ":ceil_line.png",
@@ -75,11 +94,45 @@
     },
     "half_of_wall_line" : {
       "source" : ":half_of_wall_line.png",
-      "name" : "Half of wall line"
+      "name" : "Half of wall line",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : false
     },
     "wall_line" : {
       "source" : ":wall_line.png",
-      "name" : "Wall line"
+      "name" : "Wall line",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : false
+    },
+    "coin" : {
+      "source" : ":coin_00.png",
+      "name" : "Coin",
+      "animation_source" : ":coin.json",
+      "direction" :  "left",
+      "move_type" : "coin_moving",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : true,
+      "is_breakable" : true
+    },
+    "stone" : {
+      "source" : ":stone_00.png",
+      "name" : "Stone",
+      "animation_source" : ":stone.json",
+      "direction" :  "left",
+      "move_type" : "stone_moving",
+      "is_movable" : true,
+      "gravity" : true,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : false
     }
   },
   "2" : {
@@ -100,6 +153,10 @@
       "animation_source" : ":wave.json",
       "direction" :  "left",
       "move_type" : "wave_moving"
+    },
+    "grass" : {
+      "source" : ":grass.png",
+      "name" : "Grass"
     }
   }
 }

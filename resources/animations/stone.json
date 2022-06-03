@@ -1,0 +1,11 @@
+{
+  "animations": {
+    "stone_moving": [
+      ":stone_00.png",
+      ":stone_01.png",
+      ":stone_02.png",
+      ":stone_03.png"
+    ]
+  },
+  "frame_duration": 500
+}

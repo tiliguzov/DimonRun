@@ -22,7 +22,9 @@ enum class MovementType {
   kFliesHorizontal,
   kTorchBurning,
   kWaterMoving,
-  kWaveMoving
+  kWaveMoving,
+  kCoinMoving,
+  kStoneMoving
 };
 
 class AnimationPack {
@@ -46,7 +48,9 @@ class AnimationPack {
        {"flies_horizontal", MovementType::kFliesHorizontal},
        {"torch_burning", MovementType::kTorchBurning},
        {"water_moving", MovementType::kWaterMoving},
-       {"wave_moving", MovementType::kWaveMoving}};
+       {"wave_moving", MovementType::kWaveMoving},
+       {"coin_moving", MovementType::kCoinMoving},
+       {"stone_moving", MovementType::kStoneMoving}};
 };
 
 }  // namespace core

@@ -64,6 +64,12 @@ class MapCreator : public QWidget {
   std::unordered_map<std::string, core::HorizontalDirection> direction_;
   std::unordered_map<std::string, core::MovementType> movement_type_;
 
+  std::unordered_map<std::string, bool> is_movable_;
+  std::unordered_map<std::string, bool> gravity_;
+  std::unordered_map<std::string, bool> can_use_;
+  std::unordered_map<std::string, bool> is_usable_;
+  std::unordered_map<std::string, bool> is_breakable_;
+
   std::unordered_map<std::string, core::MovementType> str_to_type =
       {{"static_in_air", core::MovementType::kStaticInAir},
        {"flies_up", core::MovementType::kFliesUp},
@@ -71,5 +77,7 @@ class MapCreator : public QWidget {
        {"flies_horizontal", core::MovementType::kFliesHorizontal},
        {"torch_burning", core::MovementType::kTorchBurning},
        {"water_moving", core::MovementType::kWaterMoving},
-       {"wave_moving", core::MovementType::kWaveMoving}};
+       {"wave_moving", core::MovementType::kWaveMoving},
+       {"coin_moving", core::MovementType::kCoinMoving},
+       {"stone_moving", core::MovementType::kStoneMoving}};
 };
