@@ -210,12 +210,13 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
   std::string backgroung_str =
       document["background_image"].toString().toStdString();
   std::strcpy(dungeon->background_image, backgroung_str.c_str());
-  auto* item = new QGraphicsPixmapItem(QPixmap(QString(
-      dungeon->background_image)));
+  if (backgroung_str != ":empty.png") {
+    auto* item = new QGraphicsPixmapItem(QPixmap(QString(
+        dungeon->background_image)));
 
-
-  graphics_scene_->addItem(item);
-  scene_->SetBackgroundImage(item);
+    graphics_scene_->addItem(item);
+    scene_->SetBackgroundImage(item);
+  }
 
   for (auto entity_data : entities_data) {
     QJsonObject entity_object{entity_data.toObject()};

@@ -39,7 +39,6 @@ void Connector::OnKeyRelease(Qt::Key key) {
 }
 
 void Connector::UseEvent(engine::Entity entity) {
-  std::cout << "bad" << std::endl;
   auto event_comp{coordinator_->GetComponent<EventComponent>(entity)};
   switch (event_comp.type) {
     case EventType::kSecretRoom: {
@@ -163,6 +162,7 @@ void Connector::StartGame(Scene* scene) {
   serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
   // serializer_->DownloadDungeon(DungeonName::kLevel1, DungeonType::kHandCreated);
   // serializer_->DownloadDungeon(DungeonName::kLevel2, DungeonType::kHandCreated);
+  // serializer_->DownloadDungeon(DungeonName::kLevel3, DungeonType::kHandCreated);
 
   // [before game release] Upload dungeon from game to default binary file
   // serializer_->UploadDungeon(DungeonName::kHub, DungeonType::kHandCreated);

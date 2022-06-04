@@ -49,6 +49,7 @@ const std::unordered_map<DungeonName, std::string> source_by_name_default{
     {DungeonName::kHub, "default_hub"},
     {DungeonName::kLevel1, "default_level1"},
     {DungeonName::kLevel2, "default_level2"},
+    {DungeonName::kLevel3, "default_level3"},
     {DungeonName::kSecretRoom1, "secret_room1"},
     {DungeonName::kSecretRoom2, "secret_room2"}
 };
@@ -56,13 +57,15 @@ const std::unordered_map<DungeonName, std::string> source_by_name_default{
 const std::unordered_map<DungeonName, std::string> source_by_name_edited{
     {DungeonName::kHub, "edited_hub"},
     {DungeonName::kLevel1, "edited_level1"},
-    {DungeonName::kLevel2, "edited_level2"}
+    {DungeonName::kLevel2, "edited_level2"},
+    {DungeonName::kLevel3, "edited_level3"}
 };
 
 const std::unordered_map<DungeonName, QString> source_by_name_hand_created{
     {DungeonName::kHub, ":hub.json"},
     {DungeonName::kLevel1, ":level1.json"},
     {DungeonName::kLevel2, ":level2.json"},
+    {DungeonName::kLevel3, ":level3.json"},
     {DungeonName::kSecretRoom1, ":secret_room1.json"},
     {DungeonName::kSecretRoom2, ":secret_room2.json"}
 };

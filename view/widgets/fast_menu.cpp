@@ -106,6 +106,8 @@ void FastMenu::OpenListPlaces() {
   for (auto str : location_manager_->GetLocationsNames()) {
     places_text_.push_back(str.c_str());
   }
+  // places_text_.push_back("level3");
+
   places_->clear();
   for (int i = 0; i < places_text_.size(); ++i) {
     auto* item = new QListWidgetItem(places_text_[i], places_, i + 1);
