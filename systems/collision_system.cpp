@@ -124,8 +124,6 @@ void systems::CollisionSystem::Update() {
             coordinator_->GetComponent<core::AnimationComponent>(entity2)
                 .start_time = time_;
           }
-          std::cout << "THIS IS ILNEEEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSSSSS"
-                    << std::endl;
         }
         continue;
       }

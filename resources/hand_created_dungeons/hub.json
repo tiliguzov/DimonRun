@@ -5470,6 +5470,91 @@
                 "column": 3,
                 "row": 5
             }
+        },
+        {
+            "position_comp": {
+                "column": 1,
+                "row": -2
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": true
+            },
+            "event_comp": {
+                "type": 6,
+                "number": 1
+            }
+        },
+        {
+            "position_comp": {
+                "column": 2,
+                "row": -1
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": true
+            },
+            "event_comp": {
+                "type": 3,
+                "number": 1
+            }
+        },
+        {
+            "position_comp": {
+                "column": 3,
+                "row": -1
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": true
+            },
+            "event_comp": {
+                "type": 3,
+                "number": 1
+            }
+        },
+        {
+            "position_comp": {
+                "column": 4,
+                "row": -3
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": true
+            },
+            "event_comp": {
+                "type": 5,
+                "number": 1
+            }
+        },
+        {
+            "position_comp": {
+                "column": 4,
+                "row": -1
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": true
+            },
+            "event_comp": {
+                "type": 4,
+                "number": 1
+            }
         }
     ],
     "offset_x": 0,

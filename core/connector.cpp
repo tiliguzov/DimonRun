@@ -39,7 +39,6 @@ void Connector::OnKeyRelease(Qt::Key key) {
 }
 
 void Connector::UseEvent(engine::Entity entity) {
-  std::cout << "event" << std::endl;
   auto event_comp{coordinator_->GetComponent<EventComponent>(entity)};
   switch (event_comp.type) {
     case EventType::kSecretRoom: {
@@ -57,9 +56,7 @@ void Connector::UseEvent(engine::Entity entity) {
       }
       break;
     }
-
     case EventType::kNextDungeon: {
-      std::cout << "aaaaa" << std::endl;
       if (keyboard_->IsKeyPressed(KeyAction::kE)) {
         auto event_data{new_dungeon_chests_data.at(event_comp.number)};
         location_manager_->UnlockLocation(event_data.name);
@@ -72,7 +69,6 @@ void Connector::UseEvent(engine::Entity entity) {
       location_manager_->Reset();
     }
     default: {
-      std::cout << "strange event\n";
     }
   }
 }

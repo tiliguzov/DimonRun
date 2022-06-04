@@ -75,7 +75,6 @@ void Serializer::DownloadDungeon(
   stream.open(file_name, std::ios::binary | std::ios::in);
   assert(stream && "Cannot open dungeon download file!");
 
-  std::cout << "start doun loading\n";
   dungeons_.insert({dungeon_name, std::make_unique<Dungeon>()});
   auto& dungeon = dungeons_.at(dungeon_name);
   Read(stream, &dungeon->offset_x, sizeof(dungeon->offset_x));
@@ -83,15 +82,12 @@ void Serializer::DownloadDungeon(
   Read(stream, &dungeon->background_image, kMaxPathLength);
   Read(stream, &dungeon->entities_count, sizeof(dungeon->entities_count));
 
-  std::cout << dungeon->background_image << "trickyy\n";
-
   auto* item = new QGraphicsPixmapItem(QPixmap(QString(
       dungeon->background_image)));
 
   graphics_scene_->addItem(item);
   scene_->SetBackgroundImage(item);
 
-  std::cout << dungeon->entities_count << std::endl;
   for (int i = 0; i < dungeon->entities_count; i++) {
     engine::Entity entity = coordinator_->CreateEntity();
     dungeon->entities.push_back(entity);
@@ -155,7 +151,6 @@ void Serializer::UploadDungeon(
   Write(stream, &dungeon->background_image, kMaxPathLength);
   Write(stream, &dungeon->entities_count, sizeof(dungeon->entities_count));
 
-  std::cout << dungeon->background_image << " to bin\n";
 
   for (auto entity : dungeon->entities) {
     engine::ComponentSignature component_signature{
@@ -218,7 +213,6 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
   auto* item = new QGraphicsPixmapItem(QPixmap(QString(
       dungeon->background_image)));
 
-  std::cout << dungeon->background_image << " from json\n";
 
   graphics_scene_->addItem(item);
   scene_->SetBackgroundImage(item);
@@ -628,7 +622,6 @@ template<>
 CoinComponent Serializer::DownloadComponent<CoinComponent>(
     std::ifstream& stream,
     const std::unique_ptr<Dungeon>&) {
-  std::cout << "down Coin\n";
   int value;
   Read(stream, &value, sizeof(int));
   return CoinComponent{value};
@@ -639,7 +632,6 @@ void Serializer::UploadComponent<CoinComponent>(
     std::ofstream& stream,
     const std::unique_ptr<Dungeon>&,
     const CoinComponent& component) {
-  std::cout << "upl Coin\n";
   Write(stream, &component.value, sizeof(int));
 }
 
@@ -665,7 +657,6 @@ EventComponent Serializer::DownloadComponent<EventComponent>(
     const std::unique_ptr<Dungeon>&) {
   int type_index;
   int value;
-  std::cout << "down Event\n";
   Read(stream, &type_index, sizeof(int));
   Read(stream, &value, sizeof(int));
   return EventComponent{static_cast<EventType>(type_index), value};
@@ -676,7 +667,6 @@ void Serializer::UploadComponent<EventComponent>(
     std::ofstream& stream,
     const std::unique_ptr<Dungeon>&,
     const EventComponent& component) {
-  std::cout << "upl Event\n";
   int type_index{static_cast<int>(component.type)};
   Write(stream, &type_index, sizeof(int));
   Write(stream, &component.number, sizeof(int));
