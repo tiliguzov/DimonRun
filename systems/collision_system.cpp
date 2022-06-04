@@ -14,8 +14,8 @@ namespace {
 bool IsIntersectPositions(
     const core::PositionComponent& position1,
     const core::PositionComponent& position2) {
-  double first_x = position1.position.x(), first_y = position1.position.y();
-  double second_x = position2.position.x(), second_y = position2.position.y();
+  int first_x = position1.position.x(), first_y = position1.position.y();
+  int second_x = position2.position.x(), second_y = position2.position.y();
   if (first_x > second_x) {
     std::swap(first_x, second_x);
     std::swap(first_y, second_y);
@@ -24,14 +24,14 @@ bool IsIntersectPositions(
       && abs(first_y - second_y) < core::kTextureSize);
 }
 
-std::pair<double, double> IntersectPositions(
+std::pair<int, int> IntersectPositions(
     const core::PositionComponent& position1,
     const core::PositionComponent& position2) {
   if (!IsIntersectPositions(position1, position2)) {
     return {0, 0};
   }
-  double first_x = position1.position.x(), first_y = position1.position.y();
-  double second_x = position2.position.x(), second_y = position2.position.y();
+  int first_x = position1.position.x(), first_y = position1.position.y();
+  int second_x = position2.position.x(), second_y = position2.position.y();
   if (first_x > second_x) {
     std::swap(first_x, second_x);
     std::swap(first_y, second_y);
@@ -79,16 +79,15 @@ void systems::CollisionSystem::Update() {
       auto& collision_comp2 =
           coordinator_->GetComponent<core::CollisionComponent>(entity2);
 
-      const long double eps = 1e-1;
+      std::pair<int, int> tmp = IntersectPositions(new_position1, position_comp2);
       if (collision_comp1.can_use && collision_comp2.is_usable &&
-          (IntersectPositions(new_position1, position_comp2).first > eps ||
-              IntersectPositions(new_position1, position_comp2).second > eps)) {
+          (tmp.first > 0 || tmp.second > 0)) {
         connector_->UseEvent(entity2);
         continue;
       }
+      tmp = IntersectPositions(new_position1, position_comp2);
       if (collision_comp1.can_use && collision_comp2.is_breakable &&
-          (IntersectPositions(new_position1, position_comp2).first > eps ||
-              IntersectPositions(new_position1, position_comp2).second > eps)) {
+          (tmp.first > 0 || tmp.second > 0)) {
         auto& illness_comp2 =
             coordinator_->GetComponent<core::IllnessComponent>(entity2);
         if (!illness_comp2.is_ill) {
@@ -113,7 +112,7 @@ void systems::CollisionSystem::Update() {
         continue;
       }
       if (collision_comp2.is_movable == false) {
-        if (IntersectPositions(new_position1, position_comp2).second > eps) {
+        if (IntersectPositions(new_position1, position_comp2).second > 0) {
           movement_comp1.direction = {0, 0};
         }
       } else {
@@ -122,14 +121,8 @@ void systems::CollisionSystem::Update() {
         auto new_position2 = position_comp2;
         new_position2.position +=
             movement_comp2.direction * movement_comp2.current_speed;
-        std::pair<double, double>
+        std::pair<int, int>
             intersection = IntersectPositions(new_position1, new_position2);
-        if (intersection.first < eps) {
-          intersection.first = 0;
-        }
-        if (intersection.second < eps) {
-          intersection.second = 0;
-        }
         if (intersection.first == 0 || intersection.second == 0) {
           continue;
         }
@@ -144,8 +137,8 @@ void systems::CollisionSystem::Update() {
             } else if (collision_comp1.gravity && !collision_comp2.gravity) {
               double diff = abs(std::round(position_comp1.position.y())
                                     - position_comp1.position.y());
-              if (diff > eps ||
-                  (diff < eps &&
+              if (diff > 0 ||
+                  (diff == 0 &&
                       static_cast<int>(std::round(position_comp1.position.y()))
                           % core::kTextureSize != 0)) {
                 position_comp2.position += {0, movement_comp2.current_speed};
@@ -188,9 +181,9 @@ void systems::CollisionSystem::Update() {
                   new_position_comp.position += new_movement_comp.direction
                       * new_movement_comp.current_speed;
                 }
-                std::pair<double, double> inter =
+                std::pair<int, int> inter =
                     IntersectPositions(new_position_comp, new_position2);
-                if (inter.second > eps || inter.first > eps) {
+                if (inter.second > 0 || inter.first > 0) {
                   can_move = false;
                   break;
                 }
@@ -231,7 +224,7 @@ void systems::CollisionSystem::Update() {
                 }
                 auto inter =
                     IntersectPositions(new_position_comp, new_position1);
-                if (inter.second > eps || inter.first > eps) {
+                if (inter.second > 0 || inter.first > 0) {
                   can_move = false;
                   break;
                 }
@@ -243,7 +236,7 @@ void systems::CollisionSystem::Update() {
                 movement_comp2.direction = {0, 0};
               }
             } else {
-              assert(1 == 0 && "bad horizontal collision");
+              // assert(1 == 0 && "bad horizontal collision");
             }
           }
         } else if (collision_comp1.gravity &&
@@ -273,7 +266,7 @@ void systems::CollisionSystem::Update() {
             movement_comp2.direction = {0, 0};
           }
         } else {
-          assert(1 == 0 && "bad collision");
+          // assert(1 == 0 && "bad collision");
         }
       }
     }
@@ -306,9 +299,10 @@ void systems::CollisionSystem::Update() {
       if (!collision_comp2.is_movable) {
         auto new_position = position_comp1;
         new_position.position += {0, movement_comp1.current_speed};
-        const long double eps = 1e-1;
-        if (IntersectPositions(new_position, position_comp2).second > eps ||
-            IntersectPositions(new_position, position_comp2).first > eps) {
+        std::pair<int, int> in =
+            IntersectPositions(new_position, position_comp2);
+        if (IntersectPositions(new_position, position_comp2).second > 0 ||
+            IntersectPositions(new_position, position_comp2).first > 0) {
           movement_comp1.direction = {0, 0};
           is_bad = true;
           break;
@@ -323,7 +317,7 @@ void systems::CollisionSystem::Update() {
         new_position2.position +=
             movement_comp2.direction * movement_comp2.current_speed;
 
-        std::pair<double, double>
+        std::pair<int, int>
             intersection = IntersectPositions(new_position1, new_position2);
         if (intersection.first == 0 && intersection.second == 0) {
           continue;
