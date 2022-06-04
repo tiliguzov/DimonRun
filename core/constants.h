@@ -37,7 +37,7 @@ constexpr QRect kCoinsVault(495, 160, 100, 60);
 constexpr QRect kTextScroll(330, 160, 400, 400);
 
 const QString kShortcutsText{
-    "ESC -> Open fast menu \nCTRL + M - Mute/unmute \nCTRL + Q - "
+    "ESC -> Open fast menu \nE - взаимодействовать\nCTRL + M - Mute/unmute \nCTRL + Q - "
     "Exit game \nCTRL + S - сохраниться"};
 
 // Number of bytes occupied by a char array containing the name for every

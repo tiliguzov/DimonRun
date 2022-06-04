@@ -34,8 +34,8 @@ struct NewDungeonChestData {
 };
 
 const std::vector<NewDungeonChestData> new_dungeon_chests_data{
-    {"Координаты 56.45|23.23\nBремя: 208 год", DungeonName::kLevel2},
-    {"Координаты 24.34|45.03\nВремя: 704 год", DungeonName::kLevel3}
+    {"Координаты 56.45543|23.23213\nBремя 208г. 11.20 20:11.342\nТы знаешь, что делать", DungeonName::kLevel2},
+    {"Координаты 24.33464|45.08603\nВремя 704г. 6.11 21:44.100\nПривет из будущего", DungeonName::kLevel3}
 };
 
 // struct CoinChest {
