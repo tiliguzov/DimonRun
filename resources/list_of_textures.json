@@ -56,6 +56,10 @@
       "source" : ":wall_inside.png",
       "name" : "Wall inside"
     },
+    "wall_angle" : {
+      "source" : ":wall_angle.png",
+      "name" : "Wall angle"
+    },
     "roof" : {
       "source" : ":roof.png",
       "name" : "Roof"
