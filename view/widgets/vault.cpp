@@ -39,6 +39,9 @@ void Vault::Resize(QSize size) {
                             kCoinsVault.width() * size.width() / 1000,
                             kCoinsVault.height() * size.height() / 1000);
 }
+QLabel* Vault::GetLabel() {
+  return count_coins_;
+}
 
 }  // namespace core
 

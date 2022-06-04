@@ -79,7 +79,7 @@ void Scene::keyPressEvent(QKeyEvent* event) {
     if (is_vault_showed_) {
       ContinueGame();
     } else {
-      OpenVault();
+      // OpenVault();
     }
     is_vault_showed_ = !is_vault_showed_;
   }
@@ -130,10 +130,11 @@ void Scene::OpenFastMenu() {
   setCurrentWidget(fast_menu_);
 }
 
-void Scene::OpenVault() {
+void Scene::OpenVault(std::string value) {
   vault_->setGeometry(0, 0, kDefaultWindowWidth, kDefaultWindowHeight);
   setCurrentWidget(fast_menu_);
   setCurrentWidget(vault_);
+  vault_->GetLabel()->setText(value.c_str());
 }
 
 void Scene::OpenScroll(std::string message) {

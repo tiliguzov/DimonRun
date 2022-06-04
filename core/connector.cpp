@@ -50,6 +50,13 @@ void Connector::UseEvent(engine::Entity entity) {
       serializer_->DownloadDungeon(event_data.name, DungeonType::kDefault);
       break;
     }
+    case EventType::kVault: {
+      if (keyboard_->IsKeyPressed(KeyAction::kE)) {
+        scene_->OpenVault(std::to_string(location_manager_->GetVaultCoins()));
+      }
+      break;
+    }
+
     case EventType::kNextDungeon: {
       if (keyboard_->IsKeyPressed(KeyAction::kE)) {
         auto event_data{new_dungeon_chests_data.at(event_comp.number)};

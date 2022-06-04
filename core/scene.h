@@ -35,7 +35,7 @@ class Scene : public QStackedWidget, AbstractScene {
 
   void OpenFastMenu() override;
   void ContinueGame() override;
-  void OpenVault() override;
+  void OpenVault(std::string) override;
   void OpenScroll(std::string) override;
 
  private:

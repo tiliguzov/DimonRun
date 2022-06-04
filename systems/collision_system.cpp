@@ -110,7 +110,7 @@ void systems::CollisionSystem::Update() {
               coordinator_->
               GetComponent<core::AnimationComponent>(entity2).move_type ==
               core::MovementType::kCoinMoving) {
-            // connector_->AddCoin(entity2);
+            connector_->CheckAndAddCoin(entity2);
           } else if (coordinator_->
               HasComponent<core::AnimationComponent>(entity2) &&
               coordinator_->
