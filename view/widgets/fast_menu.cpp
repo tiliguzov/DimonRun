@@ -103,7 +103,6 @@ void FastMenu::OpenListPlaces() {
   DeleteShortcutsWidgets();
   OpenPlacesWidgets();
   places_text_.clear();
-  places_text_.push_back("hub");
   for (auto str : location_manager_->GetLocationsNames()) {
     std::cout << str << "s" << std::endl;
     places_text_.push_back(str.c_str());

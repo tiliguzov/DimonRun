@@ -42,23 +42,17 @@ void Scene::timerEvent(QTimerEvent* event) {
   if (event->timerId() != timer_id_) {
     return;
   }
-  std::cout << "gogo\n";
   connector_->OnTick();
-  std::cout << "a\n";
   scene_view_->centerOn(connector_->GetCoordinator()->
       GetComponent<GraphicsItemComponent>(hero_entity_).item);
 
-  std::cout << "b\n";
   auto pos = connector_->GetCoordinator()->
       GetComponent<PositionComponent>(hero_entity_).position;
 
-  std::cout << "c\n";
-  std::cout << pos.x() << " " << pos.y() << std::endl;
   assert(background_image_ != nullptr);
   background_image_->setPos(pos.x() - background_image_->pixmap().width() / 2,
                             pos.y() - background_image_->pixmap().height() / 2);
 
-  std::cout << "d\n";
 }
 
 void Scene::paintEvent(QPaintEvent*) {

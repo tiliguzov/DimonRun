@@ -15,7 +15,8 @@ enum class EventType {
   kCoinChest,
   kVault,
   kGameExit,
-  kProgressReset
+  kProgressReset,
+  kCreator
 };
 
 struct SecretRoomData {

@@ -99,9 +99,6 @@ void systems::CollisionSystem::Update() {
           (IntersectPositions(new_position1, position_comp2).first > eps ||
               IntersectPositions(new_position1, position_comp2).second > eps)) {
         connector_->UseEvent(entity2);
-        std::cout
-            << "THIS IS USSSSSSSSSSSSSSSSSSSSSSSSSEEEEEEEEEEEEEEEEEEEEEEE"
-            << std::endl;
         continue;
       }
       if (collision_comp1.can_use && collision_comp2.is_breakable &&

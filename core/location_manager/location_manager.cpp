@@ -58,20 +58,19 @@ std::vector<std::string> LocationManager::GetLocationsNames() const {
   int dungeon_index = static_cast<int>(current_dungeon_);
   std::vector<std::string> names_list;
   std::cout << dungeon_index << " sadasd" << std::endl;
-  for (int i = 0; i <= dungeon_index; i++) {
+  names_list.emplace_back("hub");
+  for (int i = 0; i < dungeon_index; i++) {
     names_list.push_back(note_by_dungeon_name.at(static_cast<DungeonName>(i + 1)));
   }
   return names_list;
 }
 
 void LocationManager::Reset() {
-  std::cout << "aa" << std::endl;
   GoToLocation(note_by_dungeon_name.at(static_cast<DungeonName>(1)));
   current_dungeon_ = DungeonName::kLevel1;
   settings_manager_->SetKeyValue(
       kCurrentDungeon,
       std::to_string(static_cast<int>(current_dungeon_)));
-  std::cout << "bb" << std::endl;
 }
 
 void LocationManager::AddCoins(int coins) {
