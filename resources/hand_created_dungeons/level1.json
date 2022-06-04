@@ -11297,6 +11297,10 @@
             "position_comp": {
                 "column": 30,
                 "row": -2
+            },
+            "event_comp": {
+                "type": 1,
+                "number": 0
             }
         },
         {
