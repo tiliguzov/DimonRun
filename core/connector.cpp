@@ -154,15 +154,15 @@ void Connector::StartGame(Scene* scene) {
   // location_manager_.reset();
 
   // [before game release] Download from json file to game
-  // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
+  serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
   // serializer_->DownloadDungeon(DungeonName::kLevel1, DungeonType::kHandCreated);
   // serializer_->DownloadDungeon(DungeonName::kLevel2, DungeonType::kHandCreated);
 
   // [before game release] Upload dungeon from game to default binary file
-  // serializer_->UploadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
+  serializer_->UploadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
   // serializer_->UploadDungeon(DungeonName::kLevel1, DungeonType::kHandCreated);
   // serializer_->UploadDungeon(DungeonName::kLevel2, DungeonType::kHandCreated);
-  // serializer_->RemoveDungeon(DungeonName::kHub);
+  serializer_->RemoveDungeon(DungeonName::kHub);
 
   // Download default dungeon from binary file to game
   serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kDefault);
