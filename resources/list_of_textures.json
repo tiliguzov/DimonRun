@@ -128,7 +128,8 @@
       "can_use" : false,
       "is_usable" : false,
       "is_breakable" : true,
-      "is_ill" : false
+      "is_ill" : false,
+      "value" : 1
     },
     "rubbish" : {
       "source" : ":rubbish_00.png",

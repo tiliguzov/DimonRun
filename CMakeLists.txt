@@ -60,6 +60,8 @@ add_executable(MapCreator
         core/keyboard.cpp
         core/animation_pack.cpp
         core/serializer.cpp
+        core/location_manager/location_manager.cpp
+        core/location_manager/settings_manager.cpp
 
         engine/component_manager.cpp
         engine/coordinator.cpp
@@ -82,6 +84,7 @@ add_executable(MapCreator
         view/buttons/menu_button.cpp
         view/widgets/fast_menu.cpp
         view/widgets/vault.cpp
+        view/widgets/scroll.cpp
 
         map_creator/map_creator.cpp
         map_creator/map_creator_main.cpp
