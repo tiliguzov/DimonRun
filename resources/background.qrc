@@ -29,6 +29,11 @@
         <file alias = "wall_line.png">textures/background/wall_line.png</file>
         <file alias = "grass.png">textures/background/grass.png</file>
         <file alias = "roof.png">textures/background/roof.png</file>
+        <file alias = "chest.png">textures/background/chest.png</file>
+        <file alias = "column_foreground.png">textures/background/column_foreground.png</file>
+        <file alias = "column_foreground_up.png">textures/background/column_foreground_up.png</file>
+        <file alias = "column_foreground_down.png">textures/background/column_foreground_down.png</file>
+        <file alias = "liana.png">textures/background/liana.png</file>
 
         <file alias = "water_00.png">textures/background/water_00.png</file>
         <file alias = "water_01.png">textures/background/water_01.png</file>
