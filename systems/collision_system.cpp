@@ -51,23 +51,15 @@ systems::CollisionSystem::CollisionSystem(engine::Coordinator* coordinator,
 void systems::CollisionSystem::Update() {
   time_ += core::kTickTime;
   std::vector<engine::Entity> movable_entities;
-  std::vector<engine::Entity> other;
   for (engine::Entity entity : entities_) {
     auto& collision_comp =
         coordinator_->GetComponent<core::CollisionComponent>(entity);
     if (collision_comp.is_movable) {
       movable_entities.push_back(entity);
     }
-    auto& graphic_comp =
-        coordinator_->GetComponent<core::GraphicsItemComponent>(entity);
-    if (graphic_comp.item->zValue() == 1) {
-      other.push_back(entity);
-    }
   }
 
   for (engine::Entity entity1 : movable_entities) {
-    auto& graphics_comp1 = coordinator_->
-        GetComponent<core::GraphicsItemComponent>(entity1);
     auto& position_comp1 = coordinator_->
         GetComponent<core::PositionComponent>(entity1);
     auto& collision_comp1 =
@@ -77,14 +69,8 @@ void systems::CollisionSystem::Update() {
     auto new_position1 = position_comp1;
     new_position1.position +=
         movement_comp1.direction * movement_comp1.current_speed;
-    for (engine::Entity entity2 : other) {
+    for (engine::Entity entity2 : entities_) {
       if (entity1 == entity2) {
-        continue;
-      }
-      auto& graphics_comp2 = coordinator_->
-          GetComponent<core::GraphicsItemComponent>(entity2);
-
-      if (graphics_comp1.item->zValue() != graphics_comp2.item->zValue()) {
         continue;
       }
       auto& position_comp2 = coordinator_->
@@ -183,7 +169,7 @@ void systems::CollisionSystem::Update() {
                 continue;
               }
               bool can_move = true;
-              for (auto& new_entity : other) {
+              for (auto& new_entity : entities_) {
                 if (new_entity == entity1 || new_entity == entity2) {
                   continue;
                 }
@@ -201,12 +187,6 @@ void systems::CollisionSystem::Update() {
                           new_entity);
                   new_position_comp.position += new_movement_comp.direction
                       * new_movement_comp.current_speed;
-                }
-                auto& new_graphics_comp = coordinator_->
-                    GetComponent<core::GraphicsItemComponent>(new_entity);
-                if (graphics_comp2.item->zValue()
-                    != new_graphics_comp.item->zValue()) {
-                  continue;
                 }
                 std::pair<double, double> inter =
                     IntersectPositions(new_position_comp, new_position2);
@@ -230,7 +210,7 @@ void systems::CollisionSystem::Update() {
                 continue;
               }
               bool can_move = true;
-              for (auto& new_entity : other) {
+              for (auto& new_entity : entities_) {
                 if (new_entity == entity1 || new_entity == entity2) {
                   continue;
                 }
@@ -248,12 +228,6 @@ void systems::CollisionSystem::Update() {
                           new_entity);
                   new_position_comp.position += new_movement_comp.direction
                       * new_movement_comp.current_speed;
-                }
-                auto& new_graphics_comp = coordinator_->
-                    GetComponent<core::GraphicsItemComponent>(new_entity);
-                if (graphics_comp2.item->zValue()
-                    != new_graphics_comp.item->zValue()) {
-                  continue;
                 }
                 auto inter =
                     IntersectPositions(new_position_comp, new_position1);
@@ -319,16 +293,8 @@ void systems::CollisionSystem::Update() {
     auto& position_comp1 = coordinator_->
         GetComponent<core::PositionComponent>(entity1);
 
-    for (engine::Entity entity2 : other) {
+    for (engine::Entity entity2 : entities_) {
       if (entity1 == entity2) {
-        continue;
-      }
-      auto& graphics_comp1 = coordinator_->
-          GetComponent<core::GraphicsItemComponent>(entity1);
-
-      auto& graphics_comp2 = coordinator_->
-          GetComponent<core::GraphicsItemComponent>(entity2);
-      if (graphics_comp1.item->zValue() != graphics_comp2.item->zValue()) {
         continue;
       }
       auto& position_comp2 = coordinator_->

@@ -23,10 +23,14 @@ class LocationManager {
 
     void Reset();
 
+    void SetCurrentCoins(int);
+    int GetCurrentCoins();
+
     void GoToLocation(std::string);
  private:
   SettingsManager* settings_manager_;
   DungeonName current_dungeon_;
+  int current_coins_;
 };
 
 }  // namespace core

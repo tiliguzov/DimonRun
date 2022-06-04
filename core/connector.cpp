@@ -48,7 +48,7 @@ void Connector::UseEvent(engine::Entity entity) {
         break;
       }
       current_dungeons_.insert(event_data.name);
-      serializer_->DownloadDungeon(event_data.name, DungeonType::kDefault);
+      serializer_->DownloadDungeon(event_data.name, DungeonType::kHandCreated);
       break;
     }
     case EventType::kVault: {
@@ -110,7 +110,6 @@ void Connector::RegisterSystems() {
         ->RegisterSystem<systems::CollisionSystem>(coordinator_.get(), this);
     coordinator_->SetSystemSignature<systems::CollisionSystem>
         ({coordinator_->GetComponentID<PositionComponent>(),
-          coordinator_->GetComponentID<GraphicsItemComponent>(),
           coordinator_->GetComponentID<CollisionComponent>()});
     systems_.push_back(collision_system);
   }
@@ -161,7 +160,7 @@ void Connector::StartGame(Scene* scene) {
   location_manager_->Reset();
 
   // [before game release] Download from json file to game
-  // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
+  serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
   // serializer_->DownloadDungeon(DungeonName::kLevel1, DungeonType::kHandCreated);
   // serializer_->DownloadDungeon(DungeonName::kLevel2, DungeonType::kHandCreated);
 
@@ -172,7 +171,7 @@ void Connector::StartGame(Scene* scene) {
   // serializer_->RemoveDungeon(DungeonName::kHub);
 
   // Download default dungeon from binary file to game
-  serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kDefault);
+  // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kDefault);
   // Download edited dungeon from binary file to game
   // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kEdited);
 
@@ -209,7 +208,7 @@ void Connector::OpenNewDungeon(DungeonName dungeon_name) {
 
   // Add new dungeon
   current_dungeons_.insert(dungeon_name);
-  serializer_->DownloadDungeon(dungeon_name, DungeonType::kDefault);
+  serializer_->DownloadDungeon(dungeon_name, DungeonType::kHandCreated);
 }
 
 LocationManager* Connector::GetLocationManager() const {

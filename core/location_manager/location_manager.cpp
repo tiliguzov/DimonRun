@@ -18,6 +18,10 @@ int LocationManager::GetVaultCoins() const {
   return settings_manager_->GetByKey(kVaultCoins).toInt();
 }
 
+int LocationManager::GetCurrentCoins() {
+  return current_coins_;
+}
+
 void LocationManager::SetVaultCoins(int count) {
   settings_manager_->SetKeyValue(kVaultCoins, std::to_string(count));
 }
@@ -74,6 +78,10 @@ void LocationManager::Reset() {
 
 void LocationManager::AddCoins(int coins) {
   SetVaultCoins(GetVaultCoins() + coins);
+}
+
+void LocationManager::SetCurrentCoins(int coins) {
+  current_coins_ = coins;
 }
 
 }  // namespace core

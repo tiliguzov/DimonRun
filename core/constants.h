@@ -34,7 +34,7 @@ constexpr QRect kReturn(310, 480, 140, 50);
 constexpr QRect kReturnVault(390, 620, 200, 70);
 constexpr QRect kCoinsVault(495, 160, 100, 60);
 
-constexpr QRect kTextScroll(330, 160, 200, 200);
+constexpr QRect kTextScroll(330, 160, 400, 400);
 
 const QString kShortcutsText{
     "ESC -> Open fast menu \nCTRL + M - Mute/unmute \nCTRL + Q - "
