@@ -66,34 +66,33 @@ void systems::CollisionSystem::Update() {
   }
 
   for (engine::Entity entity1 : movable_entities) {
+    auto& graphics_comp1 = coordinator_->
+        GetComponent<core::GraphicsItemComponent>(entity1);
+    auto& position_comp1 = coordinator_->
+        GetComponent<core::PositionComponent>(entity1);
+    auto& collision_comp1 =
+        coordinator_->GetComponent<core::CollisionComponent>(entity1);
+    auto& movement_comp1 =
+        coordinator_->GetComponent<core::MovementComponent>(entity1);
+    auto new_position1 = position_comp1;
+    new_position1.position +=
+        movement_comp1.direction * movement_comp1.current_speed;
     for (engine::Entity entity2 : other) {
       if (entity1 == entity2) {
         continue;
       }
-      auto& graphics_comp1 = coordinator_->
-          GetComponent<core::GraphicsItemComponent>(entity1);
       auto& graphics_comp2 = coordinator_->
           GetComponent<core::GraphicsItemComponent>(entity2);
 
       if (graphics_comp1.item->zValue() != graphics_comp2.item->zValue()) {
         continue;
       }
-      auto& position_comp1 = coordinator_->
-          GetComponent<core::PositionComponent>(entity1);
       auto& position_comp2 = coordinator_->
           GetComponent<core::PositionComponent>(entity2);
 
-      auto& collision_comp1 =
-          coordinator_->GetComponent<core::CollisionComponent>(entity1);
       auto& collision_comp2 =
           coordinator_->GetComponent<core::CollisionComponent>(entity2);
 
-      auto& movement_comp1 =
-          coordinator_->GetComponent<core::MovementComponent>(entity1);
-
-      auto new_position1 = position_comp1;
-      new_position1.position +=
-          movement_comp1.direction * movement_comp1.current_speed;
       const long double eps = 1e-1;
       if (collision_comp1.can_use && collision_comp2.is_usable &&
           (IntersectPositions(new_position1, position_comp2).first > eps ||

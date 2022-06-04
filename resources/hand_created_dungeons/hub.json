@@ -5472,6 +5472,13 @@
             }
         },
         {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":empty.png",
+                "z_value": 1
+            },
             "position_comp": {
                 "column": 1,
                 "row": -2
@@ -5489,6 +5496,13 @@
             }
         },
         {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":empty.png",
+                "z_value": 1
+            },
             "position_comp": {
                 "column": 2,
                 "row": -1
@@ -5506,6 +5520,13 @@
             }
         },
         {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":empty.png",
+                "z_value": 1
+            },
             "position_comp": {
                 "column": 3,
                 "row": -1
@@ -5523,6 +5544,13 @@
             }
         },
         {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":empty.png",
+                "z_value": 1
+            },
             "position_comp": {
                 "column": 4,
                 "row": -3
@@ -5540,6 +5568,13 @@
             }
         },
         {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":empty.png",
+                "z_value": 1
+            },
             "position_comp": {
                 "column": 4,
                 "row": -1

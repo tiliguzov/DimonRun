@@ -39,6 +39,7 @@ void Connector::OnKeyRelease(Qt::Key key) {
 }
 
 void Connector::UseEvent(engine::Entity entity) {
+  std::cout << "bad" << std::endl;
   auto event_comp{coordinator_->GetComponent<EventComponent>(entity)};
   switch (event_comp.type) {
     case EventType::kSecretRoom: {
@@ -65,8 +66,16 @@ void Connector::UseEvent(engine::Entity entity) {
       break;
     }
     case EventType::kProgressReset: {
-      OpenNewDungeon(DungeonName::kHub);
       location_manager_->Reset();
+      break;
+    }
+    case EventType::kCreator: {
+      break;
+    }
+    case EventType::kGameExit: {
+      if (keyboard_->IsKeyPressed(KeyAction::kE)) {
+        exit(0);
+      }
     }
     default: {
     }
