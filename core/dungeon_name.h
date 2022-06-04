@@ -7,6 +7,8 @@ enum class DungeonName {
   kLevel1,
   kLevel2,
   kLevel3,
+  kLevel7,
+  kLevel8,
   kSecretRoom1,
   kSecretRoom2
 };
