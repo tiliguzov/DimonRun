@@ -4,6 +4,8 @@
 #include "core/location_manager/location_manager.h"
 #include <QPainter>
 
+#include <iostream>
+
 namespace core {
 
 FastMenu::FastMenu(AbstractScene* scene,
@@ -101,11 +103,12 @@ void FastMenu::OpenListPlaces() {
   DeleteShortcutsWidgets();
   OpenPlacesWidgets();
   places_text_.clear();
+  places_text_.push_back("hub");
+  for (auto str : location_manager_->GetLocationsNames()) {
+    std::cout << str << "s" << std::endl;
+    places_text_.push_back(str.c_str());
+  }
   places_->clear();
-  places_text_.emplace_back("hub");
-  places_text_.emplace_back("level1");
-  places_text_.emplace_back("level2");
-  places_text_.emplace_back("green screen");
   for (int i = 0; i < places_text_.size(); ++i) {
     auto* item = new QListWidgetItem(places_text_[i], places_, i + 1);
   }
@@ -193,6 +196,7 @@ void FastMenu::MuteMusic() {
 
 void FastMenu::PlacesOpen() {
   QListWidgetItem* item = places_->currentItem();
+  std::cout << item->text().toStdString() << std::endl;
   if (item->text() != "hub") {
     location_manager_->GoToLocation(item->text().toStdString());
     scene_->OpenNewDungeon(dungeon_name_by_note.at(item->text().toStdString()));

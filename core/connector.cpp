@@ -144,7 +144,7 @@ void Connector::StartGame(Scene* scene) {
   scene_ = scene;
   serializer_ = std::make_unique<Serializer>(coordinator_.get(), scene);
   current_dungeons_.insert(DungeonName::kHub);
-
+  // location_manager_.reset();
 
   // [before game release] Download from json file to game
   // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
