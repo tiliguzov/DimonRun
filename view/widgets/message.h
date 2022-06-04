@@ -5,23 +5,19 @@
 
 #include <QStackedWidget>
 #include <QLabel>
-
+//
 namespace core {
 
-class Scroll : public QStackedWidget {
+class Message : public QWidget {
  public:
-  Scroll(core::AbstractScene* parent, const QString& path_to_background);
-  void Resize(QSize size);
+  Message(AbstractScene* parent,
+          const QString& path_to_background);
 
  private:
   void paintEvent(QPaintEvent* event) override;
-  void ContinueGame();
 
   AbstractScene* scene_;
   QPixmap* background_;
-
-  QLabel* text_;
-  MenuButton* return_button_;
 };
 
-}  // namespace core
+} // namespace core

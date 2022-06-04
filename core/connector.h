@@ -38,6 +38,8 @@ class Connector {
   void RegisterSystems();
   void RegisterComponents();
 
+  Scene* scene_{nullptr};
+
   std::shared_ptr<engine::Coordinator> coordinator_;
   std::unique_ptr<core::Keyboard> keyboard_;
   std::unique_ptr<Serializer> serializer_;

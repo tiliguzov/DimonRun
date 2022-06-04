@@ -110,6 +110,7 @@ void Connector::RegisterComponents() {
 
 // example of interacting with engine
 void Connector::StartGame(Scene* scene) {
+  scene_ = scene;
   serializer_ =
       std::make_unique<Serializer>(coordinator_.get(), scene);
 

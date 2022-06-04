@@ -12,6 +12,7 @@
 #include "engine/coordinator.h"
 #include "view/widgets/fast_menu.h"
 #include "view/widgets/vault.h"
+#include "view/widgets/message.h"
 
 namespace core {
 
@@ -33,6 +34,8 @@ class Scene : public QStackedWidget, AbstractScene {
   void SetHeroEntity(engine::Entity entity);
   void SetBackgroundImage(QGraphicsPixmapItem* item);
 
+  void OpenFastMenu() override;
+
  private:
   void paintEvent(QPaintEvent*) override;
   void timerEvent(QTimerEvent*) override;
@@ -44,7 +47,6 @@ class Scene : public QStackedWidget, AbstractScene {
 
   bool eventFilter(QObject* object, QEvent* event) override;
 
-  void OpenFastMenu() override;
   void ContinueGame() override;
   void OpenVault() override;
   void OpenScroll() override;
@@ -74,6 +76,10 @@ class Scene : public QStackedWidget, AbstractScene {
 
   Scroll* scroll_;
   bool is_scroll_showed_{0};
+
+  QLabel* message_;
+  QLabel* message_text_;
+  bool is_message_showed_{0};
 };
 
 }  // namespace core

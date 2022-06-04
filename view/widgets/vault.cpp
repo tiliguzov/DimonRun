@@ -9,7 +9,7 @@ Vault::Vault(core::AbstractScene* scene,
     scene_(scene),
     background_(new QPixmap(path_to_background)),
     count_coins_(new QLabel("0", this)),
-    return_button_(new MenuButton(":/view/return.png", this, kReturnVault)) {
+    return_button_(new MenuButton(":/view/return2.png", this, kReturnVault)) {
   count_coins_->setGeometry(kCoinsVault);
   count_coins_->setFont(QFont("Copperplate", 20));
   count_coins_->setStyleSheet("color: #4A211E; font-weight: bold");

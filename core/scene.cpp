@@ -7,6 +7,8 @@
 #include "connector.h"
 #include "constants.h"
 
+#include <iostream>
+
 namespace core {
 
 Scene::Scene(QStackedWidget* parent, Connector* connector) :
@@ -18,8 +20,17 @@ Scene::Scene(QStackedWidget* parent, Connector* connector) :
     scene_view_(new QGraphicsView(this)),
     fast_menu_(new FastMenu(this, ":/view/fast_menu.png")),
     vault_(new Vault(this, ":/view/vault.png")),
-    scroll_(new Scroll(this, ":/view/vault.png")){
+    scroll_(new Scroll(this, ":/view/scroll.png")) {
   SetDefaultSceneSettings();
+
+  message_ = new QLabel(scene_view_);
+
+  message_text_ = new QLabel("OOOOOOO", scene_view_);
+  message_text_->setFont(QFont("Copperplate", 22));
+  message_->setPixmap(QPixmap(":/view/message.png"));
+
+  message_text_->setVisible(false);
+  message_->setVisible(false);
 
   addWidget(scene_view_);
   addWidget(fast_menu_);
@@ -45,6 +56,10 @@ void Scene::timerEvent(QTimerEvent* event) {
       GetComponent<PositionComponent>(hero_entity_).position;
   background_image_->setPos(pos.x() - background_image_->pixmap().width() / 2,
                             pos.y() - background_image_->pixmap().height() / 2);
+  message_->setGeometry((pos.x() / 1000) + this->width() / 2,
+                        pos.y() / 1000 + this->height() / 2 - 200, 200, 200);
+  message_text_->setGeometry((pos.x() / 1000) + this->width() / 2 + 20,
+                        pos.y() / 1000 + this->height() / 2 - 200, 200, 200);
 }
 
 void Scene::paintEvent(QPaintEvent*) {
@@ -76,6 +91,16 @@ void Scene::keyPressEvent(QKeyEvent* event) {
       OpenScroll();
     }
     is_scroll_showed_ = !is_scroll_showed_;
+  }
+  if (event->key() == Qt::Key_M) {
+    if (!message_->isVisible()) {
+      message_->setVisible(true);
+      message_text_->setVisible(true);
+    } else {
+      message_->setVisible(false);
+      message_text_->setVisible(false);
+    }
+    is_message_showed_ = !is_message_showed_;
   }
 }
 
@@ -136,6 +161,21 @@ void Scene::resizeEvent(QResizeEvent* event) {
   fast_menu_->Resize(new_size);
   vault_->Resize(new_size);
   scroll_->Resize(new_size);
+  if (connector_->GetCoordinator()->
+      HasComponent<PositionComponent>(hero_entity_)) {
+    auto pos = connector_->GetCoordinator()->
+        GetComponent<PositionComponent>(hero_entity_).position;
+    message_->setGeometry(
+        (pos.x() / 1000 + this->width() / 2) * new_size.width() / 1000,
+        (pos.y() / 1000 + this->height() / 2 - 200) * new_size.width() / 1000,
+        200 * new_size.width() / 1000,
+        200 * new_size.width() / 1000);
+    message_text_->setGeometry(
+        (pos.x() / 1000 + this->width() / 2 + 20) * new_size.width() / 1000,
+        (pos.y() / 1000 + this->height() / 2 - 200) * new_size.width() / 1000,
+        200 * new_size.width() / 1000,
+        200 * new_size.width() / 1000);
+  }
 }
 
 void Scene::DownloadDungeon(DungeonName dungeon_name,
