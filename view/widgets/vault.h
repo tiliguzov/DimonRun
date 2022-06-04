@@ -13,6 +13,8 @@ class Vault : public QStackedWidget {
   Vault(core::AbstractScene* parent, const QString& path_to_background);
   void Resize(QSize size);
 
+  QLabel* GetLabel();
+
  private:
   void paintEvent(QPaintEvent* event) override;
   void ContinueGame();

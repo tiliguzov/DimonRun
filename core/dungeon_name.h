@@ -8,7 +8,8 @@ enum class DungeonName {
   kLevel2,
   kLevel3,
   kLevel4,
-  kNone
+  kSecretRoom1,
+  kSecretRoom2
 };
 
 // Every dungeon can have three files: default binary, edited binary and json

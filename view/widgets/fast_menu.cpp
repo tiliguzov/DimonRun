@@ -1,10 +1,16 @@
 #include "fast_menu.h"
 
+#include "core/location_manager/constants.h"
+#include "core/location_manager/location_manager.h"
 #include <QPainter>
+
+#include <iostream>
 
 namespace core {
 
-FastMenu::FastMenu(AbstractScene* scene, const QString& path_to_background) :
+FastMenu::FastMenu(AbstractScene* scene,
+                   const QString& path_to_background,
+                   LocationManager* location_manager) :
     scene_(scene),
     background_(new QPixmap(path_to_background)),
     resume_button_(new MenuButton(":/view/close.png", this, kResumeButton)),
@@ -19,7 +25,8 @@ FastMenu::FastMenu(AbstractScene* scene, const QString& path_to_background) :
     music_(new QLabel("MUSIC", this)),
     shortcuts_(new QLabel(kShortcutsText, this)),
     return_button_(new MenuButton(":/view/return.png", this, kReturn)),
-    places_(new QListWidget(this)) {
+    places_(new QListWidget(this)),
+    location_manager_(location_manager) {
   music_->setFont(QFont("Copperplate", 22));
   music_->setStyleSheet("color: rgb(250, 250, 250); background: #241711;");
   music_->setGeometry(kMusicText);
@@ -96,11 +103,12 @@ void FastMenu::OpenListPlaces() {
   DeleteShortcutsWidgets();
   OpenPlacesWidgets();
   places_text_.clear();
+  for (auto str : location_manager_->GetLocationsNames()) {
+    places_text_.push_back(str.c_str());
+  }
+  // places_text_.push_back("level3");
+
   places_->clear();
-  places_text_.emplace_back("hub");
-  places_text_.emplace_back("level1");
-  places_text_.emplace_back("level2");
-  places_text_.emplace_back("green screen");
   for (int i = 0; i < places_text_.size(); ++i) {
     auto* item = new QListWidgetItem(places_text_[i], places_, i + 1);
   }
@@ -188,10 +196,12 @@ void FastMenu::MuteMusic() {
 
 void FastMenu::PlacesOpen() {
   QListWidgetItem* item = places_->currentItem();
-  scene_->RemoveDungeon(scene_->GetCurrentDungeon());
-  auto dungeon_name = dungeon_name_by_note.at(item->text().toStdString());
-  scene_->DownloadDungeon(dungeon_name, DungeonType::kHandCreated);
-  scene_->SetCurrentDungeon(dungeon_name);
+  if (item->text() != "hub") {
+    location_manager_->GoToLocation(item->text().toStdString());
+    scene_->OpenNewDungeon(dungeon_name_by_note.at(item->text().toStdString()));
+  } else {
+    scene_->OpenNewDungeon(DungeonName::kHub);
+  }
   ContinueGame();
 }
 

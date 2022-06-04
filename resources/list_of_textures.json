@@ -17,7 +17,8 @@
       "name" : "Back wall torch",
       "animation_source" : ":back_wall_torch.json",
       "direction" :  "left",
-      "move_type" : "torch_burning"
+      "move_type" : "torch_burning",
+      "start_time" : 0
     },
     "ceil" : {
       "source" : ":ceil.png",
@@ -55,9 +56,17 @@
       "source" : ":wall_inside.png",
       "name" : "Wall inside"
     },
+    "wall_angle" : {
+      "source" : ":wall_angle.png",
+      "name" : "Wall angle"
+    },
     "roof" : {
       "source" : ":roof.png",
       "name" : "Roof"
+    },
+    "hub" : {
+      "source" : ":hub.png",
+      "name" : "Hub"
     }
   },
   "1" : {
@@ -116,12 +125,29 @@
       "animation_source" : ":coin.json",
       "direction" :  "left",
       "move_type" : "coin_moving",
+      "start_time" : 0,
+      "kill_time" : 300,
       "is_movable" : false,
       "gravity" : false,
       "can_use" : false,
       "is_usable" : false,
       "is_breakable" : true,
-      "kill_time" : 300,
+      "is_ill" : false,
+      "value" : 1
+    },
+    "rubbish" : {
+      "source" : ":rubbish_00.png",
+      "name" : "Rubbish",
+      "animation_source" : ":rubbish.json",
+      "direction" : "left",
+      "move_type" : "rubbish_destroy",
+      "start_time" : 2000000000,
+      "kill_time" : 400,
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : true,
       "is_ill" : false
     },
     "stone" : {
@@ -131,6 +157,7 @@
       "direction" :  "left",
       "move_type" : "stone_moving",
       "is_movable" : true,
+      "start_time" : 0,
       "gravity" : true,
       "can_use" : false,
       "is_usable" : false,
@@ -139,6 +166,15 @@
       "direction_x" : 0,
       "direction_y" : 0
     },
+    "chest" : {
+      "source" : ":chest.png",
+      "name" : "Stone",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : true,
+      "is_breakable" : false
+    },
     "hero" : {
       "source" : ":Hero_static_in_air_00.png",
       "name" : "Hero",
@@ -146,6 +182,7 @@
       "direction" :  "left",
       "move_type" : "static_in_air",
       "is_movable" : true,
+      "start_time" : 0,
       "gravity" : false,
       "can_use" : true,
       "is_usable" : false,
@@ -153,6 +190,42 @@
       "current_speed" : 1.0,
       "direction_x" : 0,
       "direction_y" : 0
+    },
+    "zemlya_1" : {
+      "source" : ":zemlya_1.png",
+      "name" : "Zemlya 1",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : false
+    },
+    "zemlya_2" : {
+      "source" : ":zemlya_2.png",
+      "name" : "Zemlya 2",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : false
+    },
+    "zemlya_3" : {
+      "source" : ":zemlya_3.png",
+      "name" : "Zemlya 3",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : false
+    },
+    "zemlya_4" : {
+      "source" : ":zemlya_4.png",
+      "name" : "Zemlya 4",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : false
     }
   },
   "2" : {
@@ -165,18 +238,36 @@
       "name" : "Water",
       "animation_source" : ":water.json",
       "direction" :  "left",
-      "move_type" : "water_moving"
+      "move_type" : "water_moving",
+      "start_time" : 0
     },
     "wave" : {
       "source" : ":wave_00.png",
       "name" : "Wave",
       "animation_source" : ":wave.json",
+      "start_time" : 0,
       "direction" :  "left",
       "move_type" : "wave_moving"
     },
     "grass" : {
       "source" : ":grass.png",
       "name" : "Grass"
+    },
+    "column_foreground" : {
+      "source" : ":column_foreground.png",
+      "name" : "Column foreground"
+    },
+    "column_foreground_up" : {
+      "source" : ":column_foreground_up.png",
+      "name" : "Column foreground up"
+    },
+    "column_foreground_down" : {
+      "source" : ":column_foreground_down.png",
+      "name" : "Column foreground down"
+    },
+    "liana" : {
+      "source" : ":liana.png",
+      "name" : "liana"
     }
   }
 }

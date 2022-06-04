@@ -10,6 +10,8 @@
 #include "core/serializer.h"
 #include "engine/coordinator.h"
 #include "core/dungeon_name.h"
+#include "core/location_manager/location_manager.h"
+#include "core/events_constants.h"
 
 namespace core {
 
@@ -26,11 +28,9 @@ class Connector {
   void DeleteEntity(engine::Entity entity);
   void UseEvent(engine::Entity);
   void CheckAndAddCoin(engine::Entity);
-  Serializer* GetSerializer();
+  void OpenNewDungeon(DungeonName dungeon_name);
 
-  DungeonName GetCurrentDungeon();
-  void SetCurrentDungeon(DungeonName);
-
+  LocationManager* GetLocationManager() const;
 
   std::shared_ptr<engine::Coordinator> GetCoordinator();
 
@@ -38,13 +38,16 @@ class Connector {
   void RegisterSystems();
   void RegisterComponents();
 
+  Scene* scene_{nullptr};
+
   std::shared_ptr<engine::Coordinator> coordinator_;
   std::unique_ptr<core::Keyboard> keyboard_;
   std::unique_ptr<Serializer> serializer_;
+  std::unique_ptr<LocationManager> location_manager_;
 
   std::vector<std::shared_ptr<engine::System>> systems_;
 
-  DungeonName current_dungeon_;
+  std::unordered_set<DungeonName> current_dungeons_;
 };
 
 }  // namespace core

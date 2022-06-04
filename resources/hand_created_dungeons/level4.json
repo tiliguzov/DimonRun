@@ -1,0 +1,1079 @@
+{
+    "background_image": ":background_image.jpg",
+    "entities": [
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 0,
+                "source": ":hero.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": true,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":Hero_static_in_air_00.png",
+                "z_value": 1
+            },
+            "joystick_comp": {
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 0,
+                "row": 0
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 2
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 2
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 3
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 3
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 3
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 2
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 2
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 3
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 4
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 4
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 4
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 4
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 1
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 1
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 1
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 0
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 0
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": -1
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": -1
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 0
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": -1
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 1
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 0
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 5,
+                "row": -1
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 2,
+                "row": -2
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": -2
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": -2
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 3,
+                "row": -3
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 4,
+                "row": -3
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 7,
+                "source": ":coin.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":coin_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 300
+            },
+            "position_comp": {
+                "column": 2,
+                "row": 5
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 7,
+                "source": ":coin.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":coin_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 300
+            },
+            "position_comp": {
+                "column": 3,
+                "row": 5
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 7,
+                "source": ":coin.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":coin_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 300
+            },
+            "position_comp": {
+                "column": 4,
+                "row": 5
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 7,
+                "source": ":coin.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":coin_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 300
+            },
+            "position_comp": {
+                "column": 5,
+                "row": 5
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 7,
+                "source": ":coin.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": true
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":coin_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 300
+            },
+            "position_comp": {
+                "column": -2,
+                "row": -2
+            },
+            "event_comp": {
+                "type": 1,
+                "number": 0
+            }
+        }
+    ],
+    "offset_x": 0,
+    "offset_y": 0
+}

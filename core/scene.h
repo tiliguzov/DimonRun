@@ -7,6 +7,7 @@
 #include <QWidget>
 
 #include <memory>
+#include <view/widgets/scroll.h>
 
 #include "engine/coordinator.h"
 #include "view/widgets/fast_menu.h"
@@ -32,6 +33,11 @@ class Scene : public QStackedWidget, AbstractScene {
   void SetHeroEntity(engine::Entity entity);
   void SetBackgroundImage(QGraphicsPixmapItem* item);
 
+  void OpenFastMenu() override;
+  void ContinueGame() override;
+  void OpenVault(std::string) override;
+  void OpenScroll(std::string) override;
+
  private:
   void paintEvent(QPaintEvent*) override;
   void timerEvent(QTimerEvent*) override;
@@ -43,18 +49,7 @@ class Scene : public QStackedWidget, AbstractScene {
 
   bool eventFilter(QObject* object, QEvent* event) override;
 
-  void OpenFastMenu() override;
-  void ContinueGame() override;
-  void OpenVault() override;
-
-  DungeonName GetCurrentDungeon() override;
-  void SetCurrentDungeon(DungeonName) override;
-
-  void DownloadDungeon(DungeonName dungeon_name,
-                       DungeonType dungeon_type) override;
-  void UploadDungeon(DungeonName dungeon_name,
-                     DungeonType dungeon_type) override;
-  void RemoveDungeon(DungeonName dungeon_name) override;
+  void OpenNewDungeon(DungeonName) override;
 
   int32_t timer_id_;
   QWidget* parent_;
@@ -69,6 +64,9 @@ class Scene : public QStackedWidget, AbstractScene {
 
   Vault* vault_;
   bool is_vault_showed_{0};
+
+  Scroll* scroll_;
+  bool is_scroll_showed_{0};
 };
 
 }  // namespace core

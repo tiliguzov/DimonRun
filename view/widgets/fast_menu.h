@@ -2,6 +2,7 @@
 
 #include "view/buttons/menu_button.h"
 #include "core/abstract_scene.h"
+#include "core/location_manager/location_manager.h"
 
 #include <vector>
 
@@ -16,7 +17,9 @@ namespace core {
 
 class FastMenu : public QStackedWidget {
  public:
-  FastMenu(core::AbstractScene* parent, const QString& path_to_background);
+  FastMenu(core::AbstractScene* parent,
+           const QString& path_to_background,
+           core::LocationManager* location_manager);
 
   void Resize(QSize size);
 
@@ -58,6 +61,8 @@ class FastMenu : public QStackedWidget {
 
   QListWidget* places_;
   std::vector<QString> places_text_;
+
+  LocationManager* location_manager_;
 };
 
 }  // namespace core
