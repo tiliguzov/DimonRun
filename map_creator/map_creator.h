@@ -80,6 +80,8 @@ class MapCreator : public QWidget {
   std::unordered_map<std::string, double> direction_x_;
   std::unordered_map<std::string, double> direction_y_;
 
+  std::unordered_map<std::string, int> value_;
+
   std::unordered_map<std::string, core::MovementType> str_to_type =
       {{"static_in_air", core::MovementType::kStaticInAir},
        {"flies_up", core::MovementType::kFliesUp},

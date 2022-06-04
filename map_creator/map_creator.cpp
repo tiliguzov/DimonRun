@@ -144,6 +144,11 @@ void MapCreator::LoadTextures() {
         direction_y_[source_[item]] =
             texture_info["direction_y"].toDouble();
       }
+
+      if (texture_info.contains("value")) {
+        value_[source_[item]] =
+            texture_info["value"].toInt();
+      }
     }
   }
   AddTexture(pos_of_hero_, 1, ":Hero_static_in_air_00.png");
@@ -253,6 +258,12 @@ void MapCreator::AddTexture(QPointF point,
       {static_cast<float>(direction_x_[source]),
       static_cast<float>(direction_y_[source])},
       static_cast<float>(current_speed_[source])
+    });
+  }
+
+  if (value_.count(source)) {
+    coordinator->AddComponent(texture_entity, core::CoinComponent {
+      value_[source]
     });
   }
 }
@@ -469,6 +480,15 @@ QJsonDocument MapCreator::AllEntities() {
       move_comp_info["direction_y"] = move_comp.direction.y();
 
       entity_info["movement_comp"] = move_comp_info;
+    }
+
+    if (coordinator->HasComponent<core::CoinComponent>(entity)) {
+      QJsonObject coin_comp_info;
+      auto coin_comp = coordinator->
+          GetComponent<core::CoinComponent>(entity);
+      coin_comp_info["value"] = coin_comp.value;
+
+      entity_info["coin_comp"] = coin_comp_info;
     }
     entities.push_back(entity_info);
   }
