@@ -8,6 +8,7 @@
 namespace core {
 
 enum class KeyAction {
+  kE,
   kMoveUp,
   kMoveDown,
   kMoveLeft,

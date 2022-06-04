@@ -195,8 +195,10 @@ void FastMenu::PlacesOpen() {
   QListWidgetItem* item = places_->currentItem();
   if (item->text() != "hub") {
     location_manager_->GoToLocation(item->text().toStdString());
+    scene_->OpenNewDungeon(dungeon_name_by_note.at(item->text().toStdString()));
+  } else {
+    scene_->OpenNewDungeon(DungeonName::kHub);
   }
-  scene_->OpenNewDungeon(dungeon_name_by_note.at(item->text().toStdString()));
   ContinueGame();
 }
 

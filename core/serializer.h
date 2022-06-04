@@ -29,7 +29,7 @@ class Serializer {
     int offset_x{0};
     int offset_y{0};
     int entities_count{0};
-    std::string background_image;
+    char background_image[kMaxPathLength];
     std::vector<engine::Entity> entities;
   };
 

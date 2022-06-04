@@ -10,5 +10,6 @@
         <file>view/coin.png</file>
         <file>view/fast_menu.png</file>
         <file>view/vault.png</file>
+        <file>view/scroll.png</file>
     </qresource>
 </RCC>

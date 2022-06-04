@@ -9,7 +9,7 @@ Scroll::Scroll(AbstractScene* scene, const QString& path_to_background) :
     scene_(scene),
     background_(new QPixmap(path_to_background)),
     return_button_(new MenuButton(":/view/return.png", this, kReturnVault)),
-    text_(new QLabel("Bla bla bla", this)) {
+    text_(new QLabel(this)) {
 
   text_->setGeometry(kTextScroll);
   text_->setFont(QFont("Copperplate", 22));
@@ -40,6 +40,10 @@ void Scroll::Resize(QSize size) {
                      kTextScroll.y() * size.height() / 1000,
                      kTextScroll.width() * size.width() / 1000,
                      kTextScroll.height() * size.height() / 1000);
+}
+
+QLabel* Scroll::GetLabel() {
+  return text_;
 }
 
 }  // namespace core

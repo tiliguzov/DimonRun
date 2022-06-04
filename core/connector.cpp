@@ -51,9 +51,11 @@ void Connector::UseEvent(engine::Entity entity) {
       break;
     }
     case EventType::kNextDungeon: {
-      auto event_data{new_dungeon_chests_data.at(event_comp.number)};
-      location_manager_->UnlockLocation(event_data.name);
-      scene_->OpenScroll(event_data.scroll_massage);
+      if (keyboard_->IsKeyPressed(KeyAction::kE)) {
+        auto event_data{new_dungeon_chests_data.at(event_comp.number)};
+        location_manager_->UnlockLocation(event_data.name);
+        scene_->OpenScroll(event_data.scroll_massage);
+      }
       break;
     }
     case EventType::kProgressReset: {
@@ -145,14 +147,18 @@ void Connector::StartGame(Scene* scene) {
 
 
   // [before game release] Download from json file to game
-  serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
+  // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
+  // serializer_->DownloadDungeon(DungeonName::kLevel1, DungeonType::kHandCreated);
+  // serializer_->DownloadDungeon(DungeonName::kLevel2, DungeonType::kHandCreated);
 
   // [before game release] Upload dungeon from game to default binary file
   // serializer_->UploadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
+  // serializer_->UploadDungeon(DungeonName::kLevel1, DungeonType::kHandCreated);
+  // serializer_->UploadDungeon(DungeonName::kLevel2, DungeonType::kHandCreated);
+  // serializer_->RemoveDungeon(DungeonName::kHub);
 
   // Download default dungeon from binary file to game
-  // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kDefault);
-
+  serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kDefault);
   // Download edited dungeon from binary file to game
   // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kEdited);
 
