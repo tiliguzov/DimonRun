@@ -51,16 +51,22 @@ systems::CollisionSystem::CollisionSystem(engine::Coordinator* coordinator,
 void systems::CollisionSystem::Update() {
   time_ += core::kTickTime;
   std::vector<engine::Entity> movable_entities;
+  std::vector<engine::Entity> other;
   for (engine::Entity entity : entities_) {
     auto& collision_comp =
         coordinator_->GetComponent<core::CollisionComponent>(entity);
     if (collision_comp.is_movable) {
       movable_entities.push_back(entity);
     }
+    auto& graphic_comp =
+        coordinator_->GetComponent<core::GraphicsItemComponent>(entity);
+    if (graphic_comp.item->zValue() == 1) {
+      other.push_back(entity);
+    }
   }
 
   for (engine::Entity entity1 : movable_entities) {
-    for (engine::Entity entity2 : entities_) {
+    for (engine::Entity entity2 : other) {
       if (entity1 == entity2) {
         continue;
       }
@@ -183,7 +189,7 @@ void systems::CollisionSystem::Update() {
                 continue;
               }
               bool can_move = true;
-              for (auto& new_entity : entities_) {
+              for (auto& new_entity : other) {
                 if (new_entity == entity1 || new_entity == entity2) {
                   continue;
                 }
@@ -230,7 +236,7 @@ void systems::CollisionSystem::Update() {
                 continue;
               }
               bool can_move = true;
-              for (auto& new_entity : entities_) {
+              for (auto& new_entity : other) {
                 if (new_entity == entity1 || new_entity == entity2) {
                   continue;
                 }
@@ -319,7 +325,7 @@ void systems::CollisionSystem::Update() {
     auto& position_comp1 = coordinator_->
         GetComponent<core::PositionComponent>(entity1);
 
-    for (engine::Entity entity2 : entities_) {
+    for (engine::Entity entity2 : other) {
       if (entity1 == entity2) {
         continue;
       }
