@@ -190,6 +190,42 @@
       "current_speed" : 1.0,
       "direction_x" : 0,
       "direction_y" : 0
+    },
+    "zemlya_1" : {
+      "source" : ":zemlya_1.png",
+      "name" : "Zemlya 1",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : false
+    },
+    "zemlya_2" : {
+      "source" : ":zemlya_2.png",
+      "name" : "Zemlya 2",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : false
+    },
+    "zemlya_3" : {
+      "source" : ":zemlya_3.png",
+      "name" : "Zemlya 3",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : false
+    },
+    "zemlya_4" : {
+      "source" : ":zemlya_4.png",
+      "name" : "Zemlya 4",
+      "is_movable" : false,
+      "gravity" : false,
+      "can_use" : false,
+      "is_usable" : false,
+      "is_breakable" : false
     }
   },
   "2" : {

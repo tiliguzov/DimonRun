@@ -11,6 +11,10 @@
         <file alias = "back_wall_and_torch_02.png">textures/background/back_wall_and_torch_02.png</file>
         <file alias = "back_wall_and_torch_03.png">textures/background/back_wall_and_torch_03.png</file>
         <file alias = "wall_angle.png">textures/background/wall_angle.png</file>
+        <file alias = "zemlya_1.png">textures/background/zemlya_1.png</file>
+        <file alias = "zemlya_2.png">textures/background/zemlya_2.png</file>
+        <file alias = "zemlya_3.png">textures/background/zemlya_3.png</file>
+        <file alias = "zemlya_4.png">textures/background/zemlya_4.png</file>
 
         <file alias = "list_of_textures.json">list_of_textures.json</file>
         <file alias = "back_wall.png">textures/background/back_wall.png</file>

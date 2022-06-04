@@ -1163,166 +1163,6 @@
                 "is_usable": false
             },
             "graphics_comp": {
-                "rotate": 270,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 3,
-                "row": 4
-            }
-        },
-        {
-            "collision_comp": {
-                "can_use": false,
-                "gravity": false,
-                "is_breakable": false,
-                "is_movable": false,
-                "is_usable": false
-            },
-            "graphics_comp": {
-                "rotate": 270,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 4,
-                "row": 4
-            }
-        },
-        {
-            "collision_comp": {
-                "can_use": false,
-                "gravity": false,
-                "is_breakable": false,
-                "is_movable": false,
-                "is_usable": false
-            },
-            "graphics_comp": {
-                "rotate": 270,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 5,
-                "row": 4
-            }
-        },
-        {
-            "collision_comp": {
-                "can_use": false,
-                "gravity": false,
-                "is_breakable": false,
-                "is_movable": false,
-                "is_usable": false
-            },
-            "graphics_comp": {
-                "rotate": 270,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 6,
-                "row": 4
-            }
-        },
-        {
-            "collision_comp": {
-                "can_use": false,
-                "gravity": false,
-                "is_breakable": false,
-                "is_movable": false,
-                "is_usable": false
-            },
-            "graphics_comp": {
-                "rotate": 270,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 7,
-                "row": 4
-            }
-        },
-        {
-            "collision_comp": {
-                "can_use": false,
-                "gravity": false,
-                "is_breakable": false,
-                "is_movable": false,
-                "is_usable": false
-            },
-            "graphics_comp": {
-                "rotate": 270,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 8,
-                "row": 4
-            }
-        },
-        {
-            "collision_comp": {
-                "can_use": false,
-                "gravity": false,
-                "is_breakable": false,
-                "is_movable": false,
-                "is_usable": false
-            },
-            "graphics_comp": {
-                "rotate": 270,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 9,
-                "row": 4
-            }
-        },
-        {
-            "collision_comp": {
-                "can_use": false,
-                "gravity": false,
-                "is_breakable": false,
-                "is_movable": false,
-                "is_usable": false
-            },
-            "graphics_comp": {
-                "rotate": 270,
-                "scale_x": 1,
-                "scale_y": 1,
-                "source": ":wall_line.png",
-                "z_value": 1
-            },
-            "position_comp": {
-                "column": 10,
-                "row": 4
-            }
-        },
-        {
-            "collision_comp": {
-                "can_use": false,
-                "gravity": false,
-                "is_breakable": false,
-                "is_movable": false,
-                "is_usable": false
-            },
-            "graphics_comp": {
                 "rotate": 450,
                 "scale_x": 1,
                 "scale_y": 1,
@@ -2986,6 +2826,26 @@
             }
         },
         {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 11,
+                "row": 3
+            }
+        },
+        {
             "graphics_comp": {
                 "rotate": 0,
                 "scale_x": 1,
@@ -3007,7 +2867,7 @@
                 "z_value": 0
             },
             "position_comp": {
-                "column": 13,
+                "column": 12,
                 "row": 3
             }
         },
@@ -3020,8 +2880,311 @@
                 "z_value": 0
             },
             "position_comp": {
+                "column": 13,
+                "row": 3
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 11,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 11,
+                "row": 1
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": -90,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 15,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 14,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": -90,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 14,
+                "row": 3
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": -90,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 15,
+                "row": 3
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": -90,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":wall_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 14,
+                "row": 4
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 9,
+                "source": ":rubbish.json",
+                "start_time": 2000000000
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": true,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":rubbish_00.png",
+                "z_value": 1
+            },
+            "illness_comp": {
+                "is_ill": false,
+                "kill_time": 400
+            },
+            "position_comp": {
+                "column": 14,
+                "row": 2
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 14,
+                "row": 1
+            }
+        },
+        {
+            "animation_comp": {
+                "direction": 0,
+                "move_type": 8,
+                "source": ":stone.json",
+                "start_time": 0
+            },
+            "collision_comp": {
+                "can_use": false,
+                "gravity": true,
+                "is_breakable": false,
+                "is_movable": true,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":stone_00.png",
+                "z_value": 1
+            },
+            "movement_comp": {
+                "current_speed": 1,
+                "direction_x": 0,
+                "direction_y": 0
+            },
+            "position_comp": {
+                "column": 14,
+                "row": 0
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 13,
+                "row": 2
+            }
+        },
+        {
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":back_wall.png",
+                "z_value": 0
+            },
+            "position_comp": {
+                "column": 12,
+                "row": 2
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
                 "column": 12,
                 "row": 3
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 0,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 13,
+                "row": 3
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 180,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 12,
+                "row": 1
+            }
+        },
+        {
+            "collision_comp": {
+                "can_use": false,
+                "gravity": false,
+                "is_breakable": false,
+                "is_movable": false,
+                "is_usable": false
+            },
+            "graphics_comp": {
+                "rotate": 180,
+                "scale_x": 1,
+                "scale_y": 1,
+                "source": ":floor_line.png",
+                "z_value": 1
+            },
+            "position_comp": {
+                "column": 13,
+                "row": 1
             }
         }
     ],
