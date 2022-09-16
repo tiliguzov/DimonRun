@@ -157,7 +157,7 @@ void systems::CollisionSystem::Update() {
           if (new_position1.position.x() < new_position2.position.x()) {
             if (!collision_comp1.gravity && collision_comp2.gravity) {
               new_position2.position +=
-                  QVector2D{1, 0} * movement_comp1.current_speed;
+                  QVector2D {1, 0} * movement_comp1.current_speed;
               if (movement_comp2.direction != QVector2D{0, 0}) {
                 movement_comp1.direction = {0, 0};
                 continue;
@@ -191,13 +191,13 @@ void systems::CollisionSystem::Update() {
               }
               if (can_move) {
                 position_comp2.position +=
-                    QVector2D{1, 0} * movement_comp1.current_speed;
+                    QVector2D {1, 0} * movement_comp1.current_speed;
               } else {
                 movement_comp1.direction = {0, 0};
               }
             } else if (collision_comp1.gravity && !collision_comp2.gravity) {
               new_position1.position +=
-                  QVector2D{-1, 0} * movement_comp1.current_speed;
+                  QVector2D {-1, 0} * movement_comp1.current_speed;
 
               if (movement_comp1.direction != QVector2D{0, 0}) {
                 movement_comp2.direction = {0, 0};
@@ -259,11 +259,11 @@ void systems::CollisionSystem::Update() {
         } else if (collision_comp1.gravity &&
             collision_comp2.gravity &&
             intersection.second != 0) {
-          if (movement_comp1.direction == QVector2D{1, 0} ||
-              movement_comp1.direction == QVector2D{-1, 0}) {
+          if (movement_comp1.direction == QVector2D {1, 0} ||
+              movement_comp1.direction == QVector2D {-1, 0}) {
             movement_comp1.direction = {0, 0};
-          } else if (movement_comp2.direction == QVector2D{1, 0} ||
-              movement_comp2.direction == QVector2D{-1, 0}) {
+          } else if (movement_comp2.direction == QVector2D {1, 0} ||
+              movement_comp2.direction == QVector2D {-1, 0}) {
             movement_comp2.direction = {0, 0};
           }
         } else {

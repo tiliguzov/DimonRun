@@ -274,15 +274,15 @@ void Serializer::DownloadCompFromJson<PositionComponent>(
   if (entity_object.contains("position_comp")) {
     QJsonObject position_comp_object{
         entity_object["position_comp"].toObject()};
-    PositionComponent position_component{{
-                                             static_cast<float>(
-                                                 position_comp_object["column"].toInt()
-                                                     * kTextureSize
-                                                     + dungeon->offset_x),
-                                             static_cast<float>(
-                                                 position_comp_object["row"].toInt()
-                                                     * kTextureSize
-                                                     + dungeon->offset_y)}
+    PositionComponent position_component{
+        {static_cast<float>(
+             position_comp_object["column"].toInt()
+                 * kTextureSize
+                 + dungeon->offset_x),
+         static_cast<float>(
+             position_comp_object["row"].toInt()
+                 * kTextureSize
+                 + dungeon->offset_y)}
     };
     coordinator_->AddComponent(entity, position_component);
   }

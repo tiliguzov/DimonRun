@@ -24,7 +24,7 @@ Connector::Connector() : coordinator_(std::make_unique<engine::Coordinator>()),
 }
 
 void Connector::OnTick() {
-  for (const auto& system: systems_) {
+  for (const auto& system : systems_) {
     system->Update();
   }
 }
@@ -204,7 +204,7 @@ std::shared_ptr<engine::Coordinator> Connector::GetCoordinator() {
 
 void Connector::OpenNewDungeon(DungeonName dungeon_name) {
   // Remove all open dungeons
-  for (auto current_dungeon: current_dungeons_) {
+  for (auto current_dungeon : current_dungeons_) {
     // serializer_->UploadDungeon()  - if we want to save edited dungeons
     serializer_->RemoveDungeon(current_dungeon);
   }
