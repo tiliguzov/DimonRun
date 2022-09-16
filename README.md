@@ -28,7 +28,7 @@ The player is invited to be a scientist of the future, who created a jetpack tim
 
 The game also includes the ability to create your own levels, and immediately play them.
 
-| ![gameplay](resources/preview/gameplay.png) |
+![gameplay](resources/preview/gameplay.png)
 
 ## Development status
 
