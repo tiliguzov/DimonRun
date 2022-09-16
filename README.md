@@ -1,5 +1,5 @@
 # Dimon Run
-| ![vault](resources/preview/vault.png) | 
+![vault](resources/preview/vault.png)  
 
 **Dimon Run** is a platformer-like game written in C++ using the Entity Component System architechture and [Qt](https://www.qt.io) by DreamTeam.
 
