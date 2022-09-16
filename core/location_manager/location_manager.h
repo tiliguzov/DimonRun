@@ -1,10 +1,11 @@
 #pragma once
 
+#include <string>
+#include <vector>
+
 #include "core/location_manager/settings_manager.h"
 #include "core/dungeon_name.h"
 
-#include <string>
-#include <vector>
 
 namespace core {
 

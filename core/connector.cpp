@@ -24,7 +24,7 @@ Connector::Connector() : coordinator_(std::make_unique<engine::Coordinator>()),
 }
 
 void Connector::OnTick() {
-  for (const auto& system : systems_) {
+  for (const auto& system: systems_) {
     system->Update();
   }
 }
@@ -168,8 +168,10 @@ void Connector::StartGame(Scene* scene) {
 
   // [before game release] Upload dungeon from game to default binary file
   // serializer_->UploadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
-  // serializer_->UploadDungeon(DungeonName::kLevel1, DungeonType::kHandCreated);
-  // serializer_->UploadDungeon(DungeonName::kLevel2, DungeonType::kHandCreated);
+  // serializer_->UploadDungeon(DungeonName::kLevel1,
+  // DungeonType::kHandCreated);
+  // serializer_->UploadDungeon(DungeonName::kLevel2,
+  // DungeonType::kHandCreated);
   // serializer_->RemoveDungeon(DungeonName::kHub);
 
   // Download default dungeon from binary file to game
@@ -202,7 +204,7 @@ std::shared_ptr<engine::Coordinator> Connector::GetCoordinator() {
 
 void Connector::OpenNewDungeon(DungeonName dungeon_name) {
   // Remove all open dungeons
-  for (auto current_dungeon : current_dungeons_) {
+  for (auto current_dungeon: current_dungeons_) {
     // serializer_->UploadDungeon()  - if we want to save edited dungeons
     serializer_->RemoveDungeon(current_dungeon);
   }

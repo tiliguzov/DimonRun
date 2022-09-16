@@ -49,7 +49,6 @@ void Scene::timerEvent(QTimerEvent* event) {
   assert(background_image_ != nullptr);
   background_image_->setPos(pos.x() - background_image_->pixmap().width() / 2,
                             pos.y() - background_image_->pixmap().height() / 2);
-
 }
 
 void Scene::paintEvent(QPaintEvent*) {

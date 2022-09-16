@@ -51,7 +51,7 @@ systems::CollisionSystem::CollisionSystem(engine::Coordinator* coordinator,
 void systems::CollisionSystem::Update() {
   time_ += core::kTickTime;
   std::vector<engine::Entity> movable_entities;
-  for (engine::Entity entity: entities_) {
+  for (engine::Entity entity : entities_) {
     auto& collision_comp =
         coordinator_->GetComponent<core::CollisionComponent>(entity);
     if (collision_comp.is_movable) {
@@ -59,7 +59,7 @@ void systems::CollisionSystem::Update() {
     }
   }
 
-  for (engine::Entity entity1: movable_entities) {
+  for (engine::Entity entity1 : movable_entities) {
     auto& position_comp1 = coordinator_->
         GetComponent<core::PositionComponent>(entity1);
     auto& collision_comp1 =
@@ -69,7 +69,7 @@ void systems::CollisionSystem::Update() {
     auto new_position1 = position_comp1;
     new_position1.position +=
         movement_comp1.direction * movement_comp1.current_speed;
-    for (engine::Entity entity2: entities_) {
+    for (engine::Entity entity2 : entities_) {
       if (entity1 == entity2) {
         continue;
       }
@@ -163,7 +163,7 @@ void systems::CollisionSystem::Update() {
                 continue;
               }
               bool can_move = true;
-              for (auto& new_entity: entities_) {
+              for (auto& new_entity : entities_) {
                 if (new_entity == entity1 || new_entity == entity2) {
                   continue;
                 }
@@ -204,7 +204,7 @@ void systems::CollisionSystem::Update() {
                 continue;
               }
               bool can_move = true;
-              for (auto& new_entity: entities_) {
+              for (auto& new_entity : entities_) {
                 if (new_entity == entity1 || new_entity == entity2) {
                   continue;
                 }
@@ -275,7 +275,7 @@ void systems::CollisionSystem::Update() {
 
 
   // start stones
-  for (engine::Entity entity1: movable_entities) {
+  for (engine::Entity entity1 : movable_entities) {
     bool is_bad = false;
     auto& movement_comp1 =
         coordinator_->GetComponent<core::MovementComponent>(entity1);
@@ -287,7 +287,7 @@ void systems::CollisionSystem::Update() {
     auto& position_comp1 = coordinator_->
         GetComponent<core::PositionComponent>(entity1);
 
-    for (engine::Entity entity2: entities_) {
+    for (engine::Entity entity2 : entities_) {
       if (entity1 == entity2) {
         continue;
       }

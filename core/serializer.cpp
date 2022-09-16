@@ -41,7 +41,7 @@ void Serializer::RemoveEntityFromScene(engine::Entity entity) {
 }
 
 void Serializer::DeleteEntity(engine::Entity entity) {
-  for (auto&[dungeon_name, dungeon] : dungeons_) {
+  for (auto& [dungeon_name, dungeon] : dungeons_) {
     auto it = std::find(
         dungeon->entities.begin(), dungeon->entities.end(), entity);
     if (it != dungeon->entities.end()) {
@@ -151,7 +151,6 @@ void Serializer::UploadDungeon(
   Write(stream, &dungeon->background_image, kMaxPathLength);
   Write(stream, &dungeon->entities_count, sizeof(dungeon->entities_count));
 
-
   for (auto entity : dungeon->entities) {
     engine::ComponentSignature component_signature{
         coordinator_->GetComponentSignature(entity)};
@@ -209,7 +208,10 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
   dungeon->entities_count = entities_data.size();
   std::string backgroung_str =
       document["background_image"].toString().toStdString();
-  std::strcpy(dungeon->background_image, backgroung_str.c_str());
+  std::snprintf(dungeon->background_image,
+                core::kMaxPathLength,
+                "%s",
+                backgroung_str.c_str());
   if (backgroung_str != ":empty.png") {
     auto* item = new QGraphicsPixmapItem(QPixmap(QString(
         dungeon->background_image)));
@@ -273,10 +275,14 @@ void Serializer::DownloadCompFromJson<PositionComponent>(
     QJsonObject position_comp_object{
         entity_object["position_comp"].toObject()};
     PositionComponent position_component{{
-      static_cast<float>(position_comp_object["column"].toInt()
-      * kTextureSize + dungeon->offset_x),
-      static_cast<float>(position_comp_object["row"].toInt()
-      * kTextureSize + dungeon->offset_y)}
+                                             static_cast<float>(
+                                                 position_comp_object["column"].toInt()
+                                                     * kTextureSize
+                                                     + dungeon->offset_x),
+                                             static_cast<float>(
+                                                 position_comp_object["row"].toInt()
+                                                     * kTextureSize
+                                                     + dungeon->offset_y)}
     };
     coordinator_->AddComponent(entity, position_component);
   }

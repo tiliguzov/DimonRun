@@ -8,7 +8,7 @@ systems::IllnessSystem::IllnessSystem(engine::Coordinator* coordinator,
 
 void systems::IllnessSystem::Update() {
   std::vector<engine::Entity> to_del;
-  for (auto entity: entities_) {
+  for (auto entity : entities_) {
     auto& illness_comp =
         coordinator_->GetComponent<core::IllnessComponent>(entity);
     if (!illness_comp.is_ill) {
@@ -19,7 +19,7 @@ void systems::IllnessSystem::Update() {
       to_del.push_back(entity);
     }
   }
-  for (auto entity: to_del) {
+  for (auto entity : to_del) {
     connector_->DeleteEntity(entity);
   }
 }
