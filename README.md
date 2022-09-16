@@ -28,7 +28,7 @@ The player is invited to be a scientist of the future, who created a jetpack tim
 
 ![gameplay](resources/preview/gameplay.png)
 
-The game also includes the ability to create your own levels, and immediately play them.
+The game also includes the ability to create your own levels, and immediately play them. MapCreator automates the map creation process, making it easy and fun.
 
 ![gameplay](resources/preview/map-generator.png)
 
