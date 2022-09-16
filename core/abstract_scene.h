@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 #include <QKeyEvent>
 
 #include "constants.h"
