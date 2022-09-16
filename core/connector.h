@@ -4,6 +4,7 @@
 
 #include <memory>
 #include <vector>
+#include <unordered_set>
 
 #include "core/keyboard.h"
 #include "core/scene.h"

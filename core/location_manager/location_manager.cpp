@@ -26,7 +26,6 @@ void LocationManager::SetVaultCoins(int count) {
   settings_manager_->SetKeyValue(kVaultCoins, std::to_string(count));
 }
 
-
 void LocationManager::UnlockLocation(std::string location_name) {
   UnlockLocation(dungeon_name_by_note.at(location_name));
   current_dungeon_ = dungeon_name_by_note.at(location_name);
@@ -63,7 +62,8 @@ std::vector<std::string> LocationManager::GetLocationsNames() const {
   std::vector<std::string> names_list;
   names_list.emplace_back("hub");
   for (int i = 0; i < dungeon_index; i++) {
-    names_list.push_back(note_by_dungeon_name.at(static_cast<DungeonName>(i + 1)));
+    names_list.push_back(note_by_dungeon_name.at(static_cast<DungeonName>(i
+        + 1)));
   }
   return names_list;
 }

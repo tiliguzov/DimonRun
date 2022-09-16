@@ -51,7 +51,7 @@ systems::CollisionSystem::CollisionSystem(engine::Coordinator* coordinator,
 void systems::CollisionSystem::Update() {
   time_ += core::kTickTime;
   std::vector<engine::Entity> movable_entities;
-  for (engine::Entity entity : entities_) {
+  for (engine::Entity entity: entities_) {
     auto& collision_comp =
         coordinator_->GetComponent<core::CollisionComponent>(entity);
     if (collision_comp.is_movable) {
@@ -59,7 +59,7 @@ void systems::CollisionSystem::Update() {
     }
   }
 
-  for (engine::Entity entity1 : movable_entities) {
+  for (engine::Entity entity1: movable_entities) {
     auto& position_comp1 = coordinator_->
         GetComponent<core::PositionComponent>(entity1);
     auto& collision_comp1 =
@@ -69,7 +69,7 @@ void systems::CollisionSystem::Update() {
     auto new_position1 = position_comp1;
     new_position1.position +=
         movement_comp1.direction * movement_comp1.current_speed;
-    for (engine::Entity entity2 : entities_) {
+    for (engine::Entity entity2: entities_) {
       if (entity1 == entity2) {
         continue;
       }
@@ -79,7 +79,8 @@ void systems::CollisionSystem::Update() {
       auto& collision_comp2 =
           coordinator_->GetComponent<core::CollisionComponent>(entity2);
 
-      std::pair<int, int> tmp = IntersectPositions(new_position1, position_comp2);
+      std::pair<int, int>
+          tmp = IntersectPositions(new_position1, position_comp2);
       if (collision_comp1.can_use && collision_comp2.is_usable &&
           (tmp.first > 0 || tmp.second > 0)) {
         connector_->UseEvent(entity2);
@@ -93,16 +94,16 @@ void systems::CollisionSystem::Update() {
         if (!illness_comp2.is_ill) {
           illness_comp2.is_ill = true;
           if (coordinator_->
-          HasComponent<core::AnimationComponent>(entity2) &&
+              HasComponent<core::AnimationComponent>(entity2) &&
               coordinator_->
-              GetComponent<core::AnimationComponent>(entity2).move_type ==
-              core::MovementType::kCoinMoving) {
+                  GetComponent<core::AnimationComponent>(entity2).move_type ==
+                  core::MovementType::kCoinMoving) {
             connector_->CheckAndAddCoin(entity2);
           } else if (coordinator_->
               HasComponent<core::AnimationComponent>(entity2) &&
               coordinator_->
-              GetComponent<core::AnimationComponent>(entity2).move_type ==
-              core::MovementType::kRubbishDestroy &&
+                  GetComponent<core::AnimationComponent>(entity2).move_type ==
+                  core::MovementType::kRubbishDestroy &&
               coordinator_->GetComponent<core::AnimationComponent>
                   (entity2).start_time > time_) {
             coordinator_->GetComponent<core::AnimationComponent>(entity2)
@@ -156,13 +157,13 @@ void systems::CollisionSystem::Update() {
           if (new_position1.position.x() < new_position2.position.x()) {
             if (!collision_comp1.gravity && collision_comp2.gravity) {
               new_position2.position +=
-                  QVector2D {1, 0} * movement_comp1.current_speed;
+                  QVector2D{1, 0} * movement_comp1.current_speed;
               if (movement_comp2.direction != QVector2D{0, 0}) {
                 movement_comp1.direction = {0, 0};
                 continue;
               }
               bool can_move = true;
-              for (auto& new_entity : entities_) {
+              for (auto& new_entity: entities_) {
                 if (new_entity == entity1 || new_entity == entity2) {
                   continue;
                 }
@@ -190,20 +191,20 @@ void systems::CollisionSystem::Update() {
               }
               if (can_move) {
                 position_comp2.position +=
-                    QVector2D {1, 0} * movement_comp1.current_speed;
+                    QVector2D{1, 0} * movement_comp1.current_speed;
               } else {
                 movement_comp1.direction = {0, 0};
               }
             } else if (collision_comp1.gravity && !collision_comp2.gravity) {
               new_position1.position +=
-                  QVector2D {-1, 0} * movement_comp1.current_speed;
+                  QVector2D{-1, 0} * movement_comp1.current_speed;
 
               if (movement_comp1.direction != QVector2D{0, 0}) {
                 movement_comp2.direction = {0, 0};
                 continue;
               }
               bool can_move = true;
-              for (auto& new_entity : entities_) {
+              for (auto& new_entity: entities_) {
                 if (new_entity == entity1 || new_entity == entity2) {
                   continue;
                 }
@@ -258,11 +259,11 @@ void systems::CollisionSystem::Update() {
         } else if (collision_comp1.gravity &&
             collision_comp2.gravity &&
             intersection.second != 0) {
-          if (movement_comp1.direction == QVector2D {1, 0} ||
-              movement_comp1.direction == QVector2D {-1, 0}) {
+          if (movement_comp1.direction == QVector2D{1, 0} ||
+              movement_comp1.direction == QVector2D{-1, 0}) {
             movement_comp1.direction = {0, 0};
-          } else if (movement_comp2.direction == QVector2D {1, 0} ||
-              movement_comp2.direction == QVector2D {-1, 0}) {
+          } else if (movement_comp2.direction == QVector2D{1, 0} ||
+              movement_comp2.direction == QVector2D{-1, 0}) {
             movement_comp2.direction = {0, 0};
           }
         } else {
@@ -274,7 +275,7 @@ void systems::CollisionSystem::Update() {
 
 
   // start stones
-  for (engine::Entity entity1 : movable_entities) {
+  for (engine::Entity entity1: movable_entities) {
     bool is_bad = false;
     auto& movement_comp1 =
         coordinator_->GetComponent<core::MovementComponent>(entity1);
@@ -286,7 +287,7 @@ void systems::CollisionSystem::Update() {
     auto& position_comp1 = coordinator_->
         GetComponent<core::PositionComponent>(entity1);
 
-    for (engine::Entity entity2 : entities_) {
+    for (engine::Entity entity2: entities_) {
       if (entity1 == entity2) {
         continue;
       }

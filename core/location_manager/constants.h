@@ -1,5 +1,7 @@
 #pragma once
 
+#include <unordered_map>
+
 namespace core {
 
 const std::unordered_map<std::string, DungeonName> dungeon_name_by_note{
@@ -16,8 +18,7 @@ const std::unordered_map<DungeonName, std::string> note_by_dungeon_name{
     {DungeonName::kLevel4, "level4"}
 };
 
-
-const std::string kVaultCoins = "vault_coins";
-const std::string kCurrentDungeon = "current_dungeon";
+const char kVaultCoins[] = "vault_coins";
+const char kCurrentDungeon[] = "current_dungeon";
 
 }  // namespace core

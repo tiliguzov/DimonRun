@@ -1,12 +1,14 @@
 #pragma once
 
+#include <memory>
+#include <string>
+
 #include <QGraphicsItem>
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QTimerEvent>
 #include <QWidget>
 
-#include <memory>
 #include <view/widgets/scroll.h>
 
 #include "engine/coordinator.h"
@@ -60,13 +62,13 @@ class Scene : public QStackedWidget, AbstractScene {
   QGraphicsPixmapItem* background_image_;
 
   FastMenu* fast_menu_;
-  bool is_menu_showed_{0};
+  bool is_menu_showed_{false};
 
   Vault* vault_;
-  bool is_vault_showed_{0};
+  bool is_vault_showed_{false};
 
   Scroll* scroll_;
-  bool is_scroll_showed_{0};
+  bool is_scroll_showed_{false};
 };
 
 }  // namespace core

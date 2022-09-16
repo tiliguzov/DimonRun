@@ -10,7 +10,6 @@ Scroll::Scroll(AbstractScene* scene, const QString& path_to_background) :
     background_(new QPixmap(path_to_background)),
     return_button_(new MenuButton(":/view/return.png", this, kReturnVault)),
     text_(new QLabel(this)) {
-
   text_->setGeometry(kTextScroll);
   text_->setFont(QFont("Copperplate", 22));
   text_->setStyleSheet("color: #241711;");

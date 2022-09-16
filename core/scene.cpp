@@ -1,13 +1,10 @@
-#include "scene.h"
-
 #include <QKeyEvent>
 #include <QPainter>
 #include <QTimerEvent>
 
+#include "scene.h"
 #include "connector.h"
 #include "constants.h"
-
-#include <iostream>
 
 namespace core {
 
@@ -22,7 +19,7 @@ Scene::Scene(QStackedWidget* parent, Connector* connector) :
                             ":/view/fast_menu.png",
                             connector_->GetLocationManager())),
     vault_(new Vault(this, ":/view/vault.png")),
-    scroll_(new Scroll(this, ":/view/scroll.png")){
+    scroll_(new Scroll(this, ":/view/scroll.png")) {
   SetDefaultSceneSettings();
 
   addWidget(scene_view_);
