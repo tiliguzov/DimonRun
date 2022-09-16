@@ -1,0 +1,14 @@
+{
+  "animations": {
+    "rubbish_destroy": [
+      ":rubbish_00.png",
+      ":rubbish_01.png",
+      ":rubbish_02.png",
+      ":rubbish_03.png",
+      ":rubbish_04.png",
+      ":rubbish_05.png",
+      ":rubbish_06.png"
+    ]
+  },
+  "frame_duration": 60
+}

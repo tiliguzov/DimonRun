@@ -29,7 +29,7 @@ class Serializer {
     int offset_x{0};
     int offset_y{0};
     int entities_count{0};
-    QString background_image;
+    char background_image[kMaxPathLength];
     std::vector<engine::Entity> entities;
   };
 
@@ -111,7 +111,7 @@ void Serializer::UploadComponent<GraphicsItemComponent>(
     const std::unique_ptr<Dungeon>&,
     const GraphicsItemComponent& component);
 
-//----------- Collision Component Specialization --------------------------
+//----------- Collision Component Specialization -------------------------------
 template<>
 void Serializer::DownloadCompFromJson<CollisionComponent>(
     engine::Entity entity,
@@ -129,7 +129,7 @@ void Serializer::UploadComponent<CollisionComponent>(
     const std::unique_ptr<Dungeon>&,
     const CollisionComponent& component);
 
-//----------- Illness Component Specialization --------------------------
+//----------- Illness Component Specialization ---------------------------------
 template<>
 void Serializer::DownloadCompFromJson<IllnessComponent>(
     engine::Entity entity,
@@ -148,8 +148,7 @@ void Serializer::UploadComponent<IllnessComponent>(
     const IllnessComponent& component);
 
 
-//----------- Joystick Component Specialization ---------------------------
-
+//----------- Joystick Component Specialization --------------------------------
 template<>
 void Serializer::DownloadCompFromJson<JoysticComponent>(
     engine::Entity entity,
@@ -168,7 +167,7 @@ void Serializer::UploadComponent<JoysticComponent>(
     const JoysticComponent& component);
 
 
-//----------- Movement Component Specialization ---------------------------
+//----------- Movement Component Specialization --------------------------------
 template<>
 void Serializer::DownloadCompFromJson<MovementComponent>(
     engine::Entity entity,
@@ -186,11 +185,11 @@ void Serializer::UploadComponent<MovementComponent>(
     const std::unique_ptr<Dungeon>&,
     const MovementComponent& component);
 
-//----------- Animation Component Specialization ---------------------------
+//----------- Animation Component Specialization -------------------------------
 template<>
 void Serializer::DownloadCompFromJson<AnimationComponent>(
     engine::Entity entity,
-    const std::unique_ptr<Dungeon>& dungeon,
+    const std::unique_ptr<Dungeon>&,
     const QJsonObject& entity_object);
 
 template<>
@@ -203,5 +202,41 @@ void Serializer::UploadComponent<AnimationComponent>(
     std::ofstream& stream,
     const std::unique_ptr<Dungeon>&,
     const AnimationComponent& component);
+
+//----------- Coin Component Specialization ------------------------------------
+template<>
+void Serializer::DownloadCompFromJson<CoinComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>&,
+    const QJsonObject& entity_object);
+
+template<>
+CoinComponent Serializer::DownloadComponent<CoinComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&);
+
+template<>
+void Serializer::UploadComponent<CoinComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const CoinComponent& component);
+
+//----------- Event Component Specialization -----------------------------------
+template<>
+void Serializer::DownloadCompFromJson<EventComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>&,
+    const QJsonObject& entity_object);
+
+template<>
+EventComponent Serializer::DownloadComponent<EventComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&);
+
+template<>
+void Serializer::UploadComponent<EventComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const EventComponent& component);
 
 }  // namespace core

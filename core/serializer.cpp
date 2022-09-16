@@ -28,8 +28,7 @@ void Write(std::ofstream& os, T* data, int size) {
 
 }  // namespace
 
-Serializer::Serializer(engine::Coordinator* coordinator, Scene* scene)
-    :
+Serializer::Serializer(engine::Coordinator* coordinator, Scene* scene) :
     coordinator_(coordinator),
     graphics_scene_(scene->GetScene()),
     scene_(scene) {}
@@ -42,7 +41,7 @@ void Serializer::RemoveEntityFromScene(engine::Entity entity) {
 }
 
 void Serializer::DeleteEntity(engine::Entity entity) {
-  for (auto&[dungeon_name, dungeon] : dungeons_) {
+  for (auto& [dungeon_name, dungeon] : dungeons_) {
     auto it = std::find(
         dungeon->entities.begin(), dungeon->entities.end(), entity);
     if (it != dungeon->entities.end()) {
@@ -80,8 +79,14 @@ void Serializer::DownloadDungeon(
   auto& dungeon = dungeons_.at(dungeon_name);
   Read(stream, &dungeon->offset_x, sizeof(dungeon->offset_x));
   Read(stream, &dungeon->offset_y, sizeof(dungeon->offset_y));
-  Read(stream, &dungeon->background_image, sizeof(kMaxPathLength));
+  Read(stream, &dungeon->background_image, kMaxPathLength);
   Read(stream, &dungeon->entities_count, sizeof(dungeon->entities_count));
+
+  auto* item = new QGraphicsPixmapItem(QPixmap(QString(
+      dungeon->background_image)));
+
+  graphics_scene_->addItem(item);
+  scene_->SetBackgroundImage(item);
 
   for (int i = 0; i < dungeon->entities_count; i++) {
     engine::Entity entity = coordinator_->CreateEntity();
@@ -89,7 +94,9 @@ void Serializer::DownloadDungeon(
     engine::ComponentSignature component_signature;
     Read(stream, &component_signature, sizeof(engine::ComponentSignature));
     coordinator_->SetComponentSignature(entity, component_signature);
-
+    if (coordinator_->HasComponent<JoysticComponent>(entity)) {
+      scene_->SetHeroEntity(entity);
+    }
     // Download component from file and add to entity, if entity should
     // have this component according to it's signature
     DownloadCompIfNecessary<PositionComponent>(entity, dungeon, stream);
@@ -99,6 +106,8 @@ void Serializer::DownloadDungeon(
     DownloadCompIfNecessary<CollisionComponent>(entity, dungeon, stream);
     DownloadCompIfNecessary<IllnessComponent>(entity, dungeon, stream);
     DownloadCompIfNecessary<JoysticComponent>(entity, dungeon, stream);
+    DownloadCompIfNecessary<CoinComponent>(entity, dungeon, stream);
+    DownloadCompIfNecessary<EventComponent>(entity, dungeon, stream);
   }
   stream.close();
   assert(stream.good() && "Error occurred at dungeon reading time!");
@@ -139,7 +148,7 @@ void Serializer::UploadDungeon(
   auto& dungeon = dungeons_.at(dungeon_name);
   Write(stream, &dungeon->offset_x, sizeof(dungeon->offset_x));
   Write(stream, &dungeon->offset_y, sizeof(dungeon->offset_y));
-  Write(stream, &dungeon->background_image, sizeof(kMaxPathLength));
+  Write(stream, &dungeon->background_image, kMaxPathLength);
   Write(stream, &dungeon->entities_count, sizeof(dungeon->entities_count));
 
   for (auto entity : dungeon->entities) {
@@ -156,6 +165,8 @@ void Serializer::UploadDungeon(
     UploadCompIfNecessary<CollisionComponent>(entity, dungeon, stream);
     UploadCompIfNecessary<IllnessComponent>(entity, dungeon, stream);
     UploadCompIfNecessary<JoysticComponent>(entity, dungeon, stream);
+    UploadCompIfNecessary<CoinComponent>(entity, dungeon, stream);
+    UploadCompIfNecessary<EventComponent>(entity, dungeon, stream);
   }
 
   stream.close();
@@ -195,11 +206,19 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
   dungeon->offset_y = document["offset_y"].toInt();
   QJsonArray entities_data = document["entities"].toArray();
   dungeon->entities_count = entities_data.size();
-  dungeon->background_image = document["background_image"].toString();
-  auto* item =
-      new QGraphicsPixmapItem(QPixmap(dungeon->background_image));
-  graphics_scene_->addItem(item);
-  scene_->SetBackgroundImage(item);
+  std::string backgroung_str =
+      document["background_image"].toString().toStdString();
+  std::snprintf(dungeon->background_image,
+                core::kMaxPathLength,
+                "%s",
+                backgroung_str.c_str());
+  if (backgroung_str != ":empty.png") {
+    auto* item = new QGraphicsPixmapItem(QPixmap(QString(
+        dungeon->background_image)));
+
+    graphics_scene_->addItem(item);
+    scene_->SetBackgroundImage(item);
+  }
 
   for (auto entity_data : entities_data) {
     QJsonObject entity_object{entity_data.toObject()};
@@ -222,11 +241,14 @@ void Serializer::DownloadDungeonFromJson(DungeonName dungeon_name) {
         entity, dungeon, entity_object);
     DownloadCompFromJson<JoysticComponent>(
         entity, dungeon, entity_object);
+    DownloadCompFromJson<CoinComponent>(
+        entity, dungeon, entity_object);
+    DownloadCompFromJson<EventComponent>(
+        entity, dungeon, entity_object);
   }
 }
 
 //----------- Default Component Download/Upload --------------------------------
-
 template<typename ComponentType>
 ComponentType Serializer::DownloadComponent(
     std::ifstream& stream,
@@ -252,11 +274,15 @@ void Serializer::DownloadCompFromJson<PositionComponent>(
   if (entity_object.contains("position_comp")) {
     QJsonObject position_comp_object{
         entity_object["position_comp"].toObject()};
-    PositionComponent position_component{{
-      static_cast<float>(position_comp_object["column"].toInt()
-      * kTextureSize + dungeon->offset_x),
-      static_cast<float>(position_comp_object["row"].toInt()
-      * kTextureSize + dungeon->offset_y)}
+    PositionComponent position_component{
+        {static_cast<float>(
+             position_comp_object["column"].toInt()
+                 * kTextureSize
+                 + dungeon->offset_x),
+         static_cast<float>(
+             position_comp_object["row"].toInt()
+                 * kTextureSize
+                 + dungeon->offset_y)}
     };
     coordinator_->AddComponent(entity, position_component);
   }
@@ -354,7 +380,7 @@ void Serializer::UploadComponent<GraphicsItemComponent>(
   Write(stream, &rotate, sizeof(int));
 }
 
-//----------- Collision Component Specialization ---------------------------
+//----------- Collision Component Specialization -------------------------------
 template<>
 void Serializer::DownloadCompFromJson<CollisionComponent>(
     engine::Entity entity,
@@ -413,7 +439,7 @@ void Serializer::UploadComponent<CollisionComponent>(
   Write(stream, &is_breakable, sizeof(bool));
 }
 
-//----------- Illness Component Specialization ---------------------------
+//----------- Illness Component Specialization ---------------------------------
 template<>
 void Serializer::DownloadCompFromJson<IllnessComponent>(
     engine::Entity entity,
@@ -454,8 +480,7 @@ void Serializer::UploadComponent<IllnessComponent>(
   Write(stream, &is_ill, sizeof(bool));
 }
 
-//----------- Joystick Component Specialization ---------------------------
-
+//----------- Joystick Component Specialization --------------------------------
 template<>
 void Serializer::DownloadCompFromJson<JoysticComponent>(
     engine::Entity entity,
@@ -483,7 +508,7 @@ void Serializer::UploadComponent<JoysticComponent>(
     const JoysticComponent& component) {
 }
 
-//----------- Movement Component Specialization ---------------------------
+//----------- Movement Component Specialization --------------------------------
 template<>
 void Serializer::DownloadCompFromJson<MovementComponent>(
     engine::Entity entity,
@@ -528,7 +553,7 @@ void Serializer::UploadComponent<MovementComponent>(
   Write(stream, &cur_speed, sizeof(float));
 }
 
-//----------- Animation Component Specialization ---------------------------
+//----------- Animation Component Specialization -------------------------------
 template<>
 void Serializer::DownloadCompFromJson<AnimationComponent>(
     engine::Entity entity,
@@ -543,11 +568,13 @@ void Serializer::DownloadCompFromJson<AnimationComponent>(
             animation_comp_object["direction"].toInt())};
     MovementType move_type{
         static_cast<MovementType>(animation_comp_object["move_type"].toInt())};
+    int start_time = animation_comp_object["start_time"].toInt();
     coordinator_->AddComponent(entity, AnimationComponent{
         AnimationPack(source_name.toStdString()),
         source_name.toStdString(),
         direction,
-        move_type});
+        move_type,
+        start_time});
   }
 }
 
@@ -558,12 +585,15 @@ AnimationComponent Serializer::DownloadComponent<AnimationComponent>(
   char source_name[kMaxPathLength];
   int direction;
   int move_type;
+  int start_time;
   Read(stream, &source_name, kMaxPathLength);
   Read(stream, &direction, sizeof(int));
   Read(stream, &move_type, sizeof(int));
+  Read(stream, &start_time, sizeof(int));
   return AnimationComponent{AnimationPack(source_name), source_name,
                             static_cast<HorizontalDirection>(direction),
-                            static_cast<MovementType>(move_type)};
+                            static_cast<MovementType>(move_type),
+                            start_time};
 }
 
 template<>
@@ -573,9 +603,80 @@ void Serializer::UploadComponent<AnimationComponent>(
     const AnimationComponent& component) {
   int direction{static_cast<int>(component.direction)};
   int move_type{static_cast<int>(component.move_type)};
+  int start_time{component.start_time};
   Write(stream, component.source_name.data(), kMaxPathLength);
   Write(stream, &direction, sizeof(int));
   Write(stream, &move_type, sizeof(int));
+  Write(stream, &start_time, sizeof(int));
+}
+
+//----------- Coin Component Specialization ------------------------------------
+template<>
+void Serializer::DownloadCompFromJson<CoinComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>&,
+    const QJsonObject& entity_object) {
+  if (entity_object.contains("coin_comp")) {
+    QJsonObject coin_comp_object{
+        entity_object["coin_comp"].toObject()};
+    int value{coin_comp_object["value"].toInt()};
+
+    coordinator_->AddComponent(entity, CoinComponent{value});
+  }
+}
+
+template<>
+CoinComponent Serializer::DownloadComponent<CoinComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&) {
+  int value;
+  Read(stream, &value, sizeof(int));
+  return CoinComponent{value};
+}
+
+template<>
+void Serializer::UploadComponent<CoinComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const CoinComponent& component) {
+  Write(stream, &component.value, sizeof(int));
+}
+
+//----------- Event Component Specialization -----------------------------------
+template<>
+void Serializer::DownloadCompFromJson<EventComponent>(
+    engine::Entity entity,
+    const std::unique_ptr<Dungeon>&,
+    const QJsonObject& entity_object) {
+  if (entity_object.contains("event_comp")) {
+    QJsonObject event_comp_object{
+        entity_object["event_comp"].toObject()};
+    EventType type{static_cast<EventType>(event_comp_object["type"].toInt())};
+    int number{event_comp_object["number"].toInt()};
+
+    coordinator_->AddComponent(entity, EventComponent{type, number});
+  }
+}
+
+template<>
+EventComponent Serializer::DownloadComponent<EventComponent>(
+    std::ifstream& stream,
+    const std::unique_ptr<Dungeon>&) {
+  int type_index;
+  int value;
+  Read(stream, &type_index, sizeof(int));
+  Read(stream, &value, sizeof(int));
+  return EventComponent{static_cast<EventType>(type_index), value};
+}
+
+template<>
+void Serializer::UploadComponent<EventComponent>(
+    std::ofstream& stream,
+    const std::unique_ptr<Dungeon>&,
+    const EventComponent& component) {
+  int type_index{static_cast<int>(component.type)};
+  Write(stream, &type_index, sizeof(int));
+  Write(stream, &component.number, sizeof(int));
 }
 
 }  // namespace core

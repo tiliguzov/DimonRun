@@ -1,6 +1,6 @@
 #pragma  once
 
-#include "QString"
+#include <QString>
 
 #include <string>
 #include <unordered_map>
@@ -34,9 +34,13 @@ constexpr QRect kReturn(310, 480, 140, 50);
 constexpr QRect kReturnVault(390, 620, 200, 70);
 constexpr QRect kCoinsVault(495, 160, 100, 60);
 
-const QString kShortcutsText{
-    "ESC -> Open fast menu \nCTRL + M - Mute/unmute \nCTRL + Q - "
-    "Exit game \nCTRL + S - сохраниться"};
+constexpr QRect kTextScroll(330, 160, 400, 400);
+
+const QString kShortcutsText{"ESC -> Open fast menu\n"
+                             "E - взаимодействовать\n"
+                             "CTRL + M - Mute/unmute\n"
+                             "CTRL + Q - Exit game\n"
+                             "CTRL + S - сохраниться"};
 
 // Number of bytes occupied by a char array containing the name for every
 // source file in binary file of dungeon
@@ -46,26 +50,26 @@ const int kMaxPathLength = 100;
 const std::unordered_map<DungeonName, std::string> source_by_name_default{
     {DungeonName::kHub, "default_hub"},
     {DungeonName::kLevel1, "default_level1"},
-    {DungeonName::kLevel2, "default_level2"}
+    {DungeonName::kLevel2, "default_level2"},
+    {DungeonName::kLevel3, "default_level3"},
+    {DungeonName::kSecretRoom1, "secret_room1"},
+    {DungeonName::kSecretRoom2, "secret_room2"}
 };
 
 const std::unordered_map<DungeonName, std::string> source_by_name_edited{
     {DungeonName::kHub, "edited_hub"},
     {DungeonName::kLevel1, "edited_level1"},
-    {DungeonName::kLevel2, "edited_level2"}
+    {DungeonName::kLevel2, "edited_level2"},
+    {DungeonName::kLevel3, "edited_level3"}
 };
 
 const std::unordered_map<DungeonName, QString> source_by_name_hand_created{
     {DungeonName::kHub, ":hub.json"},
     {DungeonName::kLevel1, ":level1.json"},
-    {DungeonName::kLevel2, ":level2.json"}
-};
-
-const std::unordered_map<std::string, DungeonName> dungeon_name_by_note{
-    {"hub", DungeonName::kHub},
-    {"level1", DungeonName::kLevel1},
-    {"level2", DungeonName::kLevel2},
-    {"green screen", DungeonName::kNone}
+    {DungeonName::kLevel2, ":level2.json"},
+    {DungeonName::kLevel3, ":level3.json"},
+    {DungeonName::kSecretRoom1, ":secret_room1.json"},
+    {DungeonName::kSecretRoom2, ":secret_room2.json"}
 };
 
 }  // namespace core

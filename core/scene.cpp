@@ -1,10 +1,8 @@
-#include "scene.h"
-
 #include <QKeyEvent>
 #include <QPainter>
 #include <QTimerEvent>
-#include <QWidget>
 
+#include "scene.h"
 #include "connector.h"
 #include "constants.h"
 
@@ -17,12 +15,17 @@ Scene::Scene(QStackedWidget* parent, Connector* connector) :
     timer_id_(startTimer(kTickTime)),
     scene_(new QGraphicsScene(this)),
     scene_view_(new QGraphicsView(this)),
-    fast_menu_(new FastMenu(this, ":/view/fast_menu.png")),
-    vault_(new Vault(this, ":/view/vault.png")) {
+    fast_menu_(new FastMenu(this,
+                            ":/view/fast_menu.png",
+                            connector_->GetLocationManager())),
+    vault_(new Vault(this, ":/view/vault.png")),
+    scroll_(new Scroll(this, ":/view/scroll.png")) {
   SetDefaultSceneSettings();
+
   addWidget(scene_view_);
   addWidget(fast_menu_);
   addWidget(vault_);
+  addWidget(scroll_);
 
   show();
   setFocus();
@@ -39,8 +42,11 @@ void Scene::timerEvent(QTimerEvent* event) {
   connector_->OnTick();
   scene_view_->centerOn(connector_->GetCoordinator()->
       GetComponent<GraphicsItemComponent>(hero_entity_).item);
+
   auto pos = connector_->GetCoordinator()->
       GetComponent<PositionComponent>(hero_entity_).position;
+
+  assert(background_image_ != nullptr);
   background_image_->setPos(pos.x() - background_image_->pixmap().width() / 2,
                             pos.y() - background_image_->pixmap().height() / 2);
 }
@@ -59,13 +65,21 @@ void Scene::keyPressEvent(QKeyEvent* event) {
     }
     is_menu_showed_ = !is_menu_showed_;
   }
-  if (event->key() == Qt::Key_E) {
+  if (event->key() == Qt::Key_V) {
     if (is_vault_showed_) {
       ContinueGame();
     } else {
-      OpenVault();
+      // OpenVault();
     }
     is_vault_showed_ = !is_vault_showed_;
+  }
+  if (event->key() == Qt::Key_O) {
+    if (is_scroll_showed_) {
+      ContinueGame();
+    } else {
+      OpenScroll("Some text");
+    }
+    is_scroll_showed_ = !is_scroll_showed_;
   }
 }
 
@@ -106,9 +120,18 @@ void Scene::OpenFastMenu() {
   setCurrentWidget(fast_menu_);
 }
 
-void Scene::OpenVault() {
+void Scene::OpenVault(std::string value) {
   vault_->setGeometry(0, 0, kDefaultWindowWidth, kDefaultWindowHeight);
+  setCurrentWidget(fast_menu_);
   setCurrentWidget(vault_);
+  vault_->GetLabel()->setText(value.c_str());
+}
+
+void Scene::OpenScroll(std::string message) {
+  scroll_->setGeometry(0, 0, kDefaultWindowWidth, kDefaultWindowHeight);
+  setCurrentWidget(fast_menu_);
+  setCurrentWidget(scroll_);
+  scroll_->GetLabel()->setText(message.c_str());
 }
 
 void Scene::ContinueGame() {
@@ -120,27 +143,11 @@ void Scene::resizeEvent(QResizeEvent* event) {
   resize(new_size);
   fast_menu_->Resize(new_size);
   vault_->Resize(new_size);
+  scroll_->Resize(new_size);
 }
 
-void Scene::DownloadDungeon(DungeonName dungeon_name,
-                            DungeonType dungeon_type) {
-  connector_->GetSerializer()->DownloadDungeon(dungeon_name, dungeon_type);
-}
-
-void Scene::UploadDungeon(DungeonName dungeon_name, DungeonType dungeon_type) {
-  connector_->GetSerializer()->UploadDungeon(dungeon_name, dungeon_type);
-}
-
-void Scene::RemoveDungeon(DungeonName dungeon_name) {
-  connector_->GetSerializer()->RemoveDungeon(dungeon_name);
-}
-
-DungeonName Scene::GetCurrentDungeon() {
-  return connector_->GetCurrentDungeon();
-}
-
-void Scene::SetCurrentDungeon(DungeonName dungeon_name) {
-  connector_->SetCurrentDungeon(dungeon_name);
+void Scene::OpenNewDungeon(DungeonName dungeon_name) {
+  connector_->OpenNewDungeon(dungeon_name);
 }
 
 void Scene::SetHeroEntity(engine::Entity entity) {

@@ -19,6 +19,7 @@ void Keyboard::OnRelease(Qt::Key key) {
 
 Keyboard::Keyboard() : is_blocked_(false) {
   bindings_ = {
+      {KeyAction::kE, Qt::Key_E},
       {KeyAction::kMoveRight, Qt::Key_D},
       {KeyAction::kMoveLeft, Qt::Key_A},
       {KeyAction::kMoveUp, Qt::Key_W},

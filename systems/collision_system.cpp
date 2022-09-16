@@ -1,5 +1,6 @@
 #include "collision_system.h"
 #include "core/constants.h"
+#include "animation_system.h"
 
 #include <cmath>
 #include <algorithm>
@@ -13,8 +14,8 @@ namespace {
 bool IsIntersectPositions(
     const core::PositionComponent& position1,
     const core::PositionComponent& position2) {
-  double first_x = position1.position.x(), first_y = position1.position.y();
-  double second_x = position2.position.x(), second_y = position2.position.y();
+  int first_x = position1.position.x(), first_y = position1.position.y();
+  int second_x = position2.position.x(), second_y = position2.position.y();
   if (first_x > second_x) {
     std::swap(first_x, second_x);
     std::swap(first_y, second_y);
@@ -23,14 +24,14 @@ bool IsIntersectPositions(
       && abs(first_y - second_y) < core::kTextureSize);
 }
 
-std::pair<double, double> IntersectPositions(
+std::pair<int, int> IntersectPositions(
     const core::PositionComponent& position1,
     const core::PositionComponent& position2) {
   if (!IsIntersectPositions(position1, position2)) {
     return {0, 0};
   }
-  double first_x = position1.position.x(), first_y = position1.position.y();
-  double second_x = position2.position.x(), second_y = position2.position.y();
+  int first_x = position1.position.x(), first_y = position1.position.y();
+  int second_x = position2.position.x(), second_y = position2.position.y();
   if (first_x > second_x) {
     std::swap(first_x, second_x);
     std::swap(first_y, second_y);
@@ -45,9 +46,10 @@ std::pair<double, double> IntersectPositions(
 
 systems::CollisionSystem::CollisionSystem(engine::Coordinator* coordinator,
                                           core::Connector* connector)
-    : coordinator_(coordinator), connector_(connector) {}
+    : coordinator_(coordinator), connector_(connector), time_(0) {}
 
 void systems::CollisionSystem::Update() {
+  time_ += core::kTickTime;
   std::vector<engine::Entity> movable_entities;
   for (engine::Entity entity : entities_) {
     auto& collision_comp =
@@ -58,67 +60,60 @@ void systems::CollisionSystem::Update() {
   }
 
   for (engine::Entity entity1 : movable_entities) {
+    auto& position_comp1 = coordinator_->
+        GetComponent<core::PositionComponent>(entity1);
+    auto& collision_comp1 =
+        coordinator_->GetComponent<core::CollisionComponent>(entity1);
+    auto& movement_comp1 =
+        coordinator_->GetComponent<core::MovementComponent>(entity1);
+    auto new_position1 = position_comp1;
+    new_position1.position +=
+        movement_comp1.direction * movement_comp1.current_speed;
     for (engine::Entity entity2 : entities_) {
       if (entity1 == entity2) {
         continue;
       }
-      auto& graphics_comp1 = coordinator_->
-          GetComponent<core::GraphicsItemComponent>(entity1);
-      auto& graphics_comp2 = coordinator_->
-          GetComponent<core::GraphicsItemComponent>(entity2);
-
-      if (graphics_comp1.item->zValue() != graphics_comp2.item->zValue()) {
-        continue;
-      }
-      auto& position_comp1 = coordinator_->
-          GetComponent<core::PositionComponent>(entity1);
       auto& position_comp2 = coordinator_->
           GetComponent<core::PositionComponent>(entity2);
 
-      auto& collision_comp1 =
-          coordinator_->GetComponent<core::CollisionComponent>(entity1);
       auto& collision_comp2 =
           coordinator_->GetComponent<core::CollisionComponent>(entity2);
 
-      auto& movement_comp1 =
-          coordinator_->GetComponent<core::MovementComponent>(entity1);
-
-      auto new_position1 = position_comp1;
-      new_position1.position +=
-          movement_comp1.direction * movement_comp1.current_speed;
-      const long double eps = 1e-1;
+      std::pair<int, int>
+          tmp = IntersectPositions(new_position1, position_comp2);
       if (collision_comp1.can_use && collision_comp2.is_usable &&
-          (IntersectPositions(new_position1, position_comp2).first > eps ||
-              IntersectPositions(new_position1, position_comp2).second > eps)) {
+          (tmp.first > 0 || tmp.second > 0)) {
         connector_->UseEvent(entity2);
-        std::cout
-            << "THIS IS USSSSSSSSSSSSSSSSSSSSSSSSSEEEEEEEEEEEEEEEEEEEEEEE"
-            << std::endl;
         continue;
       }
+      tmp = IntersectPositions(new_position1, position_comp2);
       if (collision_comp1.can_use && collision_comp2.is_breakable &&
-          (IntersectPositions(new_position1, position_comp2).first > eps ||
-              IntersectPositions(new_position1, position_comp2).second > eps)) {
+          (tmp.first > 0 || tmp.second > 0)) {
         auto& illness_comp2 =
             coordinator_->GetComponent<core::IllnessComponent>(entity2);
         if (!illness_comp2.is_ill) {
           illness_comp2.is_ill = true;
-          // if (coordinator_->
-          // HasComponent<core::AnimationComponent>(entity2) &&
-          //     coordinator_->
-          //     GetComponent<core::AnimationComponent>(entity2).move_type ==
-          //     core::MovementType::kCoinMoving) {
-          //   connector_->AddCoin(entity2);
-          // } else {
-          //   // TODO(egor) : start death animation
-          // }
-          std::cout << "THIS IS ILNEEEEEEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSSSSS"
-                    << std::endl;
+          if (coordinator_->
+              HasComponent<core::AnimationComponent>(entity2) &&
+              coordinator_->
+                  GetComponent<core::AnimationComponent>(entity2).move_type ==
+                  core::MovementType::kCoinMoving) {
+            connector_->CheckAndAddCoin(entity2);
+          } else if (coordinator_->
+              HasComponent<core::AnimationComponent>(entity2) &&
+              coordinator_->
+                  GetComponent<core::AnimationComponent>(entity2).move_type ==
+                  core::MovementType::kRubbishDestroy &&
+              coordinator_->GetComponent<core::AnimationComponent>
+                  (entity2).start_time > time_) {
+            coordinator_->GetComponent<core::AnimationComponent>(entity2)
+                .start_time = time_;
+          }
         }
         continue;
       }
       if (collision_comp2.is_movable == false) {
-        if (IntersectPositions(new_position1, position_comp2).second > eps) {
+        if (IntersectPositions(new_position1, position_comp2).second > 0) {
           movement_comp1.direction = {0, 0};
         }
       } else {
@@ -127,14 +122,8 @@ void systems::CollisionSystem::Update() {
         auto new_position2 = position_comp2;
         new_position2.position +=
             movement_comp2.direction * movement_comp2.current_speed;
-        std::pair<double, double>
+        std::pair<int, int>
             intersection = IntersectPositions(new_position1, new_position2);
-        if (intersection.first < eps) {
-          intersection.first = 0;
-        }
-        if (intersection.second < eps) {
-          intersection.second = 0;
-        }
         if (intersection.first == 0 || intersection.second == 0) {
           continue;
         }
@@ -149,8 +138,8 @@ void systems::CollisionSystem::Update() {
             } else if (collision_comp1.gravity && !collision_comp2.gravity) {
               double diff = abs(std::round(position_comp1.position.y())
                                     - position_comp1.position.y());
-              if (diff > eps ||
-                  (diff < eps &&
+              if (diff > 0 ||
+                  (diff == 0 &&
                       static_cast<int>(std::round(position_comp1.position.y()))
                           % core::kTextureSize != 0)) {
                 position_comp2.position += {0, movement_comp2.current_speed};
@@ -166,10 +155,9 @@ void systems::CollisionSystem::Update() {
           }
         } else if (intersection.second == core::kTextureSize) {
           if (new_position1.position.x() < new_position2.position.x()) {
-            new_position2.position +=
-                QVector2D {1, 0} * movement_comp1.current_speed;
-
             if (!collision_comp1.gravity && collision_comp2.gravity) {
+              new_position2.position +=
+                  QVector2D {1, 0} * movement_comp1.current_speed;
               if (movement_comp2.direction != QVector2D{0, 0}) {
                 movement_comp1.direction = {0, 0};
                 continue;
@@ -194,15 +182,9 @@ void systems::CollisionSystem::Update() {
                   new_position_comp.position += new_movement_comp.direction
                       * new_movement_comp.current_speed;
                 }
-                auto& new_graphics_comp = coordinator_->
-                    GetComponent<core::GraphicsItemComponent>(new_entity);
-                if (graphics_comp2.item->zValue()
-                    != new_graphics_comp.item->zValue()) {
-                  continue;
-                }
-                std::pair<double, double> inter =
+                std::pair<int, int> inter =
                     IntersectPositions(new_position_comp, new_position2);
-                if (inter.second > eps || inter.first > eps) {
+                if (inter.second > 0 || inter.first > 0) {
                   can_move = false;
                   break;
                 }
@@ -214,6 +196,9 @@ void systems::CollisionSystem::Update() {
                 movement_comp1.direction = {0, 0};
               }
             } else if (collision_comp1.gravity && !collision_comp2.gravity) {
+              new_position1.position +=
+                  QVector2D {-1, 0} * movement_comp1.current_speed;
+
               if (movement_comp1.direction != QVector2D{0, 0}) {
                 movement_comp2.direction = {0, 0};
                 continue;
@@ -238,15 +223,9 @@ void systems::CollisionSystem::Update() {
                   new_position_comp.position += new_movement_comp.direction
                       * new_movement_comp.current_speed;
                 }
-                auto& new_graphics_comp = coordinator_->
-                    GetComponent<core::GraphicsItemComponent>(new_entity);
-                if (graphics_comp2.item->zValue()
-                    != new_graphics_comp.item->zValue()) {
-                  continue;
-                }
                 auto inter =
                     IntersectPositions(new_position_comp, new_position1);
-                if (inter.second > eps || inter.first > eps) {
+                if (inter.second > 0 || inter.first > 0) {
                   can_move = false;
                   break;
                 }
@@ -258,7 +237,7 @@ void systems::CollisionSystem::Update() {
                 movement_comp2.direction = {0, 0};
               }
             } else {
-              assert(1 == 0 && "bad horizontal collision");
+              // assert(1 == 0 && "bad horizontal collision");
             }
           }
         } else if (collision_comp1.gravity &&
@@ -288,7 +267,7 @@ void systems::CollisionSystem::Update() {
             movement_comp2.direction = {0, 0};
           }
         } else {
-          assert(1 == 0 && "bad collision");
+          // assert(1 == 0 && "bad collision");
         }
       }
     }
@@ -312,14 +291,6 @@ void systems::CollisionSystem::Update() {
       if (entity1 == entity2) {
         continue;
       }
-      auto& graphics_comp1 = coordinator_->
-          GetComponent<core::GraphicsItemComponent>(entity1);
-
-      auto& graphics_comp2 = coordinator_->
-          GetComponent<core::GraphicsItemComponent>(entity2);
-      if (graphics_comp1.item->zValue() != graphics_comp2.item->zValue()) {
-        continue;
-      }
       auto& position_comp2 = coordinator_->
           GetComponent<core::PositionComponent>(entity2);
 
@@ -329,8 +300,10 @@ void systems::CollisionSystem::Update() {
       if (!collision_comp2.is_movable) {
         auto new_position = position_comp1;
         new_position.position += {0, movement_comp1.current_speed};
-        const long double eps = 1e-1;
-        if (IntersectPositions(new_position, position_comp2).second > eps) {
+        std::pair<int, int> in =
+            IntersectPositions(new_position, position_comp2);
+        if (IntersectPositions(new_position, position_comp2).second > 0 ||
+            IntersectPositions(new_position, position_comp2).first > 0) {
           movement_comp1.direction = {0, 0};
           is_bad = true;
           break;
@@ -345,7 +318,7 @@ void systems::CollisionSystem::Update() {
         new_position2.position +=
             movement_comp2.direction * movement_comp2.current_speed;
 
-        std::pair<double, double>
+        std::pair<int, int>
             intersection = IntersectPositions(new_position1, new_position2);
         if (intersection.first == 0 && intersection.second == 0) {
           continue;

@@ -11,12 +11,14 @@
 #include "systems/animation_system.h"
 #include "systems/collision_system.h"
 #include "systems/illness_system.h"
+#include "core/location_manager/location_manager.h"
 
 namespace core {
 
 Connector::Connector() : coordinator_(std::make_unique<engine::Coordinator>()),
                          keyboard_(std::make_unique<Keyboard>()),
-                         current_dungeon_(DungeonName::kHub) {
+                         location_manager_(
+                             std::make_unique<LocationManager>()) {
   RegisterComponents();
   RegisterSystems();
 }
@@ -36,7 +38,46 @@ void Connector::OnKeyRelease(Qt::Key key) {
 }
 
 void Connector::UseEvent(engine::Entity entity) {
-  // TODO(someone): show use event
+  auto event_comp{coordinator_->GetComponent<EventComponent>(entity)};
+  switch (event_comp.type) {
+    case EventType::kSecretRoom: {
+      auto event_data{secret_rooms_data.at(event_comp.number)};
+      if (current_dungeons_.count(event_data.name) != 0) {
+        break;
+      }
+      current_dungeons_.insert(event_data.name);
+      serializer_->DownloadDungeon(event_data.name, DungeonType::kHandCreated);
+      break;
+    }
+    case EventType::kVault: {
+      if (keyboard_->IsKeyPressed(KeyAction::kE)) {
+        scene_->OpenVault(std::to_string(location_manager_->GetVaultCoins()));
+      }
+      break;
+    }
+    case EventType::kNextDungeon: {
+      if (keyboard_->IsKeyPressed(KeyAction::kE)) {
+        auto event_data{new_dungeon_chests_data.at(event_comp.number)};
+        location_manager_->UnlockLocation(event_data.name);
+        scene_->OpenScroll(event_data.scroll_massage);
+      }
+      break;
+    }
+    case EventType::kProgressReset: {
+      location_manager_->Reset();
+      break;
+    }
+    case EventType::kCreator: {
+      break;
+    }
+    case EventType::kGameExit: {
+      if (keyboard_->IsKeyPressed(KeyAction::kE)) {
+        exit(0);
+      }
+    }
+    default: {
+    }
+  }
 }
 
 void Connector::RegisterSystems() {
@@ -67,7 +108,6 @@ void Connector::RegisterSystems() {
         ->RegisterSystem<systems::CollisionSystem>(coordinator_.get(), this);
     coordinator_->SetSystemSignature<systems::CollisionSystem>
         ({coordinator_->GetComponentID<PositionComponent>(),
-          coordinator_->GetComponentID<GraphicsItemComponent>(),
           coordinator_->GetComponentID<CollisionComponent>()});
     systems_.push_back(collision_system);
   }
@@ -106,22 +146,36 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<IllnessComponent>();
   coordinator_->RegisterComponent<GraphicsItemComponent>();
   coordinator_->RegisterComponent<AnimationComponent>();
+  coordinator_->RegisterComponent<EventComponent>();
+  coordinator_->RegisterComponent<CoinComponent>();
 }
 
 // example of interacting with engine
 void Connector::StartGame(Scene* scene) {
-  serializer_ =
-      std::make_unique<Serializer>(coordinator_.get(), scene);
+  scene_ = scene;
+  serializer_ = std::make_unique<Serializer>(coordinator_.get(), scene);
+  current_dungeons_.insert(DungeonName::kHub);
+  location_manager_->Reset();
 
   // [before game release] Download from json file to game
   serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
+  // serializer_->DownloadDungeon(DungeonName::kLevel1,
+  // DungeonType::kHandCreated);
+  // serializer_->DownloadDungeon(DungeonName::kLevel2,
+  // DungeonType::kHandCreated);
+  // serializer_->DownloadDungeon(DungeonName::kLevel3,
+  // DungeonType::kHandCreated);
 
   // [before game release] Upload dungeon from game to default binary file
   // serializer_->UploadDungeon(DungeonName::kHub, DungeonType::kHandCreated);
+  // serializer_->UploadDungeon(DungeonName::kLevel1,
+  // DungeonType::kHandCreated);
+  // serializer_->UploadDungeon(DungeonName::kLevel2,
+  // DungeonType::kHandCreated);
+  // serializer_->RemoveDungeon(DungeonName::kHub);
 
   // Download default dungeon from binary file to game
   // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kDefault);
-
   // Download edited dungeon from binary file to game
   // serializer_->DownloadDungeon(DungeonName::kHub, DungeonType::kEdited);
 
@@ -138,23 +192,31 @@ void Connector::DeleteEntity(engine::Entity entity) {
 }
 
 void Connector::CheckAndAddCoin(engine::Entity entity) {
-  // TODO(someone) : check if its a coin then add
+  if (coordinator_->HasComponent<CoinComponent>(entity)) {
+    location_manager_->AddCoins(
+        coordinator_->GetComponent<CoinComponent>(entity).value);
+  }
 }
 
 std::shared_ptr<engine::Coordinator> Connector::GetCoordinator() {
   return coordinator_;
 }
 
-DungeonName Connector::GetCurrentDungeon() {
-  return current_dungeon_;
+void Connector::OpenNewDungeon(DungeonName dungeon_name) {
+  // Remove all open dungeons
+  for (auto current_dungeon : current_dungeons_) {
+    // serializer_->UploadDungeon()  - if we want to save edited dungeons
+    serializer_->RemoveDungeon(current_dungeon);
+  }
+  current_dungeons_.clear();
+
+  // Add new dungeon
+  current_dungeons_.insert(dungeon_name);
+  serializer_->DownloadDungeon(dungeon_name, DungeonType::kHandCreated);
 }
 
-void Connector::SetCurrentDungeon(DungeonName dungeon) {
-  current_dungeon_ = dungeon;
-}
-
-Serializer* Connector::GetSerializer() {
-  return serializer_.get();
+LocationManager* Connector::GetLocationManager() const {
+  return location_manager_.get();
 }
 
 }  // namespace core
