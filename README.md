@@ -7,16 +7,16 @@ The game is a study project of Belarusian State University first year students (
 
 DreamTeam members:
 
-* Yahor Tiliguzov([@tiliguzov](https://github.com/tiliguzov))
-* Ilya Shatnov([@ManFormTheMoon](https://github.com/ManFormTheMoon))
-* Christina Sivakova([@CCivakova](https://github.com/CCivakova))
-* Michail Semenov([@Marmotikon](https://github.com/Marmotikon))
+* Yahor Tiliguzov ([@tiliguzov](https://github.com/tiliguzov))
+* Ilya Shtanov ([@ManFormTheMoon](https://github.com/ManFormTheMoon))
+* Christina Sivakova ([@CCivakova](https://github.com/CCivakova))
+* Mikhail Semenov ([@Marmotikon](https://github.com/Marmotikon))
 
 Advisers:
 
 * Yahor Khadasevich ([@Khody31](https://github.com/Khody31))
-* Maxim Miasoedenkov([@ternerss](https://github.com/ternerss))
-* Maxim Litskevich([@Zzzabiyaka](https://github.com/Zzzabiyaka))
+* Maxim Miasoedenkov ([@ternerss](https://github.com/ternerss))
+* Maxim Litskevich ([@Zzzabiyaka](https://github.com/Zzzabiyaka))
 
 The best artist who never once refused to help:
 
